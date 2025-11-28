@@ -1,0 +1,486 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מצא את הברגים המושלמים — אבוטבול ברגים</title>
+  <meta name="description" content="חנות ברגים מובילה בישראל לקבלנים, בעלי חנויות ומנהלי אחזקה. מגוון ענק של ברגים ואומים לבנייה במחירים תחרותיים.">
+  <meta name="keywords" content="חנות ברגים, חנות ברגים בישראל, ברגים ואומים לבנייה, חומרי חיבור לקבלנים">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<style>
+/* Zappy Attribution Header Styles */
+.zappy-header {
+  position: static;
+  width: 100%;
+  background: white;
+  box-shadow: 0px 4px 19px 0px rgba(0,0,0,0.04);
+  padding: 16px 10px;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  color: #4a4a4a;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 21px;
+}
+
+    .zappy-header p {
+      margin: 0;
+      padding: 0;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 21px;
+      white-space: nowrap;
+      display: inline-block;
+      vertical-align: baseline;
+      margin-bottom: 0 !important;
+    }
+
+.zappy-header .zappy-link {
+  font-weight: 700;
+  color: #4a4a4a;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.zappy-header .zappy-link:hover {
+  opacity: 0.7;
+}</style>
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+<!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: '1d7df850-dfb9-42ce-9cb0-088786113c55',
+    apiUrl: 'https://qaapi.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        trackEvent('click', {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        });
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        trackEvent('navigation', {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        });
+      }
+    }, true);
+  }
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Zappy Attribution Header -->
+<div id="zappy-attribution-header" class="zappy-header" style="display: none;">
+  <p>Happily created by&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" class="zappy-link">Zappy</a></p>
+</div>
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <div class="nav-brand">
+        <a href="/" class="logo-link">
+          <img src="assets/logo.webp" alt="אבוטבול ברגים" class="logo" />
+        </a>
+      </div>
+      
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </button>
+      
+      <button class="phone-header-btn" aria-label="התקשר אלינו">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+      </button>
+      
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="/products">מוצרים</a></li>
+        <li><a href="/services">שירותים</a></li>
+        <li><a href="/about">אודות</a></li>
+      </ul>
+      
+      <div class="nav-cta-container">
+        <li class="nav-cta-item">
+          <a href="/contact" class="nav-cta-btn">צור קשר</a>
+        </li>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <img data-placeholder="hero-1" data-context="Wide industrial warehouse shot showing organized rows of metal fasteners, screws, bolts and construction hardware with professional lighting" src="assets/hero-hero-1.webp" alt="חנות ברגים מקצועית עם מגוון רחב של חומרי בניין" class="hero-img">
+    <div class="hero-content">
+      <h1>חנות ברגים מובילה בישראל לכל צרכי הבנייה</h1>
+      <h3>מגוון ענק של ברגים, אומים וחומרי חיבור לקבלנים ובעלי מקצוע</h3>
+      <a href="/contact" class="btn-hero">קבל הצעת מחיר</a>
+    </div>
+  </section>
+
+  <section class="intro-section">
+    <div class="container">
+      <h2>למה לבחור באבוטבול ברגים?</h2>
+      <p>אבוטבול ברגים היא חנות ברגים מובילה בישראל המתמחה באספקת חומרי חיבור לקבלנים, בעלי חנויות חומרי בניין ומנהלי אחזקה. אנו מציעים מגוון רחב של ברגים ואומים לבנייה, עם דגש על איכות גבוהה, מחירים תחרותיים ושירות מקצועי. הניסיון שלנו בתחום חומרי הבניין והחומרה מאפשר לנו להבין את הצרכים הייחודיים של כל לקוח ולספק פתרונות מותאמים אישית.</p>
+      <p>בין אם אתם קבלנים המבצעים פרויקטים גדולים, חובבי עשה זאת בעצמך המחפשים חומרים איכוtiים לשיפוץ הבית, או בעלי חנויות המעוניינים בספק אמין - אבוטבול ברגים היא הכתובת המושלמת עבורכם. אנו מתחייבים לאספקה מהירה, ייעוץ מקצועי ומלאי זמין תמיד.</p>
+    </div>
+  </section>
+
+  <section class="products-preview">
+    <div class="container">
+      <h2>המוצרים המובילים שלנו</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <img data-placeholder="service-1" data-context="Close-up of various stainless steel screws and bolts arranged professionally on industrial metal surface" src="assets/service-service-1.webp" alt="ברגים ואומים מנירוסטה איכותיים">
+          <h3>ברגי נירוסטה</h3>
+          <p>מגוון רחב של ברגים מנירוסטה עמידים בפני קורוזיה, מושלמים לשימוש חוץ ובסביבות לחות.</p>
+        </div>
+        <div class="product-card">
+          <img data-placeholder="service-2" data-context="Construction bolts and nuts for concrete work displayed on construction site background" src="assets/service-service-2.webp" alt="ברגים לבטון ועבודות בנייה כבדות">
+          <h3>ברגי בטון</h3>
+          <p>ברגים מיוחדים לעבודות בטון, מתאימים לפרויקטים תעשייתיים ובנייה כבדה.</p>
+        </div>
+        <div class="product-card">
+          <img data-placeholder="service-3" data-context="Wood screws and fasteners arranged neatly with wooden planks in workshop setting" src="assets/service-service-3.webp" alt="ברגים לעץ ועבודות נגרות">
+          <h3>ברגי עץ</h3>
+          <p>ברגים מתקדמים לעבודות נגרות ועץ, במגוון גדלים וסוגים לכל פרויקט.</p>
+        </div>
+      </div>
+      <div class="cta-center">
+        <a href="/products" class="btn-secondary">צפה בכל המוצרים</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <div class="container">
+      <h2>השירותים שלנו</h2>
+      <div class="services-split">
+        <div class="service-text">
+          <h3>אספקה מהירה ואמינה</h3>
+          <p>אנו מבינים שזמן הוא כסף בתחום הבנייה. לכן אנו מציעים שירות אספקה מהיר ואמין לכל רחבי הארץ. בין אם אתם זקוקים להזמנה דחופה לאתר בנייה או לאספקה שוטפת לחנות שלכם, אנו כאן כדי לוודא שתקבלו את החומרים שלכם בזמן.</p>
+          <p>השירות שלנו כולל משלוחים מהירים, אפשרות לאיסוף עצמי, וייעוץ טלפוני זמין לכל שאלה. אנו עובדים עם חברות הובלה מובילות כדי להבטיח שהמוצרים יגיעו אליכם בשלמות ובמהירות.</p>
+        </div>
+        <div class="service-image">
+          <img data-placeholder="service-4" data-context="Delivery truck loaded with construction materials and hardware supplies at warehouse loading dock" src="assets/service-service-4.webp" alt="משאית משלוחים עם חומרי בניין">
+        </div>
+      </div>
+      
+      <div class="services-split reverse">
+        <div class="service-image">
+          <img data-placeholder="service-5" data-context="Professional consultant advising contractors in hardware store with shelves of fasteners and tools" src="assets/service-service-5.webp" alt="ייעוץ מקצועי לקבלנים בחנות ברגים">
+        </div>
+        <div class="service-text">
+          <h3>ייעוץ מקצועי</h3>
+          <p>הצוות המנוסה שלנו מורכב ממומחים בתחום חומרי הבניין והחומרה, עם ידע עמוק בכל סוגי הברגים והחומרים. אנו מציעים ייעוץ מקצועי חינם לכל לקוח, בין אם אתם קבלנים מנוסים או חובבי עשה זאת בעצמך המתחילים פרויקט חדש.</p>
+          <p>נשמח לעזור לכם לבחור את הברגים והחומרים המתאימים ביותר לפרויקט שלכם, להמליץ על פתרונות חסכוניים ויעילים, ולענות על כל שאלה טכנית. הייעוץ שלנו מבוסס על שנים של ניסיון ועל הכרת השוק הישראלי לעומק.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="target-audience">
+    <div class="container">
+      <h2>למי אנחנו מתאימים?</h2>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="audience-icon"><i class="fas fa-hard-hat"></i></div>
+          <h3>קבלנים ובונים</h3>
+          <p>אספקה סדירה של חומרי חיבור לקבלנים לפרויקטים בכל גודל, עם מחירים מיוחדים להזמנות כמות.</p>
+        </div>
+        <div class="audience-card">
+          <div class="audience-icon"><i class="fas fa-tools"></i></div>
+          <h3>חובבי עשה זאת בעצמך</h3>
+          <p>מגוון רחב של ברגים וחומרים לשיפוצים ביתיים, עם ייעוץ אישי ותמיכה מקצועית.</p>
+        </div>
+        <div class="audience-card">
+          <div class="audience-icon"><i class="fas fa-store"></i></div>
+          <h3>בעלי חנויות</h3>
+          <p>פתרונות אספקה גמישים לבעלי חנויות חומרי בניין, עם מחירים סיטונאיים ושירות אישי.</p>
+        </div>
+        <div class="audience-card">
+          <div class="audience-icon"><i class="fas fa-building"></i></div>
+          <h3>מנהלי אחזקה</h3>
+          <p>אספקה שוטפת לצרכי אחזקה של מבנים גדולים, עם זמינות מיידית ומשלוחים מהירים.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>מוכנים להתחיל?</h2>
+      <p>צרו קשר עוד היום לקבלת הצעת מחיר או ייעוץ מקצועי חינם</p>
+      <a href="/contact" class="btn-primary">צור קשר עכשיו</a>
+    </div>
+  </section>
+
+  <a href="https://wa.me/[whatsapp_handle]" target="_blank" class="whatsapp-float" aria-label="WhatsApp" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  
+    <!-- Legal Footer -->
+    <footer class="legal-footer">
+      <div class="container">
+        <div class="footer-main">
+          <div class="all-rights-reserved">
+            <p>© 2025 אבוטבול ברגים. כל הזכויות שמורות.</p>
+          </div>
+          <div class="footer-social"><a href="https://facebook.com/[facebook_handle]" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+<a href="https://instagram.com/[instagram_handle]" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+<a href="https://wa.me/[whatsapp_handle]" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div>
+          <div class="footer-legal">
+            <a href="privacy.html" aria-label="מדיניות פרטיות">
+              מדיניות פרטיות
+            </a>
+            <span class="separator">|</span>
+            <a href="accessibility.html" aria-label="נגישות">
+              נגישות
+            </a>
+            <span class="separator">|</span>
+            <a href="terms.html" aria-label="תנאי שימוש">
+              תנאי שימוש
+            </a>
+          </div>
+        </div>
+        <div class="zappy-attribution">
+          <p>נוצר באמצעות <a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Zappy</a></p>
+        </div>
+      </div>
+    </footer>
+
+
+<!-- Zappy Attribution Header Script -->
+<script>
+(function() {
+  var websiteId = '1d7df850-dfb9-42ce-9cb0-088786113c55';
+  
+  // Don't show header in preview mode
+  var currentUrl = window.location.href;
+  var isPreview = currentUrl.includes('/preview/') || 
+                  currentUrl.includes('/preview-fullscreen/') || 
+                  currentUrl.includes('localhost:5001') ||
+                  currentUrl.includes('localhost:3000');
+  
+  if (isPreview) {
+    return; // Exit early in preview mode
+  }
+  
+  fetch('https://qaapi.zappy5.com/api/website/' + websiteId + '/tier')
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+      if (data.showAttribution) {
+        var header = document.getElementById('zappy-attribution-header');
+        if (header) {
+          header.style.display = 'block';
+        }
+      }
+    })
+    .catch(function(error) {
+      console.error('Failed to check tier:', error);
+    });
+})();
+</script>
+    <div data-integration="accessibility:toolbar"></div>
+    <script src="script.js"></script>
+</body></html>
