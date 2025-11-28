@@ -610,3 +610,169 @@ body.accessibility-widget-visible ._access-menu {
     display: none !important;
   }
 }
+
+/* RTL Support Overrides for New Pages */
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="rtl"] * {
+  text-align: inherit;
+}
+
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6 {
+  text-align: right;
+}
+
+html[dir="rtl"] p {
+  text-align: right;
+}
+
+html[dir="rtl"] .text-left {
+  text-align: right !important;
+}
+
+html[dir="rtl"] .text-right {
+  text-align: left !important;
+}
+
+html[dir="rtl"] .text-center {
+  text-align: center !important;
+}
+
+/* Flexbox RTL support */
+html[dir="rtl"] .flex {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .flex-row-reverse {
+  flex-direction: row;
+}
+
+/* Grid RTL support */
+html[dir="rtl"] .grid {
+  direction: rtl;
+}
+
+/* Float RTL support */
+html[dir="rtl"] .float-left {
+  float: right !important;
+}
+
+html[dir="rtl"] .float-right {
+  float: left !important;
+}
+
+/* Margin and padding RTL support */
+html[dir="rtl"] .ml-auto {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+html[dir="rtl"] .mr-auto {
+  margin-right: 0 !important;
+  margin-left: auto !important;
+}
+
+/* Team member cards RTL support */
+html[dir="rtl"] .team-member,
+html[dir="rtl"] .member-card,
+html[dir="rtl"] .card {
+  text-align: right;
+}
+
+html[dir="rtl"] .team-member img,
+html[dir="rtl"] .member-card img,
+html[dir="rtl"] .card img {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Container RTL support */
+html[dir="rtl"] .container {
+  direction: rtl;
+}
+
+/* Section RTL support */
+html[dir="rtl"] section {
+  direction: rtl;
+}
+
+/* Main content RTL support */
+html[dir="rtl"] main {
+  direction: rtl;
+}
+
+/* Override any LTR-specific positioning */
+html[dir="rtl"] [style*="left:"] {
+  direction: rtl;
+}
+
+html[dir="rtl"] [style*="text-align: left"] {
+  text-align: right !important;
+}
+
+html[dir="rtl"] [style*="text-align:left"] {
+  text-align: right !important;
+}
+
+/* Ensure RTL layout for team sections */
+html[dir="rtl"] .team-grid,
+html[dir="rtl"] .team-container,
+html[dir="rtl"] .members-grid {
+  direction: rtl;
+}
+
+html[dir="rtl"] .team-grid > *,
+html[dir="rtl"] .team-container > *,
+html[dir="rtl"] .members-grid > * {
+  text-align: right;
+}
+
+/* Blog page RTL support */
+html[dir="rtl"] .blog-post,
+html[dir="rtl"] .post-card,
+html[dir="rtl"] .blog-card {
+  text-align: right;
+}
+
+html[dir="rtl"] .blog-post img,
+html[dir="rtl"] .post-card img,
+html[dir="rtl"] .blog-card img {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+html[dir="rtl"] .blog-grid,
+html[dir="rtl"] .posts-grid,
+html[dir="rtl"] .blog-container {
+  direction: rtl;
+}
+
+html[dir="rtl"] .blog-grid > *,
+html[dir="rtl"] .posts-grid > *,
+html[dir="rtl"] .blog-container > * {
+  text-align: right;
+}
+
+/* Component-specific styles for Blank */
+
+
+        .blank-page-simple { background: white; font-family: var(--font-family); border: 3px dashed var(--primary-color); display: flex; align-items: center; justify-content: center; }
+        .canvas { text-align: center; }
+        .canvas-icon { font-size: 4rem; margin-bottom: 0.5rem; opacity: 0.5; }
+        .canvas-text { font-size: 1.2rem; font-weight: 600; color: var(--text-color); opacity: 0.6; }
+      
+
+/* Full-width section */
+.blank-preview { width: 100%; margin: 0; padding: 3rem 0; }
+.blank-preview .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
