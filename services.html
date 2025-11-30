@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="he" dir="rtl"><head>
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="page_title">שירותי חנות ברגים מקצועיים — אבוטבול ברגים</title>
@@ -490,6 +490,8 @@
 </div>
       </div>
     
+
+
 
 
 <!-- i18next Multi-Language Support -->
@@ -1155,7 +1157,7 @@
     const browserLang = navigator.language.split('-')[0];
     if (availableLanguages.includes(browserLang)) return browserLang;
     
-    return 'he';
+    return 'en';
   }
   
   // Simple i18n implementation (no external dependency)
@@ -1168,7 +1170,7 @@
         return langResources.translation[key];
       }
       // Fallback to default language
-      const fallbackResources = this.resources['he'];
+      const fallbackResources = this.resources['en'];
       if (fallbackResources && fallbackResources.translation && fallbackResources.translation[key]) {
         return fallbackResources.translation[key];
       }
