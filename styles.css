@@ -610,3 +610,137 @@ body.accessibility-widget-visible ._access-menu {
     display: none !important;
   }
 }
+
+/* Language Switcher Styles */
+.lang-switcher {
+  position: relative;
+  display: inline-block;
+  font-family: inherit;
+  z-index: 1000;
+}
+
+.lang-switcher-current {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.lang-switcher-current:hover {
+  background: rgba(128, 128, 128, 0.1);
+  border-color: rgba(128, 128, 128, 0.5);
+}
+
+.lang-arrow {
+  transition: transform 0.2s ease;
+}
+
+.lang-switcher-dropdown.active + .lang-switcher-current .lang-arrow,
+.lang-switcher:focus-within .lang-arrow {
+  transform: rotate(180deg);
+}
+
+.lang-switcher-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  min-width: 140px;
+  background: white;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  z-index: 1001;
+}
+
+.lang-switcher-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.15s ease;
+}
+
+html[dir="rtl"] .lang-option {
+  text-align: right;
+}
+
+.lang-option:hover {
+  background: rgba(128, 128, 128, 0.1);
+}
+
+.lang-option:first-child {
+  border-radius: 7px 7px 0 0;
+}
+
+.lang-option:last-child {
+  border-radius: 0 0 7px 7px;
+}
+
+.lang-option:only-child {
+  border-radius: 7px;
+}
+
+/* RTL support for language switcher */
+html[dir="rtl"] .lang-switcher-dropdown {
+  right: auto;
+  left: 0;
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .lang-switcher-dropdown {
+    background: #2a2a2a;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .lang-option {
+    color: #e0e0e0;
+  }
+  
+  .lang-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .lang-switcher-current {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  
+  .lang-switcher-dropdown {
+    min-width: 130px;
+  }
+  
+  .lang-option {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
