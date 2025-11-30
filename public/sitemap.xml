@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://avutbul-bargim.zappy5.app</loc>
+    <loc>https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com</loc>
     <lastmod>2025-11-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://avutbul-bargim.zappy5.app/products</loc>
+    <loc>https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/products</loc>
     <lastmod>2025-11-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://avutbul-bargim.zappy5.app/services</loc>
+    <loc>https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/services</loc>
     <lastmod>2025-11-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://avutbul-bargim.zappy5.app/about</loc>
+    <loc>https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/about</loc>
     <lastmod>2025-11-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://avutbul-bargim.zappy5.app/contact</loc>
+    <loc>https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/contact</loc>
     <lastmod>2025-11-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://avutbul-bargim.zappy5.app/privacy</loc>
-    <lastmod>2025-11-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://avutbul-bargim.zappy5.app/terms</loc>
+    <loc>https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/privacy</loc>
     <lastmod>2025-11-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://avutbul-bargim.zappy5.app/accessibility</loc>
+    <loc>https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/terms</loc>
+    <lastmod>2025-11-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/accessibility</loc>
     <lastmod>2025-11-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
