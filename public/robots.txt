@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://-1d7df850.zappy5.app/sitemap.xml
+Sitemap: https://avutbul-bargim.zappy5.app/sitemap.xml
