@@ -362,7 +362,8 @@
       "legal_accessibility_li_45": "טלפון: [business_phone]",
       "legal_accessibility_link_17": "[business_email]",
       "legal_accessibility_link_18": "[business_phone]",
-      "legal_accessibility_link_19": "← חזרה לאתר"
+      "legal_accessibility_link_19": "← חזרה לאתר",
+      "new_p_69": "טסט של עידו"
     }
   },
   "en": {
@@ -728,7 +729,8 @@
       "legal_accessibility_li_45": "Phone: [business_phone]",
       "legal_accessibility_link_17": "[business_email]",
       "legal_accessibility_link_18": "[business_phone]",
-      "legal_accessibility_link_19": "← Back to website"
+      "legal_accessibility_link_19": "← Back to website",
+      "new_p_69": "Ido's test"
     }
   }
 }
