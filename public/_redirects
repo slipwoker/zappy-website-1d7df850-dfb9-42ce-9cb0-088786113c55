@@ -5,6 +5,7 @@
 /services  /services.html  200
 /about  /about.html  200
 /contact  /contact.html  200
+/test  /test.html  200
 /  /index.html  200
 
 # 404 fallback
