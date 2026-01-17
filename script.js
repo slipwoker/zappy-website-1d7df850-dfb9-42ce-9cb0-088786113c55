@@ -1,113 +1,4 @@
-// Prevent duplicate Zappy injection
-if (window.zappyContactFormLoaded) {
-    console.log('⚠️ Zappy: Contact form handler already loaded, skipping duplicate injection');
-} else {
-    window.zappyContactFormLoaded = true;
-}
-
-document.addEventListener('DOMContentLoaded', function() { 
-    const mobileToggle = document.getElementById('mobileToggle'); 
-    const navMenu = document.getElementById('navMenu'); 
-    
-    if (mobileToggle) { 
-        mobileToggle.addEventListener('click', function() { 
-            const hamburgerIcon = this.querySelector('.hamburger-icon'); 
-            const closeIcon = this.querySelector('.close-icon'); 
-            const isActive = this.classList.contains('active'); 
-            
-            if (isActive) { 
-                hamburgerIcon.style.display = 'block'; 
-                closeIcon.style.display = 'none'; 
-                this.classList.remove('active'); 
-                navMenu.classList.remove('active'); 
-                document.body.style.overflow = ''; 
-            } else { 
-                hamburgerIcon.style.display = 'none'; 
-                closeIcon.style.display = 'block'; 
-                this.classList.add('active'); 
-                navMenu.classList.add('active'); 
-                document.body.style.overflow = 'hidden'; 
-            } 
-        }); 
-        
-        const navLinks = navMenu.querySelectorAll('a'); 
-        navLinks.forEach(link => { 
-            link.addEventListener('click', function() { 
-                const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon'); 
-                const closeIcon = mobileToggle.querySelector('.close-icon'); 
-                hamburgerIcon.style.display = 'block'; 
-                closeIcon.style.display = 'none'; 
-                mobileToggle.classList.remove('active'); 
-                navMenu.classList.remove('active'); 
-                document.body.style.overflow = ''; 
-            }); 
-        }); 
-    } 
-    
-    const phoneHeaderBtn = document.querySelector('.phone-header-btn'); 
-    if (phoneHeaderBtn) { 
-        phoneHeaderBtn.addEventListener('click', function() { 
-            const phoneNumber = '[business_phone]'; 
-            window.location.href = 'tel:' + phoneNumber; 
-        }); 
-    } 
-    
-    const contactForm = document.getElementById('contactForm'); 
-    if (contactForm) { 
-        contactForm.addEventListener('submit', async function(e) { 
-            e.preventDefault(); 
-            
-            // Extract form data for Zappy API
-            const formData = new FormData(this);
-            const formFields = {};
-            
-            // Build form fields object
-            for (let [key, value] of formData.entries()) {
-                formFields[key] = value;
-            }
-            
-            // Send to Zappy backend API
-            if (!window.zappyContactFormLoaded) {
-                console.log('⚠️ Zappy: Contact form handler not properly initialized');
-            } else {
-                try {
-                    console.log('📧 Zappy: Sending contact form to backend...');
-                    
-                    const zappyPayload = {
-                        websiteId: '1d7df850-dfb9-42ce-9cb0-088786113c55',
-                        name: formFields.name || formFields.fullname || formFields.fullName || '',
-                        email: formFields.email || '',
-                        subject: formFields.subject || 'Contact Form Submission',
-                        message: formFields.message || formFields.comments || formFields.details || '',
-                        phone: formFields.phone || formFields.telephone || formFields.mobile || null
-                    };
-                    
-                    const response = await fetch('https://qaapi.zappy5.com/api/email/contact-form', {
-                        method: 'POST',
-                        headers: { 
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(zappyPayload)
-                    });
-                    
-                    if (response.ok) {
-                        const result = await response.json();
-                        console.log('✅ Zappy: Email sent successfully', result);
-                    } else {
-                        console.log('⚠️ Zappy: API returned non-OK status', response.status);
-                    }
-                } catch (error) {
-                    console.error('❌ Zappy: Failed to send email', error);
-                    // Don't break existing functionality - continue with original behavior
-                }
-            }
-            
-            // Keep existing behavior
-            alert('תודה על פנייתך! ניצור איתך קשר בהקדם.'); 
-            contactForm.reset(); 
-        }); 
-    } 
-});
+document.addEventListener('DOMContentLoaded', function() { const mobileToggle = document.getElementById('mobileToggle'); const navMenu = document.getElementById('navMenu'); if (mobileToggle) { mobileToggle.addEventListener('click', function() { const hamburgerIcon = this.querySelector('.hamburger-icon'); const closeIcon = this.querySelector('.close-icon'); const isActive = this.classList.contains('active'); if (isActive) { hamburgerIcon.style.display = 'block'; closeIcon.style.display = 'none'; this.classList.remove('active'); navMenu.classList.remove('active'); document.body.style.overflow = ''; } else { hamburgerIcon.style.display = 'none'; closeIcon.style.display = 'block'; this.classList.add('active'); navMenu.classList.add('active'); document.body.style.overflow = 'hidden'; } }); const navLinks = navMenu.querySelectorAll('a'); navLinks.forEach(link => { link.addEventListener('click', function() { const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon'); const closeIcon = mobileToggle.querySelector('.close-icon'); hamburgerIcon.style.display = 'block'; closeIcon.style.display = 'none'; mobileToggle.classList.remove('active'); navMenu.classList.remove('active'); document.body.style.overflow = ''; }); }); } const phoneHeaderBtn = document.querySelector('.phone-header-btn'); if (phoneHeaderBtn) { phoneHeaderBtn.addEventListener('click', function() { const phoneNumber = '[business_phone]'; window.location.href = 'tel:' + phoneNumber; }); } const contactForm = document.getElementById('contactForm'); if (contactForm) { contactForm.addEventListener('submit', function(e) { e.preventDefault(); const formData = new FormData(this); console.log('Form submitted:', Object.fromEntries(formData)); alert('תודה על פנייתך! ניצור איתך קשר בהקדם.'); this.reset(); }); } });
 
 /* Cookie Consent */
 
@@ -375,3 +266,84 @@ window.onload = function() {
         }
     }, true);
 };
+
+
+// Zappy Contact Form API Integration (Fallback)
+(function() {
+    if (window.zappyContactFormLoaded) {
+        console.log('📧 Zappy contact form already loaded');
+        return;
+    }
+    window.zappyContactFormLoaded = true;
+
+    function initContactFormIntegration() {
+        console.log('📧 Zappy: Initializing contact form API integration...');
+
+        // Find the contact form (try multiple selectors for flexibility)
+        const contactForm = document.querySelector('.contact-form') || 
+                           document.querySelector('form[action*="contact"]') ||
+                           document.querySelector('form#contact') ||
+                           document.querySelector('form#contactForm') ||
+                           document.getElementById('contactForm') ||
+                           document.querySelector('section.contact form') ||
+                           document.querySelector('section#contact form') ||
+                           document.querySelector('form');
+        
+        if (!contactForm) {
+            console.log('⚠️ Zappy: No contact form found on page');
+            return;
+        }
+        
+        console.log('✅ Zappy: Contact form found:', contactForm.className || contactForm.id || 'unnamed form');
+
+        // Store original submit handler if exists
+        const originalOnSubmit = contactForm.onsubmit;
+
+    // Add Zappy API integration using capture phase to run before other handlers
+    contactForm.addEventListener('submit', async function(e) {
+        // Get form data
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+
+        // Send to Zappy backend API (don't prevent default, let other handlers run)
+        try {
+            console.log('📧 Zappy: Sending contact form to backend API...');
+            const response = await fetch('http://localhost:5001/api/email/contact-form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    websiteId: '1d7df850-dfb9-42ce-9cb0-088786113c55',
+                    name: data.name || '',
+                    email: data.email || '',
+                    subject: data.subject || 'Contact Form Submission',
+                    message: data.message || '',
+                    phone: data.phone || null
+                })
+            });
+
+            const result = await response.json();
+            
+            if (result.success) {
+                console.log('✅ Zappy: Contact form data sent successfully to backend');
+            } else {
+                console.log('⚠️ Zappy: Backend returned error:', result.error);
+            }
+        } catch (error) {
+            console.error('❌ Zappy: Failed to send to backend API:', error);
+            // Don't break the existing form submission
+        }
+        }, true); // Use capture phase to run before other handlers
+
+        console.log('✅ Zappy: Contact form API integration initialized');
+    } // End of initContactFormIntegration
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initContactFormIntegration);
+    } else {
+        // DOM is already ready, initialize immediately
+        initContactFormIntegration();
+    }
+})();

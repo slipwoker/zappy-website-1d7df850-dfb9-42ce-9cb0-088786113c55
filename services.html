@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="he" dir="rtl"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>שירותי חנות ברגים מקצועיים — אבוטבול ברגים</title>
-  <meta name="description" content="שירותי חנות ברגים בישראל: אספקה מהירה, ייעוץ מקצועי, מחירים סיטונאיים וחומרי חיבור לקבלנים. פתרונות מותאמים אישית לכל פרויקט בנייה.">
-  <meta name="keywords" content="חנות ברגים בישראל, חומרי חיבור לקבלנים, ברגים ואומים לבנייה, חנות ברגים">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שירותים מקצועיים לקבלנים — אבוטבול ברגים</title>
+<meta name="description" content="שירותי חנות ברגים מקצועיים - ייעוץ, אספקה מהירה, הזמנות מיוחדות וחומרי חיבור לקבלנים. חנות ברגים בישראל עם שירות ללא פשרות!">
+<meta name="keywords" content="חנות ברגים בישראל, חומרי חיבור לקבלנים, ברגים ואומים לבנייה, חנות ברגים">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
@@ -17,7 +17,9 @@
 <style>
 /* Zappy Attribution Header Styles */
 .zappy-header {
-  position: static;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   background: white;
   box-shadow: 0px 4px 19px 0px rgba(0,0,0,0.04);
@@ -27,6 +29,7 @@
   font-size: 16px;
   color: #4a4a4a;
   line-height: 21px;
+  z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,420 +62,11 @@
   opacity: 0.7;
 }</style>
     <!-- Cookie Consent -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css" />
     <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
     <!-- Mickidum Accessibility Toolbar -->
     <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
-
-          <style id="zappy-cta-mobile-style">
-            /* Hide CTA list item on desktop (tablets and up) */
-            @media (min-width: 769px) {
-              .nav-cta-item-mobile {
-                display: none !important;
-              }
-            }
-            /* Show CTA list item on mobile */
-            @media (max-width: 768px) {
-              .nav-cta-item-mobile {
-                display: list-item !important;
-              }
-            }
-          </style>
-        
-          <style id="zappy-nested-menu-style">
-            /* Desktop only: vertically center nav items */
-            @media (min-width: 769px) {
-              .nav-menu,
-              #navMenu {
-                align-items: center !important;
-              }
-            }
-            
-            /* Menu Group styling (non-clickable parent) - TOP LEVEL ONLY with ultra-specific selector */
-            .nav-menu > li > .menu-group-title,
-            #navMenu > li > .menu-group-title {
-              display: inline-block !important;
-              padding: 0.5rem 1rem !important;
-              color: var(--nav-color) !important;
-              font-weight: 500 !important;
-              line-height: 1.7 !important;
-              cursor: default !important;
-              user-select: none !important;
-              vertical-align: middle !important;
-              text-decoration: none !important;
-              margin: 0 !important;
-              transition: color 0.3s ease !important;
-            }
-            
-            .nav-menu > li > .menu-group-title:hover,
-            #navMenu > li > .menu-group-title:hover {
-              color: var(--nav-hover-color) !important;
-            }
-            
-            /* Desktop: show submenu on Menu Group hover */
-            li:has(.menu-group-title):hover > .sub-menu {
-              opacity: 1 !important;
-              visibility: visible !important;
-              transform: translateY(0) !important;
-              pointer-events: auto !important; /* Enable interaction when hovering */
-            }
-            
-            /* Hide menu items marked as hidden (overrides hover states) */
-            .zappy-hidden-menu-item,
-            li:has(.menu-group-title):hover > .sub-menu .zappy-hidden-menu-item {
-              display: none !important;
-              opacity: 0 !important;
-              visibility: hidden !important;
-              pointer-events: none !important;
-            }
-            
-            /* Keep submenu visible when hovering over the submenu itself */
-            .sub-menu:hover {
-              opacity: 1 !important;
-              visibility: visible !important;
-              pointer-events: auto !important;
-            }
-            
-            /* Nested dropdown menu styles - using more specific selectors */
-            .nav-menu .sub-menu,
-            nav .sub-menu,
-            .navbar .sub-menu {
-              display: block !important; /* Ensure submenu is in the DOM */
-              position: absolute !important;
-              top: 100%;
-              left: 0;
-              right: auto;
-              min-width: 200px;
-              background: white;
-              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-              border-radius: 8px;
-              padding: 8px 0;
-              margin-top: 0px; /* Remove gap to prevent hover loss */
-              opacity: 0 !important;
-              visibility: hidden !important;
-              transform: translateY(-10px);
-              transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-              z-index: 1000;
-              list-style: none;
-              pointer-events: none; /* Prevent interaction when hidden */
-            }
-            
-            /* RTL (Hebrew/Arabic) submenu positioning - align to right instead of left */
-            [dir="rtl"] .nav-menu .sub-menu,
-            [dir="rtl"] nav .sub-menu,
-            [dir="rtl"] .navbar .sub-menu,
-            html[lang="he"] .nav-menu .sub-menu,
-            html[lang="he"] nav .sub-menu,
-            html[lang="he"] .navbar .sub-menu,
-            html[lang="ar"] .nav-menu .sub-menu,
-            html[lang="ar"] nav .sub-menu,
-            html[lang="ar"] .navbar .sub-menu {
-              left: auto;
-              right: 0;
-            }
-            
-            /* Show submenu on parent hover - more specific selectors */
-            .nav-menu li:hover > .sub-menu,
-            nav li:hover > .sub-menu,
-            .navbar li:hover > .sub-menu {
-              opacity: 1 !important;
-              visibility: visible !important;
-              transform: translateY(0) !important;
-              pointer-events: auto !important; /* Enable interaction when visible */
-            }
-            
-            /* Parent item must be relatively positioned */
-            .nav-menu li:has(.sub-menu),
-            nav li:has(.sub-menu),
-            .navbar li:has(.sub-menu) {
-              position: relative;
-            }
-            
-            /* Style for submenu items */
-            .sub-menu li {
-              list-style: none;
-              margin: 0;
-              padding: 0;
-            }
-            
-            .sub-menu a,
-            .sub-menu .menu-group-title {
-              display: block !important;
-              padding: 10px 12px !important;
-              color: #333 !important;
-              font-weight: 600 !important;
-              text-decoration: none;
-              transition: background-color 0.2s;
-              white-space: nowrap;
-              cursor: default;
-            }
-            
-            .sub-menu a:hover {
-              background-color: #f5f5f5;
-            }
-            
-            /* CRITICAL: Override submenu styles for TOP-LEVEL Menu Groups only - must come AFTER submenu styles */
-            .nav-menu > li > .menu-group-title,
-            #navMenu > li > .menu-group-title {
-              display: inline-block !important;
-              padding: 0.5rem 1rem !important;
-              color: var(--nav-color) !important;
-              font-weight: 500 !important;
-              line-height: 1.7 !important;
-              cursor: default !important;
-              user-select: none !important;
-              vertical-align: middle !important;
-              text-decoration: none !important;
-              margin: 0 !important;
-              transition: color 0.3s ease !important;
-            }
-            
-            .nav-menu > li > .menu-group-title:hover,
-            #navMenu > li > .menu-group-title:hover {
-              color: var(--nav-hover-color) !important;
-              background-color: transparent !important;
-            }
-            
-            /* On mobile, show nested menus as expandable accordion */
-            @media (max-width: 768px) {
-              /* Mobile submenu styling */
-              .nav-menu .sub-menu,
-              nav .sub-menu,
-              .navbar .sub-menu {
-                position: static !important;
-                transform: none !important;
-                box-shadow: none !important;
-                background: transparent !important;
-                margin-top: 0 !important;
-                max-height: 0;
-                overflow: hidden;
-                opacity: 0;
-                visibility: hidden;
-                transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, padding 0.3s ease;
-                padding: 0 !important;
-                border-radius: 0 !important;
-              }
-              
-              /* Expanded state */
-              .sub-menu.mobile-expanded {
-                max-height: 500px !important;
-                opacity: 1 !important;
-                visibility: visible !important;
-                padding: 8px 0 8px 16px !important;
-              }
-              
-              /* RTL padding adjustment */
-              [dir="rtl"] .sub-menu.mobile-expanded,
-              html[lang="he"] .sub-menu.mobile-expanded,
-              html[lang="ar"] .sub-menu.mobile-expanded {
-                padding: 8px 16px 8px 0 !important;
-              }
-              
-              /* Disable hover behavior on mobile */
-              .nav-menu li:hover > .sub-menu,
-              nav li:hover > .sub-menu,
-              .navbar li:hover > .sub-menu {
-                opacity: 0;
-                visibility: hidden;
-                pointer-events: none;
-              }
-              
-              /* Enable visibility for expanded submenus */
-              .nav-menu li > .sub-menu.mobile-expanded,
-              nav li > .sub-menu.mobile-expanded,
-              .navbar li > .sub-menu.mobile-expanded {
-                opacity: 1 !important;
-                visibility: visible !important;
-                pointer-events: auto !important;
-              }
-              
-              .sub-menu a {
-                padding: 10px 0 !important;
-                display: block !important;
-                font-size: 14px !important;
-              }
-              
-              .sub-menu a:hover {
-                background-color: transparent !important;
-              }
-              
-              /* Parent item wrapper - flex layout for link + toggle */
-              .nav-menu li:has(.sub-menu),
-              nav li:has(.sub-menu),
-              .navbar li:has(.sub-menu) {
-                display: flex !important;
-                flex-wrap: wrap !important;
-                align-items: center !important;
-              }
-              
-              /* Parent link - takes most space, allows navigation */
-              .nav-menu li:has(.sub-menu) > a,
-              nav li:has(.sub-menu) > a,
-              .navbar li:has(.sub-menu) > a,
-              .nav-menu > li > .menu-group-title,
-              #navMenu > li > .menu-group-title {
-                flex: 1 !important;
-              }
-              
-              /* Toggle arrow button - separate clickable area */
-              .mobile-submenu-toggle {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                width: 44px !important;
-                height: 44px !important;
-                background: transparent !important;
-                border: none !important;
-                cursor: pointer !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                flex-shrink: 0 !important;
-                -webkit-tap-highlight-color: transparent;
-              }
-              
-              .mobile-submenu-toggle::after {
-                content: '' !important;
-                display: block !important;
-                width: 0 !important;
-                height: 0 !important;
-                border-left: 6px solid transparent !important;
-                border-right: 6px solid transparent !important;
-                border-top: 7px solid currentColor !important;
-                transition: transform 0.3s ease !important;
-              }
-              
-              /* Rotate arrow when expanded */
-              .mobile-submenu-toggle.expanded::after {
-                transform: rotate(180deg) !important;
-              }
-              
-              /* Submenu takes full width below parent */
-              .nav-menu li:has(.sub-menu) > .sub-menu,
-              nav li:has(.sub-menu) > .sub-menu,
-              .navbar li:has(.sub-menu) > .sub-menu {
-                flex-basis: 100% !important;
-                width: 100% !important;
-              }
-            }
-            
-            /* Hide toggle button on desktop */
-            @media (min-width: 769px) {
-              .mobile-submenu-toggle {
-                display: none !important;
-              }
-            }
-          </style>
-          
-          <script id="zappy-mobile-menu-script">
-            // Mobile menu toggle for nested submenus (including Menu Groups)
-            // Uses separate toggle button - link navigates, arrow toggles submenu
-            (function() {
-              function initMobileMenuToggles() {
-                // Only run on mobile
-                if (window.innerWidth > 768) {
-                  // Remove any toggle buttons on desktop
-                  document.querySelectorAll('.mobile-submenu-toggle').forEach(btn => btn.remove());
-                  document.querySelectorAll('.sub-menu.mobile-expanded').forEach(menu => {
-                    menu.classList.remove('mobile-expanded');
-                  });
-                  console.log('[MOBILE MENU] Desktop mode - cleanup done');
-                  return;
-                }
-                
-                console.log('[MOBILE MENU] Initializing mobile menu toggles...');
-                
-                // Find all parent menu items (items with .sub-menu)
-                const menuItemsWithSubmenus = document.querySelectorAll(
-                  '.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)'
-                );
-                
-                console.log('[MOBILE MENU] Found', menuItemsWithSubmenus.length, 'items with submenus');
-                
-                menuItemsWithSubmenus.forEach(function(li) {
-                  // Skip if already has toggle button
-                  if (li.querySelector('.mobile-submenu-toggle')) {
-                    return;
-                  }
-                  
-                  const submenu = li.querySelector('.sub-menu');
-                  const parentLink = li.querySelector(':scope > a') || li.querySelector(':scope > .menu-group-title');
-                  
-                  if (!submenu || !parentLink) return;
-                  
-                  // Create toggle button
-                  const toggleBtn = document.createElement('button');
-                  toggleBtn.className = 'mobile-submenu-toggle';
-                  toggleBtn.setAttribute('aria-label', 'Toggle submenu');
-                  toggleBtn.setAttribute('type', 'button');
-                  
-                  // Insert toggle button after the link
-                  parentLink.insertAdjacentElement('afterend', toggleBtn);
-                  
-                  console.log('[MOBILE MENU] Created toggle button for:', parentLink.textContent?.trim());
-                  
-                  // Handle toggle button click - only toggles submenu
-                  toggleBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const isExpanded = submenu.classList.contains('mobile-expanded');
-                    
-                    // Close all other submenus first
-                    document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
-                      if (menu !== submenu) {
-                        menu.classList.remove('mobile-expanded');
-                        const otherToggle = menu.parentElement.querySelector('.mobile-submenu-toggle');
-                        if (otherToggle) otherToggle.classList.remove('expanded');
-                      }
-                    });
-                    
-                    // Toggle this submenu
-                    submenu.classList.toggle('mobile-expanded');
-                    toggleBtn.classList.toggle('expanded');
-                    
-                    console.log('[MOBILE MENU] Toggled submenu:', !isExpanded ? 'expanded' : 'collapsed');
-                  });
-                  
-                  // Parent link navigates normally - no preventDefault
-                });
-              }
-              
-              // Initialize on DOM load
-              if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initMobileMenuToggles);
-              } else {
-                initMobileMenuToggles();
-              }
-              
-              // Re-initialize on window resize (but use debounce to avoid too many calls)
-              let resizeTimer;
-              window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(initMobileMenuToggles, 250);
-              });
-              
-              // Also initialize when mobile menu becomes visible
-              // This handles cases where the mobile menu is hidden initially
-              const observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                  if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                    const target = mutation.target;
-                    if (target.classList.contains('active') || target.style.display !== 'none') {
-                      console.log('[MOBILE MENU] Mobile menu became visible, re-initializing...');
-                      setTimeout(initMobileMenuToggles, 100);
-                    }
-                  }
-                });
-              });
-              
-              // Observe mobile menu containers
-              const mobileMenus = document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu');
-              mobileMenus.forEach(function(menu) {
-                observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
-              });
-            })();
-          </script>
-        <!-- Zappy Analytics -->
+<!-- Zappy Analytics -->
 <script>
 (function() {
   'use strict';
@@ -480,7 +74,7 @@
   // Configuration
   var config = {
     websiteId: '1d7df850-dfb9-42ce-9cb0-088786113c55',
-    apiUrl: 'https://qaapi.zappy5.com/api/analytics/track',
+    apiUrl: 'http://localhost:5001/api/analytics/track',
     sessionDuration: 30 * 60 * 1000, // 30 minutes
     visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
     trackPageViews: true,
@@ -674,6 +268,48 @@
 })();
 </script>
 <!-- End Zappy Analytics -->
+
+    <style id="zappy-dropdown-submenu-styles">
+      /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
+      /* Base styles for dropdown submenus - parent must be positioned */
+      .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { position: relative; }
+      /* Submenu base - hidden by default */
+      .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { display: block !important; position: absolute !important; top: 100%; left: 0; min-width: 220px; background: white; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; list-style: none; pointer-events: none; }
+      /* CRITICAL: Desktop hover styles to show dropdown */
+      .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Submenu item styling */
+      .sub-menu li { list-style: none; margin: 0; padding: 0; }
+      .sub-menu a { display: block !important; padding: 10px 16px !important; color: #333 !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
+      .sub-menu a:hover { background-color: #f5f5f5; }
+      /* RTL (Hebrew/Arabic) dropdown positioning */
+      [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
+      /* Hide empty dropdown menus */
+      .sub-menu:empty, .sub-menu:not(:has(li:not(.zappy-hidden-menu-item))), .sub-menu:not(:has(li)) { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      /* Desktop: show submenu on Menu Group hover */
+      li:has(.menu-group-title):hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Menu Group title styling */
+      .nav-menu > li > .menu-group-title, #navMenu > li > .menu-group-title { display: inline-block; padding: 0.5rem 1rem; cursor: default; user-select: none; }
+      
+      /* ========== MOBILE SUBMENU STYLES ========== */
+      @media (max-width: 768px) {
+        .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { position: static !important; transform: none !important; box-shadow: none !important; background: transparent !important; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; padding: 0 !important; border-radius: 0 !important; }
+        .sub-menu.mobile-expanded { max-height: 500px !important; opacity: 1 !important; visibility: visible !important; padding: 8px 0 8px 16px !important; }
+        [dir="rtl"] .sub-menu.mobile-expanded, html[lang="he"] .sub-menu.mobile-expanded { padding: 8px 16px 8px 0 !important; }
+        /* Disable hover behavior on mobile */
+        .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+        .nav-menu li > .sub-menu.mobile-expanded, nav li > .sub-menu.mobile-expanded, .navbar li > .sub-menu.mobile-expanded, #navMenu li > .sub-menu.mobile-expanded { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
+        .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; }
+        .nav-menu li:has(.sub-menu) > a, nav li:has(.sub-menu) > a, .navbar li:has(.sub-menu) > a, #navMenu li:has(.sub-menu) > a { flex: 1 !important; }
+        .nav-menu li:has(.sub-menu) > a [class*="chevron"], .nav-menu li:has(.sub-menu) > a [class*="arrow"], .nav-menu li:has(.sub-menu) > a .fa-chevron-down, .nav-menu li:has(.sub-menu) > a .fa-angle-down, nav li:has(.sub-menu) > a [class*="chevron"], nav li:has(.sub-menu) > a [class*="arrow"], #navMenu li:has(.sub-menu) > a [class*="chevron"], #navMenu li:has(.sub-menu) > a [class*="arrow"] { display: none !important; visibility: hidden !important; }
+        .mobile-submenu-toggle { display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: 44px !important; background: transparent !important; border: none !important; cursor: pointer !important; }
+        .mobile-submenu-toggle::after { content: '' !important; width: 0 !important; height: 0 !important; border-left: 6px solid transparent !important; border-right: 6px solid transparent !important; border-top: 7px solid currentColor !important; transition: transform 0.3s ease !important; }
+        .mobile-submenu-toggle.expanded::after { transform: rotate(180deg) !important; }
+        .nav-menu li:has(.sub-menu) > .sub-menu, nav li:has(.sub-menu) > .sub-menu { flex-basis: 100% !important; width: 100% !important; }
+        .sub-menu a { padding: 10px 0 !important; display: block !important; }
+        .nav-menu li:has(.sub-menu) > .menu-group-title, nav li:has(.sub-menu) > .menu-group-title, .navbar li:has(.sub-menu) > .menu-group-title, #navMenu li:has(.sub-menu) > .menu-group-title { flex: 1 !important; }
+      }
+      @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
+    </style>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -682,170 +318,161 @@
 <div id="zappy-attribution-header" class="zappy-header" style="display: none;">
   <p>Happily created by&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" class="zappy-link">Zappy</a></p>
 </div>
-  <nav class="navbar" id="navbar">
-    <div class="container nav-container">
-      <div class="nav-brand">
-        <a href="/" class="logo-link">
-          <img src="/assets/logo.webp" alt="אבוטבול ברגים" class="logo">
-        </a>
-      </div>
+<nav class="navbar" id="navbar">
+<div class="container nav-container">
+<div class="nav-brand">
+<a href="/" class="logo-link">
+<img src="/assets/logo.webp" alt="אבוטבול ברגים" class="logo">
+</a>
+</div>
+<button class="mobile-toggle" id="mobileToggle" aria-label="פתח תפריט">
+<svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+</svg>
+<svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+<path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+</svg>
+</button>
+<button class="phone-header-btn" aria-label="התקשר אלינו">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+</svg>
+</button>
+<ul class="nav-menu" id="navMenu">
+<li><a href="/products">מוצרים</a></li>
+<li><a href="/services">שירותים</a></li>
+<li><a href="/about">אודות</a></li>
+</ul>
+<div class="nav-cta-container">
+<li class="nav-cta-item"><a href="/contact" class="nav-cta-btn">צור קשר</a></li>
+</div>
+</div>
+</nav>
+<section class="page-header">
+<div class="container">
+<h1>שירותי חנות ברגים בישראל ברמה הגבוהה ביותר</h1>
+<h3>מייעוץ מקצועי ועד אספקה מהירה - הכל במקום אחד</h3>
+</div>
+</section>
+<section class="services-overview">
+<div class="container">
+<p>אבוטבול ברגים היא לא רק חנות ברגים - אנחנו שותפים לפרויקט שלכם. אנחנו מציעים מגוון רחב של שירותים מקצועיים שנועדו להקל על הקבלנים, הבונים ובעלי המלאכה בעבודתם היומיומית. מייעוץ מקצועי בבחירת חומרי חיבור לקבלנים ועד אספקה מהירה לאתר הבנייה - אנחנו כאן בשבילכם.</p>
+<p>הצוות המקצועי שלנו מורכב ממומחים עם ניסיון רב שנים בתחום הברגים וחומרי הבניין. אנחנו מכירים את הצרכים הייחודיים של כל סוג לקוח - מקבלנים גדולים ועד חובבי עשה זאת בעצמך - ומספקים פתרונות מותאמים אישית.</p>
+</div>
+</section>
+<section class="section service-section" id="ייעוץ-מקצועי-ובחירת-מוצרים" data-zappy-section="true">
+  <div class="container">
+    <div class="service-block">
       
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-        <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
-          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
+<div class="service-content">
+<h2>ייעוץ מקצועי ובחירת מוצרים</h2>
+<p>אחד השירותים החשובים ביותר שאנחנו מציעים בחנות הברגים שלנו הוא ייעוץ מקצועי. לא תמיד קל לדעת איזה סוג ברג או אום מתאים לפרויקט מסוים, ובמיוחד כשמדובר בפרויקטים מורכבים או מיוחדים.</p>
+<p>הצוות שלנו יעזור לכם לבחור את הברגים ואומים לבנייה המתאימים ביותר לצרכים שלכם, בהתחשב בסוג החומר, עומס המשקל, תנאי הסביבה ועוד גורמים רלוונטיים. אנחנו נדאג שתקבלו את הפתרון המושלם לכל פרויקט.</p>
+<ul class="service-features">
+<li><i class="fas fa-check"></i> ייעוץ טלפוני זמין בכל שעות העבודה</li>
+<li><i class="fas fa-check"></i> המלצות מקצועיות מבוססות ניסיון</li>
+<li><i class="fas fa-check"></i> התאמה מדויקת של מוצרים לצרכים</li>
+<li><i class="fas fa-check"></i> פתרונות חסכוניים ויעילים</li>
+</ul>
+</div>
+
+    </div>
+  </div>
+</section>
+<section class="section service-section" id="אספקה-מהירה-לכל-הארץ" data-zappy-section="true">
+  <div class="container">
+    <div class="service-block reverse">
       
-      <button class="phone-header-btn" aria-label="התקשר אלינו">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-        </svg>
-      </button>
+<div class="service-content">
+<h2>אספקה מהירה לכל הארץ</h2>
+<p>זמן הוא כסף, במיוחד בפרויקטי בנייה. לכן חנות ברגים שלנו מציעה שירותי אספקה מהירים ואמינים לכל רחבי הארץ. אנחנו מבינים שלעיתים אתם צריכים את החומרים דחוף, ואנחנו כאן כדי לספק.</p>
+<p>שירות המשלוחים שלנו כולל אפשרות לאספקה ביום העסקים הבא לרוב האזורים בארץ, עם אפשרות למשלוח מהיר במיוחד במקרי חירום. בנוסף, אנחנו מציעים גם שירות איסוף עצמי לנוחיותכם.</p>
+<ul class="service-features">
+<li><i class="fas fa-check"></i> משלוח מהיר לכל הארץ</li>
+<li><i class="fas fa-check"></i> אספקה ביום העסקים הבא</li>
+<li><i class="fas fa-check"></i> שירות משלוח מהיר במקרי חירום</li>
+<li><i class="fas fa-check"></i> אפשרות לאיסוף עצמי</li>
+</ul>
+</div>
+
+    </div>
+  </div>
+</section>
+<section class="section service-section" id="הזמנות-מיוחדות-ופרויקטים-גדולים" data-zappy-section="true">
+  <div class="container">
+    <div class="service-block">
       
-      <ul class="nav-menu" id="navMenu"><li><a href="/products">מוצרים</a></li><li><a href="/services">שירותים</a></li><li><a href="/about">אודות</a></li><li class="nav-cta-item-mobile"><a href="/contact">צור קשר</a></li></ul>
+<div class="service-content">
+<h2>הזמנות מיוחדות ופרויקטים גדולים</h2>
+<p>חנות ברגים בישראל שלנו מתמחה גם בטיפול בהזמנות מיוחדות ופרויקטים גדולים. אם אתם צריכים כמויות גדולות של חומרי חיבור לקבלנים, ברגים בגדלים לא סטנדרטיים או מוצרים מיוחדים שלא נמצאים במלאי הרגיל - אנחנו כאן בשבילכם.</p>
+<p>אנחנו עובדים עם ספקים מובילים מהארץ ומהעולם, ויכולים להשיג כמעט כל מוצר שתצטרכו. בנוסף, אנחנו מציעים הנחות מיוחדות לקבלנים ולקוחות קבועים, ומספקים שירות אישי ומקצועי לכל פרויקט.</p>
+<ul class="service-features">
+<li><i class="fas fa-check"></i> הזמנות מיוחדות לכל סוג מוצר</li>
+<li><i class="fas fa-check"></i> הנחות לכמויות גדולות</li>
+<li><i class="fas fa-check"></i> שירות אישי לפרויקטים גדולים</li>
+<li><i class="fas fa-check"></i> ליווי מקצועי לאורך כל הפרויקט</li>
+</ul>
+</div>
+
+    </div>
+  </div>
+</section>
+<section class="section service-section" id="שירות-ללקוחות-עסקיים" data-zappy-section="true">
+  <div class="container">
+    <div class="service-block reverse">
       
-      <div class="nav-cta-container">
-        <li class="nav-cta-item">
-          <a href="/contact" class="nav-cta-btn">צור קשר</a>
-        </li>
-      </div>
+<div class="service-content">
+<h2>שירות ללקוחות עסקיים</h2>
+<p>אנחנו מבינים שלקוחות עסקיים - קבלנים, בעלי חנויות חומרי בניין ומנהלי אחזקה - זקוקים לשירות מותאם ומקצועי. לכן אנחנו מציעים חבילות שירות מיוחדות ללקוחות עסקיים, הכוללות מחירים מיוחדים, תנאי תשלום נוחים ושירות אישי.</p>
+<p>הלקוחות העסקיים שלנו נהנים מנציג מכירות ייעודי, מחירים מועדפים, אפשרות לחשבונית עסקית ועוד יתרונות רבים. אנחנו רואים בלקוחות העסקיים שלנו שותפים לטווח ארוך, ומשקיעים ביצירת קשר עבודה הדוק ומקצועי.</p>
+<ul class="service-features">
+<li><i class="fas fa-check"></i> מחירים מיוחדים ללקוחות עסקיים</li>
+<li><i class="fas fa-check"></i> נציג מכירות ייעודי</li>
+<li><i class="fas fa-check"></i> תנאי תשלום נוחים</li>
+<li><i class="fas fa-check"></i> חשבונית עסקית ותיעוד מלא</li>
+</ul>
+</div>
+
     </div>
-  </nav>
+  </div>
+</section>
+<section class="cta-section">
+<div class="container">
+<h2>מעוניינים לשמוע עוד על השירותים שלנו?</h2>
+<p>צרו קשר עכשיו ונשמח לספר לכם עוד ולהתאים לכם את השירות המושלם</p>
+<a href="/contact" class="btn-cta">צור קשר</a>
+</div>
+</section>
+<a href="https://wa.me/[whatsapp_handle]" target="_blank" class="whatsapp-float" aria-label="WhatsApp" rel="noopener noreferrer">
+<i class="fab fa-whatsapp"></i>
+</a>
 
-  <section class="page-header">
-    <div class="container">
-      <h1>שירותי חנות ברגים בישראל ברמה הגבוהה ביותר</h1>
-      <h3>אספקה מהירה, ייעוץ מקצועי ופתרונות מותאמים אישית לכל לקוח</h3>
-    </div>
-  </section>
-
-  <section class="services-intro">
-    <div class="container">
-      <div class="intro-text">
-        <p>אבוטבול ברגים מציעה לא רק מוצרים איכותיים, אלא גם מגוון רחב של שירותים מקצועיים המותאמים לצרכים הייחודיים של כל לקוח. בין אם אתם קבלנים המנהלים פרויקטים גדולים, בעלי חנויות חומרי בניין, או מנהלי אחזקה במבנים גדולים - אנו מספקים את השירות המקצועי והאמין שאתם זקוקים לו.</p>
-        <p>הניסיון שלנו בתחום חומרי הבניין והחומרה, יחד עם המחויבות שלנו לשירות לקוחות מעולה, הופכים אותנו לשותף האידיאלי לכל פרויקט. אנו מבינים שכל לקוח הוא ייחודי, ולכן אנו מציעים פתרונות מותאמים אישית שמתאימים בדיוק לצרכים שלכם.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="service-detail">
-    <div class="container">
-      <div class="service-box">
-        <div class="service-icon"><i class="fas fa-shipping-fast"></i></div>
-        <h2>אספקה מהירה ואמינה</h2>
-        <p>אנו מבינים שבתחום הבנייה, זמן הוא כסף. עיכובים באספקת חומרי חיבור לקבלנים עלולים לעכב פרויקטים שלמים ולגרום לנזקים כלכליים משמעותיים. לכן אנו מתחייבים לשירות אספקה מהיר, יעיל ואמין שמבטיח שתקבלו את המוצרים שלכם בדיוק כשאתם צריכים אותם.</p>
-        <p>השירות שלנו כולל משלוחים מהירים לכל רחבי הארץ, בדרך כלל תוך 24-48 שעות מרגע ההזמנה. אנו עובדים עם חברות הובלה מובילות ומנוסות שמבטיחות שהמוצרים יגיעו אליכם בשלמות ובזמן. בנוסף, אנו מציעים אפשרות לאיסוף עצמי מהמחסן שלנו למי שמעוניין בכך.</p>
-        <p>עבור לקוחות עסקיים קבועים, אנו מציעים שירותי אספקה שוטפים ומותאמים אישית, כולל אפשרות לאספקות קבועות בתדירות שאתם קובעים. זה מאפשר לכם לתכנן את המלאי שלכם בצורה יעילה ולהימנע ממחסור בחומרים קריטיים.</p>
-      </div>
-
-      <div class="service-box">
-        <div class="service-icon"><i class="fas fa-user-tie"></i></div>
-        <h2>ייעוץ מקצועי וטכני</h2>
-        <p>הצוות המנוסה שלנו מורכב ממומחים בתחום חומרי הבניין והחומרה, עם ידע עמוק בכל סוגי הברגים, האומים וחומרי החיבור. אנו מציעים שירות ייעוץ מקצועי חינם לכל לקוח, בין אם אתם קבלנים מנוסים עם שנים של ניסיון או חובבי עשה זאת בעצמך המתחילים פרויקט חדש.</p>
-        <p>הייעוץ שלנו כולל עזרה בבחירת המוצרים המתאימים ביותר לפרויקט שלכם, המלצות על פתרונות חסכוניים ויעילים, וייעוץ טכני בנושאים כמו חוזק חומרים, עמידות בפני קורוזיה, ושיטות התקנה נכונות. אנו גם נשמח לעזור לכם לחשב את כמות החומרים הדרושה לפרויקט שלכם.</p>
-        <p>הייעוץ שלנו מבוסס על שנים של ניסיון בתחום, על הכרת השוק הישראלי לעומק, ועל מעקב אחר הטכנולוגיות והמוצרים החדשים ביותר בתחום. אנו זמינים לייעוץ טלפוני, בדואר אלקטרוני, או במפגש אישי במחסן שלנו.</p>
-      </div>
-
-      <div class="service-box">
-        <div class="service-icon"><i class="fas fa-tags"></i></div>
-        <h2>מחירים תחרותיים והנחות כמות</h2>
-        <p>אנו מאמינים שאיכות גבוהה לא חייבת לבוא במחיר גבוה. לכן אנו מציעים מחירים תחרותיים על כל המוצרים שלנו, תוך שמירה על רמת האיכות הגבוהה ביותר. אנו עובדים ישירות עם יצרנים מובילים ומיבואנים, מה שמאפשר לנו להציע מחירים אטרקטיביים במיוחד.</p>
-        <p>עבור קבלנים, בעלי חנויות ומנהלי אחזקה שמזמינים בכמויות גדולות, אנו מציעים מחירים סיטונאיים מיוחדים והנחות כמות משמעותיות. ככל שהכמות גדולה יותר, כך ההנחה משמעותית יותר. זה מאפשר לכם לחסוך כסף משמעותי על פרויקטים גדולים.</p>
-        <p>בנוסף, אנו מציעים תוכניות נאמנות ללקוחות קבועים, עם הנחות מצטברות והטבות מיוחדות. אנו גם מתחייבים להציע מחירים הוגנים ושקופים, ללא עלויות נסתרות או הפתעות לא נעימות.</p>
-      </div>
-
-      <div class="service-box">
-        <div class="service-icon"><i class="fas fa-warehouse"></i></div>
-        <h2>מלאי זמין ותמיד במלאי</h2>
-        <p>אחד היתרונות הגדולים של העבודה עם אבוטבול ברגים הוא המלאי הרחב והזמין שלנו. אנו שומרים על מלאי גדול של כל המוצרים הפופולריים והנפוצים, כך שתמיד תוכלו למצוא את מה שאתם צריכים. זה חוסך לכם זמן יקר ומאפשר לכם להתקדם בפרויקטים שלכם ללא עיכובים.</p>
-        <p>המחסן שלנו מאורגן בצורה יעילה ומודרנית, עם מערכת ניהול מלאי מתקדמת שמבטיחה שתמיד נדע בדיוק מה יש במלאי ומה צריך להזמין. זה מאפשר לנו לספק שירות מהיר ומדויק, ולהימנע ממצבים של מחסור במוצרים.</p>
-        <p>במקרים נדירים שבהם מוצר מסוים אינו זמין במלאי, אנו מתחייבים להזמין אותו במהירות האפשרית ולעדכן אתכם על זמן האספקה המשוער. אנו גם מציעים שירות של הזמנה מראש למוצרים מיוחדים או בכמויות גדולות במיוחד.</p>
-      </div>
-
-      <div class="service-box">
-        <div class="service-icon"><i class="fas fa-cog"></i></div>
-        <h2>פתרונות מותאמים אישית</h2>
-        <p>אנו מבינים שלפעמים פרויקטים מיוחדים דורשים פתרונות מיוחדים. לכן אנו מציעים שירות של פיתוח פתרונות מותאמים אישית ללקוחות שלנו. בין אם מדובר בברגים בגדלים לא סטנדרטיים, בחומרים מיוחדים, או בחומרי חיבור מותאמים לצרכים ספציפיים - אנו כאן כדי לעזור.</p>
-        <p>הצוות שלנו יעבוד איתכם בשיתוף פעולה הדוק כדי להבין את הצרכים הייחודיים שלכם ולמצוא את הפתרון המושלם. אנו יכולים להזמין מוצרים מיוחדים מיצרנים, לייצר חומרי חיבור בהזמנה אישית, או לספק ייעוץ הנדסי מקצועי לפרויקטים מורכבים.</p>
-        <p>השירות הזה מיועד במיוחד לקבלנים גדולים, חברות בנייה, ומהנדסים המתמודדים עם אתגרים טכניים מורכבים. אנו מתגאים ביכולת שלנו למצוא פתרונות יצירתיים ויעילים גם למצבים הכי מאתגרים.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="why-us">
-    <div class="container">
-      <h2>למה לבחור בשירותים שלנו?</h2>
-      <div class="benefits-grid">
-        <div class="benefit-item">
-          <i class="fas fa-check-circle"></i>
-          <p>ניסיון של שנים בתחום חומרי הבניין</p>
-        </div>
-        <div class="benefit-item">
-          <i class="fas fa-check-circle"></i>
-          <p>צוות מקצועי ומנוסה תמיד לשירותכם</p>
-        </div>
-        <div class="benefit-item">
-          <i class="fas fa-check-circle"></i>
-          <p>מחירים תחרותיים והנחות כמות</p>
-        </div>
-        <div class="benefit-item">
-          <i class="fas fa-check-circle"></i>
-          <p>אספקה מהירה לכל רחבי הארץ</p>
-        </div>
-        <div class="benefit-item">
-          <i class="fas fa-check-circle"></i>
-          <p>מלאי רחב ותמיד זמין</p>
-        </div>
-        <div class="benefit-item">
-          <i class="fas fa-check-circle"></i>
-          <p>שירות אישי ומותאם לכל לקוח</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <div class="container">
-      <h2>מעוניינים בשירותים שלנו?</h2>
-      <p>צרו קשר עכשיו לקבלת ייעוץ מקצועי והצעת מחיר מותאמת אישית</p>
-      <a href="/contact" class="btn-primary">צור קשר</a>
-    </div>
-  </section>
-
-  <a href="https://wa.me/[whatsapp_handle]" target="_blank" class="whatsapp-float" aria-label="WhatsApp" rel="noopener noreferrer">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  
     <!-- Legal Footer -->
     <footer class="legal-footer">
       <div class="container">
         <div class="footer-main">
           <div class="all-rights-reserved">
-            <p>© 2025 אבוטבול ברגים. כל הזכויות שמורות.</p>
+            <p>© 2026 אבוטבול ברגים. כל הזכויות שמורות.</p>
           </div>
           <div class="footer-social"><a href="https://facebook.com/[facebook_handle]" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
 <a href="https://instagram.com/[instagram_handle]" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
 <a href="https://wa.me/[whatsapp_handle]" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div>
           <div class="footer-legal">
-            <a href="privacy.html" aria-label="מדיניות פרטיות">
+            <a href="/privacy" aria-label="מדיניות פרטיות">
               מדיניות פרטיות
             </a>
             <span class="separator">|</span>
-            <a href="accessibility.html" aria-label="נגישות">
+            <a href="/accessibility" aria-label="נגישות">
               נגישות
             </a>
             <span class="separator">|</span>
-            <a href="terms.html" aria-label="תנאי שימוש">
+            <a href="/terms" aria-label="תנאי שימוש">
               תנאי שימוש
             </a>
           </div>
         </div>
         <div class="zappy-attribution">
-          <p>נוצר באמצעות <a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Zappy</a></p>
+          <p>נוצר באמצעות&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Zappy</a></p>
         </div>
       </div>
     </footer>
@@ -867,7 +494,7 @@
     return; // Exit early in preview mode
   }
   
-  fetch('https://qaapi.zappy5.com/api/website/' + websiteId + '/tier')
+  fetch('http://localhost:5001/api/website/' + websiteId + '/tier')
     .then(function(response) { return response.json(); })
     .then(function(data) {
       if (data.showAttribution) {
@@ -877,7 +504,30 @@
           if (data.announcement && data.announcement.html) {
             header.innerHTML = data.announcement.html;
           }
-          header.style.display = 'flex';
+          // Apply fixed positioning styles inline (works for existing sites too)
+          header.style.cssText = 'position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 99999 !important; display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important; box-sizing: border-box !important;';
+          // Fix child elements that might have position: fixed from old CSS
+          var children = header.querySelectorAll('*');
+          for (var i = 0; i < children.length; i++) {
+            children[i].style.position = 'static';
+          }
+          // Get header height
+          var headerHeight = header.offsetHeight;
+          // Find and fix navbar to be fixed as well (prevents gap at top of page)
+          var navSelectors = ['nav', '.navbar', '.nav'];
+          var navbar = null;
+          for (var j = 0; j < navSelectors.length; j++) {
+            navbar = document.querySelector(navSelectors[j]);
+            if (navbar && navbar.id !== 'zappy-attribution-header') break;
+            navbar = null;
+          }
+          if (navbar) {
+            var navbarHeight = navbar.offsetHeight;
+            navbar.style.cssText += '; position: fixed !important; top: ' + headerHeight + 'px !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 99998 !important;';
+            document.body.style.paddingTop = (headerHeight + navbarHeight) + 'px';
+          } else {
+            document.body.style.paddingTop = headerHeight + 'px';
+          }
         }
       }
     })
@@ -920,6 +570,22 @@
       if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileSubmenuToggles); }
       else { initMobileSubmenuToggles(); }
       var resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(initMobileSubmenuToggles, 250); });
+      // Re-initialize when mobile menu becomes visible (MutationObserver)
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') {
+            var target = mutation.target;
+            if (target.classList && (target.classList.contains('active') || target.classList.contains('open'))) {
+              setTimeout(initMobileSubmenuToggles, 100);
+            }
+          }
+        });
+      });
+      setTimeout(function() {
+        document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu, nav').forEach(function(menu) {
+          observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+        });
+      }, 500);
     })();
     </script>
     <script src="/script.js"></script>
