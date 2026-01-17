@@ -1,11 +1,11 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>חנות ברגים מובילה בישראל — אבוטבול ברגים</title>
+  <meta name="description" content="אבוטבול ברגים - חנות ברגים מובילה בישראל. מגוון ברגים ואומים לבנייה וחומרי חיבור לקבלנים. שירות מקצועי ואספקה מהירה.">
+  <meta name="keywords" content="חנות ברגים, חנות ברגים בישראל, ברגים ואומים לבנייה, חומרי חיבור לקבלנים">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>אבוטבול ברגים - Home</title>
-      
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
@@ -268,7 +268,6 @@
 })();
 </script>
 <!-- End Zappy Analytics -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style id="zappy-dropdown-submenu-styles">
       /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
@@ -313,45 +312,244 @@
     </style>
     <link rel="stylesheet" href="/styles.css">
 </head>
-      <body>
+<body>
 
 <!-- Zappy Attribution Header -->
 <div id="zappy-attribution-header" class="zappy-header" style="display: none;">
   <p>Happily created by&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" class="zappy-link">Zappy</a></p>
 </div>
-        <script>window.ZAPPY_1d7df850-dfb9-42ce-9cb0-088786113c55 = "1d7df850-dfb9-42ce-9cb0-088786113c55";</script>
-        
-    <header class="site-header">
-      <div class="nav-main">
-        <div class="logo">אבוטבול ברגים</div>
-        <nav class="main-nav">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
-        </nav>
-        <div class="nav-actions">
-          <a class="nav-link" href="/login">Login</a>
-          <a class="nav-link cart-link" href="/cart">Cart <span class="cart-count">0</span></a>
+<script>window.ZAPPY_1d7df850-dfb9-42ce-9cb0-088786113c55 = "1d7df850-dfb9-42ce-9cb0-088786113c55";</script>
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <div class="nav-brand">
+        <a href="/" class="logo-link">
+          <img class="logo" src="" alt="אבוטבול ברגים">
+        </a>
+      </div>
+      
+      <button class="mobile-toggle" id="mobileToggle" aria-label="פתח תפריט">
+        <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </button>
+      
+      <button class="phone-header-btn" aria-label="התקשר אלינו">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+      </button>
+      
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="/products">מוצרים</a></li>
+        <li><a href="/services">שירותים</a></li>
+        <li><a href="/about">אודות</a></li>
+      </ul>
+      
+      <a href="/cart" class="cart-link"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a><div class="nav-cta-container">
+        <li class="nav-cta-item">
+          <a href="/contact" class="nav-cta-btn">צור קשר</a>
+        </li>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <img data-placeholder="hero-1" data-context="Wide panoramic view of modern industrial hardware store with organized shelves of screws, bolts, and construction materials in urban setting" src="/assets/hero-hero-1.webp" alt="חנות ברגים מודרנית עם מגוון רחב של ברגים וחומרי בניין" class="hero-img">
+    <div class="hero-content">
+      <h1>חנות ברגים מובילה שמספקת פתרונות מקצועיים</h1>
+      <h3>מגוון רחב של ברגים ואומים לבנייה, חומרי חיבור לקבלנים ופתרונות חומרה לכל פרויקט</h3>
+      <div class="hero-cta">
+        <a href="/contact" class="btn-primary">קבל הצעת מחיר</a>
+        <a href="/products" class="btn-secondary">צפה במוצרים</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro-section">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-text">
+          <h2>ברוכים הבאים לאבוטבול ברגים - חנות ברגים בישראל המובילה בתחום</h2>
+          <p>אבוטבול ברגים היא חנות ברגים מקצועית המתמחה באספקת ברגים ואומים לבנייה, חומרי חיבור לקבלנים וחומרי בניין איכוtiים. אנחנו משרתים קבלנים, בונים, חובבי עשה זאת בעצמך, בעלי חנויות חומרי בניין ומנהלי אחזקה ברחבי הארץ.</p>
+          <p>עם ניסיון רב שנים בתחום חומרי הבניין והחומרה, אנחנו מציעים מגוון רחב של מוצרים איכותיים, שירות מקצועי ואספקה מהירה. המומחיות שלנו בברגים ואומים לבנייה ובחומרי חיבור לקבלנים הופכת אותנו לכתובת המועדפת עבור אנשי מקצוע ולקוחות פרטיים כאחד.</p>
+          <a href="/about" class="btn-primary">קרא עוד אודותינו</a>
+        </div>
+        <div class="intro-stats">
+          <div class="stat-card">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">שנות ניסיון</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">5000+</div>
+            <div class="stat-label">לקוחות מרוצים</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">10000+</div>
+            <div class="stat-label">מוצרים במלאי</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">זמינות</div>
+          </div>
         </div>
       </div>
-      <div class="nav-catalog">
-        <a href="/products">All Products</a>
-        <a href="/products?category=featured">Featured</a>
-        <a href="/products?category=new">New Arrivals</a>
-        <a href="/products?category=sale">Sale</a>
+    </div>
+  </section>
+
+  <section class="products-preview">
+    <div class="container">
+      <div class="section-header">
+        <h2>המוצרים שלנו - מגוון רחב של ברגים וחומרי חיבור</h2>
+        <p>אנחנו מציעים מגוון רחב של ברגים ואומים לבנייה, חומרי חיבור לקבלנים וחומרי בניין איכותיים. כל המוצרים שלנו עומדים בתקנים הגבוהים ביותר ומתאימים לשימוש מקצועי ופרטי.</p>
       </div>
-    </header>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image">
+            <img data-placeholder="service-1" data-context="Close-up of various stainless steel screws and bolts organized in compartments, professional hardware display" src="/assets/service-service-1.webp" alt="ברגים נירוסטה איכותיים במגוון גדלים">
+          </div>
+          <div class="product-content">
+            <h3>ברגים נירוסטה</h3>
+            <p>מגוון רחב של ברגים מנירוסטה איכותית, עמידים בפני קורוזיה ומתאימים לשימוש חיצוני ופנימי. זמינים בכל הגדלים והסוגים.</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img data-placeholder="service-2" data-context="Industrial grade nuts and bolts in various sizes arranged professionally, construction hardware" src="/assets/service-service-2.webp" alt="אומים וברגים תעשייתיים לבנייה">
+          </div>
+          <div class="product-content">
+            <h3>אומים וברגים לבנייה</h3>
+            <p>חומרי חיבור לקבלנים - אומים וברגים תעשייתיים במגוון גדלים וחוזקות. מתאימים לפרויקטי בנייה גדולים וקטנים.</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img data-placeholder="service-3" data-context="Specialized wood screws and anchors for construction, professional carpentry hardware" src="/assets/service-service-3.webp" alt="ברגים מיוחדים לעץ ולבנייה">
+          </div>
+          <div class="product-content">
+            <h3>ברגים מיוחדים</h3>
+            <p>ברגים מיוחדים לעץ, גבס, בטון ומתכת. פתרונות חיבור מתקדמים לכל סוג של פרויקט בנייה או שיפוץ.</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img data-placeholder="service-4" data-context="Wall anchors and mounting hardware for heavy duty installation, professional construction materials" src="/assets/service-service-4.webp" alt="עוגנים ומערכות חיבור לקיר">
+          </div>
+          <div class="product-content">
+            <h3>עוגנים ומערכות חיבור</h3>
+            <p>עוגנים כימיים ומכניים, מערכות חיבור לקיר ותקרה. פתרונות מקצועיים לחיבור חזק ובטוח של כל סוג של מבנה.</p>
+          </div>
+        </div>
+      </div>
+      <div class="section-cta">
+        <a href="/products" class="btn-primary">צפה בכל המוצרים</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>השירותים שלנו - פתרונות מקצועיים לכל צורך</h2>
+        <p>אנחנו מציעים שירותים מקצועיים המותאמים לצרכי הלקוחות שלנו - מייעוץ מקצועי ועד אספקה מהירה ומדויקת.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3>ייעוץ מקצועי</h3>
+          <p>צוות המומחים שלנו יעניק לך ייעוץ מקצועי לבחירת הברגים והחומרים המתאימים ביותר לפרויקט שלך.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h3>אספקה מהירה</h3>
+          <p>אנחנו מספקים משלוחים מהירים לכל רחבי הארץ, כולל אספקה באותו יום לאזורים מרכזיים.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fas fa-boxes"></i>
+          </div>
+          <h3>הזמנות סיטונאיות</h3>
+          <p>מחירים מיוחדים לקבלנים ובעלי עסקים. הזמנות גדולות במחירים אטרקטיביים ושירות VIP.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fas fa-warehouse"></i>
+          </div>
+          <h3>מלאי זמין</h3>
+          <p>מלאי גדול ומגוון של ברגים וחומרי בניין זמין תמיד במחסנים שלנו לאספקה מיידית.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-choose">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-content">
+          <h2>למה לבחור בחנות ברגים אבוטבול?</h2>
+          <div class="why-list">
+            <div class="why-item">
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <h3>איכות מובטחת</h3>
+                <p>כל המוצרים שלנו עוברים בדיקות איכות קפדניות ועומדים בתקנים הבינלאומיים. אנחנו עובדים רק עם יצרנים מובילים ומספקים אחריות מלאה על כל המוצרים.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <h3>מחירים תחרותיים</h3>
+                <p>אנחנו מציעים את המחירים הטובים ביותר בשוק ללא פשרות על האיכות. מבצעים מיוחדים לקבלנים ולקוחות קבועים.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <h3>שירות אישי</h3>
+                <p>צוות מקצועי ומנוסה שיודע לתת מענה מדויק לכל צורך. אנחנו מלווים אותך מתחילת הפרויקט ועד סיומו.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <h3>זמינות גבוהה</h3>
+                <p>אנחנו זמינים עבורך 24/7 לשאלות, הזמנות ותמיכה. מענה מהיר ומקצועי בכל עת.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why-image">
+          <img data-placeholder="service-5" data-context="Professional construction worker using quality screws and fasteners on construction site, industrial setting" src="/assets/service-service-5.webp" alt="עבודה מקצועית עם ברגים איכותיים באתר בנייה">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>מחפש ברגים ואומים לבנייה? אנחנו כאן בשבילך</h2>
+        <p>צור קשר עכשיו לקבלת ייעוץ מקצועי והצעת מחיר מותאמת אישית. הצוות שלנו ישמח לעזור לך למצוא את הפתרון המושלם לפרויקט שלך.</p>
+        <div class="cta-buttons">
+          <a href="/contact" class="btn-primary">צור קשר עכשיו</a>
+          <a href="tel:[business_phone]" class="btn-secondary"><i class="fas fa-phone"></i> התקשר אלינו</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/[whatsapp_handle]" target="_blank" class="whatsapp-float" aria-label="WhatsApp" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   
-        <main class="page-container">
-          
-      <section class="hero">
-        <h1>Welcome to אבוטבול ברגים</h1>
-        <p>Discover our latest products and offers.</p>
-        <a href="/products" class="btn">Shop Now</a>
-      </section>
-    
-        </main>
-        
     <!-- Legal Footer -->
     <footer class="legal-footer">
       <div class="container">
@@ -359,16 +557,9 @@
           <div class="all-rights-reserved">
             <p>© 2026 אבוטבול ברגים. כל הזכויות שמורות.</p>
           </div>
-          <div class="footer-social">
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon social-facebook">
-                <i class="fa-brands fa-facebook-f"></i>
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon social-instagram">
-                <i class="fa-brands fa-instagram"></i>
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon social-whatsapp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a></div>
+          <div class="footer-social"><a href="https://facebook.com/[facebook_handle]" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+<a href="https://instagram.com/[instagram_handle]" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+<a href="https://wa.me/[whatsapp_handle]" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div>
           <div class="footer-legal">
             <a href="/privacy" aria-label="מדיניות פרטיות">
               מדיניות פרטיות
@@ -388,7 +579,8 @@
         </div>
       </div>
     </footer>
-      
+
+
 <!-- Zappy Attribution Header Script -->
 <script>
 (function() {
@@ -500,6 +692,4 @@
     })();
     </script>
     <script src="/script.js"></script>
-</body>
-    </html>
-  
+</body></html>

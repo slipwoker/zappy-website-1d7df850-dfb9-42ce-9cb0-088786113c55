@@ -2,6 +2,9 @@
 # These rewrite rules show clean URLs to users while serving .html files
 
 /products  /products.html  200
+/services  /services.html  200
+/about  /about.html  200
+/contact  /contact.html  200
 /cart  /cart.html  200
 /checkout  /checkout.html  200
 /login  /login.html  200
