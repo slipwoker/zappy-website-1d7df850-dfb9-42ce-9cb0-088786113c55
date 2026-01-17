@@ -13,21 +13,27 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://-1d7df850.zappy5.app/services</loc>
+    <loc>https://-1d7df850.zappy5.app/cart</loc>
     <lastmod>2026-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://-1d7df850.zappy5.app/about</loc>
+    <loc>https://-1d7df850.zappy5.app/checkout</loc>
     <lastmod>2026-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://-1d7df850.zappy5.app/contact</loc>
+    <loc>https://-1d7df850.zappy5.app/login</loc>
     <lastmod>2026-01-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://-1d7df850.zappy5.app/legal/return-policy</loc>
+    <lastmod>2026-01-17</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
