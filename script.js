@@ -375,19 +375,20 @@ window.onload = function() {
         }
     }, true);
 };
+;
 // E-commerce functionality
 (function() {
   const websiteId = window.ZAPPY_WEBSITE_ID;
   const getApiBase = function() {
-    const explicitBase = (window.ZAPPY_API_BASE || '').replace(//$/, '');
-    const path = window.location?.pathname || '';
-    if (path.includes('/preview') || path.includes('/preview-fullscreen')) {
+    const explicitBase = (window.ZAPPY_API_BASE || '').replace(/\/$/, '');
+    const path = window.location ? window.location.pathname : '';
+    if (path.indexOf('/preview') !== -1 || path.indexOf('/preview-fullscreen') !== -1) {
       return window.location.origin;
     }
     return explicitBase;
   };
   const buildApiUrl = function(path) {
-    if (!path.startsWith('/')) {
+    if (path.charAt(0) !== '/') {
       path = '/' + path;
     }
     const apiBase = getApiBase();
@@ -1256,6 +1257,24 @@ window.onload = function() {
     initAll();
   }
 })();
+
+;
+// API base helper for additional JS
+function getApiBase() {
+  var explicitBase = (window.ZAPPY_API_BASE || '').replace(/\/$/, '');
+  var path = window.location ? window.location.pathname : '';
+  if (path.indexOf('/preview') !== -1 || path.indexOf('/preview-fullscreen') !== -1) {
+    return window.location.origin;
+  }
+  return explicitBase;
+}
+function buildApiUrl(path) {
+  if (path.charAt(0) !== '/') {
+    path = '/' + path;
+  }
+  var apiBase = getApiBase();
+  return apiBase ? apiBase + path : path;
+}
 
 // Load featured products on home page (uses public storefront API)
 // Only shows products marked as "featured" - no fallback to all products
