@@ -641,6 +641,8 @@ body.accessibility-widget-visible ._access-menu {
 .checkout-step input:focus { outline: none; border-color: var(--primary-color, var(--primary, #ff0083)); box-shadow: 0 0 0 3px rgba(var(--primary-rgb, 255,0,131), 0.1); }
 .order-summary { padding: 24px; background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 12px; height: fit-content; position: sticky; top: 24px; }
 .order-totals { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color, #e5e7eb); }
+.order-totals > div { margin-bottom: 8px; display: flex; justify-content: space-between; }
+.order-totals .vat-row { font-size: 13px; color: #6b7280; }
 .order-totals .total { font-size: 20px; font-weight: 700; margin-top: 12px; color: var(--primary-color, var(--primary, #ff0083)); }
 .order-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border-color, #e5e7eb); font-size: 14px; color: var(--text-color, var(--text, #374151)); }
 .login-section { max-width: 400px; margin: 0 auto; text-align: center; }
