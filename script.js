@@ -378,6 +378,21 @@ window.onload = function() {
 // E-commerce functionality
 (function() {
   const websiteId = window.ZAPPY_WEBSITE_ID;
+  const getApiBase = function() {
+    const explicitBase = (window.ZAPPY_API_BASE || '').replace(//$/, '');
+    const path = window.location?.pathname || '';
+    if (path.includes('/preview') || path.includes('/preview-fullscreen')) {
+      return window.location.origin;
+    }
+    return explicitBase;
+  };
+  const buildApiUrl = function(path) {
+    if (!path.startsWith('/')) {
+      path = '/' + path;
+    }
+    const apiBase = getApiBase();
+    return apiBase ? apiBase + path : path;
+  };
   if (!websiteId) return;
   
   // Translations
@@ -430,7 +445,7 @@ window.onload = function() {
       }
       const categoryId = urlParams.get('category');
       
-      let apiUrl = '/api/ecommerce/storefront/products?websiteId=' + websiteId;
+      let apiUrl = buildApiUrl('/api/ecommerce/storefront/products?websiteId=' + websiteId);
       if (categoryId) {
         apiUrl += '&categoryId=' + categoryId;
       }
@@ -580,7 +595,7 @@ window.onload = function() {
     if (!container) return;
     
     try {
-      const res = await fetch('/api/ecommerce/storefront/shipping?websiteId=' + websiteId);
+      const res = await fetch(buildApiUrl('/api/ecommerce/storefront/shipping?websiteId=' + websiteId));
       const data = await res.json();
       shippingMethods = data.data || [];
       
@@ -689,7 +704,7 @@ window.onload = function() {
   
   async function loadAllProductsForSearch() {
     try {
-      const res = await fetch('/api/ecommerce/storefront/products?websiteId=' + websiteId);
+      const res = await fetch(buildApiUrl('/api/ecommerce/storefront/products?websiteId=' + websiteId));
       const data = await res.json();
       if (data.success && data.data) {
         allProducts = data.data;
@@ -1179,7 +1194,7 @@ window.onload = function() {
     if (categories.length === 0) {
       const websiteId = window.ZAPPY_WEBSITE_ID;
       if (websiteId) {
-        fetch('/api/ecommerce/' + websiteId + '/categories')
+        fetch(buildApiUrl('/api/ecommerce/' + websiteId + '/categories'))
           .then(function(r) { return r.json(); })
           .then(function(data) {
             if (data.categories && data.categories.length > 0) {
@@ -1254,7 +1269,7 @@ async function loadFeaturedProducts() {
   
   try {
     // Only fetch featured products - no fallback
-    const res = await fetch('/api/ecommerce/storefront/products?websiteId=' + websiteId + '&featured=true&limit=6');
+    const res = await fetch(buildApiUrl('/api/ecommerce/storefront/products?websiteId=' + websiteId + '&featured=true&limit=6'));
     const data = await res.json();
     if (!data.success || !data.data?.length) {
       // Show a friendly message when no featured products
@@ -1291,7 +1306,7 @@ async function loadCatalogCategories() {
   if (!websiteId) return;
   
   try {
-    const res = await fetch('/api/ecommerce/storefront/categories?websiteId=' + websiteId);
+    const res = await fetch(buildApiUrl('/api/ecommerce/storefront/categories?websiteId=' + websiteId));
     const data = await res.json();
     if (!data.success || !data.data?.length) return;
     
@@ -1355,7 +1370,7 @@ async function loadProductDetailPage() {
   console.log('Loading product with slug:', slug);
   
   try {
-    const res = await fetch('/api/ecommerce/storefront/products/' + encodeURIComponent(slug) + '?websiteId=' + websiteId);
+    const res = await fetch(buildApiUrl('/api/ecommerce/storefront/products/' + encodeURIComponent(slug) + '?websiteId=' + websiteId));
     const data = await res.json();
     
     if (!data.success || !data.data) {
@@ -1487,7 +1502,7 @@ async function loadRelatedProducts(currentProduct, t) {
   const websiteId = window.ZAPPY_WEBSITE_ID;
   try {
     // Fetch products from same category or random products
-    let url = '/api/ecommerce/storefront/products?websiteId=' + websiteId + '&limit=4';
+    let url = buildApiUrl('/api/ecommerce/storefront/products?websiteId=' + websiteId + '&limit=4');
     if (currentProduct.category_id) {
       url += '&categoryId=' + currentProduct.category_id;
     }
