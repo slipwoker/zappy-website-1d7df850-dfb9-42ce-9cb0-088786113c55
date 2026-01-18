@@ -1,71 +1,84 @@
-# Business — Generative Engine Optimization Map
+# אבוטבול ברגים — Generative Engine Optimization Map
+
+> A חומרי בניין וחומרה business.
 
 ---
 
 ## Pages
 
 ### דף הבית
-https://example.com
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com
 חנות ברגים מובילה בישראל לקבלנים, בעלי חנויות ומנהלי אחזקה. מגוון ענק של ברגים ואומים לבנייה במחירים תחרותיים.
 
 ### Products
-https://example.com/products
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/products
 המוצרים שלנו - אבוטבול ברגים
 
 ### שירותים
-https://example.com/services
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/services
 שירותי חנות ברגים בישראל: אספקה מהירה, ייעוץ מקצועי, מחירים סיטונאיים וחומרי חיבור לקבלנים. פתרונות מותאמים אישית לכל פרויקט בנייה.
 
 ### אודות
-https://example.com/about
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/about
 הכירו את אבוטבול ברגים - חנות ברגים בישראל עם ניסיון של שנים באספקת חומרי חיבור לקבלנים. סיפור, ערכים ומחויבות לשירות מעולה.
 
 ### צור קשר
-https://example.com/contact
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/contact
 צור קשר עם אבוטבול ברגים לקבלת ייעוץ מקצועי והצעת מחיר. חנות ברגים בישראל המספקת חומרי חיבור לקבלנים ובעלי מקצוע.
 
 ### Cart
-https://example.com/cart
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/cart
 עגלת הקניות שלך
 
 ### Checkout
-https://example.com/checkout
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/checkout
 תשלום
 
 ### Login
-https://example.com/login
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/login
 התחברות לקוחות
 
 ### Return Policy
-https://example.com/legal/return-policy
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/legal/return-policy
 This Return Policy explains how returns are handled at אבוטבול ברגים.
 
 ### Product Detail
-https://example.com/product/:slug
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/product/:slug
 פרטי המוצר - אבוטבול ברגים
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://example.com/privacy
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://example.com/terms
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://example.com/accessibility
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
 
 # Business Context (for LLM understanding)
 
-## About Business
+## About אבוטבול ברגים
+אבוטבול ברגים is a business in the חומרי בניין וחומרה industry.
+
+## Target Audience
+- קבלנים ובונים
+- חובבי עשה זאת בעצמך
+- בעלי חנויות חומרי בניין
+- מנהלי אחזקה
+
+## Industry
+חומרי בניין וחומרה
+
 ---
 
 # Additional Resources
 
-- **Sitemap**: https://example.com/sitemap.xml
-- **Robots.txt**: https://example.com/robots.txt
+- **Sitemap**: https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/sitemap.xml
+- **Robots.txt**: https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/robots.txt
