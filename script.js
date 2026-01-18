@@ -397,7 +397,10 @@ window.onload = function() {
   if (!websiteId) return;
   
   // Translations
-  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","city":"עיר","zip":"מיקוד","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","quantity":"כמות"};
+  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","city":"עיר","zip":"מיקוד","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","quantity":"כמות","couponCode":"קוד קופון","enterCouponCode":"הזן קוד קופון","applyCoupon":"החל","removeCoupon":"הסר","couponApplied":"הקופון הוחל בהצלחה!","invalidCoupon":"קוד קופון לא תקין","couponExpired":"הקופון פג תוקף","couponMinOrder":"סכום הזמנה מינימלי"};
+  
+  // RTL detection (based on currency or document direction)
+  const isRTL = t.currency === '₪' || document.documentElement.dir === 'rtl' || document.body.dir === 'rtl';
   
   // Cart state
   let cart = JSON.parse(localStorage.getItem('zappy_cart_' + websiteId) || '[]');
@@ -638,6 +641,266 @@ window.onload = function() {
     }
   }
   
+  // Payment state
+  let selectedPaymentMethod = null;
+  let paymentMethods = [];
+  let isPaymentConfigured = false;
+  
+  // Load payment methods on checkout page
+  async function loadPaymentMethods() {
+    const container = document.getElementById('payment-container');
+    if (!container) return;
+    
+    try {
+      const res = await fetch(buildApiUrl('/api/ecommerce/storefront/payment-status?websiteId=' + websiteId));
+      const data = await res.json();
+      
+      isPaymentConfigured = data.data?.isConfigured || false;
+      paymentMethods = data.data?.methods || [];
+      
+      if (!isPaymentConfigured || !paymentMethods.length) {
+        container.innerHTML = '<div class="payment-not-configured">' + 
+          '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>' +
+          '<span>' + (isRTL ? 'תשלום מקוון לא מוגדר. צרו קשר עם בעל האתר.' : 'Online payment not configured. Please contact the store owner.') + '</span>' +
+        '</div>';
+        return;
+      }
+      
+      container.innerHTML = paymentMethods.map((method, idx) => {
+        const name = isRTL ? method.name : method.nameEn;
+        const icon = method.icon === 'credit-card' ? 
+          '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>' :
+          '';
+        
+        return '<label class="payment-option' + (idx === 0 ? ' selected' : '') + '" data-method-id="' + method.id + '">' +
+          '<input type="radio" name="payment" value="' + method.id + '"' + (idx === 0 ? ' checked' : '') + ' onchange="window.zappySelectPayment(this.value)">' +
+          '<div class="payment-info">' +
+            '<div class="payment-icon">' + icon + '</div>' +
+            '<div class="payment-name">' + name + '</div>' +
+          '</div>' +
+        '</label>';
+      }).join('');
+      
+      // Auto-select first option
+      if (paymentMethods.length > 0) {
+        selectedPaymentMethod = paymentMethods[0];
+      }
+    } catch (e) {
+      console.error('Failed to load payment methods', e);
+      container.innerHTML = '<div class="error">' + (t.errorLoading || 'Error loading options') + '</div>';
+    }
+  }
+  
+  // Select payment method
+  window.zappySelectPayment = function(methodId) {
+    selectedPaymentMethod = paymentMethods.find(m => m.id === methodId);
+    document.querySelectorAll('.payment-option').forEach(el => {
+      el.classList.toggle('selected', el.dataset.methodId === methodId);
+    });
+  };
+  
+  // Initialize checkout / place order button
+  function initCheckout() {
+    const placeOrderBtn = document.getElementById('place-order-btn');
+    if (!placeOrderBtn) return;
+    
+    placeOrderBtn.addEventListener('click', async function(e) {
+      e.preventDefault();
+      
+      // Validate cart
+      if (!cart || cart.length === 0) {
+        alert(isRTL ? 'העגלה ריקה' : 'Cart is empty');
+        return;
+      }
+      
+      // Validate shipping
+      if (!selectedShipping) {
+        alert(isRTL ? 'נא לבחור שיטת משלוח' : 'Please select a shipping method');
+        return;
+      }
+      
+      // Validate payment is configured
+      if (!isPaymentConfigured || !selectedPaymentMethod) {
+        alert(isRTL ? 'תשלום מקוון לא מוגדר. צרו קשר עם בעל האתר.' : 'Online payment not configured. Please contact the store owner.');
+        return;
+      }
+      
+      // Get customer info
+      const customerName = document.getElementById('customer-name')?.value?.trim() || '';
+      const customerEmail = document.getElementById('customer-email')?.value?.trim() || '';
+      const customerPhone = document.getElementById('customer-phone')?.value?.trim() || '';
+      
+      // Validate required fields
+      if (!customerName || !customerEmail) {
+        alert(isRTL ? 'נא למלא שם ואימייל' : 'Please fill in name and email');
+        return;
+      }
+      
+      // Get shipping address
+      const shippingStreet = document.getElementById('shipping-street')?.value?.trim() || '';
+      const shippingCity = document.getElementById('shipping-city')?.value?.trim() || '';
+      const shippingZip = document.getElementById('shipping-zip')?.value?.trim() || '';
+      
+      // Validate shipping address (unless it's pickup)
+      if (!selectedShipping.is_pickup && (!shippingStreet || !shippingCity)) {
+        alert(isRTL ? 'נא למלא כתובת למשלוח' : 'Please fill in shipping address');
+        return;
+      }
+      
+      // Disable button and show loading
+      placeOrderBtn.disabled = true;
+      placeOrderBtn.innerHTML = isRTL ? 'מעבד...' : 'Processing...';
+      
+      try {
+        // Get or create session ID for cart
+        let sessionId = localStorage.getItem('zappy_session_id');
+        if (!sessionId) {
+          sessionId = 'sess_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+          localStorage.setItem('zappy_session_id', sessionId);
+        }
+        
+        // Initialize checkout
+        const res = await fetch(buildApiUrl('/api/ecommerce/checkout/init'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            websiteId: websiteId,
+            sessionId: sessionId,
+            customerEmail: customerEmail,
+            customerName: customerName,
+            customerPhone: customerPhone,
+            shippingAddress: {
+              street: shippingStreet,
+              city: shippingCity,
+              zip: shippingZip
+            },
+            shippingMethodId: selectedShipping.id,
+            cart: cart,
+            couponCode: appliedCoupon ? appliedCoupon.code : null,
+            couponDiscount: couponDiscount
+          })
+        });
+        
+        const data = await res.json();
+        
+        if (!data.success || !data.data?.checkoutUrl) {
+          throw new Error(data.error || 'Checkout initialization failed');
+        }
+        
+        // Redirect to payment page
+        window.location.href = data.data.checkoutUrl;
+        
+      } catch (error) {
+        console.error('Checkout failed:', error);
+        alert(isRTL ? 'שגיאה בתהליך התשלום. נסו שוב.' : 'Checkout failed. Please try again.');
+        placeOrderBtn.disabled = false;
+        placeOrderBtn.innerHTML = t.placeOrder || (isRTL ? 'בצע הזמנה' : 'Place Order');
+      }
+    });
+  }
+  
+  // Coupon state
+  let appliedCoupon = null;
+  let couponDiscount = 0;
+  
+  // Initialize coupon functionality
+  function initCoupon() {
+    const applyBtn = document.getElementById('apply-coupon-btn');
+    const removeBtn = document.getElementById('remove-coupon-btn');
+    const couponInput = document.getElementById('coupon-code-input');
+    
+    if (!applyBtn || !couponInput) return;
+    
+    // Apply coupon on button click
+    applyBtn.addEventListener('click', async function() {
+      const code = couponInput.value.trim();
+      if (!code) return;
+      
+      applyBtn.disabled = true;
+      applyBtn.textContent = isRTL ? '...' : '...';
+      
+      try {
+        const subtotal = getCartSubtotal();
+        const res = await fetch(buildApiUrl('/api/ecommerce/storefront/validate-coupon'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            websiteId: websiteId,
+            code: code,
+            subtotal: subtotal
+          })
+        });
+        
+        const data = await res.json();
+        
+        if (!data.success || !data.data?.valid) {
+          // Show error
+          const errorEl = document.getElementById('coupon-error');
+          let errorMsg = t.invalidCoupon || 'Invalid coupon code';
+          
+          if (data.data?.error === 'expired') {
+            errorMsg = t.couponExpired || 'Coupon has expired';
+          } else if (data.data?.error === 'min_order') {
+            errorMsg = (t.couponMinOrder || 'Minimum order amount') + ': ' + t.currency + data.data.minOrderAmount;
+          }
+          
+          if (errorEl) {
+            errorEl.textContent = errorMsg;
+            errorEl.style.display = 'block';
+            setTimeout(function() { errorEl.style.display = 'none'; }, 5000);
+          }
+          return;
+        }
+        
+        // Apply coupon
+        appliedCoupon = data.data.coupon;
+        couponDiscount = appliedCoupon.discountAmount || 0;
+        
+        // Update UI
+        document.getElementById('coupon-input-row').style.display = 'none';
+        document.getElementById('coupon-applied-row').style.display = 'flex';
+        document.getElementById('applied-coupon-code').textContent = appliedCoupon.code;
+        document.getElementById('coupon-error').style.display = 'none';
+        
+        updateOrderTotals();
+        
+      } catch (e) {
+        console.error('Failed to validate coupon', e);
+        const errorEl = document.getElementById('coupon-error');
+        if (errorEl) {
+          errorEl.textContent = t.errorLoading || 'Error';
+          errorEl.style.display = 'block';
+        }
+      } finally {
+        applyBtn.disabled = false;
+        applyBtn.textContent = t.applyCoupon || 'Apply';
+      }
+    });
+    
+    // Apply coupon on Enter key
+    couponInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        applyBtn.click();
+      }
+    });
+    
+    // Remove coupon
+    if (removeBtn) {
+      removeBtn.addEventListener('click', function() {
+        appliedCoupon = null;
+        couponDiscount = 0;
+        
+        // Update UI
+        document.getElementById('coupon-input-row').style.display = 'flex';
+        document.getElementById('coupon-applied-row').style.display = 'none';
+        document.getElementById('coupon-code-input').value = '';
+        
+        updateOrderTotals();
+      });
+    }
+  }
+  
   // Get cart subtotal
   function getCartSubtotal() {
     return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -658,15 +921,45 @@ window.onload = function() {
   function updateOrderTotals() {
     const subtotalEl = document.getElementById('subtotal');
     const shippingCostEl = document.getElementById('shipping-cost');
+    const discountEl = document.getElementById('discount');
+    const discountRow = document.getElementById('discount-row');
     const orderTotalEl = document.getElementById('order-total');
     const orderItemsEl = document.getElementById('order-items');
     
     const subtotal = getCartSubtotal();
-    const shippingCost = getShippingCost();
-    const total = subtotal + shippingCost;
+    let shippingCost = getShippingCost();
+    
+    // Recalculate coupon discount based on current subtotal
+    if (appliedCoupon) {
+      if (appliedCoupon.type === 'percentage') {
+        couponDiscount = (subtotal * appliedCoupon.value) / 100;
+      } else if (appliedCoupon.type === 'fixed') {
+        couponDiscount = appliedCoupon.value;
+      } else if (appliedCoupon.type === 'free_shipping') {
+        couponDiscount = 0;
+        shippingCost = 0; // Free shipping coupon
+      }
+      // Cap discount at subtotal
+      if (couponDiscount > subtotal) {
+        couponDiscount = subtotal;
+      }
+    }
+    
+    const total = subtotal + shippingCost - couponDiscount;
     
     if (subtotalEl) subtotalEl.textContent = t.currency + subtotal.toFixed(2);
     if (shippingCostEl) shippingCostEl.textContent = shippingCost === 0 ? (t.free || 'FREE') : t.currency + shippingCost.toFixed(2);
+    
+    // Show/hide discount row
+    if (discountRow && discountEl) {
+      if (couponDiscount > 0) {
+        discountRow.style.display = 'block';
+        discountEl.textContent = '-' + t.currency + couponDiscount.toFixed(2);
+      } else {
+        discountRow.style.display = 'none';
+      }
+    }
+    
     if (orderTotalEl) orderTotalEl.textContent = t.currency + total.toFixed(2);
     
     // Render order items
@@ -1163,12 +1456,15 @@ window.onload = function() {
     loadProducts();
     renderCart();
     loadShippingMethods();
+    loadPaymentMethods();
     updateOrderTotals();
     initSearch();
     initMobileSearch();
     initMobileMenuHandling();
     initMobileCategoriesSubmenu();
     initCartDrawer();
+    initCheckout();
+    initCoupon();
   }
   
   // Add categories submenu to Products link in mobile menu
@@ -1284,7 +1580,7 @@ async function loadFeaturedProducts() {
   const websiteId = window.ZAPPY_WEBSITE_ID;
   if (!websiteId) return;
   
-  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","city":"עיר","zip":"מיקוד","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","quantity":"כמות"};
+  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","city":"עיר","zip":"מיקוד","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","quantity":"כמות","couponCode":"קוד קופון","enterCouponCode":"הזן קוד קופון","applyCoupon":"החל","removeCoupon":"הסר","couponApplied":"הקופון הוחל בהצלחה!","invalidCoupon":"קוד קופון לא תקין","couponExpired":"הקופון פג תוקף","couponMinOrder":"סכום הזמנה מינימלי"};
   
   try {
     // Only fetch featured products - no fallback
@@ -1367,7 +1663,7 @@ async function loadProductDetailPage() {
   const websiteId = window.ZAPPY_WEBSITE_ID;
   if (!websiteId) return;
   
-  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","city":"עיר","zip":"מיקוד","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","quantity":"כמות"};
+  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","city":"עיר","zip":"מיקוד","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","quantity":"כמות","couponCode":"קוד קופון","enterCouponCode":"הזן קוד קופון","applyCoupon":"החל","removeCoupon":"הסר","couponApplied":"הקופון הוחל בהצלחה!","invalidCoupon":"קוד קופון לא תקין","couponExpired":"הקופון פג תוקף","couponMinOrder":"סכום הזמנה מינימלי"};
   
   // Get slug from URL - check both pathname and query parameter (preview mode)
   let pagePath = window.location.pathname;

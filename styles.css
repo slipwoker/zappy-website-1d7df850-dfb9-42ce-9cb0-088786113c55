@@ -970,6 +970,35 @@ nav > .nav-ecommerce-icons, header .nav-ecommerce-icons { margin-right: auto; }
 .shipping-price { font-weight: 700; font-size: 16px; color: var(--text-color, var(--text, #1f2937)); white-space: nowrap; }
 .shipping-price.free { color: #10b981; }
 .no-shipping, #shipping-methods .error { text-align: center; padding: 20px; color: var(--text-secondary, #6b7280); background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 8px; }
+/* Payment Methods Styles */
+#payment-container { display: flex; flex-direction: column; gap: 12px; }
+.payment-option { display: flex; align-items: center; gap: 12px; padding: 16px; border: 2px solid var(--border-color, #e5e7eb); border-radius: 12px; cursor: pointer; transition: all 0.2s; background: var(--background-color, var(--background, #fff)); }
+.payment-option:hover { border-color: var(--text-secondary, #d1d5db); background: var(--surface-color, var(--surface, #f9fafb)); }
+.payment-option.selected { border-color: var(--primary-color, var(--primary, #ff0083)); background: color-mix(in srgb, var(--primary-color, var(--primary, #ff0083)) 10%, var(--background-color, var(--background, #fff))); }
+.payment-option input[type="radio"] { width: 18px; height: 18px; accent-color: var(--primary-color, var(--primary, #ff0083)); cursor: pointer; }
+.payment-info { display: flex; align-items: center; gap: 12px; flex: 1; }
+.payment-icon { color: var(--text-color, var(--text, #374151)); }
+.payment-icon svg { display: block; }
+.payment-name { font-weight: 600; color: var(--text-color, var(--text, #1f2937)); font-size: 15px; }
+.payment-not-configured { display: flex; align-items: center; gap: 12px; padding: 20px; background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 8px; color: var(--text-secondary, #6b7280); font-size: 14px; }
+.payment-not-configured svg { flex-shrink: 0; }
+#payment-container .error { text-align: center; padding: 20px; color: var(--text-secondary, #6b7280); background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 8px; }
+/* Coupon Section Styles */
+.coupon-section { margin: 16px 0; padding: 16px; background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 8px; }
+.coupon-input-row { display: flex; gap: 8px; }
+.coupon-input { flex: 1; padding: 10px 12px; border: 1px solid var(--border-color, #e5e7eb); border-radius: 6px; font-size: 14px; background: var(--background-color, var(--background, #fff)); color: var(--text-color, var(--text, #1f2937)); }
+.coupon-input:focus { outline: none; border-color: var(--primary-color, var(--primary, #ff0083)); }
+.coupon-apply-btn { padding: 10px 16px; background: var(--text-color, var(--text, #374151)); color: var(--text-light, #fff); border: none; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; transition: filter 0.2s; white-space: nowrap; }
+.coupon-apply-btn:hover { filter: brightness(0.9); }
+.coupon-apply-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.coupon-applied-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.coupon-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: color-mix(in srgb, var(--primary-color, var(--primary, #ff0083)) 15%, var(--background-color, var(--background, #fff))); color: var(--primary-color, var(--primary, #ff0083)); border-radius: 6px; font-size: 14px; font-weight: 600; }
+.coupon-badge::before { content: '🎟️'; }
+.coupon-remove-btn { padding: 6px 12px; background: transparent; color: var(--text-secondary, #6b7280); border: 1px solid var(--border-color, #e5e7eb); border-radius: 6px; font-size: 13px; cursor: pointer; transition: all 0.2s; }
+.coupon-remove-btn:hover { background: #fef2f2; color: #ef4444; border-color: #fecaca; }
+.coupon-error { margin-top: 8px; padding: 8px 12px; background: #fef2f2; color: #dc2626; border-radius: 6px; font-size: 13px; }
+.discount-row { color: #10b981; font-weight: 500; }
+.discount-row #discount { color: #10b981; }
 /* Cart Drawer Styles */
 .cart-drawer-overlay { position: fixed !important; inset: 0 !important; background: rgba(0,0,0,0.5) !important; z-index: 9998 !important; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; width: 100% !important; height: 100% !important; }
 .cart-drawer-overlay.active { opacity: 1 !important; visibility: visible !important; }

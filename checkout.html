@@ -392,10 +392,21 @@
             <div class="order-summary">
               <h2>סיכום הזמנה</h2>
               <div id="order-items"></div>
+              <div class="coupon-section">
+                <div class="coupon-input-row" id="coupon-input-row">
+                  <input type="text" placeholder="הזן קוד קופון" id="coupon-code-input" class="coupon-input">
+                  <button type="button" class="btn btn-secondary coupon-apply-btn" id="apply-coupon-btn">החל</button>
+                </div>
+                <div class="coupon-applied-row" id="coupon-applied-row" style="display: none;">
+                  <span class="coupon-badge" id="applied-coupon-code"></span>
+                  <button type="button" class="coupon-remove-btn" id="remove-coupon-btn">הסר</button>
+                </div>
+                <div class="coupon-error" id="coupon-error" style="display: none;"></div>
+              </div>
               <div class="order-totals">
                 <div>סכום ביניים: <span id="subtotal">₪0</span></div>
                 <div>משלוח: <span id="shipping-cost">₪0</span></div>
-                <div>הנחה: <span id="discount">₪0</span></div>
+                <div class="discount-row" id="discount-row" style="display: none;">הנחה: <span id="discount">-₪0</span></div>
                 <div class="total">סה"כ לתשלום: <span id="order-total">₪0</span></div>
               </div>
               <button class="btn btn-primary" id="place-order-btn">בצע הזמנה</button>
