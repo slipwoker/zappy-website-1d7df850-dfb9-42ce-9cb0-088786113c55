@@ -1,9 +1,15 @@
-<!DOCTYPE html><html lang="he" dir="rtl"><head>
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>מגוון מוצרי ברגים ואומים לבנייה — אבוטבול ברגים</title>
-  <meta name="description" content="גלה את המגוון הרחב של ברגים ואומים לבנייה בחנות ברגים בישראל המובילה. חומרי חיבור לקבלנים במחירים תחרותיים.">
-  <meta name="keywords" content="חנות ברגים, ברגים ואומים לבנייה, חומרי חיבור לקבלנים, חנות ברגים בישראל">
+  <title>מוצרים</title>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <meta name="keywords" content="חנות ברגים, חנות ברגים בישראל, ברגים ואומים לבנייה, חומרי חיבור לקבלנים">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Favicons -->
@@ -17,9 +23,7 @@
 <style>
 /* Zappy Attribution Header Styles */
 .zappy-header {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: static;
   width: 100%;
   background: white;
   box-shadow: 0px 4px 19px 0px rgba(0,0,0,0.04);
@@ -29,13 +33,10 @@
   font-size: 16px;
   color: #4a4a4a;
   line-height: 21px;
-  z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 21px;
-  direction: ltr !important;
-  unicode-bidi: isolate;
 }
 
     .zappy-header p {
@@ -48,7 +49,6 @@
       display: inline-block;
       vertical-align: baseline;
       margin-bottom: 0 !important;
-      direction: ltr !important;
     }
 
 .zappy-header .zappy-link {
@@ -66,6 +66,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
     <!-- Mickidum Accessibility Toolbar -->
     <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <!-- Zappy Analytics -->
 <script>
 (function() {
@@ -313,21 +315,26 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-
-<!-- Zappy Attribution Header -->
-<div id="zappy-attribution-header" class="zappy-header" style="display: none;">
-  <p>Happily created by&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" class="zappy-link">Zappy</a></p>
-</div>
-<script>window.ZAPPY_1d7df850-dfb9-42ce-9cb0-088786113c55 = "1d7df850-dfb9-42ce-9cb0-088786113c55";</script>
+  <script>window.ZAPPY_WEBSITE_ID = "1d7df850-dfb9-42ce-9cb0-088786113c55";</script>
+  
+    <div class="mobile-search-panel" id="mobile-search-panel">
+      <div class="search-wrapper">
+        <input type="text" id="mobile-search-input" placeholder="חיפוש מוצרים..." autocomplete="off">
+        <button class="close-search" id="close-mobile-search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="search-results" id="mobile-search-results"></div>
+    </div>
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
       <div class="nav-brand">
         <a href="/" class="logo-link">
-          <img class="logo" src="" alt="אבוטבול ברגים">
+          <img src="/assets/logo.webp" alt="אבוטבול ברגים" class="logo" />
         </a>
       </div>
       
-      <button class="mobile-toggle" id="mobileToggle" aria-label="פתח תפריט">
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
         <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
         </svg>
@@ -348,217 +355,77 @@
         <li><a href="/about">אודות</a></li>
       </ul>
       
-      <a href="/cart" class="cart-link"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a><div class="nav-cta-container">
+      <div class="nav-cta-container">
         <li class="nav-cta-item">
           <a href="/contact" class="nav-cta-btn">צור קשר</a>
         </li>
       </div>
     </div>
   </nav>
-
-  <section class="page-header">
-    <div class="container">
-      <h1>המוצרים שלנו - חנות ברגים עם מגוון רחב</h1>
-      <h3>ברגים ואומים לבנייה, חומרי חיבור לקבלנים וחומרי בניין איכותיים במחירים תחרותיים</h3>
-    </div>
-  </section>
-
-  <section class="section service-section" id="ברגים-נירוסטה" data-zappy-section="true">
-  <div class="container">
-    <div class="product-card">
+  <main class="page-container ecommerce-page">
+    
+        <section class="products-section">
+          <h1>המוצרים שלנו</h1>
+          <div class="product-filters">
+            <button class="filter-btn active" data-category="all">הכל</button>
+            <button class="filter-btn" data-category="featured">מומלצים</button>
+            <button class="filter-btn" data-category="new">חדשים</button>
+            <button class="filter-btn" data-category="sale">מבצעים</button>
+          </div>
+          <div class="product-grid" id="zappy-product-grid">
+            <div class="loading-products">טוען מוצרים...</div>
+          </div>
+        </section>
       
-            <div class="product-image">
-              <img data-placeholder="service-6" data-context="Assorted stainless steel screws in different sizes laid out professionally, industrial hardware photography" src="/assets/service-service-6.webp" alt="ברגים נירוסטה במגוון גדלים">
-            </div>
-            <div class="product-content">
-              <h3>ברגים נירוסטה</h3>
-              <p>ברגים מנירוסטה איכותית A2 ו-A4, עמידים בפני קורוזיה ומתאימים לשימוש חיצוני ופנימי. זמינים בכל הגדלים מ-M3 עד M24.</p>
-              <ul>
-                <li>עמידות גבוהה לקורוזיה</li>
-                <li>מתאימים לסביבות לחות</li>
-                <li>זמינים בראש שטוח, עגול וגלילי</li>
-              </ul>
-            </div>
-          
-    </div>
-  </div>
-</section>
-<section class="section service-section" id="ברגים-פלדה-מחוזקת" data-zappy-section="true">
-  <div class="container">
-    <div class="product-card">
-      
-            <div class="product-image">
-              <img data-placeholder="service-7" data-context="High-strength steel bolts and nuts for construction, professional grade hardware" src="/assets/service-service-7.webp" alt="ברגים ואומים פלדה חזקה">
-            </div>
-            <div class="product-content">
-              <h3>ברגים פלדה מחוזקת</h3>
-              <p>ברגים מפלדה מחוזקת בדרגות 8.8, 10.9 ו-12.9 לשימושים תעשייתיים וכבדים. מתאימים לפרויקטי בנייה גדולים.</p>
-              <ul>
-                <li>חוזק גבוה במיוחד</li>
-                <li>מתאימים לעומסים כבדים</li>
-                <li>זמינים עם ציפויים שונים</li>
-              </ul>
-            </div>
-          
-    </div>
-  </div>
-</section>
-<section class="section service-section" id="ברגים-לעץ" data-zappy-section="true">
-  <div class="container">
-    <div class="product-card">
-      
-            <div class="product-image">
-              <img data-placeholder="service-8" data-context="Wood screws and carpentry fasteners arranged by size, professional woodworking hardware" src="/assets/service-service-8.webp" alt="ברגים לעץ וחומרי בניין">
-            </div>
-            <div class="product-content">
-              <h3>ברגים לעץ</h3>
-              <p>ברגים מיוחדים לעץ בכל הגדלים והסוגים - ברגים עצמונפצים, ברגים לגבס, ברגים לרצפות ועוד. מתאימים לנגרות ועבודות עץ.</p>
-              <ul>
-                <li>ראש שקוע או בולט</li>
-                <li>הברגה קלה וחלקה</li>
-                <li>אחיזה חזקה בעץ</li>
-              </ul>
-            </div>
-          
-    </div>
-  </div>
-</section>
-<section class="section service-section" id="ברגים-לבטון-ועוגנים" data-zappy-section="true">
-  <div class="container">
-    <div class="product-card">
-      
-            <div class="product-image">
-              <img data-placeholder="service-9" data-context="Concrete anchors and masonry screws for heavy duty mounting, construction hardware" src="/assets/service-service-9.webp" alt="ברגים לבטון ועוגנים">
-            </div>
-            <div class="product-content">
-              <h3>ברגים לבטון ועוגנים</h3>
-              <p>עוגנים כימיים ומכניים, ברגים לבטון ומערכות חיבור מתקדמות. פתרונות מקצועיים לחיבור חזק ובטוח למבנים.</p>
-              <ul>
-                <li>עוגנים כימיים ומכניים</li>
-                <li>התקנה פשוטה ומהירה</li>
-                <li>עומס נשיאה גבוה</li>
-              </ul>
-            </div>
-          
-    </div>
-  </div>
-</section>
-<section class="section service-section" id="אומים-ודסקיות" data-zappy-section="true">
-  <div class="container">
-    <div class="product-card">
-      
-            <div class="product-image">
-              <img data-placeholder="service-10" data-context="Various nuts and washers organized by type and size, professional fastener collection" src="/assets/service-service-10.webp" alt="אומים ודסקיות במגוון סוגים">
-            </div>
-            <div class="product-content">
-              <h3>אומים ודסקיות</h3>
-              <p>מגוון רחב של אומים ודסקיות בכל הגדלים והסוגים - אומים משושים, אומים מרובעים, דסקיות שטוחות וקפיציות.</p>
-              <ul>
-                <li>אומים בכל הדרגות</li>
-                <li>דסקיות קפיציות ושטוחות</li>
-                <li>זמינים בחומרים שונים</li>
-              </ul>
-            </div>
-          
-    </div>
-  </div>
-</section>
-
-  <a href="https://wa.me/[whatsapp_handle]" target="_blank" class="whatsapp-float" aria-label="WhatsApp" rel="noopener noreferrer">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  
-    <!-- Legal Footer -->
-    <footer class="legal-footer">
+  </main>
+  <footer class="legal-footer">
       <div class="container">
         <div class="footer-main">
           <div class="all-rights-reserved">
-            <p>© 2026 אבוטבול ברגים. כל הזכויות שמורות.</p>
+            <p>© 2025 אבוטבול ברגים. כל הזכויות שמורות.</p>
           </div>
           <div class="footer-social"><a href="https://facebook.com/[facebook_handle]" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
 <a href="https://instagram.com/[instagram_handle]" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
 <a href="https://wa.me/[whatsapp_handle]" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div>
           <div class="footer-legal">
-            <a href="/privacy" aria-label="מדיניות פרטיות">
+            <a href="privacy.html" aria-label="מדיניות פרטיות">
               מדיניות פרטיות
             </a>
             <span class="separator">|</span>
-            <a href="/accessibility" aria-label="נגישות">
+            <a href="accessibility.html" aria-label="נגישות">
               נגישות
             </a>
             <span class="separator">|</span>
-            <a href="/terms" aria-label="תנאי שימוש">
+            <a href="terms.html" aria-label="תנאי שימוש">
               תנאי שימוש
             </a>
           </div>
         </div>
         <div class="zappy-attribution">
-          <p>נוצר באמצעות&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Zappy</a></p>
+          <p>נוצר באמצעות <a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Zappy</a></p>
         </div>
       </div>
     </footer>
-
-
-<!-- Zappy Attribution Header Script -->
-<script>
-(function() {
-  var websiteId = '1d7df850-dfb9-42ce-9cb0-088786113c55';
   
-  // Don't show header in preview mode
-  var currentUrl = window.location.href;
-  var isPreview = currentUrl.includes('/preview/') || 
-                  currentUrl.includes('/preview-fullscreen/') || 
-                  currentUrl.includes('localhost:5001') ||
-                  currentUrl.includes('localhost:3000');
-  
-  if (isPreview) {
-    return; // Exit early in preview mode
-  }
-  
-  fetch('http://localhost:5001/api/website/' + websiteId + '/tier')
-    .then(function(response) { return response.json(); })
-    .then(function(data) {
-      if (data.showAttribution) {
-        var header = document.getElementById('zappy-attribution-header');
-        if (header) {
-          // Use dynamic announcement content if available
-          if (data.announcement && data.announcement.html) {
-            header.innerHTML = data.announcement.html;
-          }
-          // Apply fixed positioning styles inline (works for existing sites too)
-          header.style.cssText = 'position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 99999 !important; display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important; box-sizing: border-box !important;';
-          // Fix child elements that might have position: fixed from old CSS
-          var children = header.querySelectorAll('*');
-          for (var i = 0; i < children.length; i++) {
-            children[i].style.position = 'static';
-          }
-          // Get header height
-          var headerHeight = header.offsetHeight;
-          // Find and fix navbar to be fixed as well (prevents gap at top of page)
-          var navSelectors = ['nav', '.navbar', '.nav'];
-          var navbar = null;
-          for (var j = 0; j < navSelectors.length; j++) {
-            navbar = document.querySelector(navSelectors[j]);
-            if (navbar && navbar.id !== 'zappy-attribution-header') break;
-            navbar = null;
-          }
-          if (navbar) {
-            var navbarHeight = navbar.offsetHeight;
-            navbar.style.cssText += '; position: fixed !important; top: ' + headerHeight + 'px !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 99998 !important;';
-            document.body.style.paddingTop = (headerHeight + navbarHeight) + 'px';
-          } else {
-            document.body.style.paddingTop = headerHeight + 'px';
-          }
-        }
-      }
-    })
-    .catch(function(error) {
-      console.error('Failed to check tier:', error);
-    });
-})();
-</script>
-    <div data-integration="accessibility:toolbar"></div>
+<div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+<aside class="cart-drawer rtl" id="cart-drawer" dir="rtl">
+  <div class="cart-drawer-header">
+    <h2>עגלת הקניות שלך</h2>
+    <button type="button" class="cart-drawer-close" id="cart-drawer-close" aria-label="סגור">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="cart-drawer-body" id="cart-drawer-items">
+    <div class="empty-cart">העגלה ריקה</div>
+  </div>
+  <div class="cart-drawer-footer">
+    <div class="cart-drawer-total">
+      <span>סה"כ:</span>
+      <span id="cart-drawer-total">₪0</span>
+    </div>
+    <a href="/checkout" class="cart-drawer-checkout">המשך לתשלום</a>
+  </div>
+</aside>
 
     <script id="zappy-mobile-submenu-script">
     (function() {
@@ -611,4 +478,5 @@
     })();
     </script>
     <script src="/script.js"></script>
-</body></html>
+</body>
+</html>

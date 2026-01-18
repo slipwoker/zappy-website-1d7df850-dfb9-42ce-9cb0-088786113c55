@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="he" dir="rtl"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>אודות חנות ברגים אבוטבול — אבוטבול ברגים</title>
-  <meta name="description" content="הכירו את אבוטבול ברגים - חנות ברגים בישראל עם מעל 15 שנות ניסיון. מתמחים בברגים ואומים לבנייה וחומרי חיבור לקבלנים.">
-  <meta name="keywords" content="חנות ברגים, חנות ברגים בישראל, ברגים ואומים לבנייה, חומרי חיבור לקבלנים">
+  <title>אודות חנות הברגים המובילה — אבוטבול ברגים</title>
+  <meta name="description" content="הכירו את אבוטבול ברגים - חנות ברגים בישראל עם ניסיון של שנים באספקת חומרי חיבור לקבלנים. סיפור, ערכים ומחויבות לשירות מעולה.">
+  <meta name="keywords" content="חנות ברגים, חנות ברגים בישראל, חומרי חיבור לקבלנים, ברגים ואומים לבנייה">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Favicons -->
@@ -17,9 +17,7 @@
 <style>
 /* Zappy Attribution Header Styles */
 .zappy-header {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: static;
   width: 100%;
   background: white;
   box-shadow: 0px 4px 19px 0px rgba(0,0,0,0.04);
@@ -29,13 +27,10 @@
   font-size: 16px;
   color: #4a4a4a;
   line-height: 21px;
-  z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 21px;
-  direction: ltr !important;
-  unicode-bidi: isolate;
 }
 
     .zappy-header p {
@@ -48,7 +43,6 @@
       display: inline-block;
       vertical-align: baseline;
       margin-bottom: 0 !important;
-      direction: ltr !important;
     }
 
 .zappy-header .zappy-link {
@@ -314,20 +308,31 @@
 </head>
 <body>
 
+    <div class="mobile-search-panel" id="mobile-search-panel">
+      <div class="search-wrapper">
+        <input type="text" id="mobile-search-input" placeholder="חיפוש מוצרים..." autocomplete="off">
+        <button class="close-search" id="close-mobile-search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="search-results" id="mobile-search-results"></div>
+    </div>
+  
+<script>window.ZAPPY_WEBSITE_ID = "1d7df850-dfb9-42ce-9cb0-088786113c55";</script>
+
 <!-- Zappy Attribution Header -->
 <div id="zappy-attribution-header" class="zappy-header" style="display: none;">
   <p>Happily created by&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" class="zappy-link">Zappy</a></p>
 </div>
-<script>window.ZAPPY_1d7df850-dfb9-42ce-9cb0-088786113c55 = "1d7df850-dfb9-42ce-9cb0-088786113c55";</script>
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
       <div class="nav-brand">
         <a href="/" class="logo-link">
-          <img class="logo" src="" alt="אבוטבול ברגים">
+          <img src="/assets/logo.webp" alt="אבוטבול ברגים" class="logo" />
         </a>
       </div>
       
-      <button class="mobile-toggle" id="mobileToggle" aria-label="פתח תפריט">
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
         <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
         </svg>
@@ -343,141 +348,105 @@
       </button>
       
       <ul class="nav-menu" id="navMenu">
-        <li><a href="/products">מוצרים</a></li>
+        
+    <li class="menu-item-has-children zappy-products-dropdown">
+      <a href="/products">
+        מוצרים
+        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9l6 6 6-6"></path>
+        </svg>
+      </a>
+      <ul class="sub-menu" id="zappy-nav-category-links">
+        <li><a href="/products">כל המוצרים</a></li>
+        <!-- Categories will be loaded dynamically -->
+      </ul>
+    </li>
+  
         <li><a href="/services">שירותים</a></li>
         <li><a href="/about">אודות</a></li>
-      </ul>
+      <li><a href="/contact">צור קשר</a></li></ul><div class="nav-ecommerce-icons nav-icons-left"><a href="/login" class="login-link nav-login" title="התחברות"><svg class="login-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a><a href="#cart" class="cart-link nav-cart" id="cart-drawer-toggle" title="עגלת קניות"><svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count">0</span></a><div class="nav-search-box">
+    <input type="text" class="nav-search-input" id="nav-search-input" placeholder="חיפוש מוצרים..." autocomplete="off">
+    <button class="nav-search-btn" id="nav-search-btn" title="חיפוש">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    </button>
+    <div class="nav-search-results" id="nav-search-results"></div>
+  </div></div><div class="nav-ecommerce-icons nav-icons-right"><button class="nav-search-toggle" id="mobile-search-toggle" title="חיפוש"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></button></div>
       
-      <a href="/cart" class="cart-link"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a><div class="nav-cta-container">
-        <li class="nav-cta-item">
-          <a href="/contact" class="nav-cta-btn">צור קשר</a>
-        </li>
-      </div>
+      
     </div>
   </nav>
 
+    <nav class="zappy-catalog-menu rtl" id="zappy-catalog-menu" dir="rtl">
+      <div class="catalog-menu-container">
+        <a href="/products" class="catalog-menu-item catalog-menu-all">כל המוצרים</a>
+        <div class="catalog-menu-categories" id="zappy-category-links">
+          <!-- Categories will be loaded dynamically -->
+        </div>
+      </div>
+    </nav>
+  
+
   <section class="page-header">
     <div class="container">
-      <h1>אודות אבוטבול ברגים - חנות ברגים מובילה בישראל</h1>
-      <h3>הסיפור שלנו, הערכים שלנו והמחויבות שלנו למצוינות</h3>
+      <h1>הסיפור שלנו - חנות ברגים בישראל עם מורשת של איכות</h1>
+      <h3>ניסיון, מקצועיות ומחויבות לשירות מעולה</h3>
     </div>
   </section>
 
   <section class="about-story">
     <div class="container">
       <div class="story-content">
-        <h2>הסיפור שלנו</h2>
-        <p>אבוטבול ברגים נוסדה לפני למעלה מ-15 שנה מתוך חזון ברור - להיות חנות ברגים בישראל המובילה והאמינה ביותר עבור קבלנים, בונים וכל מי שזקוק לברגים ואומים לבנייה איכותיים. מה שהתחיל כחנות קטנה עם מלאי מצומצם, הפך עם השנים לאחת מחנויות הברגים המובילות בישראל, עם מגוון עצום של מוצרים ושירותים מקצועיים.</p>
-        <p>הדרך לא הייתה קלה, אבל המחויבות שלנו לאיכות, לשירות מקצועי ולמחירים הוגנים הפכה אותנו למועדפים על אלפי לקוחות ברחבי הארץ. אנחנו גאים בכך שלקוחות רבים מגיעים אלינו בהמלצת חברים ועמיתים, ובכך שרבים מהם חוזרים אלינו שוב ושוב לאורך שנים.</p>
-        <p>היום, אבוטבול ברגים היא לא רק חנות ברגים - אנחנו שותפים לפרויקטים של הלקוחות שלנו. אנחנו מספקים חומרי חיבור לקבלנים, ברגים ואומים לבנייה, ייעוץ מקצועי ושירות אישי שקשה למצוא במקומות אחרים. הצוות שלנו מורכב ממומחים בתחום, שמביאים איתם שנים של ניסיון וידע מקצועי.</p>
+        <p>אבוטבול ברגים נוסדה מתוך אהבה לתחום חומרי הבניין והחומרה, ומתוך רצון לספק ללקוחות שירות ברמה הגבוהה ביותר. מה שהתחיל כחנות ברגים קטנה הפך עם השנים לאחת מחנויות הברגים המובילות בישראל, המספקת חומרי חיבור לקבלנים, בעלי חנויות ומנהלי אחזקה ברחבי הארץ.</p>
+        <p>לאורך השנים, בנינו מוניטין של אמינות, מקצועיות ושירות מעולה. אנו מאמינים שהצלחה עסקית נמדדת לא רק במכירות, אלא בעיקר בשביעות רצון הלקוחות שלנו. לכן אנו משקיעים זמן ומשאבים רבים בהכשרת הצוות שלנו, בשמירה על מלאי רחב ומגוון, ובמתן שירות אישי ומותאם לכל לקוח.</p>
+        <p>הניסיון שצברנו במהלך השנים מאפשר לנו להבין את הצרכים הייחודיים של כל סגמנט בשוק - מקבלנים גדולים שמנהלים פרויקטים מורכבים, דרך בעלי חנויות קטנות שמחפשים ספק אמין, ועד לחובבי עשה זאת בעצמך שזקוקים לייעוץ והדרכה. אנו גאים ביכולת שלנו לספק פתרונות מותאמים אישית לכל אחד מהלקוחות שלנו.</p>
       </div>
     </div>
   </section>
 
-  <section class="about-values">
+  <section class="values-section">
     <div class="container">
-      <h2>הערכים שלנו</h2>
+      <h2>הערכים שמנחים אותנו</h2>
       <div class="values-grid">
         <div class="value-card">
-          <i class="fas fa-gem"></i>
+          <div class="value-icon"><i class="fas fa-medal"></i></div>
           <h3>איכות ללא פשרות</h3>
-          <p>אנחנו מאמינים שאיכות היא הבסיס להכל. כל המוצרים שלנו עוברים בדיקות קפדניות ועומדים בתקנים הבינלאומיים הגבוהים ביותר. אנחנו עובדים רק עם יצרנים מובילים ומהימנים, ומספקים אחריות מלאה על כל המוצרים שלנו.</p>
+          <p>אנו מתחייבים לספק רק מוצרים איכותיים מיצרנים מובילים. כל ברג, אום ודסקית שאנו מוכרים עוברים בדיקות איכות קפדניות ועומדים בתקנים הבינלאומיים הגבוהים ביותר. אנו מאמינים שאיכות היא לא רק מילה, אלא התחייבות לטווח ארוך כלפי הלקוחות שלנו.</p>
         </div>
         <div class="value-card">
-          <i class="fas fa-handshake"></i>
-          <h3>יושרה ושקיפות</h3>
-          <p>אנחנו מתנהלים בשקיפות מלאה מול הלקוחות שלנו. המחירים שלנו הוגנים ותחרותיים, ואנחנו תמיד נותנים ייעוץ כנה ואובייקטיבי. אנחנו מאמינים שיחסי אמון ארוכי טווח חשובים יותר מרווח קצר טווח.</p>
+          <div class="value-icon"><i class="fas fa-handshake"></i></div>
+          <h3>אמינות ושקיפות</h3>
+          <p>אנו מאמינים בבניית מערכות יחסים ארוכות טווח עם הלקוחות שלנו, המבוססות על אמון ושקיפות. אנו מתחייבים למחירים הוגנים ושקופים, לזמני אספקה מדויקים, ולמידע מקצועי ואמין. כשאתם עובדים איתנו, אתם יכולים להיות בטוחים שתקבלו בדיוק מה שהובטח לכם.</p>
         </div>
         <div class="value-card">
-          <i class="fas fa-users"></i>
-          <h3>שירות אישי</h3>
-          <p>כל לקוח הוא חשוב לנו, בין אם מדובר בקבלן גדול שמזמין כמויות סיטונאיות או בחובב עשה זאת בעצמך שקונה כמה ברגים. אנחנו נותנים יחס אישי ומקצועי לכל אחד, ועושים הכל כדי להבטיח את שביעות הרצון המלאה.</p>
+          <div class="value-icon"><i class="fas fa-user-friends"></i></div>
+          <h3>שירות אישי ומקצועי</h3>
+          <p>כל לקוח הוא חשוב לנו, בין אם מדובר בקבלן גדול שמזמין כמויות עצומות או בחובב עשה זאת בעצמך שקונה כמה ברגים לפרויקט קטן. אנו מספקים שירות אישי, ייעוץ מקצועי, ותשומת לב לפרטים הקטנים שעושים את ההבדל. הצוות שלנו תמיד זמין לענות על שאלות ולעזור לכם למצוא את הפתרון המושלם.</p>
         </div>
         <div class="value-card">
-          <i class="fas fa-lightbulb"></i>
-          <h3>חדשנות ומקצועיות</h3>
-          <p>אנחנו תמיד מחפשים דרכים חדשות לשפר את השירות והמוצרים שלנו. אנחנו משקיעים בהכשרת הצוות שלנו, מעדכנים את המלאי שלנו במוצרים חדשניים, ומשתמשים בטכנולוגיות מתקדמות לניהול המלאי והאספקות.</p>
-        </div>
-        <div class="value-card">
-          <i class="fas fa-leaf"></i>
-          <h3>אחריות סביבתית</h3>
-          <p>אנחנו מודעים לחשיבות השמירה על הסביבה. אנחנו עובדים עם ספקים שמחויבים לייצור אחראי, משתמשים באריזות ממוחזרות ככל האפשר, ומעודדים את הלקוחות שלנו לבחור במוצרים ידידותיים לסביבה.</p>
-        </div>
-        <div class="value-card">
-          <i class="fas fa-heart"></i>
-          <h3>מעורבות קהילתית</h3>
-          <p>אנחנו גאים להיות חלק מהקהילה המקומית. אנחנו תומכים בפרויקטים קהילתיים, מסייעים לעסקים קטנים ומשפחות, ותורמים למטרות חברתיות שחשובות לנו.</p>
+          <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+          <h3>חדשנות והתפתחות</h3>
+          <p>אנו לא מסתפקים במה שיש. אנו תמיד מחפשים דרכים חדשות לשפר את השירות שלנו, להרחיב את המגוון שלנו, ולהתאים את עצמנו לצרכים המשתנים של השוק. אנו עוקבים אחר הטכנולוגיות החדשות ביותר בתחום, מייבאים מוצרים חדשניים, ומשקיעים בהכשרה מתמדת של הצוות שלנו.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="about-team">
-    <div class="container">
-      <h2>הצוות שלנו</h2>
-      <p>הצלחת אבוטבול ברגים נובעת מהצוות המקצועי והמסור שלנו. כל אחד מחברי הצוות שלנו מביא איתו ניסיון רב שנים בתחום חומרי הבניין והחומרה, ומחויב לספק לכם את השירות הטוב ביותר. אנחנו משקיעים בהכשרה מתמדת של הצוות שלנו, כדי להבטיח שתמיד תקבלו את הייעוץ המקצועי והמדויק ביותר.</p>
-      <p>הצוות שלנו כולל מומחים בתחומים שונים - מומחי ברגים ואומים לבנייה, מומחי חומרי חיבור לקבלנים, מומחי שירות לקוחות ואנשי לוגיסטיקה. כולם עובדים ביחד כדי להבטיח שתקבלו את החוויה הטובה ביותר - מהרגע הראשון של הפנייה ועד אספקת המוצרים ומעבר לכך.</p>
-    </div>
-  </section>
-
-  <section class="about-commitment">
+  <section class="commitment-section">
     <div class="container">
       <h2>המחויבות שלנו אליכם</h2>
-      <div class="commitment-grid">
-        <div class="commitment-item">
-          <i class="fas fa-certificate"></i>
-          <div>
-            <h3>איכות מובטחת</h3>
-            <p>כל המוצרים שלנו עומדים בתקנים הבינלאומיים ומגיעים עם אחריות מלאה</p>
-          </div>
-        </div>
-        <div class="commitment-item">
-          <i class="fas fa-clock"></i>
-          <div>
-            <h3>זמינות 24/7</h3>
-            <p>אנחנו זמינים עבורכם בכל עת לשאלות, ייעוץ ותמיכה</p>
-          </div>
-        </div>
-        <div class="commitment-item">
-          <i class="fas fa-truck"></i>
-          <div>
-            <h3>אספקה מהירה</h3>
-            <p>משלוחים מהירים לכל הארץ, כולל אפשרות למשלוח באותו יום</p>
-          </div>
-        </div>
-        <div class="commitment-item">
-          <i class="fas fa-dollar-sign"></i>
-          <div>
-            <h3>מחירים הוגנים</h3>
-            <p>מחירים תחרותיים וצודקים, עם הנחות מיוחדות ללקוחות קבועים</p>
-          </div>
-        </div>
-        <div class="commitment-item">
-          <i class="fas fa-smile"></i>
-          <div>
-            <h3>שביעות רצון</h3>
-            <p>אנחנו לא מרוצים עד שאתם מרוצים לחלוטין מהשירות והמוצרים</p>
-          </div>
-        </div>
-        <div class="commitment-item">
-          <i class="fas fa-shield-alt"></i>
-          <div>
-            <h3>אמינות</h3>
-            <p>אנחנו עומדים מאחורי המוצרים והשירותים שלנו בכל עת</p>
-          </div>
-        </div>
+      <div class="commitment-text">
+        <p>כחנות ברגים מובילה בישראל, אנו מבינים את האחריות שלנו כלפי הלקוחות שלנו. אנו מתחייבים לספק לכם לא רק מוצרים איכותיים, אלא גם שירות מקצועי, ייעוץ מדויק, ואספקה מהירה ואמינה. אנו רואים בכל פרויקט שאתם מבצעים הזדמנות להיות חלק מההצלחה שלכם.</p>
+        <p>המחויבות שלנו כוללת גם התחייבות לשיפור מתמיד. אנו מקשיבים למשוב של הלקוחות שלנו, לומדים מהטעויות שלנו, ותמיד מחפשים דרכים לשפר את השירות והמוצרים שלנו. אנו מאמינים שהדרך היחידה להצליח בטווח הארוך היא להיות תמיד צעד אחד לפני הציפיות של הלקוחות שלנו.</p>
+        <p>בין אם אתם קבלנים שמחפשים ספק אמין לברגים ואומים לבנייה, בעלי חנויות שזקוקים למלאי מגוון ושוטף, או מנהלי אחזקה שצריכים אספקה מהירה וזמינה - אבוטבול ברגים היא הכתובת הנכונה עבורכם. אנו מזמינים אתכם להצטרף למשפחת הלקוחות שלנו ולחוות בעצמכם את ההבדל שעושה שירות מקצועי ומחויבות אמיתית.</p>
       </div>
     </div>
   </section>
 
-  <section class="about-cta">
+  <section class="cta-section">
     <div class="container">
-      <h2>רוצים להצטרף למשפחת הלקוחות שלנו?</h2>
-      <p>אנחנו מזמינים אתכם להכיר אותנו מקרוב ולחוות את השירות המקצועי והאישי שהפך אותנו לחנות ברגים מובילה בישראל. צרו קשר עכשיו לשיחת ייעוץ ללא עלות.</p>
-      <div class="cta-buttons">
-        <a href="/contact" class="btn-primary">צור קשר</a>
-        <a href="/products" class="btn-secondary">צפה במוצרים</a>
-      </div>
+      <h2>רוצים להכיר אותנו טוב יותר?</h2>
+      <p>צרו קשר עכשיו וגלו איך אנחנו יכולים לעזור לכם</p>
+      <a href="/contact" class="btn-primary">צור קשר</a>
     </div>
   </section>
 
@@ -491,27 +460,27 @@
       <div class="container">
         <div class="footer-main">
           <div class="all-rights-reserved">
-            <p>© 2026 אבוטבול ברגים. כל הזכויות שמורות.</p>
+            <p>© 2025 אבוטבול ברגים. כל הזכויות שמורות.</p>
           </div>
           <div class="footer-social"><a href="https://facebook.com/[facebook_handle]" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
 <a href="https://instagram.com/[instagram_handle]" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
 <a href="https://wa.me/[whatsapp_handle]" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div>
           <div class="footer-legal">
-            <a href="/privacy" aria-label="מדיניות פרטיות">
+            <a href="privacy.html" aria-label="מדיניות פרטיות">
               מדיניות פרטיות
             </a>
             <span class="separator">|</span>
-            <a href="/accessibility" aria-label="נגישות">
+            <a href="accessibility.html" aria-label="נגישות">
               נגישות
             </a>
             <span class="separator">|</span>
-            <a href="/terms" aria-label="תנאי שימוש">
+            <a href="terms.html" aria-label="תנאי שימוש">
               תנאי שימוש
             </a>
           </div>
         </div>
         <div class="zappy-attribution">
-          <p>נוצר באמצעות&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Zappy</a></p>
+          <p>נוצר באמצעות <a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Zappy</a></p>
         </div>
       </div>
     </footer>
@@ -533,40 +502,13 @@
     return; // Exit early in preview mode
   }
   
-  fetch('http://localhost:5001/api/website/' + websiteId + '/tier')
+  fetch('https://qaapi.zappy5.com/api/website/' + websiteId + '/tier')
     .then(function(response) { return response.json(); })
     .then(function(data) {
       if (data.showAttribution) {
         var header = document.getElementById('zappy-attribution-header');
         if (header) {
-          // Use dynamic announcement content if available
-          if (data.announcement && data.announcement.html) {
-            header.innerHTML = data.announcement.html;
-          }
-          // Apply fixed positioning styles inline (works for existing sites too)
-          header.style.cssText = 'position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 99999 !important; display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important; box-sizing: border-box !important;';
-          // Fix child elements that might have position: fixed from old CSS
-          var children = header.querySelectorAll('*');
-          for (var i = 0; i < children.length; i++) {
-            children[i].style.position = 'static';
-          }
-          // Get header height
-          var headerHeight = header.offsetHeight;
-          // Find and fix navbar to be fixed as well (prevents gap at top of page)
-          var navSelectors = ['nav', '.navbar', '.nav'];
-          var navbar = null;
-          for (var j = 0; j < navSelectors.length; j++) {
-            navbar = document.querySelector(navSelectors[j]);
-            if (navbar && navbar.id !== 'zappy-attribution-header') break;
-            navbar = null;
-          }
-          if (navbar) {
-            var navbarHeight = navbar.offsetHeight;
-            navbar.style.cssText += '; position: fixed !important; top: ' + headerHeight + 'px !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 99998 !important;';
-            document.body.style.paddingTop = (headerHeight + navbarHeight) + 'px';
-          } else {
-            document.body.style.paddingTop = headerHeight + 'px';
-          }
+          header.style.display = 'block';
         }
       }
     })

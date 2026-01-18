@@ -1,80 +1,71 @@
-# אבוטבול ברגים — Generative Engine Optimization Map
-
-> A חומרי בניין וחומרה business.
+# Business — Generative Engine Optimization Map
 
 ---
 
 ## Pages
 
 ### דף הבית
-https://-1d7df850.zappy5.app
-אבוטבול ברגים - חנות ברגים מובילה בישראל. מגוון ברגים ואומים לבנייה וחומרי חיבור לקבלנים. שירות מקצועי ואספקה מהירה.
+https://example.com
+חנות ברגים מובילה בישראל לקבלנים, בעלי חנויות ומנהלי אחזקה. מגוון ענק של ברגים ואומים לבנייה במחירים תחרותיים.
 
-### מוצרים
-https://-1d7df850.zappy5.app/products
-גלה את המגוון הרחב של ברגים ואומים לבנייה בחנות ברגים בישראל המובילה. חומרי חיבור לקבלנים במחירים תחרותיים.
+### Products
+https://example.com/products
+המוצרים שלנו - אבוטבול ברגים
 
 ### שירותים
-https://-1d7df850.zappy5.app/services
-שירותים מקצועיים של חנות ברגים בישראל - ייעוץ, אספקה מהירה, הזמנות סיטונאיות וחומרי חיבור לקבלנים. שירות אישי ומקצועי.
+https://example.com/services
+שירותי חנות ברגים בישראל: אספקה מהירה, ייעוץ מקצועי, מחירים סיטונאיים וחומרי חיבור לקבלנים. פתרונות מותאמים אישית לכל פרויקט בנייה.
 
 ### אודות
-https://-1d7df850.zappy5.app/about
-הכירו את אבוטבול ברגים - חנות ברגים בישראל עם מעל 15 שנות ניסיון. מתמחים בברגים ואומים לבנייה וחומרי חיבור לקבלנים.
+https://example.com/about
+הכירו את אבוטבול ברגים - חנות ברגים בישראל עם ניסיון של שנים באספקת חומרי חיבור לקבלנים. סיפור, ערכים ומחויבות לשירות מעולה.
 
 ### צור קשר
-https://-1d7df850.zappy5.app/contact
-צור קשר עם אבוטבול ברגים - חנות ברגים בישראל. קבל ייעוץ מקצועי, הצעת מחיר והזמן ברגים ואומים לבנייה. שירות מהיר ומקצועי.
+https://example.com/contact
+צור קשר עם אבוטבול ברגים לקבלת ייעוץ מקצועי והצעת מחיר. חנות ברגים בישראל המספקת חומרי חיבור לקבלנים ובעלי מקצוע.
 
 ### Cart
-https://-1d7df850.zappy5.app/cart
+https://example.com/cart
 עגלת הקניות שלך
 
 ### Checkout
-https://-1d7df850.zappy5.app/checkout
+https://example.com/checkout
 תשלום
 
 ### Login
-https://-1d7df850.zappy5.app/login
+https://example.com/login
 התחברות לקוחות
 
 ### Return Policy
-https://-1d7df850.zappy5.app/legal/return-policy
+https://example.com/legal/return-policy
 This Return Policy explains how returns are handled at אבוטבול ברגים.
+
+### Product Detail
+https://example.com/product/:slug
+פרטי המוצר - אבוטבול ברגים
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://-1d7df850.zappy5.app/privacy
+https://example.com/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://-1d7df850.zappy5.app/terms
+https://example.com/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://-1d7df850.zappy5.app/accessibility
+https://example.com/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
 
 # Business Context (for LLM understanding)
 
-## About אבוטבול ברגים
-אבוטבול ברגים is a business in the חומרי בניין וחומרה industry.
-
-## Target Audience
-- קבלנים ובונים
-- חובבי עשה זאת בעצמך
-- בעלי חנויות חומרי בניין
-- מנהלי אחזקה
-
-## Industry
-חומרי בניין וחומרה
-
+## About Business
 ---
 
 # Additional Resources
 
-- **Sitemap**: https://-1d7df850.zappy5.app/sitemap.xml
-- **Robots.txt**: https://-1d7df850.zappy5.app/robots.txt
+- **Sitemap**: https://example.com/sitemap.xml
+- **Robots.txt**: https://example.com/robots.txt

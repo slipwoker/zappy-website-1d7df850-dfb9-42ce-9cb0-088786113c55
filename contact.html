@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="he" dir="rtl"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>צור קשר עם חנות ברגים אבוטבול — אבוטבול ברגים</title>
-  <meta name="description" content="צור קשר עם אבוטבול ברגים - חנות ברגים בישראל. קבל ייעוץ מקצועי, הצעת מחיר והזמן ברגים ואומים לבנייה. שירות מהיר ומקצועי.">
-  <meta name="keywords" content="חנות ברגים, חנות ברגים בישראל, ברגים ואומים לבנייה, חומרי חיבור לקבלנים">
+  <title>צור קשר עם חנות הברגים — אבוטבול ברגים</title>
+  <meta name="description" content="צור קשר עם אבוטבול ברגים לקבלת ייעוץ מקצועי והצעת מחיר. חנות ברגים בישראל המספקת חומרי חיבור לקבלנים ובעלי מקצוע.">
+  <meta name="keywords" content="חנות ברגים, צור קשר, חנות ברגים בישראל, חומרי חיבור לקבלנים">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Favicons -->
@@ -17,9 +17,7 @@
 <style>
 /* Zappy Attribution Header Styles */
 .zappy-header {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: static;
   width: 100%;
   background: white;
   box-shadow: 0px 4px 19px 0px rgba(0,0,0,0.04);
@@ -29,13 +27,10 @@
   font-size: 16px;
   color: #4a4a4a;
   line-height: 21px;
-  z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 21px;
-  direction: ltr !important;
-  unicode-bidi: isolate;
 }
 
     .zappy-header p {
@@ -48,7 +43,6 @@
       display: inline-block;
       vertical-align: baseline;
       margin-bottom: 0 !important;
-      direction: ltr !important;
     }
 
 .zappy-header .zappy-link {
@@ -314,20 +308,31 @@
 </head>
 <body>
 
+    <div class="mobile-search-panel" id="mobile-search-panel">
+      <div class="search-wrapper">
+        <input type="text" id="mobile-search-input" placeholder="חיפוש מוצרים..." autocomplete="off">
+        <button class="close-search" id="close-mobile-search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="search-results" id="mobile-search-results"></div>
+    </div>
+  
+<script>window.ZAPPY_WEBSITE_ID = "1d7df850-dfb9-42ce-9cb0-088786113c55";</script>
+
 <!-- Zappy Attribution Header -->
 <div id="zappy-attribution-header" class="zappy-header" style="display: none;">
   <p>Happily created by&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" class="zappy-link">Zappy</a></p>
 </div>
-<script>window.ZAPPY_1d7df850-dfb9-42ce-9cb0-088786113c55 = "1d7df850-dfb9-42ce-9cb0-088786113c55";</script>
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
       <div class="nav-brand">
         <a href="/" class="logo-link">
-          <img class="logo" src="" alt="אבוטבול ברגים">
+          <img src="/assets/logo.webp" alt="אבוטבול ברגים" class="logo" />
         </a>
       </div>
       
-      <button class="mobile-toggle" id="mobileToggle" aria-label="פתח תפריט">
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
         <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
         </svg>
@@ -343,158 +348,108 @@
       </button>
       
       <ul class="nav-menu" id="navMenu">
-        <li><a href="/products">מוצרים</a></li>
+        
+    <li class="menu-item-has-children zappy-products-dropdown">
+      <a href="/products">
+        מוצרים
+        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9l6 6 6-6"></path>
+        </svg>
+      </a>
+      <ul class="sub-menu" id="zappy-nav-category-links">
+        <li><a href="/products">כל המוצרים</a></li>
+        <!-- Categories will be loaded dynamically -->
+      </ul>
+    </li>
+  
         <li><a href="/services">שירותים</a></li>
         <li><a href="/about">אודות</a></li>
-      </ul>
+      <li><a href="/contact">צור קשר</a></li></ul><div class="nav-ecommerce-icons nav-icons-left"><a href="/login" class="login-link nav-login" title="התחברות"><svg class="login-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a><a href="#cart" class="cart-link nav-cart" id="cart-drawer-toggle" title="עגלת קניות"><svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count">0</span></a><div class="nav-search-box">
+    <input type="text" class="nav-search-input" id="nav-search-input" placeholder="חיפוש מוצרים..." autocomplete="off">
+    <button class="nav-search-btn" id="nav-search-btn" title="חיפוש">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    </button>
+    <div class="nav-search-results" id="nav-search-results"></div>
+  </div></div><div class="nav-ecommerce-icons nav-icons-right"><button class="nav-search-toggle" id="mobile-search-toggle" title="חיפוש"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></button></div>
       
-      <a href="/cart" class="cart-link"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a><div class="nav-cta-container">
-        <li class="nav-cta-item">
-          <a href="/contact" class="nav-cta-btn">צור קשר</a>
-        </li>
-      </div>
+      
     </div>
   </nav>
 
+    <nav class="zappy-catalog-menu rtl" id="zappy-catalog-menu" dir="rtl">
+      <div class="catalog-menu-container">
+        <a href="/products" class="catalog-menu-item catalog-menu-all">כל המוצרים</a>
+        <div class="catalog-menu-categories" id="zappy-category-links">
+          <!-- Categories will be loaded dynamically -->
+        </div>
+      </div>
+    </nav>
+  
+
   <section class="page-header">
     <div class="container">
-      <h1>צור קשר עם חנות ברגים אבוטבול</h1>
-      <h3>נשמח לעזור לך עם כל שאלה, הזמנה או ייעוץ מקצועי</h3>
+      <h1>צור קשר עם חנות הברגים המובילה בישראל</h1>
+      <h3>נשמח לענות על כל שאלה ולספק ייעוץ מקצועי</h3>
     </div>
   </section>
 
-  <section class="contact-main">
+  <section class="contact-section">
     <div class="container">
       <div class="contact-grid">
-        <div class="contact-info-section">
-          <h2>פרטי התקשרות</h2>
-          <p>אנחנו זמינים עבורך בכל עת לשאלות, ייעוץ והזמנות. צור קשר בדרך הנוחה לך ביותר.</p>
-          
-          <div class="contact-methods">
-            <div class="contact-method">
-              <div class="contact-icon">
-                <i class="fas fa-phone"></i>
-              </div>
-              <div class="contact-details">
-                <h3>טלפון</h3>
-                <p><a href="tel:[business_phone]">[business_phone]</a></p>
-                <p class="contact-note">זמינים 24/7 לשירותך</p>
-              </div>
-            </div>
-            
-            <div class="contact-method">
-              <div class="contact-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div class="contact-details">
-                <h3>אימייל</h3>
-                <p><a href="mailto:[business_email]">[business_email]</a></p>
-                <p class="contact-note">נענה תוך 24 שעות</p>
-              </div>
-            </div>
-            
-            <div class="contact-method">
-              <div class="contact-icon">
-                <i class="fab fa-whatsapp"></i>
-              </div>
-              <div class="contact-details">
-                <h3>WhatsApp</h3>
-                <p><a href="https://wa.me/[whatsapp_handle]" target="_blank">שלח הודעה</a></p>
-                <p class="contact-note">מענה מהיר ונוח</p>
-              </div>
-            </div>
-            
-            <div class="contact-method">
-              <div class="contact-icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div class="contact-details">
-                <h3>כתובת</h3>
-                <p>[business_address]</p>
-                <p class="contact-note">ניתן להגיע אלינו לאיסוף עצמי</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="business-hours">
-            <h3>שעות פעילות</h3>
-            <ul>
-              <li><strong>ראשון - חמישי:</strong> 08:00 - 18:00</li>
-              <li><strong>שישי:</strong> 08:00 - 14:00</li>
-              <li><strong>שבת:</strong> סגור</li>
-            </ul>
-            <p class="hours-note">שירות הלקוחות זמין 24/7 בטלפון ובWhatsApp</p>
-          </div>
-        </div>
-        
-        <div class="contact-form-section">
+        <div class="contact-form-container">
           <h2>שלח לנו הודעה</h2>
-          <p>מלא את הפרטים ונחזור אליך בהקדם האפשרי</p>
-          
           <form class="contact-form" id="contactForm">
             <div class="form-group">
               <label for="name">שם מלא *</label>
               <input type="text" id="name" name="name" required="">
             </div>
-            
             <div class="form-group">
               <label for="email">אימייל *</label>
               <input type="email" id="email" name="email" required="">
             </div>
-            
             <div class="form-group">
               <label for="phone">טלפון *</label>
               <input type="tel" id="phone" name="phone" required="">
             </div>
-            
             <div class="form-group">
-              <label for="subject">נושא</label>
-              <select id="subject" name="subject">
-                <option value="general">פניה כללית</option>
-                <option value="quote">בקשת הצעת מחיר</option>
-                <option value="order">הזמנה</option>
-                <option value="support">תמיכה טכנית</option>
-                <option value="complaint">תלונה</option>
-              </select>
+              <label for="message">הודעה</label>
+              <textarea id="message" name="message" rows="5"></textarea>
             </div>
-            
-            <div class="form-group">
-              <label for="message">הודעה *</label>
-              <textarea id="message" name="message" rows="5" required=""></textarea>
-            </div>
-            
-            <div class="form-group checkbox-group">
-              <input type="checkbox" id="terms" name="terms" required="">
-              <label for="terms">אני מאשר את <a href="/terms" target="_blank">תנאי השימוש</a> ו<a href="/privacy" target="_blank">מדיניות הפרטיות</a></label>
-            </div>
-            
-            <button type="submit" class="btn-primary">שלח הודעה</button>
+            <button type="submit" class="btn-submit">שלח הודעה</button>
           </form>
         </div>
-      </div>
-      
-      <div class="contact-why">
-        <h2>למה לבחור באבוטבול ברגים?</h2>
-        <div class="why-grid">
-          <div class="why-item">
-            <i class="fas fa-clock"></i>
-            <h3>מענה מהיר</h3>
-            <p>אנחנו מתחייבים לחזור אליך תוך 24 שעות</p>
+
+        <div class="contact-info-container">
+          <h2>פרטי התקשרות</h2>
+          <div class="contact-info">
+            <div class="info-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <h3>טלפון</h3>
+                <p><a href="tel:[business_phone]">[business_phone]</a></p>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h3>אימייל</h3>
+                <p><a href="mailto:[business_email]">[business_email]</a></p>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h3>כתובת</h3>
+                <p>[business_address]</p>
+              </div>
+            </div>
           </div>
-          <div class="why-item">
-            <i class="fas fa-user-tie"></i>
-            <h3>ייעוץ מקצועי</h3>
-            <p>צוות מומחים לשירותך בכל שאלה</p>
-          </div>
-          <div class="why-item">
-            <i class="fas fa-truck"></i>
-            <h3>אספקה מהירה</h3>
-            <p>משלוחים לכל הארץ, כולל באותו יום</p>
-          </div>
-          <div class="why-item">
-            <i class="fas fa-star"></i>
-            <h3>שירות מעולה</h3>
-            <p>אלפי לקוחות מרוצים סומכים עלינו</p>
+
+          <div class="business-hours">
+            <h3>שעות פעילות</h3>
+            <p>ימים א'-ה': 8:00 - 18:00</p>
+            <p>יום ו': 8:00 - 14:00</p>
+            <p>שבת: סגור</p>
           </div>
         </div>
       </div>
@@ -511,27 +466,27 @@
       <div class="container">
         <div class="footer-main">
           <div class="all-rights-reserved">
-            <p>© 2026 אבוטבול ברגים. כל הזכויות שמורות.</p>
+            <p>© 2025 אבוטבול ברגים. כל הזכויות שמורות.</p>
           </div>
           <div class="footer-social"><a href="https://facebook.com/[facebook_handle]" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
 <a href="https://instagram.com/[instagram_handle]" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
 <a href="https://wa.me/[whatsapp_handle]" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div>
           <div class="footer-legal">
-            <a href="/privacy" aria-label="מדיניות פרטיות">
+            <a href="privacy.html" aria-label="מדיניות פרטיות">
               מדיניות פרטיות
             </a>
             <span class="separator">|</span>
-            <a href="/accessibility" aria-label="נגישות">
+            <a href="accessibility.html" aria-label="נגישות">
               נגישות
             </a>
             <span class="separator">|</span>
-            <a href="/terms" aria-label="תנאי שימוש">
+            <a href="terms.html" aria-label="תנאי שימוש">
               תנאי שימוש
             </a>
           </div>
         </div>
         <div class="zappy-attribution">
-          <p>נוצר באמצעות&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Zappy</a></p>
+          <p>נוצר באמצעות <a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Zappy</a></p>
         </div>
       </div>
     </footer>
@@ -553,40 +508,13 @@
     return; // Exit early in preview mode
   }
   
-  fetch('http://localhost:5001/api/website/' + websiteId + '/tier')
+  fetch('https://qaapi.zappy5.com/api/website/' + websiteId + '/tier')
     .then(function(response) { return response.json(); })
     .then(function(data) {
       if (data.showAttribution) {
         var header = document.getElementById('zappy-attribution-header');
         if (header) {
-          // Use dynamic announcement content if available
-          if (data.announcement && data.announcement.html) {
-            header.innerHTML = data.announcement.html;
-          }
-          // Apply fixed positioning styles inline (works for existing sites too)
-          header.style.cssText = 'position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 99999 !important; display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important; box-sizing: border-box !important;';
-          // Fix child elements that might have position: fixed from old CSS
-          var children = header.querySelectorAll('*');
-          for (var i = 0; i < children.length; i++) {
-            children[i].style.position = 'static';
-          }
-          // Get header height
-          var headerHeight = header.offsetHeight;
-          // Find and fix navbar to be fixed as well (prevents gap at top of page)
-          var navSelectors = ['nav', '.navbar', '.nav'];
-          var navbar = null;
-          for (var j = 0; j < navSelectors.length; j++) {
-            navbar = document.querySelector(navSelectors[j]);
-            if (navbar && navbar.id !== 'zappy-attribution-header') break;
-            navbar = null;
-          }
-          if (navbar) {
-            var navbarHeight = navbar.offsetHeight;
-            navbar.style.cssText += '; position: fixed !important; top: ' + headerHeight + 'px !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 99998 !important;';
-            document.body.style.paddingTop = (headerHeight + navbarHeight) + 'px';
-          } else {
-            document.body.style.paddingTop = headerHeight + 'px';
-          }
+          header.style.display = 'block';
         }
       }
     })

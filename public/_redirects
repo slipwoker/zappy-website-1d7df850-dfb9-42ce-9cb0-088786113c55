@@ -9,9 +9,7 @@
 /checkout  /checkout.html  200
 /login  /login.html  200
 /legal/return-policy  /legal/return-policy.html  200
-/privacy  /privacy.html  200
-/accessibility  /accessibility.html  200
-/terms  /terms.html  200
+/product/:slug  /product/slug.html  200
 
 # Legal pages - redirect old .html URLs to friendly URLs
 /privacy.html  /privacy  301
