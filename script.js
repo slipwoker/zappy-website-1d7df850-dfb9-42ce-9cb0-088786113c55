@@ -502,7 +502,7 @@ window.onload = function() {
         const displayPrice = hasSalePrice 
           ? t.currency + parseFloat(p.sale_price).toFixed(2) + '<span class="original-price">' + t.currency + parseFloat(p.price).toFixed(2) + '</span>'
           : t.currency + parseFloat(p.price).toFixed(2);
-        return '<div class="product-card">' +
+        return '<div class="product-card" data-product-id="' + p.id + '">' +
           '<a href="/product/' + (p.slug || p.id) + '" class="product-card-link">' +
             (p.images?.[0] ? '<img src="' + p.images[0] + '" alt="' + p.name + '">' : '<div style="height:200px;background:#f0f0f0;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#999;">📦</div>') +
             '<h3>' + p.name + '</h3>' +
@@ -842,12 +842,16 @@ window.onload = function() {
         // Store pending order data in localStorage for order success page
         const reference = data.data.reference;
         if (reference) {
+          // Ensure numeric values are properly parsed (shipping.price may be string from DB)
+          const subtotalNum = getCartSubtotal();
+          const shippingCostNum = parseFloat(selectedShipping.price) || 0;
+          const discountNum = parseFloat(couponDiscount) || 0;
           const pendingOrderData = {
             cartItems: cart,
-            subtotal: getCartSubtotal(),
-            shippingCost: selectedShipping.price || 0,
-            discount: couponDiscount,
-            total: getCartSubtotal() + (selectedShipping.price || 0) - couponDiscount,
+            subtotal: subtotalNum,
+            shippingCost: shippingCostNum,
+            discount: discountNum,
+            total: subtotalNum + shippingCostNum - discountNum,
             shippingMethodName: selectedShipping.name || '',
             customerName: customerName,
             customerEmail: customerEmail
@@ -2209,7 +2213,7 @@ function renderProductGrid(grid, products, t) {
     const displayPrice = hasSalePrice 
       ? t.currency + parseFloat(p.sale_price).toFixed(2) + '<span class="original-price">' + t.currency + parseFloat(p.price).toFixed(2) + '</span>'
       : t.currency + parseFloat(p.price).toFixed(2);
-    return '<div class="product-card">' +
+    return '<div class="product-card" data-product-id="' + p.id + '">' +
       '<a href="/product/' + (p.slug || p.id) + '" class="product-card-link">' +
         (p.images?.[0] ? '<img src="' + p.images[0] + '" alt="' + p.name + '">' : '<div style="height:200px;background:#f0f0f0;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#999;">📦</div>') +
         '<h3>' + p.name + '</h3>' +
