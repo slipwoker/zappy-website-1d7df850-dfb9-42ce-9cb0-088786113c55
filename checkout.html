@@ -392,33 +392,43 @@
           <div class="checkout-layout">
             <div class="checkout-form">
               <div class="checkout-step">
+                <div class="checkout-login-prompt">
+                  <span>כבר יש לך חשבון?</span>
+                  <a href="/login" class="checkout-login-link">התחבר כאן</a>
+                </div>
                 <h2>פרטי לקוח</h2>
                 <input type="text" placeholder="שם מלא" id="customer-name" required>
                 <input type="email" placeholder="אימייל" id="customer-email" required>
                 <input type="tel" placeholder="טלפון" id="customer-phone" required>
               </div>
               <div class="checkout-step">
-                <h2>כתובת למשלוח</h2>
-                <input type="text" placeholder="רחוב ומספר" id="shipping-street" required>
-                <input type="text" placeholder="עיר" id="shipping-city" required>
-                <input type="text" placeholder="מיקוד" id="shipping-zip">
-              </div>
-              <div class="checkout-step">
                 <h2>שיטת משלוח</h2>
                 <div id="shipping-methods">טוען שיטות משלוח...</div>
               </div>
-              <div class="checkout-step">
-                <h2>תשלום</h2>
-                <div id="payment-container">טוען אפשרויות תשלום...</div>
+              <div class="checkout-step" id="shipping-address-section">
+                <h2>כתובת למשלוח</h2>
+                <input type="text" placeholder="רחוב ומספר" id="shipping-street" required>
+                <input type="text" placeholder="דירה, קומה, כניסה" id="shipping-apartment">
+                <input type="text" placeholder="עיר" id="shipping-city" required>
+                <input type="text" placeholder="מיקוד" id="shipping-zip">
               </div>
             </div>
             <div class="order-summary">
               <h2>סיכום הזמנה</h2>
               <div id="order-items"></div>
               <div class="coupon-section">
-                <div class="coupon-input-row" id="coupon-input-row">
-                  <input type="text" placeholder="הזן קוד קופון" id="coupon-code-input" class="coupon-input">
-                  <button type="button" class="btn btn-secondary coupon-apply-btn" id="apply-coupon-btn">החל</button>
+                <button type="button" class="coupon-toggle-btn" id="coupon-toggle-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6"/><path d="M12 12V3"/><path d="M8 8l4-4 4 4"/></svg>
+                  יש לי קוד קופון
+                </button>
+                <div class="coupon-input-wrapper" id="coupon-input-wrapper" style="display: none;">
+                  <div class="coupon-input-row" id="coupon-input-row">
+                    <input type="text" placeholder="הזן קוד קופון" id="coupon-code-input" class="coupon-input">
+                    <button type="button" class="btn btn-secondary coupon-apply-btn" id="apply-coupon-btn">החל</button>
+                    <button type="button" class="coupon-close-btn" id="coupon-close-btn" title="Close">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    </button>
+                  </div>
                 </div>
                 <div class="coupon-applied-row" id="coupon-applied-row" style="display: none;">
                   <span class="coupon-badge" id="applied-coupon-code"></span>
@@ -432,6 +442,10 @@
                 <div>משלוח: <span id="shipping-cost">₪0</span></div>
                 <div class="discount-row" id="discount-row" style="display: none;">הנחה: <span id="discount">-₪0</span></div>
                 <div class="total">סה"כ לתשלום: <span id="order-total">₪0</span></div>
+              </div>
+              <div class="checkout-step payment-step">
+                <h2>תשלום</h2>
+                <div id="payment-container">טוען אפשרויות תשלום...</div>
               </div>
               <button class="btn btn-primary" id="place-order-btn">בצע הזמנה</button>
             </div>

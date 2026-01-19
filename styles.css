@@ -638,6 +638,8 @@ body.accessibility-widget-visible ._access-menu {
 .checkout-step { margin-bottom: 24px; padding: 24px; background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 12px; }
 .checkout-step h2 { margin-bottom: 16px; font-size: 18px; color: var(--text-color, var(--text, #1f2937)); }
 .checkout-step input { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid var(--border-color, #e5e7eb); border-radius: 8px; background: var(--background-color, var(--background, #fff)); color: var(--text-color, var(--text, #1f2937)); }
+[dir="rtl"] .checkout-step input { text-align: right; }
+[dir="rtl"] .checkout-step input::placeholder { text-align: right; }
 .checkout-step input:focus { outline: none; border-color: var(--primary-color, var(--primary, #ff0083)); box-shadow: 0 0 0 3px rgba(var(--primary-rgb, 255,0,131), 0.1); }
 .order-summary { padding: 24px; background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 12px; height: fit-content; position: sticky; top: 24px; }
 .order-totals { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color, #e5e7eb); }
@@ -1029,7 +1031,8 @@ nav > .nav-ecommerce-icons, header .nav-ecommerce-icons { margin-right: auto; }
 .shipping-info { flex: 1; }
 .shipping-name { font-weight: 600; color: var(--text-color, var(--text, #1f2937)); font-size: 15px; }
 .shipping-desc { color: var(--text-secondary, #6b7280); font-size: 13px; margin-top: 4px; }
-.shipping-address { color: var(--accent-color, var(--accent, #3b82f6)); font-size: 12px; margin-top: 6px; }
+.shipping-address { color: var(--primary-color, var(--primary, #ff0083)); font-size: 12px; margin-top: 6px; font-weight: 500; }
+.shipping-option.selected .shipping-address { color: var(--text-color, var(--text, #1f2937)); }
 .shipping-free-note { color: #10b981; font-size: 12px; margin-top: 4px; font-weight: 500; }
 .shipping-price { font-weight: 700; font-size: 16px; color: var(--text-color, var(--text, #1f2937)); white-space: nowrap; }
 .shipping-price.free { color: #10b981; }
@@ -1047,15 +1050,31 @@ nav > .nav-ecommerce-icons, header .nav-ecommerce-icons { margin-right: auto; }
 .payment-not-configured { display: flex; align-items: center; gap: 12px; padding: 20px; background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 8px; color: var(--text-secondary, #6b7280); font-size: 14px; }
 .payment-not-configured svg { flex-shrink: 0; }
 #payment-container .error { text-align: center; padding: 20px; color: var(--text-secondary, #6b7280); background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 8px; }
+/* Checkout Login Prompt */
+.checkout-login-prompt { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; padding: 12px 16px; background: color-mix(in srgb, var(--primary-color, var(--primary, #ff0083)) 8%, var(--background-color, var(--background, #fff))); border-radius: 8px; font-size: 14px; color: var(--text-secondary, #6b7280); }
+.checkout-login-link { color: var(--primary-color, var(--primary, #ff0083)); font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+.checkout-login-link:hover { opacity: 0.8; text-decoration: underline; }
+/* Payment Step in Order Summary */
+.order-summary .payment-step { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color, #e5e7eb); }
+.order-summary .payment-step h2 { font-size: 1rem; margin-bottom: 12px; }
 /* Coupon Section Styles */
-.coupon-section { margin: 16px 0; padding: 16px; background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 8px; }
-.coupon-input-row { display: flex; gap: 8px; }
+.coupon-section { margin: 16px 0; }
+.coupon-toggle-btn { display: flex; align-items: center; gap: 8px; background: none; border: none; color: var(--primary-color, var(--primary, #ff0083)); font-size: 14px; font-weight: 500; cursor: pointer; padding: 8px 0; transition: opacity 0.2s; }
+.coupon-toggle-btn:hover { opacity: 0.8; }
+.coupon-toggle-btn svg { stroke: var(--primary-color, var(--primary, #ff0083)); }
+.coupon-input-wrapper { margin-top: 12px; padding: 16px; background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 8px; animation: slideDown 0.2s ease-out; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.coupon-input-row { display: flex; gap: 8px; align-items: center; }
 .coupon-input { flex: 1; padding: 10px 12px; border: 1px solid var(--border-color, #e5e7eb); border-radius: 6px; font-size: 14px; background: var(--background-color, var(--background, #fff)); color: var(--text-color, var(--text, #1f2937)); }
 .coupon-input:focus { outline: none; border-color: var(--primary-color, var(--primary, #ff0083)); }
 .coupon-apply-btn { padding: 10px 16px; background: var(--text-color, var(--text, #374151)); color: var(--text-light, #fff); border: none; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; transition: filter 0.2s; white-space: nowrap; }
 .coupon-apply-btn:hover { filter: brightness(0.9); }
 .coupon-apply-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-.coupon-applied-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.coupon-close-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: transparent; border: 1px solid var(--border-color, #e5e7eb); border-radius: 6px; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
+.coupon-close-btn:hover { background: #fef2f2; border-color: #fecaca; }
+.coupon-close-btn:hover svg { stroke: #ef4444; }
+.coupon-close-btn svg { stroke: var(--text-secondary, #9ca3af); }
+.coupon-applied-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; padding: 12px 16px; background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 8px; }
 .coupon-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: color-mix(in srgb, var(--primary-color, var(--primary, #ff0083)) 15%, var(--background-color, var(--background, #fff))); color: var(--primary-color, var(--primary, #ff0083)); border-radius: 6px; font-size: 14px; font-weight: 600; }
 .coupon-badge::before { content: '🎟️'; }
 .coupon-remove-btn { padding: 6px 12px; background: transparent; color: var(--text-secondary, #6b7280); border: 1px solid var(--border-color, #e5e7eb); border-radius: 6px; font-size: 13px; cursor: pointer; transition: all 0.2s; }
