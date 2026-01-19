@@ -1787,8 +1787,9 @@ window.onload = function() {
         return;
       }
       
-      // Basic email validation - just check for @ and a dot after it
-      if (!email.includes('@') || email.indexOf('.') < email.indexOf('@')) {
+      // Basic email validation
+      const emailRegex = /^[^s@]+@[^s@]+.[^s@]+$/;
+      if (!emailRegex.test(email)) {
         alert(isRTL ? 'נא להזין כתובת אימייל תקינה' : 'Please enter a valid email address');
         return;
       }
