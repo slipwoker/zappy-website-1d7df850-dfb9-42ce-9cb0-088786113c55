@@ -429,6 +429,11 @@ window.onload = function() {
   // Fetch settings on page load
   fetchStoreSettings();
   
+  // Helper to strip RTL/LTR control characters that browsers may insert in RTL interfaces
+  function sanitizeEmail(str) {
+    return (str || '').replace(/[‎‏‪-‮⁦-⁩​-‍﻿]/g, '').trim();
+  }
+  
   function saveCart() {
     localStorage.setItem('zappy_cart_' + websiteId, JSON.stringify(cart));
     updateCartCount();
@@ -770,7 +775,7 @@ window.onload = function() {
       
       // Get customer info
       const customerName = document.getElementById('customer-name')?.value?.trim() || '';
-      const customerEmail = document.getElementById('customer-email')?.value?.trim() || '';
+      const customerEmail = sanitizeEmail(document.getElementById('customer-email')?.value || '');
       const customerPhone = document.getElementById('customer-phone')?.value?.trim() || '';
       
       // Validate required fields
@@ -1778,9 +1783,7 @@ window.onload = function() {
     // Send OTP
     sendOtpBtn.addEventListener('click', async function(e) {
       e.preventDefault();
-      const email = loginEmailInput.value.trim();
-      
-      console.log('Login email value:', email, 'Length:', email.length);
+      const email = sanitizeEmail(loginEmailInput.value);
       
       if (!email) {
         alert(isRTL ? 'נא להזין כתובת אימייל' : 'Please enter an email address');
@@ -1788,7 +1791,8 @@ window.onload = function() {
       }
       
       // Basic email validation
-      const emailRegex = /^[^s@]+@[^s@]+.[^s@]+$/;
+      // Note: Using \s instead of s because the backslash gets consumed during JSON serialization
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         alert(isRTL ? 'נא להזין כתובת אימייל תקינה' : 'Please enter a valid email address');
         return;
