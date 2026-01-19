@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>מדיניות החזרות</title>
+  <title>ההזמנה התקבלה!</title>
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -380,14 +380,35 @@
   
   <main class="page-container ecommerce-page">
     
-        <section class="legal-section">
-          <h1>Return Policy</h1>
-          <p>This Return Policy explains how returns are handled at אבוטבול ברגים.</p>
-          <p>Customers are entitled to a cooling-off period as required by local consumer protection laws.</p>
-          <ul>
-            <li><strong>default</strong>: 14 ימים. Items must be in original condition.</li>
-          </ul>
-          <p>For returns, contact אבוטבול ברגים support with your order number.</p>
+        <section class="order-success-section">
+          <div class="order-success-container">
+            <div class="order-success-icon">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h1>ההזמנה התקבלה!</h1>
+            <p class="order-success-subtitle">תודה על ההזמנה</p>
+            
+            <div class="order-number-box" id="order-number-box">
+              <p class="order-number-label">מספר הזמנה</p>
+              <p class="order-number-value" id="order-number-value">טוען פרטי הזמנה...</p>
+            </div>
+            
+            <div class="order-confirmation-message">
+              <p>אישור הזמנה נשלח לאימייל שלך</p>
+              <p>ההזמנה שלך בטיפול. נעדכן אותך כשהמשלוח יצא לדרך.</p>
+            </div>
+
+            <div class="order-details-section" id="order-details-section" style="display: none;">
+              <h2>פרטי ההזמנה</h2>
+              <div class="order-items-list" id="order-items-list"></div>
+              <div class="order-totals-summary" id="order-totals-summary"></div>
+            </div>
+            
+            <a href="/products" class="btn btn-primary continue-shopping-btn">להמשך קניות</a>
+          </div>
         </section>
       
   </main>
