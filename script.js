@@ -484,17 +484,21 @@ window.onload = function() {
         grid.innerHTML = '<div class="empty-cart">' + t.noProducts + '</div>';
         return;
       }
-      grid.innerHTML = data.data.map(p => 
-        '<div class="product-card">' +
+      grid.innerHTML = data.data.map(p => {
+        const hasSalePrice = p.sale_price && parseFloat(p.sale_price) < parseFloat(p.price);
+        const displayPrice = hasSalePrice 
+          ? t.currency + parseFloat(p.sale_price).toFixed(2) + '<span class="original-price">' + t.currency + parseFloat(p.price).toFixed(2) + '</span>'
+          : t.currency + parseFloat(p.price).toFixed(2);
+        return '<div class="product-card">' +
           '<a href="/product/' + (p.slug || p.id) + '" class="product-card-link">' +
             (p.images?.[0] ? '<img src="' + p.images[0] + '" alt="' + p.name + '">' : '<div style="height:200px;background:#f0f0f0;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#999;">📦</div>') +
             '<h3>' + p.name + '</h3>' +
             '<p>' + (p.description || '').substring(0, 100) + '</p>' +
-            '<div class="price">' + t.currency + p.price + '</div>' +
+            '<div class="price">' + displayPrice + '</div>' +
           '</a>' +
           '<button class="add-to-cart" onclick="event.stopPropagation(); window.zappyAddToCart(' + JSON.stringify(p).replace(/"/g, '&quot;') + ')">' + t.addToCart + '</button>' +
-        '</div>'
-      ).join('');
+        '</div>';
+      }).join('');
     } catch (e) {
       console.error('Failed to load products', e);
       grid.innerHTML = '<div class="empty-cart">' + t.errorLoading + '</div>';
@@ -1885,19 +1889,22 @@ window.onload = function() {
   // Update header auth state
   function updateHeaderAuthState() {
     const token = localStorage.getItem('zappy_customer_token');
-    const loginLinks = document.querySelectorAll('a[href="/login"]');
     
-    loginLinks.forEach(function(link) {
-      if (token) {
-        // User is logged in - change to My Account link
+    // Find login links and account links
+    const loginLinks = document.querySelectorAll('a[href="/login"]');
+    const accountLinks = document.querySelectorAll('a[href="/account"]');
+    
+    if (token) {
+      // User is logged in - redirect login links to account page
+      loginLinks.forEach(function(link) {
         link.href = '/account';
-        link.textContent = t.myAccount || 'My Account';
-      } else {
-        // User is not logged in - show login
+      });
+    } else {
+      // User is not logged in - redirect account links to login page
+      accountLinks.forEach(function(link) {
         link.href = '/login';
-        link.textContent = t.login || 'Login';
-      }
-    });
+      });
+    }
   }
   
   function initAll() {
@@ -2052,17 +2059,23 @@ async function loadFeaturedProducts() {
 }
 
 function renderProductGrid(grid, products, t) {
-  grid.innerHTML = products.map(p => 
-    '<div class="product-card">' +
+  console.log('renderProductGrid products:', products.map(p => ({ name: p.name, price: p.price, sale_price: p.sale_price })));
+  grid.innerHTML = products.map(p => {
+    const hasSalePrice = p.sale_price && parseFloat(p.sale_price) < parseFloat(p.price);
+    console.log('Product:', p.name, 'price:', p.price, 'sale_price:', p.sale_price, 'hasSalePrice:', hasSalePrice);
+    const displayPrice = hasSalePrice 
+      ? t.currency + parseFloat(p.sale_price).toFixed(2) + '<span class="original-price">' + t.currency + parseFloat(p.price).toFixed(2) + '</span>'
+      : t.currency + parseFloat(p.price).toFixed(2);
+    return '<div class="product-card">' +
       '<a href="/product/' + (p.slug || p.id) + '" class="product-card-link">' +
         (p.images?.[0] ? '<img src="' + p.images[0] + '" alt="' + p.name + '">' : '<div style="height:200px;background:#f0f0f0;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#999;">📦</div>') +
         '<h3>' + p.name + '</h3>' +
         '<p>' + (p.description || '').substring(0, 80) + (p.description?.length > 80 ? '...' : '') + '</p>' +
-        '<div class="price">' + t.currency + p.price + '</div>' +
+        '<div class="price">' + displayPrice + '</div>' +
       '</a>' +
       '<button class="add-to-cart" onclick="event.stopPropagation(); window.zappyAddToCart(' + JSON.stringify(p).replace(/"/g, '&quot;') + ')">' + t.addToCart + '</button>' +
-    '</div>'
-  ).join('');
+    '</div>';
+  }).join('');
 }
 
 // Load categories into catalog dropdown
