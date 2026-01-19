@@ -1055,6 +1055,10 @@ nav > .nav-ecommerce-icons, header .nav-ecommerce-icons { margin-right: auto; }
 .checkout-login-prompt { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; padding: 12px 16px; background: color-mix(in srgb, var(--primary-color, var(--primary, #ff0083)) 8%, var(--background-color, var(--background, #fff))); border-radius: 8px; font-size: 14px; color: var(--text-secondary, #6b7280); }
 .checkout-login-link { color: var(--primary-color, var(--primary, #ff0083)); font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
 .checkout-login-link:hover { opacity: 0.8; text-decoration: underline; }
+.checkout-logged-in { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; padding: 12px 16px; background: color-mix(in srgb, var(--primary-color, var(--primary, #ff0083)) 8%, var(--background-color, var(--background, #fff))); border-radius: 8px; font-size: 14px; color: var(--text-secondary, #6b7280); }
+.checkout-logged-in-text { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.checkout-logout-btn { border: none; background: transparent; color: var(--primary-color, var(--primary, #ff0083)); font-weight: 600; cursor: pointer; padding: 0; }
+.checkout-logout-btn:hover { text-decoration: underline; }
 /* Payment Step in Order Summary */
 .order-summary .payment-step { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color, #e5e7eb); }
 .order-summary .payment-step h2 { font-size: 1rem; margin-bottom: 12px; }

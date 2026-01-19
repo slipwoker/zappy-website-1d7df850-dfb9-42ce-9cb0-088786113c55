@@ -392,9 +392,17 @@
           <div class="checkout-layout">
             <div class="checkout-form">
               <div class="checkout-step">
-                <div class="checkout-login-prompt">
+                <div class="checkout-login-prompt" id="checkout-login-prompt">
                   <span>כבר יש לך חשבון?</span>
-                  <a href="/login" class="checkout-login-link">התחבר כאן</a>
+                  <a href="/login" class="checkout-login-link" id="checkout-login-link">התחבר כאן</a>
+                </div>
+                <div class="checkout-logged-in" id="checkout-logged-in" style="display: none;">
+                  <div class="checkout-logged-in-text">
+                    <span>מחובר כ:</span>
+                    <strong id="checkout-logged-in-name"></strong>
+                    <span id="checkout-logged-in-email"></span>
+                  </div>
+                  <button type="button" class="checkout-logout-btn" id="checkout-logout-btn">התנתק</button>
                 </div>
                 <h2>פרטי לקוח</h2>
                 <input type="text" placeholder="שם מלא" id="customer-name" required>
