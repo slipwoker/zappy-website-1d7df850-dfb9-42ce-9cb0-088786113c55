@@ -442,6 +442,14 @@ window.onload = function() {
     countElements.forEach(function(el) { el.textContent = count; });
   }
   
+  // Get effective price (sale_price if available and less than price, otherwise price)
+  function getItemPrice(item) {
+    if (item.sale_price && parseFloat(item.sale_price) < parseFloat(item.price)) {
+      return parseFloat(item.sale_price);
+    }
+    return parseFloat(item.price);
+  }
+  
   function addToCart(product) {
     const existing = cart.find(item => item.id === product.id);
     if (existing) {
@@ -519,12 +527,13 @@ window.onload = function() {
     
     let total = 0;
     drawerItems.innerHTML = cart.map(item => {
-      total += item.price * item.quantity;
+      const itemPrice = getItemPrice(item);
+      total += itemPrice * item.quantity;
       return '<div class="cart-item" data-item-id="' + item.id + '">' +
         '<img src="' + (item.images?.[0] || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2270%22 height=%2270%22 viewBox=%220 0 70 70%22%3E%3Crect fill=%22%23f3f4f6%22 width=%2270%22 height=%2270%22/%3E%3Cpath fill=%22%239ca3af%22 d=%22M28 25h14v14H28z%22/%3E%3C/svg%3E') + '" alt="' + item.name + '">' +
         '<div class="cart-item-info">' +
           '<div class="cart-item-name">' + item.name + '</div>' +
-          '<div class="cart-item-price">' + t.currency + (item.price * item.quantity).toFixed(2) + '</div>' +
+          '<div class="cart-item-price">' + t.currency + (itemPrice * item.quantity).toFixed(2) + '</div>' +
           '<div class="cart-item-qty">' +
             '<button onclick="window.zappyUpdateQty(\'' + item.id + '\', -1)">−</button>' +
             '<span>' + item.quantity + '</span>' +
@@ -607,14 +616,15 @@ window.onload = function() {
     
     let total = 0;
     itemsEl.innerHTML = cart.map(item => {
-      total += item.price * item.quantity;
+      const itemPrice = getItemPrice(item);
+      total += itemPrice * item.quantity;
       return '<div class="cart-item">' +
         '<img src="' + (item.images?.[0] || '') + '" alt="' + item.name + '">' +
-        '<div><strong>' + item.name + '</strong><br>' + t.currency + item.price + ' x ' + item.quantity + '</div>' +
+        '<div><strong>' + item.name + '</strong><br>' + t.currency + itemPrice.toFixed(2) + ' x ' + item.quantity + '</div>' +
         '<button onclick="window.zappyRemoveFromCart(\'' + item.id + '\')">' + t.remove + '</button>' +
       '</div>';
     }).join('');
-    if (totalEl) totalEl.textContent = t.currency + total;
+    if (totalEl) totalEl.textContent = t.currency + total.toFixed(2);
   }
   
   // Checkout state
@@ -983,7 +993,7 @@ window.onload = function() {
   
   // Get cart subtotal
   function getCartSubtotal() {
-    return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    return cart.reduce((sum, item) => sum + (getItemPrice(item) * item.quantity), 0);
   }
   
   // Calculate shipping cost
@@ -1051,12 +1061,13 @@ window.onload = function() {
     
     // Render order items
     if (orderItemsEl) {
-      orderItemsEl.innerHTML = cart.map(item => 
-        '<div class="order-item">' +
+      orderItemsEl.innerHTML = cart.map(item => {
+        const itemPrice = getItemPrice(item);
+        return '<div class="order-item">' +
           '<span>' + item.name + ' x ' + item.quantity + '</span>' +
-          '<span>' + t.currency + (item.price * item.quantity).toFixed(2) + '</span>' +
-        '</div>'
-      ).join('');
+          '<span>' + t.currency + (itemPrice * item.quantity).toFixed(2) + '</span>' +
+        '</div>';
+      }).join('');
     }
   }
   
@@ -1599,9 +1610,13 @@ window.onload = function() {
           // Render items
           if (orderData.cartItems && orderData.cartItems.length > 0) {
             orderItemsList.innerHTML = orderData.cartItems.map(function(item) {
+              // Use sale_price if available and less than regular price
+              var itemPrice = (item.sale_price && parseFloat(item.sale_price) < parseFloat(item.price)) 
+                ? parseFloat(item.sale_price) 
+                : parseFloat(item.price);
               return '<div class="order-success-item">' +
                 '<span>' + item.name + ' x ' + item.quantity + '</span>' +
-                '<span>' + t.currency + parseFloat(item.price * item.quantity).toFixed(2) + '</span>' +
+                '<span>' + t.currency + (itemPrice * item.quantity).toFixed(2) + '</span>' +
                 '</div>';
             }).join('');
           }
@@ -2059,10 +2074,8 @@ async function loadFeaturedProducts() {
 }
 
 function renderProductGrid(grid, products, t) {
-  console.log('renderProductGrid products:', products.map(p => ({ name: p.name, price: p.price, sale_price: p.sale_price })));
   grid.innerHTML = products.map(p => {
     const hasSalePrice = p.sale_price && parseFloat(p.sale_price) < parseFloat(p.price);
-    console.log('Product:', p.name, 'price:', p.price, 'sale_price:', p.sale_price, 'hasSalePrice:', hasSalePrice);
     const displayPrice = hasSalePrice 
       ? t.currency + parseFloat(p.sale_price).toFixed(2) + '<span class="original-price">' + t.currency + parseFloat(p.price).toFixed(2) + '</span>'
       : t.currency + parseFloat(p.price).toFixed(2);
