@@ -1,6 +1,7 @@
 # Clean URL redirects for Render static hosting
-# Generated: 2026-01-19T20:11:27.099Z
-# These rewrite rules show clean URLs to users while serving .html files
+# Generated: 2026-01-19T20:28:43.921Z
+# NOTE: Render uses render.yaml for routing, not _redirects (that is Netlify)
+# This file is kept for reference only
 
 /products  /products.html  200!
 /services  /services.html  200!
@@ -12,7 +13,6 @@
 /account  /account.html  200!
 /order-success  /order-success.html  200!
 /legal/return-policy  /legal/return-policy.html  200!
-/product/:slug  /product/slug.html  200!
 
 # Legal pages - redirect old .html URLs to friendly URLs
 /privacy.html  /privacy  301
@@ -21,6 +21,8 @@
 
 /  /index.html  200!
 
+# Dynamic routes - serve dedicated HTML templates for dynamic paths
+/product/*  /product.html  200!
+
 # SPA fallback - serve index.html for all unmatched routes
-# This enables client-side routing for /product/:slug, /checkout, etc.
 /*  /index.html  200
