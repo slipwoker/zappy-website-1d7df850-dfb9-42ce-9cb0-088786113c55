@@ -49,6 +49,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/account</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/order-success</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>weekly</changefreq>

@@ -8,6 +8,7 @@
 /cart  /cart.html  200
 /checkout  /checkout.html  200
 /login  /login.html  200
+/account  /account.html  200
 /order-success  /order-success.html  200
 /legal/return-policy  /legal/return-policy.html  200
 /product/:slug  /product/slug.html  200

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ההזמנה התקבלה!</title>
+  <title>החשבון שלי</title>
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -387,34 +387,44 @@
     </nav>
   <main class="page-container ecommerce-page">
     
-        <section class="order-success-section">
-          <div class="order-success-container">
-            <div class="order-success-icon">
-              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-            </div>
-            <h1>ההזמנה התקבלה!</h1>
-            <p class="order-success-subtitle">תודה על ההזמנה</p>
-            
-            <div class="order-number-box" id="order-number-box">
-              <p class="order-number-label">מספר הזמנה</p>
-              <p class="order-number-value" id="order-number-value">טוען פרטי הזמנה...</p>
-            </div>
-            
-            <div class="order-confirmation-message">
-              <p>אישור הזמנה נשלח לאימייל שלך</p>
-              <p>ההזמנה שלך בטיפול. נעדכן אותך כשהמשלוח יצא לדרך.</p>
-            </div>
-
-            <div class="order-details-section" id="order-details-section" style="display: none;">
-              <h2>פרטי ההזמנה</h2>
-              <div class="order-items-list" id="order-items-list"></div>
-              <div class="order-totals-summary" id="order-totals-summary"></div>
+        <section class="account-section">
+          <div class="account-container">
+            <!-- Not logged in state -->
+            <div class="account-not-logged-in" id="account-not-logged-in">
+              <div class="account-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+              <h1>לא מחובר</h1>
+              <p>יש להתחבר כדי לצפות בחשבון</p>
+              <a href="/login" class="btn btn-primary">התחברות</a>
             </div>
             
-            <a href="/products" class="btn btn-primary continue-shopping-btn">להמשך קניות</a>
+            <!-- Logged in state -->
+            <div class="account-logged-in" id="account-logged-in" style="display: none;">
+              <div class="account-header">
+                <h1>החשבון שלי</h1>
+                <div class="account-info">
+                  <p class="account-welcome">ברוך הבא, <span id="account-email"></span></p>
+                  <button class="btn btn-secondary btn-sm" id="logout-btn">התנתק</button>
+                </div>
+              </div>
+              
+              <div class="orders-section">
+                <h2>ההזמנות שלך</h2>
+                <div class="orders-loading" id="orders-loading">
+                  <div class="loading-spinner"></div>
+                  <p>טוען פרטי הזמנה...</p>
+                </div>
+                <div class="orders-empty" id="orders-empty" style="display: none;">
+                  <p>אין עדיין הזמנות</p>
+                  <a href="/products" class="btn btn-primary">להמשך קניות</a>
+                </div>
+                <div class="orders-list" id="orders-list" style="display: none;"></div>
+              </div>
+            </div>
           </div>
         </section>
       
