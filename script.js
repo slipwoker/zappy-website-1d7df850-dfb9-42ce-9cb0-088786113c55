@@ -1898,14 +1898,24 @@ window.onload = function() {
         
         ordersList.style.display = 'block';
         ordersList.innerHTML = data.data.map(function(order) {
-          const statusKey = 'status' + order.status.charAt(0).toUpperCase() + order.status.slice(1);
-          const statusText = t[statusKey] || order.status;
+          const statusKey = 'status' + (order.payment_status || order.status || 'pending').charAt(0).toUpperCase() + (order.payment_status || order.status || 'pending').slice(1);
+          const statusText = t[statusKey] || order.payment_status || order.status || 'pending';
           const orderDate = new Date(order.created_at).toLocaleDateString(isRTL ? 'he-IL' : 'en-US');
+          
+          // Parse items if it's a JSON string
+          let orderItems = order.items;
+          if (typeof orderItems === 'string') {
+            try { orderItems = JSON.parse(orderItems); } catch(e) { orderItems = []; }
+          }
+          orderItems = orderItems || [];
+          
+          // Get total - try different field names
+          const orderTotal = parseFloat(order.total || order.total_amount || 0);
           
           return '<div class="order-card">' +
             '<div class="order-card-header">' +
               '<span class="order-number">#' + (order.order_number || order.id.slice(0, 8)) + '</span>' +
-              '<span class="order-status status-' + order.status + '">' + statusText + '</span>' +
+              '<span class="order-status status-' + (order.payment_status || order.status) + '">' + statusText + '</span>' +
             '</div>' +
             '<div class="order-card-body">' +
               '<div class="order-info-row">' +
@@ -1914,13 +1924,14 @@ window.onload = function() {
               '</div>' +
               '<div class="order-info-row">' +
                 '<span class="order-label">' + (t.orderTotal || 'Total') + ':</span>' +
-                '<span class="order-value">' + t.currency + parseFloat(order.total_amount || 0).toFixed(2) + '</span>' +
+                '<span class="order-value">' + t.currency + orderTotal.toFixed(2) + '</span>' +
               '</div>' +
-              (order.items ? '<div class="order-items-summary">' +
-                order.items.slice(0, 3).map(function(item) {
-                  return '<span class="order-item-name">' + item.productName + (item.quantity > 1 ? ' x' + item.quantity : '') + '</span>';
+              (orderItems.length > 0 ? '<div class="order-items-summary">' +
+                orderItems.slice(0, 3).map(function(item) {
+                  const itemName = item.name || item.productName || 'Item';
+                  return '<span class="order-item-name">' + itemName + (item.quantity > 1 ? ' x' + item.quantity : '') + '</span>';
                 }).join(', ') +
-                (order.items.length > 3 ? '...' : '') +
+                (orderItems.length > 3 ? '...' : '') +
               '</div>' : '') +
             '</div>' +
           '</div>';
