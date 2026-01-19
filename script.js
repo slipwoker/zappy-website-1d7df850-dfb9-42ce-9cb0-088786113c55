@@ -1559,7 +1559,7 @@ window.onload = function() {
   }
   
   // Initialize order success page
-  function initOrderSuccess() {
+  async function initOrderSuccess() {
     // Only run on order-success page
     const pagePath = window.location.pathname;
     const isPreview = window.location.search.includes('page=');
@@ -1593,12 +1593,48 @@ window.onload = function() {
     const orderDisplay = parts.length >= 3 ? parts[2] : reference;
     orderNumberEl.textContent = '#' + orderDisplay;
     
-    // Try to fetch order details from the API
+    // Confirm/create the order on the server (in case webhook didn't fire)
     const websiteId = window.ZAPPY_WEBSITE_ID;
+    if (websiteId) {
+      try {
+        const confirmRes = await fetch(buildApiUrl('/api/ecommerce/confirm-order/' + encodeURIComponent(reference)), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const confirmData = await confirmRes.json();
+        if (confirmData.success) {
+          console.log('✅ Order confirmed:', confirmData.data);
+          // Update order number to the official one if available
+          if (confirmData.data.orderNumber) {
+            orderNumberEl.textContent = '#' + confirmData.data.orderNumber;
+          }
+        } else {
+          console.warn('Order confirmation response:', confirmData);
+        }
+      } catch (e) {
+        console.error('Failed to confirm order:', e);
+        // Continue anyway - order might have been created by webhook
+      }
+    }
+    
+    // Try to fetch order details from the API
     if (websiteId && orderDetailsSection && orderItemsList) {
-      // Get the pending order data from localStorage (stored before redirect)
+      // First try localStorage (same-domain checkout)
       const pendingOrderKey = 'zappy_pending_order_' + reference;
-      const pendingOrderData = localStorage.getItem(pendingOrderKey);
+      let pendingOrderData = localStorage.getItem(pendingOrderKey);
+      
+      // If not in localStorage, fetch from API (cross-domain checkout)
+      if (!pendingOrderData) {
+        try {
+          const res = await fetch(buildApiUrl('/api/ecommerce/pending-order/' + encodeURIComponent(reference)));
+          const apiData = await res.json();
+          if (apiData.success && apiData.data) {
+            pendingOrderData = JSON.stringify(apiData.data);
+          }
+        } catch (e) {
+          console.error('Failed to fetch pending order from API:', e);
+        }
+      }
       
       if (pendingOrderData) {
         try {
