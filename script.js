@@ -859,7 +859,41 @@ window.onload = function() {
           localStorage.setItem('zappy_pending_order_' + reference, JSON.stringify(pendingOrderData));
         }
         
-        // Redirect to payment page
+        // Check if provider is Green Invoice - show iframe instead of redirect
+        if (data.data.provider === 'greeninvoice') {
+          // Animate out the payment section and button
+          const paymentSection = document.getElementById('checkout-payment-section');
+          const iframeContainer = document.getElementById('greeninvoice-iframe-container');
+          const iframe = document.getElementById('greeninvoice-iframe');
+          
+          if (paymentSection && iframeContainer && iframe) {
+            // Add fade-out animation to payment section
+            paymentSection.classList.add('fade-out');
+            
+            // Show loading state in iframe container
+            iframeContainer.style.display = 'block';
+            iframeContainer.querySelector('.greeninvoice-iframe-wrapper').innerHTML = '<div class="greeninvoice-loading"><div class="greeninvoice-loading-spinner"></div><span>' + (isRTL ? 'טוען עמוד תשלום...' : 'Loading payment page...') + '</span></div>';
+            
+            // Listen for postMessage from iframe in case direct redirect fails
+            window.addEventListener('message', function(event) {
+              if (event.data && event.data.type === 'zappy_order_success' && event.data.url) {
+                window.location.href = event.data.url;
+              }
+            });
+            
+            // After animation, hide payment section and show iframe
+            setTimeout(function() {
+              paymentSection.style.display = 'none';
+              
+              // Create and show the iframe
+              iframeContainer.querySelector('.greeninvoice-iframe-wrapper').innerHTML = '<iframe id="greeninvoice-iframe" src="' + data.data.checkoutUrl + '" frameborder="0" allowpaymentrequest="true" style="width: 100%; height: 600px; border: none;"></iframe>';
+            }, 300);
+            
+            return; // Don't redirect
+          }
+        }
+        
+        // Redirect to payment page (iCount or fallback)
         window.location.href = data.data.checkoutUrl;
         
       } catch (error) {
@@ -1658,6 +1692,23 @@ window.onload = function() {
                                previewPage === 'order-success';
     
     if (!isOrderSuccessPage) return;
+    
+    // Check if we're inside an iframe (e.g., Green Invoice payment iframe)
+    // If so, redirect the parent window to this success page
+    try {
+      if (window.self !== window.top) {
+        // We're inside an iframe - redirect parent to this URL
+        window.top.location.href = window.location.href;
+        return; // Stop execution in iframe
+      }
+    } catch (e) {
+      // Cross-origin iframe access error - try postMessage as fallback
+      try {
+        window.parent.postMessage({ type: 'zappy_order_success', url: window.location.href }, '*');
+      } catch (e2) {
+        console.warn('Could not communicate with parent frame:', e2);
+      }
+    }
     
     const orderNumberEl = document.getElementById('order-number-value');
     const orderDetailsSection = document.getElementById('order-details-section');

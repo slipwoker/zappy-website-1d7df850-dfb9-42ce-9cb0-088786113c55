@@ -451,11 +451,18 @@
                 <div class="discount-row" id="discount-row" style="display: none;">הנחה: <span id="discount">-₪0</span></div>
                 <div class="total">סה"כ לתשלום: <span id="order-total">₪0</span></div>
               </div>
-              <div class="checkout-step payment-step">
-                <h2>תשלום</h2>
-                <div id="payment-container">טוען אפשרויות תשלום...</div>
+              <div id="checkout-payment-section">
+                <div class="checkout-step payment-step">
+                  <h2>תשלום</h2>
+                  <div id="payment-container">טוען אפשרויות תשלום...</div>
+                </div>
+                <button class="btn btn-primary" id="place-order-btn">בצע הזמנה</button>
               </div>
-              <button class="btn btn-primary" id="place-order-btn">בצע הזמנה</button>
+              <div id="greeninvoice-iframe-container" style="display: none;">
+                <div class="greeninvoice-iframe-wrapper">
+                  <iframe id="greeninvoice-iframe" frameborder="0" allowpaymentrequest="true"></iframe>
+                </div>
+              </div>
             </div>
           </div>
         </section>
