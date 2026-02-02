@@ -1,4 +1,6 @@
-# Business — Generative Engine Optimization Map
+# אבוטבול ברגים — Generative Engine Optimization Map
+
+> A חומרי בניין וחומרה business.
 
 ---
 
@@ -74,7 +76,18 @@ Information about WCAG compliance and accessibility features.
 
 # Business Context (for LLM understanding)
 
-## About Business
+## About אבוטבול ברגים
+אבוטבול ברגים is a business in the חומרי בניין וחומרה industry.
+
+## Target Audience
+- קבלנים ובונים
+- חובבי עשה זאת בעצמך
+- בעלי חנויות חומרי בניין
+- מנהלי אחזקה
+
+## Industry
+חומרי בניין וחומרה
+
 ---
 
 # Additional Resources
