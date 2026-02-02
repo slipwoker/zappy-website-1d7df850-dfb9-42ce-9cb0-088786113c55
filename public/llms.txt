@@ -1,6 +1,4 @@
-# אבוטבול ברגים — Generative Engine Optimization Map
-
-> A חומרי בניין וחומרה business.
+# Business — Generative Engine Optimization Map
 
 ---
 
@@ -54,6 +52,10 @@ This Return Policy explains how returns are handled at אבוטבול ברגים
 https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/product/:slug
 פרטי המוצר - אבוטבול ברגים
 
+### Category
+https://zappy-site-1d7df850-dfb9-42ce-9cb0.onrender.com/category/:slug
+מוצרים - אבוטבול ברגים
+
 ## Legal & Policy
 
 ### Privacy Policy
@@ -72,18 +74,7 @@ Information about WCAG compliance and accessibility features.
 
 # Business Context (for LLM understanding)
 
-## About אבוטבול ברגים
-אבוטבול ברגים is a business in the חומרי בניין וחומרה industry.
-
-## Target Audience
-- קבלנים ובונים
-- חובבי עשה זאת בעצמך
-- בעלי חנויות חומרי בניין
-- מנהלי אחזקה
-
-## Industry
-חומרי בניין וחומרה
-
+## About Business
 ---
 
 # Additional Resources

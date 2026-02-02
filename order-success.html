@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl" data-zappy-site-type="ecommerce">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -320,6 +320,9 @@
     <div class="mobile-search-panel" id="mobile-search-panel">
       <div class="search-wrapper">
         <input type="text" id="mobile-search-input" placeholder="חיפוש מוצרים..." autocomplete="off">
+        <button class="search-submit" id="mobile-search-submit" title="חיפוש">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
         <button class="close-search" id="close-mobile-search">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
@@ -440,7 +443,10 @@
             <a href="terms.html" aria-label="תנאי שימוש">
               תנאי שימוש
             </a>
-          </div>
+          <span class="separator">|</span>
+            <a href="/return-policy" aria-label="מדיניות החזרות">
+              מדיניות החזרות
+            </a></div>
         </div>
         <div class="zappy-attribution">
           <p>נוצר באמצעות <a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Zappy</a></p>
@@ -467,6 +473,132 @@
     <a href="/checkout" class="cart-drawer-checkout">המשך לתשלום</a>
   </div>
 </aside>
+  <!-- Mobile Menu Script for E-commerce Pages -->
+  <script>
+  (function() {
+    // Initialize mobile menu toggle for e-commerce pages
+    var mobileToggle = document.querySelector('.mobile-toggle, #mobileToggle');
+    var navMenu = document.querySelector('#navMenu, .nav-menu, .navbar-menu');
+    
+    if (!mobileToggle || !navMenu) return;
+    if (mobileToggle.hasAttribute('data-ecom-init')) return;
+    mobileToggle.setAttribute('data-ecom-init', 'true');
+    
+    mobileToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      var hamburgerIcon = this.querySelector('.hamburger-icon');
+      var closeIcon = this.querySelector('.close-icon');
+      var isActive = navMenu.classList.contains('active');
+      
+      if (isActive) {
+        navMenu.classList.remove('active');
+        navMenu.style.display = '';
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+      } else {
+        navMenu.classList.add('active');
+        navMenu.style.display = 'block';
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'none', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'block', 'important');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+    
+    // Close menu when clicking nav links
+    navMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        var hamburgerIcon = mobileToggle.querySelector('.hamburger-icon');
+        var closeIcon = mobileToggle.querySelector('.close-icon');
+        navMenu.classList.remove('active');
+        navMenu.style.display = '';
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+      });
+    });
+  })();
+  
+  // Search handling for e-commerce pages
+  (function() {
+    // Unified search function that works in both preview and deployed modes
+    function performSearch(query) {
+      if (query.length < 2) return;
+      
+      // Check if we're in preview mode (URL contains preview-fullscreen)
+      var isPreview = window.location.pathname.includes('preview-fullscreen');
+      
+      if (isPreview) {
+        // In preview mode, update the page parameter and add search
+        var url = new URL(window.location.href);
+        url.searchParams.set('page', '/products');
+        url.searchParams.set('search', query);
+        window.location.href = url.toString();
+      } else {
+        // In deployed mode, navigate to products with search
+        window.location.href = '/products?search=' + encodeURIComponent(query);
+      }
+    }
+    
+    // Handle navbar search input
+    var navSearchInput = document.querySelector('.nav-search-input');
+    if (navSearchInput) {
+      navSearchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          performSearch(this.value.trim());
+        }
+      });
+    }
+    
+    // Handle mobile search panel
+    var mobileSearchInput = document.getElementById('mobile-search-input');
+    var mobileSearchPanel = document.getElementById('mobile-search-panel');
+    var closeMobileSearch = document.getElementById('close-mobile-search');
+    var searchToggle = document.querySelector('.nav-search-toggle');
+    
+    // Open mobile search panel
+    if (searchToggle && mobileSearchPanel) {
+      searchToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        mobileSearchPanel.classList.add('active');
+        if (mobileSearchInput) {
+          setTimeout(function() { mobileSearchInput.focus(); }, 100);
+        }
+      });
+    }
+    
+    // Close mobile search panel
+    if (closeMobileSearch && mobileSearchPanel) {
+      closeMobileSearch.addEventListener('click', function() {
+        mobileSearchPanel.classList.remove('active');
+        if (mobileSearchInput) mobileSearchInput.value = '';
+      });
+    }
+    
+    // Handle Enter key on mobile search
+    if (mobileSearchInput) {
+      mobileSearchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          performSearch(this.value.trim());
+        }
+      });
+    }
+    
+    // Handle search query from URL on load
+    var urlParams = new URLSearchParams(window.location.search);
+    var searchQuery = urlParams.get('search');
+    if (searchQuery) {
+      if (navSearchInput) navSearchInput.value = searchQuery;
+      if (mobileSearchInput) mobileSearchInput.value = searchQuery;
+      console.log('[E-COMMERCE] Search query from URL:', searchQuery);
+    }
+  })();
+  </script>
 
     <script id="zappy-mobile-submenu-script">
     (function() {
