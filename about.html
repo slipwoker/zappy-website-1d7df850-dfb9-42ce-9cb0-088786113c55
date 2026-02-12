@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="he" dir="rtl" data-zappy-site-type="ecommerce"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>אודות חנות הברגים המובילה — אבוטבול ברגים</title>
+  <title data-i18n="about_page_title">אודות חנות הברגים המובילה — אבוטבול ברגים</title>
   <meta name="description" content="הכירו את אבוטבול ברגים - חנות ברגים בישראל עם ניסיון של שנים באספקת חומרי חיבור לקבלנים. סיפור, ערכים ומחויבות לשירות מעולה.">
   <meta name="keywords" content="חנות ברגים, חנות ברגים בישראל, חומרי חיבור לקבלנים, ברגים ואומים לבנייה">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -56,10 +56,536 @@
   opacity: 0.7;
 }</style>
     <!-- Cookie Consent -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
     <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
     <!-- Mickidum Accessibility Toolbar -->
     <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+
+    <!-- Iconify for cross-platform flag icons -->
+    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script><style id="zappy-multilang-css">
+/* ============================================
+   DIRECTION OVERRIDE STYLES
+   Only set direction property, NOT text-align
+   This preserves centered elements
+   ============================================ */
+
+/* Base direction for LTR */
+html[dir="ltr"], html[dir="ltr"] body {
+  direction: ltr !important;
+}
+
+html[dir="ltr"] main,
+html[dir="ltr"] article,
+html[dir="ltr"] section,
+html[dir="ltr"] .content,
+html[dir="ltr"] .container,
+html[dir="ltr"] .wrapper {
+  direction: ltr !important;
+}
+
+/* ONLY apply text-align to legal page content that needs LTR alignment */
+html[dir="ltr"] .legal-content,
+html[dir="ltr"] .terms-content,
+html[dir="ltr"] .privacy-content,
+html[dir="ltr"] .legal-content p,
+html[dir="ltr"] .terms-content p,
+html[dir="ltr"] .privacy-content p,
+html[dir="ltr"] .legal-content li,
+html[dir="ltr"] .terms-content li,
+html[dir="ltr"] .privacy-content li {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Base direction for RTL */
+html[dir="rtl"], html[dir="rtl"] body {
+  direction: rtl !important;
+}
+
+html[dir="rtl"] main,
+html[dir="rtl"] article,
+html[dir="rtl"] section,
+html[dir="rtl"] .content,
+html[dir="rtl"] .container,
+html[dir="rtl"] .wrapper {
+  direction: rtl !important;
+}
+
+/* ONLY apply text-align to legal page content that needs RTL alignment */
+html[dir="rtl"] .legal-content,
+html[dir="rtl"] .terms-content,
+html[dir="rtl"] .privacy-content,
+html[dir="rtl"] .legal-content p,
+html[dir="rtl"] .terms-content p,
+html[dir="rtl"] .privacy-content p,
+html[dir="rtl"] .legal-content li,
+html[dir="rtl"] .terms-content li,
+html[dir="rtl"] .privacy-content li {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* V1 site detected - skipping V2 nav fixes to preserve original layout */
+
+/* Language Switcher Container - Fixed Position */
+.zappy-lang-switcher-container {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* RTL: Move to left side */
+html[dir="rtl"] .zappy-lang-switcher-container {
+  right: auto;
+  left: 12px;
+}
+
+/* Language Switcher Styles */
+.lang-switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Language switcher positioning - minimal, only gap spacing */
+/* NOTE: Removed margin-left:auto rules that broke V2 layouts */
+/* V2 layouts handle positioning via flexbox, we just add small gap */
+header .lang-switcher,
+nav .lang-switcher,
+.navbar .lang-switcher {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.lang-switcher-current {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.lang-switcher-current:hover {
+  opacity: 0.7;
+}
+
+/* ===========================================
+   LANGUAGE DROPDOWN POSITIONING
+   CRITICAL: position: absolute !important overrides any
+   mobile responsive CSS that resets absolute positioning
+   to relative. The dropdown MUST be absolutely positioned
+   relative to its parent .lang-switcher.
+   
+   HIGH SPECIFICITY SELECTORS needed to override:
+   [style*="position: absolute"]:not(...) { position: relative !important }
+   That selector has specificity ~0,4,0 so we need 0,5,0+ to win
+   =========================================== */
+.lang-switcher-dropdown,
+.lang-switcher .lang-switcher-dropdown,
+div.lang-switcher-dropdown,
+.nav-cta-container .lang-switcher .lang-switcher-dropdown,
+.navbar .nav-cta-container .lang-switcher-dropdown {
+  position: absolute !important;
+  top: 100% !important;
+  /* Default LTR: align dropdown's left edge to switcher's left edge */
+  left: 0;
+  right: auto;
+  margin-top: 6px;
+  min-width: 150px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  overflow: hidden;
+  z-index: 1002 !important;
+}
+
+/* Ultra-high specificity override for problematic mobile responsive CSS */
+/* The problematic rule [style*="position: absolute"]:not():not():not() has specificity 0,4,0 */
+/* We need 0,5,0+ to win, so we add extra class/attribute selectors */
+.lang-switcher .lang-switcher-dropdown[style*="position: absolute"],
+.lang-switcher .lang-switcher-dropdown[style*="position:absolute"],
+.nav-cta-container .lang-switcher .lang-switcher-dropdown[style],
+.navbar .nav-cta-container .lang-switcher-dropdown[style],
+div.lang-switcher > div.lang-switcher-dropdown[style] {
+  position: absolute !important;
+  top: 100% !important;
+  /* Default LTR: align to left */
+  left: 0;
+  right: auto;
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.15s ease;
+}
+
+html[dir="rtl"] .lang-option {
+  text-align: right;
+}
+
+/* RTL: align dropdown's right edge to switcher's right edge */
+html[dir="rtl"] .lang-switcher-dropdown,
+html[lang="he"] .lang-switcher-dropdown,
+html[lang="ar"] .lang-switcher-dropdown {
+  right: 0;
+  left: auto;
+}
+
+.lang-option:hover {
+  background: #f5f5f5;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .zappy-lang-switcher-container {
+    top: 8px;
+    right: 8px;
+  }
+  
+  html[dir="rtl"] .zappy-lang-switcher-container {
+    right: auto;
+    left: 8px;
+  }
+  
+  .lang-switcher-current {
+    padding: 6px;
+  }
+  
+  .lang-option {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  
+  /* FIX: Prevent lang-switcher-dropdown from extending past viewport in RTL mobile */
+  /* The dropdown was causing horizontal overflow with left: 0 in RTL */
+  html[dir="rtl"] .lang-switcher-dropdown {
+    left: auto !important;
+    right: 0 !important;
+  }
+}
+
+/* ===========================================
+   RTL MOBILE HORIZONTAL OVERFLOW FIX
+   Prevents left whitespace gap in RTL mobile
+   caused by elements extending past viewport
+   =========================================== */
+
+/* Prevent horizontal scroll on RTL pages */
+html[dir="rtl"],
+html[dir="rtl"] body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+/* Ensure carousel containers clip overflow to prevent horizontal scroll */
+.zappy-carousel-container,
+.zappy-carousel-wrapper,
+.benefits-section,
+.testimonials-section,
+[class*="carousel"] {
+  overflow-x: hidden !important;
+}
+
+/* Ensure lang-switcher parent clips its positioned children */
+.lang-switcher {
+  overflow: visible; /* Keep visible for dropdown to show */
+}
+
+/* ===========================================
+   MOBILE NAV BUTTON POSITIONING
+   CSS handles positioning based on html[dir] attribute.
+   This allows dynamic RTL/LTR switching without inline styles.
+   
+   LTR (default): hamburger LEFT (20px), phone RIGHT (20px)
+   RTL: hamburger RIGHT (20px), phone LEFT (20px) - mirrored
+   =========================================== */
+@media (max-width: 768px) {
+  /* Base positioning and visibility for mobile nav buttons */
+  /* CRITICAL: display: flex overrides any desktop display: none rules */
+  .mobile-toggle,
+  html:not([data-zappy-site-type="ecommerce"]) .phone-header-btn {
+    display: flex !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 1001 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+  }
+  
+  /* Phone button color - use accent color for visibility */
+  html:not([data-zappy-site-type="ecommerce"]) .phone-header-btn {
+    color: var(--accent, #f59e0b) !important;
+  }
+  
+  html:not([data-zappy-site-type="ecommerce"]) .phone-header-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+    fill: currentColor !important;
+  }
+  
+  /* LTR positioning (default) - hamburger LEFT, phone RIGHT */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle,
+  html[dir="ltr"] .mobile-toggle {
+    left: 20px !important;
+    right: auto !important;
+  }
+  
+  html:not([data-zappy-site-type="ecommerce"]):not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn,
+  html:not([data-zappy-site-type="ecommerce"])[dir="ltr"] .phone-header-btn {
+    right: 20px !important;
+    left: auto !important;
+  }
+  
+  /* LTR mobile menu slides from LEFT */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu,
+  html[dir="ltr"] .nav-menu {
+    left: 0 !important;
+    right: auto !important;
+  }
+  
+  /* ===========================================
+     MOBILE NAV MENU - VERTICAL LAYOUT FIX
+     CRITICAL: Override any desktop flex-direction: row rules
+     The mobile menu MUST stack vertically (column), not horizontally (row)
+     =========================================== */
+  html[dir="ltr"] .nav-menu,
+  html[dir="ltr"] .nav-menu.active,
+  html[dir="ltr"] #navMenu,
+  html[dir="ltr"] #navMenu.active,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu.active {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  /* RTL mobile menu - also vertical layout */
+  html[dir="rtl"] .nav-menu,
+  html[dir="rtl"] .nav-menu.active,
+  html[dir="rtl"] #navMenu,
+  html[dir="rtl"] #navMenu.active,
+  html[lang="he"] .nav-menu,
+  html[lang="he"] .nav-menu.active,
+  html[lang="ar"] .nav-menu,
+  html[lang="ar"] .nav-menu.active {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  /* LTR mobile menu text alignment - left aligned */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu li,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu a,
+  html[dir="ltr"] .nav-menu li,
+  html[dir="ltr"] .nav-menu a {
+    text-align: left !important;
+  }
+  
+  /* ===========================================
+     LTR MOBILE NAV-CONTAINER LAYOUT FIX
+     V2 sites have nav-container with flex-direction: row-reverse
+     for RTL. For LTR, we need flex-direction: row and centered logo.
+     =========================================== */
+  html[dir="ltr"] .nav-container,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-container {
+    flex-direction: row !important;
+    justify-content: center !important;
+  }
+  
+  /* LTR: Center the logo/nav-brand in mobile navbar */
+  html[dir="ltr"] .nav-brand,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-brand {
+    order: 0 !important;
+    margin: 0 auto !important;
+  }
+  
+  /* RTL: Center the logo/nav-brand in mobile navbar */
+  html[dir="rtl"] .nav-brand,
+  html[lang="he"] .nav-brand,
+  html[lang="ar"] .nav-brand {
+    order: 0 !important;
+    margin: 0 auto !important;
+  }
+  
+  /* RTL lang-switcher dropdown constraint */
+  html[dir="rtl"] .lang-switcher {
+    position: relative;
+  }
+  
+  html[dir="rtl"] .lang-switcher-dropdown {
+    left: auto !important;
+    right: 0 !important;
+    max-width: calc(100vw - 20px);
+  }
+  
+  /* ===========================================
+     RTL MOBILE NAV BUTTON POSITIONING
+     In RTL: hamburger RIGHT, phone LEFT (mirror of LTR)
+     =========================================== */
+  html[dir="rtl"] .mobile-toggle,
+  html[lang="he"] .mobile-toggle,
+  html[lang="ar"] .mobile-toggle {
+    left: auto !important;
+    right: 20px !important;
+  }
+  
+  html[dir="rtl"]:not([data-zappy-site-type="ecommerce"]) .phone-header-btn,
+  html[lang="he"]:not([data-zappy-site-type="ecommerce"]) .phone-header-btn,
+  html[lang="ar"]:not([data-zappy-site-type="ecommerce"]) .phone-header-btn {
+    left: 20px !important;
+    right: auto !important;
+  }
+
+  /* Explicitly hide phone button on e-commerce sites (cleaner than fighting with e-commerce CSS). */
+  html[data-zappy-site-type="ecommerce"] .phone-header-btn {
+    display: none !important;
+  }
+  
+  /* RTL mobile menu slides from RIGHT */
+  html[dir="rtl"] .nav-menu,
+  html[lang="he"] .nav-menu,
+  html[lang="ar"] .nav-menu {
+    left: auto !important;
+    right: 0 !important;
+  }
+  
+  /* ===========================================
+     V2 MOBILE LANGUAGE SWITCHER FIX
+     V2 sites hide .nav-cta-container on mobile but we need
+     the language switcher to remain visible. Position it
+     between the phone button and the hamburger menu.
+     =========================================== */
+  .nav-cta-container {
+    display: flex !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    z-index: 1001 !important;
+  }
+  
+  /* Hide CTA button inside container on mobile */
+  .nav-cta-container .nav-cta-btn,
+  .nav-cta-container > a:not(.lang-option):not(.lang-switcher-current) {
+    display: none !important;
+  }
+  
+  /* Keep language switcher visible and compact */
+  .nav-cta-container .lang-switcher {
+    display: flex !important;
+    margin: 0 !important;
+    width: auto !important;
+    position: relative !important;
+  }
+  
+  /* ===========================================
+     MOBILE LANGUAGE DROPDOWN POSITIONING FIX
+     CRITICAL: Override the mobile responsive CSS that sets
+     [style*="position: absolute"]:not():not():not() { position: relative !important }
+     That rule has specificity 0,4,0 - we need 0,5,0+ to win.
+     The dropdown MUST use position: absolute to appear below the button.
+     =========================================== */
+  .navbar .nav-cta-container .lang-switcher .lang-switcher-dropdown,
+  .nav-cta-container .lang-switcher .lang-switcher-dropdown[style],
+  .lang-switcher .lang-switcher-dropdown[style*="position"],
+  div.lang-switcher > div.lang-switcher-dropdown[style],
+  [class*="lang-switcher"] .lang-switcher-dropdown[style] {
+    position: absolute !important;
+    top: 100% !important;
+    margin-top: 8px !important;
+    min-width: 140px !important;
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    z-index: 1002 !important;
+    /* Override any transform that might affect positioning */
+    transform: none !important;
+  }
+  
+  /* When dropdown is visible, ensure positioning is correct - high specificity */
+  .navbar .nav-cta-container .lang-switcher-dropdown[style*="visibility: visible"],
+  .navbar .nav-cta-container .lang-switcher-dropdown[style*="opacity: 1"],
+  .lang-switcher .lang-switcher-dropdown[style*="visibility: visible"],
+  .lang-switcher .lang-switcher-dropdown[style*="opacity: 1"] {
+    position: absolute !important;
+    top: 100% !important;
+  }
+  
+  /* LTR: dropdown aligns to left - high specificity to override [style*] rules */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .navbar .lang-switcher-dropdown,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .lang-switcher .lang-switcher-dropdown,
+  html[dir="ltr"] .navbar .lang-switcher-dropdown,
+  html[dir="ltr"] .lang-switcher .lang-switcher-dropdown {
+    left: 0 !important;
+    right: auto !important;
+  }
+  
+  /* RTL: dropdown aligns to right - high specificity to override [style*] rules */
+  html[dir="rtl"] .navbar .lang-switcher-dropdown,
+  html[dir="rtl"] .lang-switcher .lang-switcher-dropdown,
+  html[lang="he"] .navbar .lang-switcher-dropdown,
+  html[lang="he"] .lang-switcher .lang-switcher-dropdown,
+  html[lang="ar"] .navbar .lang-switcher-dropdown,
+  html[lang="ar"] .lang-switcher .lang-switcher-dropdown {
+    right: 0 !important;
+    left: auto !important;
+  }
+  
+  /* LTR: position near hamburger (which is at left: 20px), to its right */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-cta-container,
+  html[dir="ltr"] .nav-cta-container {
+    left: 30px !important;
+    right: auto !important;
+  }
+  
+  /* RTL: position near hamburger (which is at right: 20px) */
+  /* nav-cta-container is inside nav-container, so we position it at the right edge */
+  /* of nav-container to get it closer to the hamburger */
+  html[dir="rtl"] .nav-cta-container,
+  html[lang="he"] .nav-cta-container,
+  html[lang="ar"] .nav-cta-container {
+    right: 30px !important;
+    left: auto !important;
+  }
+  
+  /* Language switcher preserves its inline color/fill set during generation */
+}
+
+</style>
 <!-- Zappy Analytics -->
 <script>
 (function() {
@@ -68,7 +594,7 @@
   // Configuration
   var config = {
     websiteId: '1d7df850-dfb9-42ce-9cb0-088786113c55',
-    apiUrl: 'http://localhost:5001/api/analytics/track',
+    apiUrl: 'https://qaapi.zappy5.com/api/analytics/track',
     sessionDuration: 30 * 60 * 1000, // 30 minutes
     visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
     trackPageViews: true,
@@ -304,45 +830,70 @@
       }
       @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
     </style>
+
+    <style id="mobile-lang-menu-deployed-css">
+    @media (max-width: 768px) {
+      .lang-switcher,
+      .nav-cta-container .lang-switcher,
+      .nav-container .lang-switcher,
+      .navbar .lang-switcher,
+      .navbar .nav-cta-container .lang-switcher,
+      .nav-icons-left .lang-switcher,
+      .nav-ecommerce-icons .lang-switcher { display: none !important; }
+      .mobile-lang-menu { width: 100%; border-top: 1px solid rgba(128,128,128,0.2); padding: 8px 0 0 0; margin-top: 8px; }
+      .mobile-lang-toggle { display: flex !important; align-items: center; justify-content: space-between; width: 100%; padding: 12px 16px; background: none; border: none; cursor: pointer; font-size: 15px; color: inherit; font-family: inherit; }
+      .mobile-lang-toggle::after { content: ''; display: inline-block; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform 0.3s ease; margin-left: 8px; }
+      .mobile-lang-toggle.expanded::after { transform: rotate(-135deg); }
+      .mobile-lang-options { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+      .mobile-lang-options.expanded { max-height: 300px; }
+      .mobile-lang-option { display: flex !important; align-items: center; gap: 10px; padding: 10px 24px; text-decoration: none; color: inherit; font-size: 14px; font-family: inherit; }
+      .mobile-lang-option:hover { background: rgba(128,128,128,0.1); }
+      .mobile-lang-option.active { font-weight: 600; opacity: 0.7; pointer-events: none; }
+      .mobile-lang-option img { width: 20px; height: 20px; border-radius: 50%; }
+    }
+    @media (min-width: 769px) {
+      .mobile-lang-menu { display: none !important; }
+    }
+    </style>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 
     <div class="mobile-search-panel" id="mobile-search-panel">
       <div class="search-wrapper">
-        <input type="text" id="mobile-search-input" placeholder="חיפוש מוצרים..." autocomplete="off">
+        <input type="text" id="mobile-search-input" placeholder="חיפוש מוצרים..." autocomplete="off" data-i18n-placeholder="about_placeholder_37">
         <button class="close-search" id="close-mobile-search">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
         </button>
       </div>
       <div class="search-results" id="mobile-search-results"></div>
     </div>
   
-<script>window.ZAPPY_WEBSITE_ID = "1d7df850-dfb9-42ce-9cb0-088786113c55";window.ZAPPY_API_BASE = "http://localhost:5001";</script>
+<script>window.ZAPPY_WEBSITE_ID = "1d7df850-dfb9-42ce-9cb0-088786113c55";window.ZAPPY_API_BASE = "https://qaapi.zappy5.com";</script>
 
 <!-- Zappy Attribution Header -->
 <div id="zappy-attribution-header" class="zappy-header" style="display: none;">
-  <p>Happily created by&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" class="zappy-link">Zappy</a></p>
+  <p data-i18n="about_p_10">Happily created by&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" class="zappy-link" data-i18n="about_link_24">Zappy</a></p>
 </div>
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
       <div class="nav-brand">
         <a href="/" class="logo-link">
-          <img src="/assets/logo.webp" alt="אבוטבול ברגים" class="logo" />
+          <img src="/assets/logo.webp" alt="אבוטבול ברגים" class="logo" data-i18n-alt="about_alt_39">
         </a>
       </div>
       
       <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-        <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <svg class="hamburger-icon" width="24" height="24" viewbox="0 0 24 24" fill="none">
           <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
         </svg>
-        <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+        <svg class="close-icon" width="24" height="24" viewbox="0 0 24 24" fill="none" style="display: none;">
           <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
         </svg>
       </button>
       
       <button class="phone-header-btn" aria-label="התקשר אלינו">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
         </svg>
       </button>
@@ -350,35 +901,43 @@
       <ul class="nav-menu" id="navMenu">
         
     <li class="menu-item-has-children zappy-products-dropdown">
-      <a href="/products">
+      <a href="/products" data-i18n="about_nav_31">
         מוצרים
-        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg class="dropdown-arrow" width="12" height="12" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M6 9l6 6 6-6"></path>
         </svg>
       </a>
       <ul class="sub-menu" id="zappy-nav-category-links">
-        <li><a href="/products">כל המוצרים</a></li>
+        <li><a href="/products" data-i18n="about_nav_32">כל המוצרים</a></li>
         <!-- Categories will be loaded dynamically -->
       </ul>
     </li>
   
-        <li><a href="/services">שירותים</a></li>
-        <li><a href="/about">אודות</a></li>
-      <li><a href="/contact">צור קשר</a></li></ul><div class="nav-ecommerce-icons nav-icons-left"><a href="/login" class="login-link nav-login" title="התחברות"><svg class="login-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a><a href="#cart" class="cart-link nav-cart" id="cart-drawer-toggle" title="עגלת קניות"><svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count">0</span></a><div class="nav-search-box">
+        <li><a href="/services" data-i18n="about_nav_33">שירותים</a></li>
+        <li><a href="/about" data-i18n="about_nav_34">אודות</a></li>
+      <li><a href="/contact" data-i18n="about_nav_35">צור קשר</a></li></ul><div class="nav-ecommerce-icons nav-icons-left"><a href="/login" class="login-link nav-login" title="התחברות"><svg class="login-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a><a href="#cart" class="cart-link nav-cart" id="cart-drawer-toggle" title="עגלת קניות"><svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count">0</span></a><div class="nav-search-box">
     <input type="text" class="nav-search-input" id="nav-search-input" placeholder="חיפוש מוצרים..." autocomplete="off">
     <button class="nav-search-btn" id="nav-search-btn" title="חיפוש">
       <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
     </button>
     <div class="nav-search-results" id="nav-search-results"></div>
   </div></div><div class="nav-ecommerce-icons nav-icons-right"><button class="nav-search-toggle" id="mobile-search-toggle" title="חיפוש"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></button></div>
+<div class="lang-switcher" data-no-icon-edit="true" data-icon-color="currentColor" style="position:relative;display:inline-flex;align-items:center;z-index:1000;margin:0 4px;">
+  <button class="lang-switcher-current" aria-haspopup="true" aria-expanded="false" data-no-icon-edit="true" style="display:flex;align-items:center;padding:8px;background:transparent;border:none;border-radius:6px;cursor:pointer;color:var(--color-text-dark, #1a1a1a);">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="currentColor" style="flex-shrink:0;" data-no-icon-edit="true"><path d="M12.039,.002s0,0,0,0c-.013,0-.026-.002-.039-.002-.005,0-.009,0-.014,0-.002,0-.003,0-.005,0C5.373,.011,0,5.39,0,12s5.383,12,12,12,12-5.383,12-12S18.638,.023,12.039,.002Zm9.747,6.998h-4.814c-1.067-2.669-2.712-4.781-3.731-5.925,3.734,.421,6.901,2.719,8.546,5.925Zm-4.786,5c0,1.407-.292,2.753-.731,4H7.731c-.439-1.247-.731-2.593-.731-4s.292-2.754,.73-4h8.539c.439,1.247,.731,2.593,.731,4Zm-1.122,5c-1.229,2.838-3.116,4.99-3.878,5.788-.762-.798-2.649-2.95-3.878-5.788h7.755ZM8.121,7c1.229-2.841,3.117-4.992,3.879-5.789,.762,.798,2.649,2.95,3.878,5.789h-7.757ZM10.757,1.075c-1.025,1.15-2.668,3.264-3.73,5.925H2.214C3.859,3.795,7.024,1.498,10.757,1.075ZM1.764,8H6.668c-.403,1.247-.668,2.589-.668,4s.265,2.752,.669,4H1.764c-.487-1.242-.764-2.588-.764-4s.277-2.758,.764-4Zm.45,9H7.029c1.067,2.669,2.712,4.781,3.731,5.925-3.734-.421-6.901-2.719-8.546-5.925Zm11.026,5.925c1.019-1.144,2.664-3.257,3.731-5.925h4.814c-1.645,3.206-4.812,5.504-8.546,5.925Zm8.996-6.925h-4.905c.404-1.248,.669-2.589,.669-4s-.265-2.752-.669-4h4.905c.487,1.242,.764,2.588,.764,4s-.277,2.758-.764,4Z"></path></svg>
+  </button>
+  <div class="lang-switcher-dropdown" role="menu" style="position:absolute;top:100%;right:0;margin-top:4px;min-width:140px;background:white;border:1px solid rgba(128,128,128,0.2);border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transform:translateY(-8px);transition:all 0.2s ease;z-index:1001;">
+    <button class="lang-option" data-lang="th" style="display:flex;align-items:center;gap:8px;width:100%;padding:10px 14px;background:none;border:none;text-align:left;cursor:pointer;font-size:14px;color:#333;"><img src="https://api.iconify.design/circle-flags/th.svg" width="20" height="20" alt="" style="display:inline-block;vertical-align:middle;border-radius:50%;"> ไทย</button>
+  </div>
+</div>
       
       
     </div>
   </nav>
 
-    <nav class="zappy-catalog-menu rtl" id="zappy-catalog-menu" dir="rtl">
+    <nav class="zappy-catalog-menu rtl" id="zappy-catalog-menu">
       <div class="catalog-menu-container">
-        <a href="/products" class="catalog-menu-item catalog-menu-all">כל המוצרים</a>
+        <a href="/products" class="catalog-menu-item catalog-menu-all" data-i18n="about_nav_36">כל המוצרים</a>
         <div class="catalog-menu-categories" id="zappy-category-links">
           <!-- Categories will be loaded dynamically -->
         </div>
@@ -388,44 +947,44 @@
 
   <section class="page-header">
     <div class="container">
-      <h1>הסיפור שלנו - חנות ברגים בישראל עם מורשת של איכות</h1>
-      <h3>ניסיון, מקצועיות ומחויבות לשירות מעולה</h3>
+      <h1 data-i18n="about_h1_1">הסיפור שלנו - חנות ברגים בישראל עם מורשת של איכות</h1>
+      <h3 data-i18n="about_h3_5">ניסיון, מקצועיות ומחויבות לשירות מעולה</h3>
     </div>
   </section>
 
   <section class="about-story">
     <div class="container">
       <div class="story-content">
-        <p>אבוטבול ברגים נוסדה מתוך אהבה לתחום חומרי הבניין והחומרה, ומתוך רצון לספק ללקוחות שירות ברמה הגבוהה ביותר. מה שהתחיל כחנות ברגים קטנה הפך עם השנים לאחת מחנויות הברגים המובילות בישראל, המספקת חומרי חיבור לקבלנים, בעלי חנויות ומנהלי אחזקה ברחבי הארץ.</p>
-        <p>לאורך השנים, בנינו מוניטין של אמינות, מקצועיות ושירות מעולה. אנו מאמינים שהצלחה עסקית נמדדת לא רק במכירות, אלא בעיקר בשביעות רצון הלקוחות שלנו. לכן אנו משקיעים זמן ומשאבים רבים בהכשרת הצוות שלנו, בשמירה על מלאי רחב ומגוון, ובמתן שירות אישי ומותאם לכל לקוח.</p>
-        <p>הניסיון שצברנו במהלך השנים מאפשר לנו להבין את הצרכים הייחודיים של כל סגמנט בשוק - מקבלנים גדולים שמנהלים פרויקטים מורכבים, דרך בעלי חנויות קטנות שמחפשים ספק אמין, ועד לחובבי עשה זאת בעצמך שזקוקים לייעוץ והדרכה. אנו גאים ביכולת שלנו לספק פתרונות מותאמים אישית לכל אחד מהלקוחות שלנו.</p>
+        <p data-i18n="about_p_11">אבוטבול ברגים נוסדה מתוך אהבה לתחום חומרי הבניין והחומרה, ומתוך רצון לספק ללקוחות שירות ברמה הגבוהה ביותר. מה שהתחיל כחנות ברגים קטנה הפך עם השנים לאחת מחנויות הברגים המובילות בישראל, המספקת חומרי חיבור לקבלנים, בעלי חנויות ומנהלי אחזקה ברחבי הארץ.</p>
+        <p data-i18n="about_p_12">לאורך השנים, בנינו מוניטין של אמינות, מקצועיות ושירות מעולה. אנו מאמינים שהצלחה עסקית נמדדת לא רק במכירות, אלא בעיקר בשביעות רצון הלקוחות שלנו. לכן אנו משקיעים זמן ומשאבים רבים בהכשרת הצוות שלנו, בשמירה על מלאי רחב ומגוון, ובמתן שירות אישי ומותאם לכל לקוח.</p>
+        <p data-i18n="about_p_13">הניסיון שצברנו במהלך השנים מאפשר לנו להבין את הצרכים הייחודיים של כל סגמנט בשוק - מקבלנים גדולים שמנהלים פרויקטים מורכבים, דרך בעלי חנויות קטנות שמחפשים ספק אמין, ועד לחובבי עשה זאת בעצמך שזקוקים לייעוץ והדרכה. אנו גאים ביכולת שלנו לספק פתרונות מותאמים אישית לכל אחד מהלקוחות שלנו.</p>
       </div>
     </div>
   </section>
 
   <section class="values-section">
     <div class="container">
-      <h2>הערכים שמנחים אותנו</h2>
+      <h2 data-i18n="about_h2_2">הערכים שמנחים אותנו</h2>
       <div class="values-grid">
         <div class="value-card">
           <div class="value-icon"><i class="fas fa-medal"></i></div>
-          <h3>איכות ללא פשרות</h3>
-          <p>אנו מתחייבים לספק רק מוצרים איכותיים מיצרנים מובילים. כל ברג, אום ודסקית שאנו מוכרים עוברים בדיקות איכות קפדניות ועומדים בתקנים הבינלאומיים הגבוהים ביותר. אנו מאמינים שאיכות היא לא רק מילה, אלא התחייבות לטווח ארוך כלפי הלקוחות שלנו.</p>
+          <h3 data-i18n="about_h3_6">איכות ללא פשרות</h3>
+          <p data-i18n="about_p_14">אנו מתחייבים לספק רק מוצרים איכותיים מיצרנים מובילים. כל ברג, אום ודסקית שאנו מוכרים עוברים בדיקות איכות קפדניות ועומדים בתקנים הבינלאומיים הגבוהים ביותר. אנו מאמינים שאיכות היא לא רק מילה, אלא התחייבות לטווח ארוך כלפי הלקוחות שלנו.</p>
         </div>
         <div class="value-card">
           <div class="value-icon"><i class="fas fa-handshake"></i></div>
-          <h3>אמינות ושקיפות</h3>
-          <p>אנו מאמינים בבניית מערכות יחסים ארוכות טווח עם הלקוחות שלנו, המבוססות על אמון ושקיפות. אנו מתחייבים למחירים הוגנים ושקופים, לזמני אספקה מדויקים, ולמידע מקצועי ואמין. כשאתם עובדים איתנו, אתם יכולים להיות בטוחים שתקבלו בדיוק מה שהובטח לכם.</p>
+          <h3 data-i18n="about_h3_7">אמינות ושקיפות</h3>
+          <p data-i18n="about_p_15">אנו מאמינים בבניית מערכות יחסים ארוכות טווח עם הלקוחות שלנו, המבוססות על אמון ושקיפות. אנו מתחייבים למחירים הוגנים ושקופים, לזמני אספקה מדויקים, ולמידע מקצועי ואמין. כשאתם עובדים איתנו, אתם יכולים להיות בטוחים שתקבלו בדיוק מה שהובטח לכם.</p>
         </div>
         <div class="value-card">
           <div class="value-icon"><i class="fas fa-user-friends"></i></div>
-          <h3>שירות אישי ומקצועי</h3>
-          <p>כל לקוח הוא חשוב לנו, בין אם מדובר בקבלן גדול שמזמין כמויות עצומות או בחובב עשה זאת בעצמך שקונה כמה ברגים לפרויקט קטן. אנו מספקים שירות אישי, ייעוץ מקצועי, ותשומת לב לפרטים הקטנים שעושים את ההבדל. הצוות שלנו תמיד זמין לענות על שאלות ולעזור לכם למצוא את הפתרון המושלם.</p>
+          <h3 data-i18n="about_h3_8">שירות אישי ומקצועי</h3>
+          <p data-i18n="about_p_16">כל לקוח הוא חשוב לנו, בין אם מדובר בקבלן גדול שמזמין כמויות עצומות או בחובב עשה זאת בעצמך שקונה כמה ברגים לפרויקט קטן. אנו מספקים שירות אישי, ייעוץ מקצועי, ותשומת לב לפרטים הקטנים שעושים את ההבדל. הצוות שלנו תמיד זמין לענות על שאלות ולעזור לכם למצוא את הפתרון המושלם.</p>
         </div>
         <div class="value-card">
           <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
-          <h3>חדשנות והתפתחות</h3>
-          <p>אנו לא מסתפקים במה שיש. אנו תמיד מחפשים דרכים חדשות לשפר את השירות שלנו, להרחיב את המגוון שלנו, ולהתאים את עצמנו לצרכים המשתנים של השוק. אנו עוקבים אחר הטכנולוגיות החדשות ביותר בתחום, מייבאים מוצרים חדשניים, ומשקיעים בהכשרה מתמדת של הצוות שלנו.</p>
+          <h3 data-i18n="about_h3_9">חדשנות והתפתחות</h3>
+          <p data-i18n="about_p_17">אנו לא מסתפקים במה שיש. אנו תמיד מחפשים דרכים חדשות לשפר את השירות שלנו, להרחיב את המגוון שלנו, ולהתאים את עצמנו לצרכים המשתנים של השוק. אנו עוקבים אחר הטכנולוגיות החדשות ביותר בתחום, מייבאים מוצרים חדשניים, ומשקיעים בהכשרה מתמדת של הצוות שלנו.</p>
         </div>
       </div>
     </div>
@@ -433,20 +992,20 @@
 
   <section class="commitment-section">
     <div class="container">
-      <h2>המחויבות שלנו אליכם</h2>
+      <h2 data-i18n="about_h2_3">המחויבות שלנו אליכם</h2>
       <div class="commitment-text">
-        <p>כחנות ברגים מובילה בישראל, אנו מבינים את האחריות שלנו כלפי הלקוחות שלנו. אנו מתחייבים לספק לכם לא רק מוצרים איכותיים, אלא גם שירות מקצועי, ייעוץ מדויק, ואספקה מהירה ואמינה. אנו רואים בכל פרויקט שאתם מבצעים הזדמנות להיות חלק מההצלחה שלכם.</p>
-        <p>המחויבות שלנו כוללת גם התחייבות לשיפור מתמיד. אנו מקשיבים למשוב של הלקוחות שלנו, לומדים מהטעויות שלנו, ותמיד מחפשים דרכים לשפר את השירות והמוצרים שלנו. אנו מאמינים שהדרך היחידה להצליח בטווח הארוך היא להיות תמיד צעד אחד לפני הציפיות של הלקוחות שלנו.</p>
-        <p>בין אם אתם קבלנים שמחפשים ספק אמין לברגים ואומים לבנייה, בעלי חנויות שזקוקים למלאי מגוון ושוטף, או מנהלי אחזקה שצריכים אספקה מהירה וזמינה - אבוטבול ברגים היא הכתובת הנכונה עבורכם. אנו מזמינים אתכם להצטרף למשפחת הלקוחות שלנו ולחוות בעצמכם את ההבדל שעושה שירות מקצועי ומחויבות אמיתית.</p>
+        <p data-i18n="about_p_18">כחנות ברגים מובילה בישראל, אנו מבינים את האחריות שלנו כלפי הלקוחות שלנו. אנו מתחייבים לספק לכם לא רק מוצרים איכותיים, אלא גם שירות מקצועי, ייעוץ מדויק, ואספקה מהירה ואמינה. אנו רואים בכל פרויקט שאתם מבצעים הזדמנות להיות חלק מההצלחה שלכם.</p>
+        <p data-i18n="about_p_19">המחויבות שלנו כוללת גם התחייבות לשיפור מתמיד. אנו מקשיבים למשוב של הלקוחות שלנו, לומדים מהטעויות שלנו, ותמיד מחפשים דרכים לשפר את השירות והמוצרים שלנו. אנו מאמינים שהדרך היחידה להצליח בטווח הארוך היא להיות תמיד צעד אחד לפני הציפיות של הלקוחות שלנו.</p>
+        <p data-i18n="about_p_20">בין אם אתם קבלנים שמחפשים ספק אמין לברגים ואומים לבנייה, בעלי חנויות שזקוקים למלאי מגוון ושוטף, או מנהלי אחזקה שצריכים אספקה מהירה וזמינה - אבוטבול ברגים היא הכתובת הנכונה עבורכם. אנו מזמינים אתכם להצטרף למשפחת הלקוחות שלנו ולחוות בעצמכם את ההבדל שעושה שירות מקצועי ומחויבות אמיתית.</p>
       </div>
     </div>
   </section>
 
   <section class="cta-section">
     <div class="container">
-      <h2>רוצים להכיר אותנו טוב יותר?</h2>
-      <p>צרו קשר עכשיו וגלו איך אנחנו יכולים לעזור לכם</p>
-      <a href="/contact" class="btn-primary">צור קשר</a>
+      <h2 data-i18n="about_h2_4">רוצים להכיר אותנו טוב יותר?</h2>
+      <p data-i18n="about_p_21">צרו קשר עכשיו וגלו איך אנחנו יכולים לעזור לכם</p>
+      <a href="/contact" class="btn-primary" data-i18n="about_link_25">צור קשר</a>
     </div>
   </section>
 
@@ -460,30 +1019,30 @@
       <div class="container">
         <div class="footer-main">
           <div class="all-rights-reserved">
-            <p>© 2025 אבוטבול ברגים. כל הזכויות שמורות.</p>
+            <p data-i18n="about_p_22">© 2025 אבוטבול ברגים. כל הזכויות שמורות.</p>
           </div>
           <div class="footer-social"><a href="https://facebook.com/[facebook_handle]" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
 <a href="https://instagram.com/[instagram_handle]" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
 <a href="https://wa.me/[whatsapp_handle]" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div>
           <div class="footer-legal">
-            <a href="privacy.html" aria-label="מדיניות פרטיות">
+            <a href="privacy.html" aria-label="מדיניות פרטיות" data-i18n="about_link_26">
               מדיניות פרטיות
             </a>
             <span class="separator">|</span>
-            <a href="accessibility.html" aria-label="נגישות">
+            <a href="accessibility.html" aria-label="נגישות" data-i18n="about_link_27">
               נגישות
             </a>
             <span class="separator">|</span>
-            <a href="terms.html" aria-label="תנאי שימוש">
+            <a href="terms.html" aria-label="תנאי שימוש" data-i18n="about_link_28">
               תנאי שימוש
             </a>
           <span class="separator">|</span>
-            <a href="/return-policy" aria-label="מדיניות החזרות">
+            <a href="/return-policy" aria-label="מדיניות החזרות" data-i18n="about_link_29">
               מדיניות החזרות
             </a></div>
         </div>
         <div class="zappy-attribution">
-          <p>נוצר באמצעות <a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Zappy</a></p>
+          <p data-i18n="about_p_23">נוצר באמצעות <a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;" data-i18n="about_link_30">Zappy</a></p>
         </div>
       </div>
     </footer>
@@ -521,6 +1080,2280 @@
 })();
 </script>
     <div data-integration="accessibility:toolbar"></div>
+
+<!-- i18next Multi-Language Support -->
+<script>
+(function() {
+  // Language resources (inline to avoid CDN dependency)
+  const resources = {
+  "he": {
+    "translation": {
+      "cart_p_3": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "cart_p_4": "נוצר באמצעות Zappy",
+      "cart_h1_1": "עגלת הקניות שלך",
+      "cart_h2_2": "עגלת הקניות שלך",
+      "home_h1_1": "חנות ברגים מובילה בישראל לכל צרכי הבנייה",
+      "home_h2_2": "מוצרים מומלצים",
+      "home_h2_3": "למה לבחור באבוטבול ברגים?",
+      "home_h2_4": "המוצרים המובילים שלנו",
+      "home_h2_5": "השירותים שלנו",
+      "home_h2_6": "למי אנחנו מתאימים?",
+      "home_h2_7": "מוכנים להתחיל?",
+      "home_h3_8": "מגוון ענק של ברגים, אומים וחומרי חיבור לקבלנים ובעלי מקצוע",
+      "home_h3_9": "ברגי נירוסטה",
+      "home_p_18": "Happily created by Zappy",
+      "home_p_19": "אבוטבול ברגים היא חנות ברגים מובילה בישראל המתמחה באספקת חומרי חיבור לקבלנים, בעלי חנויות חומרי בניין ומנהלי אחזקה. אנו מציעים מגוון רחב של ברגים ואומים לבנייה, עם דגש על איכות גבוהה, מחירים תחרותיים ושירות מקצועי. הניסיון שלנו בתחום חומרי הבניין והחומרה מאפשר לנו להבין את הצרכים הייחודיים של כל לקוח ולספק פתרונות מותאמים אישית.",
+      "home_p_20": "בין אם אתם קבלנים המבצעים פרויקטים גדולים, חובבי עשה זאת בעצמך המחפשים חומרים איכוtiים לשיפוץ הבית, או בעלי חנויות המעוניינים בספק אמין - אבוטבול ברגים היא הכתובת המושלמת עבורכם. אנו מתחייבים לאספקה מהירה, ייעוץ מקצועי ומלאי זמין תמיד.",
+      "home_p_21": "מגוון רחב של ברגים מנירוסטה עמידים בפני קורוזיה, מושלמים לשימוש חוץ ובסביבות לחות.",
+      "home_p_22": "ברגים מיוחדים לעבודות בטון, מתאימים לפרויקטים תעשייתיים ובנייה כבדה.",
+      "home_p_23": "ברגים מתקדמים לעבודות נגרות ועץ, במגוון גדלים וסוגים לכל פרויקט.",
+      "home_p_24": "אנו מבינים שזמן הוא כסף בתחום הבנייה. לכן אנו מציעים שירות אספקה מהיר ואמין לכל רחבי הארץ. בין אם אתם זקוקים להזמנה דחופה לאתר בנייה או לאספקה שוטפת לחנות שלכם, אנו כאן כדי לוודא שתקבלו את החומרים שלכם בזמן.",
+      "home_p_25": "השירות שלנו כולל משלוחים מהירים, אפשרות לאיסוף עצמי, וייעוץ טלפוני זמין לכל שאלה. אנו עובדים עם חברות הובלה מובילות כדי להבטיח שהמוצרים יגיעו אליכם בשלמות ובמהירות.",
+      "home_p_26": "הצוות המנוסה שלנו מורכב ממומחים בתחום חומרי הבניין והחומרה, עם ידע עמוק בכל סוגי הברגים והחומרים. אנו מציעים ייעוץ מקצועי חינם לכל לקוח, בין אם אתם קבלנים מנוסים או חובבי עשה זאת בעצמך המתחילים פרויקט חדש.",
+      "home_p_27": "נשמח לעזור לכם לבחור את הברגים והחומרים המתאימים ביותר לפרויקט שלכם, להמליץ על פתרונות חסכוניים ויעילים, ולענות על כל שאלה טכנית. הייעוץ שלנו מבוסס על שנים של ניסיון ועל הכרת השוק הישראלי לעומק.",
+      "home_p_28": "אספקה סדירה של חומרי חיבור לקבלנים לפרויקטים בכל גודל, עם מחירים מיוחדים להזמנות כמות.",
+      "home_p_29": "מגוון רחב של ברגים וחומרים לשיפוצים ביתיים, עם ייעוץ אישי ותמיכה מקצועית.",
+      "home_p_30": "פתרונות אספקה גמישים לבעלי חנויות חומרי בניין, עם מחירים סיטונאיים ושירות אישי.",
+      "home_p_31": "אספקה שוטפת לצרכי אחזקה של מבנים גדולים, עם זמינות מיידית ומשלוחים מהירים.",
+      "home_p_32": "צרו קשר עוד היום לקבלת הצעת מחיר או ייעוץ מקצועי חינם",
+      "home_p_33": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "home_p_34": "נוצר באמצעות Zappy",
+      "login_p_3": "הזן את כתובת האימייל שלך ונשלח לך קוד התחברות",
+      "login_p_4": "הזן את הקוד שנשלח לאימייל שלך",
+      "login_p_5": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "login_p_6": "נוצר באמצעות Zappy",
+      "about_h1_1": "הסיפור שלנו - חנות ברגים בישראל עם מורשת של איכות",
+      "about_h2_2": "הערכים שמנחים אותנו",
+      "about_h2_3": "המחויבות שלנו אליכם",
+      "about_h2_4": "רוצים להכיר אותנו טוב יותר?",
+      "about_h3_5": "ניסיון, מקצועיות ומחויבות לשירות מעולה",
+      "about_h3_6": "איכות ללא פשרות",
+      "about_h3_7": "אמינות ושקיפות",
+      "about_h3_8": "שירות אישי ומקצועי",
+      "about_h3_9": "חדשנות והתפתחות",
+      "about_p_10": "Happily created by Zappy",
+      "about_p_11": "אבוטבול ברגים נוסדה מתוך אהבה לתחום חומרי הבניין והחומרה, ומתוך רצון לספק ללקוחות שירות ברמה הגבוהה ביותר. מה שהתחיל כחנות ברגים קטנה הפך עם השנים לאחת מחנויות הברגים המובילות בישראל, המספקת חומרי חיבור לקבלנים, בעלי חנויות ומנהלי אחזקה ברחבי הארץ.",
+      "about_p_12": "לאורך השנים, בנינו מוניטין של אמינות, מקצועיות ושירות מעולה. אנו מאמינים שהצלחה עסקית נמדדת לא רק במכירות, אלא בעיקר בשביעות רצון הלקוחות שלנו. לכן אנו משקיעים זמן ומשאבים רבים בהכשרת הצוות שלנו, בשמירה על מלאי רחב ומגוון, ובמתן שירות אישי ומותאם לכל לקוח.",
+      "about_p_13": "הניסיון שצברנו במהלך השנים מאפשר לנו להבין את הצרכים הייחודיים של כל סגמנט בשוק - מקבלנים גדולים שמנהלים פרויקטים מורכבים, דרך בעלי חנויות קטנות שמחפשים ספק אמין, ועד לחובבי עשה זאת בעצמך שזקוקים לייעוץ והדרכה. אנו גאים ביכולת שלנו לספק פתרונות מותאמים אישית לכל אחד מהלקוחות שלנו.",
+      "about_p_14": "אנו מתחייבים לספק רק מוצרים איכותיים מיצרנים מובילים. כל ברג, אום ודסקית שאנו מוכרים עוברים בדיקות איכות קפדניות ועומדים בתקנים הבינלאומיים הגבוהים ביותר. אנו מאמינים שאיכות היא לא רק מילה, אלא התחייבות לטווח ארוך כלפי הלקוחות שלנו.",
+      "about_p_15": "אנו מאמינים בבניית מערכות יחסים ארוכות טווח עם הלקוחות שלנו, המבוססות על אמון ושקיפות. אנו מתחייבים למחירים הוגנים ושקופים, לזמני אספקה מדויקים, ולמידע מקצועי ואמין. כשאתם עובדים איתנו, אתם יכולים להיות בטוחים שתקבלו בדיוק מה שהובטח לכם.",
+      "about_p_16": "כל לקוח הוא חשוב לנו, בין אם מדובר בקבלן גדול שמזמין כמויות עצומות או בחובב עשה זאת בעצמך שקונה כמה ברגים לפרויקט קטן. אנו מספקים שירות אישי, ייעוץ מקצועי, ותשומת לב לפרטים הקטנים שעושים את ההבדל. הצוות שלנו תמיד זמין לענות על שאלות ולעזור לכם למצוא את הפתרון המושלם.",
+      "about_p_17": "אנו לא מסתפקים במה שיש. אנו תמיד מחפשים דרכים חדשות לשפר את השירות שלנו, להרחיב את המגוון שלנו, ולהתאים את עצמנו לצרכים המשתנים של השוק. אנו עוקבים אחר הטכנולוגיות החדשות ביותר בתחום, מייבאים מוצרים חדשניים, ומשקיעים בהכשרה מתמדת של הצוות שלנו.",
+      "about_p_18": "כחנות ברגים מובילה בישראל, אנו מבינים את האחריות שלנו כלפי הלקוחות שלנו. אנו מתחייבים לספק לכם לא רק מוצרים איכותיים, אלא גם שירות מקצועי, ייעוץ מדויק, ואספקה מהירה ואמינה. אנו רואים בכל פרויקט שאתם מבצעים הזדמנות להיות חלק מההצלחה שלכם.",
+      "about_p_19": "המחויבות שלנו כוללת גם התחייבות לשיפור מתמיד. אנו מקשיבים למשוב של הלקוחות שלנו, לומדים מהטעויות שלנו, ותמיד מחפשים דרכים לשפר את השירות והמוצרים שלנו. אנו מאמינים שהדרך היחידה להצליח בטווח הארוך היא להיות תמיד צעד אחד לפני הציפיות של הלקוחות שלנו.",
+      "about_p_20": "בין אם אתם קבלנים שמחפשים ספק אמין לברגים ואומים לבנייה, בעלי חנויות שזקוקים למלאי מגוון ושוטף, או מנהלי אחזקה שצריכים אספקה מהירה וזמינה - אבוטבול ברגים היא הכתובת הנכונה עבורכם. אנו מזמינים אתכם להצטרף למשפחת הלקוחות שלנו ולחוות בעצמכם את ההבדל שעושה שירות מקצועי ומחויבות אמיתית.",
+      "about_p_21": "צרו קשר עכשיו וגלו איך אנחנו יכולים לעזור לכם",
+      "about_p_22": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "about_p_23": "נוצר באמצעות Zappy",
+      "home_h3_10": "ברגי בטון",
+      "home_h3_11": "ברגי עץ",
+      "home_h3_12": "אספקה מהירה ואמינה",
+      "home_h3_13": "ייעוץ מקצועי",
+      "home_h3_14": "קבלנים ובונים",
+      "home_h3_15": "חובבי עשה זאת בעצמך",
+      "home_h3_16": "בעלי חנויות",
+      "home_h3_17": "מנהלי אחזקה",
+      "login_h1_1": "התחברות לקוחות",
+      "login_h2_2": "עגלת הקניות שלך",
+      "account_p_8": "יש להתחבר כדי לצפות בחשבון",
+      "account_p_9": "ברוך הבא,",
+      "cart_alt_23": "אבוטבול ברגים",
+      "cart_link_8": "המשך לתשלום",
+      "cart_link_9": "מדיניות פרטיות",
+      "cart_nav_15": "מוצרים",
+      "cart_nav_16": "כל המוצרים",
+      "cart_nav_17": "שירותים",
+      "cart_nav_18": "אודות",
+      "cart_nav_19": "צור קשר",
+      "cart_nav_20": "כל המוצרים",
+      "cart_span_5": "₪0",
+      "cart_span_6": "סה\"כ:",
+      "cart_span_7": "₪0",
+      "contact_p_9": "Happily created by Zappy",
+      "home_alt_53": "אבוטבול ברגים",
+      "home_alt_54": "חנות ברגים מקצועית עם מגוון רחב של חומרי בניין",
+      "home_alt_55": "ברגים ואומים מנירוסטה איכותיים",
+      "home_alt_56": "ברגים לבטון ועבודות בנייה כבדות",
+      "home_alt_57": "ברגים לעץ ועבודות נגרות",
+      "home_alt_58": "משאית משלוחים עם חומרי בניין",
+      "home_alt_59": "ייעוץ מקצועי לקבלנים בחנות ברגים",
+      "home_nav_45": "מוצרים",
+      "home_nav_46": "כל המוצרים",
+      "home_nav_47": "שירותים",
+      "home_nav_48": "אודות",
+      "home_nav_49": "צור קשר",
+      "home_nav_50": "כל המוצרים",
+      "about_alt_39": "אבוטבול ברגים",
+      "about_nav_31": "מוצרים",
+      "about_nav_32": "כל המוצרים",
+      "about_nav_33": "שירותים",
+      "about_nav_34": "אודות",
+      "about_nav_35": "צור קשר",
+      "about_nav_36": "כל המוצרים",
+      "account_h1_1": "לא מחובר",
+      "account_h1_2": "החשבון שלי",
+      "account_h2_3": "פרטים אישיים",
+      "account_h2_4": "כתובות",
+      "account_h2_5": "ההזמנות שלך",
+      "account_h2_6": "עגלת הקניות שלך",
+      "account_h3_7": "הוסף כתובת",
+      "account_p_10": "אין כתובות שמורות",
+      "account_p_11": "טוען פרטי הזמנה...",
+      "account_p_12": "אין עדיין הזמנות",
+      "account_p_13": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "account_p_14": "נוצר באמצעות Zappy",
+      "cart_link_10": "נגישות",
+      "cart_link_11": "תנאי שימוש",
+      "cart_link_12": "מדיניות החזרות",
+      "cart_link_13": "Zappy",
+      "cart_link_14": "המשך לתשלום",
+      "checkout_p_8": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "checkout_p_9": "נוצר באמצעות Zappy",
+      "contact_h1_1": "צור קשר עם חנות הברגים המובילה בישראל",
+      "contact_h2_2": "שלח לנו הודעה",
+      "contact_h2_3": "פרטי התקשרות",
+      "contact_h3_4": "נשמח לענות על כל שאלה ולספק ייעוץ מקצועי",
+      "contact_h3_5": "טלפון",
+      "contact_h3_6": "אימייל",
+      "contact_h3_7": "כתובת",
+      "contact_h3_8": "שעות פעילות",
+      "contact_p_10": "[business_phone]",
+      "contact_p_11": "[business_email]",
+      "contact_p_12": "[business_address]",
+      "contact_p_13": "ימים א'-ה': 8:00 - 18:00",
+      "contact_p_14": "יום ו': 8:00 - 14:00",
+      "contact_p_15": "שבת: סגור",
+      "contact_p_16": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "contact_p_17": "נוצר באמצעות Zappy",
+      "home_link_35": "Zappy",
+      "home_link_36": "קבל הצעת מחיר",
+      "home_link_37": "צפה בכל המוצרים →",
+      "home_link_38": "צפה בכל המוצרים",
+      "home_link_39": "צור קשר עכשיו",
+      "home_link_40": "מדיניות פרטיות",
+      "home_link_41": "נגישות",
+      "home_link_42": "תנאי שימוש",
+      "home_link_43": "מדיניות החזרות",
+      "home_link_44": "Zappy",
+      "login_alt_27": "אבוטבול ברגים",
+      "login_btn_15": "שלח קוד",
+      "login_btn_16": "אמת",
+      "login_link_9": "מדיניות פרטיות",
+      "login_nav_17": "מוצרים",
+      "login_nav_18": "כל המוצרים",
+      "login_nav_19": "שירותים",
+      "login_nav_20": "אודות",
+      "login_nav_21": "צור קשר",
+      "login_nav_22": "כל המוצרים",
+      "login_span_7": "סה\"כ:",
+      "login_span_8": "₪0",
+      "products_p_3": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "products_p_4": "נוצר באמצעות Zappy",
+      "about_link_24": "Zappy",
+      "about_link_25": "צור קשר",
+      "about_link_26": "מדיניות פרטיות",
+      "about_link_27": "נגישות",
+      "about_link_28": "תנאי שימוש",
+      "about_link_29": "מדיניות החזרות",
+      "about_link_30": "Zappy",
+      "cart_title_24": "חיפוש",
+      "cart_title_25": "התחברות",
+      "cart_title_26": "עגלת קניות",
+      "cart_title_27": "חיפוש",
+      "cart_title_28": "חיפוש",
+      "checkout_h1_1": "תשלום",
+      "checkout_h2_2": "פרטי לקוח",
+      "checkout_h2_3": "שיטת משלוח",
+      "checkout_h2_4": "כתובת למשלוח",
+      "checkout_h2_5": "סיכום הזמנה",
+      "checkout_h2_6": "תשלום",
+      "checkout_h2_7": "עגלת הקניות שלך",
+      "home_title_60": "התחברות",
+      "home_title_61": "עגלת קניות",
+      "home_title_62": "חיפוש",
+      "home_title_63": "חיפוש",
+      "login_link_10": "נגישות",
+      "login_link_11": "תנאי שימוש",
+      "login_link_12": "מדיניות החזרות",
+      "login_link_13": "Zappy",
+      "login_link_14": "המשך לתשלום",
+      "products_h1_1": "המוצרים שלנו",
+      "products_h2_2": "עגלת הקניות שלך",
+      "services_h1_1": "שירותי חנות ברגים בישראל ברמה הגבוהה ביותר",
+      "services_h2_2": "אספקה מהירה ואמינה",
+      "services_h2_3": "ייעוץ מקצועי וטכני",
+      "services_h2_4": "מחירים תחרותיים והנחות כמות",
+      "services_h2_5": "מלאי זמין ותמיד במלאי",
+      "services_h2_6": "פתרונות מותאמים אישית",
+      "services_h2_7": "למה לבחור בשירותים שלנו?",
+      "services_h2_8": "מעוניינים בשירותים שלנו?",
+      "services_h3_9": "אספקה מהירה, ייעוץ מקצועי ופתרונות מותאמים אישית לכל לקוח",
+      "services_p_10": "Happily created by Zappy",
+      "services_p_11": "אבוטבול ברגים מציעה לא רק מוצרים איכותיים, אלא גם מגוון רחב של שירותים מקצועיים המותאמים לצרכים הייחודיים של כל לקוח. בין אם אתם קבלנים המנהלים פרויקטים גדולים, בעלי חנויות חומרי בניין, או מנהלי אחזקה במבנים גדולים - אנו מספקים את השירות המקצועי והאמין שאתם זקוקים לו.",
+      "services_p_12": "הניסיון שלנו בתחום חומרי הבניין והחומרה, יחד עם המחויבות שלנו לשירות לקוחות מעולה, הופכים אותנו לשותף האידיאלי לכל פרויקט. אנו מבינים שכל לקוח הוא ייחודי, ולכן אנו מציעים פתרונות מותאמים אישית שמתאימים בדיוק לצרכים שלכם.",
+      "services_p_13": "אנו מבינים שבתחום הבנייה, זמן הוא כסף. עיכובים באספקת חומרי חיבור לקבלנים עלולים לעכב פרויקטים שלמים ולגרום לנזקים כלכליים משמעותיים. לכן אנו מתחייבים לשירות אספקה מהיר, יעיל ואמין שמבטיח שתקבלו את המוצרים שלכם בדיוק כשאתם צריכים אותם.",
+      "services_p_14": "השירות שלנו כולל משלוחים מהירים לכל רחבי הארץ, בדרך כלל תוך 24-48 שעות מרגע ההזמנה. אנו עובדים עם חברות הובלה מובילות ומנוסות שמבטיחות שהמוצרים יגיעו אליכם בשלמות ובזמן. בנוסף, אנו מציעים אפשרות לאיסוף עצמי מהמחסן שלנו למי שמעוניין בכך.",
+      "services_p_15": "עבור לקוחות עסקיים קבועים, אנו מציעים שירותי אספקה שוטפים ומותאמים אישית, כולל אפשרות לאספקות קבועות בתדירות שאתם קובעים. זה מאפשר לכם לתכנן את המלאי שלכם בצורה יעילה ולהימנע ממחסור בחומרים קריטיים.",
+      "services_p_16": "הצוות המנוסה שלנו מורכב ממומחים בתחום חומרי הבניין והחומרה, עם ידע עמוק בכל סוגי הברגים, האומים וחומרי החיבור. אנו מציעים שירות ייעוץ מקצועי חינם לכל לקוח, בין אם אתם קבלנים מנוסים עם שנים של ניסיון או חובבי עשה זאת בעצמך המתחילים פרויקט חדש.",
+      "services_p_17": "הייעוץ שלנו כולל עזרה בבחירת המוצרים המתאימים ביותר לפרויקט שלכם, המלצות על פתרונות חסכוניים ויעילים, וייעוץ טכני בנושאים כמו חוזק חומרים, עמידות בפני קורוזיה, ושיטות התקנה נכונות. אנו גם נשמח לעזור לכם לחשב את כמות החומרים הדרושה לפרויקט שלכם.",
+      "services_p_18": "הייעוץ שלנו מבוסס על שנים של ניסיון בתחום, על הכרת השוק הישראלי לעומק, ועל מעקב אחר הטכנולוגיות והמוצרים החדשים ביותר בתחום. אנו זמינים לייעוץ טלפוני, בדואר אלקטרוני, או במפגש אישי במחסן שלנו.",
+      "services_p_19": "אנו מאמינים שאיכות גבוהה לא חייבת לבוא במחיר גבוה. לכן אנו מציעים מחירים תחרותיים על כל המוצרים שלנו, תוך שמירה על רמת האיכות הגבוהה ביותר. אנו עובדים ישירות עם יצרנים מובילים ומיבואנים, מה שמאפשר לנו להציע מחירים אטרקטיביים במיוחד.",
+      "services_p_20": "עבור קבלנים, בעלי חנויות ומנהלי אחזקה שמזמינים בכמויות גדולות, אנו מציעים מחירים סיטונאיים מיוחדים והנחות כמות משמעותיות. ככל שהכמות גדולה יותר, כך ההנחה משמעותית יותר. זה מאפשר לכם לחסוך כסף משמעותי על פרויקטים גדולים.",
+      "services_p_21": "בנוסף, אנו מציעים תוכניות נאמנות ללקוחות קבועים, עם הנחות מצטברות והטבות מיוחדות. אנו גם מתחייבים להציע מחירים הוגנים ושקופים, ללא עלויות נסתרות או הפתעות לא נעימות.",
+      "services_p_22": "אחד היתרונות הגדולים של העבודה עם אבוטבול ברגים הוא המלאי הרחב והזמין שלנו. אנו שומרים על מלאי גדול של כל המוצרים הפופולריים והנפוצים, כך שתמיד תוכלו למצוא את מה שאתם צריכים. זה חוסך לכם זמן יקר ומאפשר לכם להתקדם בפרויקטים שלכם ללא עיכובים.",
+      "services_p_23": "המחסן שלנו מאורגן בצורה יעילה ומודרנית, עם מערכת ניהול מלאי מתקדמת שמבטיחה שתמיד נדע בדיוק מה יש במלאי ומה צריך להזמין. זה מאפשר לנו לספק שירות מהיר ומדויק, ולהימנע ממצבים של מחסור במוצרים.",
+      "services_p_24": "במקרים נדירים שבהם מוצר מסוים אינו זמין במלאי, אנו מתחייבים להזמין אותו במהירות האפשרית ולעדכן אתכם על זמן האספקה המשוער. אנו גם מציעים שירות של הזמנה מראש למוצרים מיוחדים או בכמויות גדולות במיוחד.",
+      "services_p_25": "אנו מבינים שלפעמים פרויקטים מיוחדים דורשים פתרונות מיוחדים. לכן אנו מציעים שירות של פיתוח פתרונות מותאמים אישית ללקוחות שלנו. בין אם מדובר בברגים בגדלים לא סטנדרטיים, בחומרים מיוחדים, או בחומרי חיבור מותאמים לצרכים ספציפיים - אנו כאן כדי לעזור.",
+      "services_p_26": "הצוות שלנו יעבוד איתכם בשיתוף פעולה הדוק כדי להבין את הצרכים הייחודיים שלכם ולמצוא את הפתרון המושלם. אנו יכולים להזמין מוצרים מיוחדים מיצרנים, לייצר חומרי חיבור בהזמנה אישית, או לספק ייעוץ הנדסי מקצועי לפרויקטים מורכבים.",
+      "services_p_27": "השירות הזה מיועד במיוחד לקבלנים גדולים, חברות בנייה, ומהנדסים המתמודדים עם אתגרים טכניים מורכבים. אנו מתגאים ביכולת שלנו למצוא פתרונות יצירתיים ויעילים גם למצבים הכי מאתגרים.",
+      "services_p_28": "ניסיון של שנים בתחום חומרי הבניין",
+      "services_p_29": "צוות מקצועי ומנוסה תמיד לשירותכם",
+      "services_p_30": "מחירים תחרותיים והנחות כמות",
+      "services_p_31": "אספקה מהירה לכל רחבי הארץ",
+      "services_p_32": "מלאי רחב ותמיד זמין",
+      "services_p_33": "שירות אישי ומותאם לכל לקוח",
+      "services_p_34": "צרו קשר עכשיו לקבלת ייעוץ מקצועי והצעת מחיר מותאמת אישית",
+      "services_p_35": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "services_p_36": "נוצר באמצעות Zappy",
+      "about_title_40": "התחברות",
+      "about_title_41": "עגלת קניות",
+      "about_title_42": "חיפוש",
+      "about_title_43": "חיפוש",
+      "account_alt_58": "אבוטבול ברגים",
+      "account_btn_28": "התנתק",
+      "account_btn_29": "עריכת פרופיל",
+      "account_btn_30": "שמור שינויים",
+      "account_btn_31": "ביטול",
+      "account_btn_32": "הוסף כתובת",
+      "account_btn_33": "&times;",
+      "account_btn_34": "שמור שינויים",
+      "account_btn_35": "ביטול",
+      "account_nav_44": "מוצרים",
+      "account_nav_45": "כל המוצרים",
+      "account_nav_46": "שירותים",
+      "account_nav_47": "אודות",
+      "account_nav_48": "צור קשר",
+      "account_nav_49": "כל המוצרים",
+      "contact_alt_39": "אבוטבול ברגים",
+      "contact_btn_26": "שלח הודעה",
+      "contact_nav_31": "מוצרים",
+      "contact_nav_32": "כל המוצרים",
+      "contact_nav_33": "שירותים",
+      "contact_nav_34": "אודות",
+      "contact_nav_35": "צור קשר",
+      "contact_nav_36": "כל המוצרים",
+      "login_title_28": "חיפוש",
+      "login_title_29": "התחברות",
+      "login_title_30": "עגלת קניות",
+      "login_title_31": "חיפוש",
+      "login_title_32": "חיפוש",
+      "account_link_20": "התחברות",
+      "account_link_21": "להמשך קניות",
+      "account_link_22": "מדיניות פרטיות",
+      "account_link_23": "נגישות",
+      "account_link_24": "תנאי שימוש",
+      "account_link_25": "מדיניות החזרות",
+      "account_link_26": "Zappy",
+      "account_link_27": "המשך לתשלום",
+      "account_span_15": "שם:",
+      "account_span_16": "טלפון:",
+      "account_span_17": "הגדר כברירת מחדל",
+      "account_span_18": "סה\"כ:",
+      "account_span_19": "₪0",
+      "cart_page_title": "עגלת קניות - אבוטבול ברגים",
+      "checkout_alt_49": "אבוטבול ברגים",
+      "checkout_btn_27": "התנתק",
+      "checkout_btn_28": "יש לי קוד קופון",
+      "checkout_btn_29": "החל",
+      "checkout_btn_30": "הסר",
+      "checkout_btn_31": "בצע הזמנה",
+      "checkout_nav_33": "מוצרים",
+      "checkout_nav_34": "כל המוצרים",
+      "checkout_nav_35": "שירותים",
+      "checkout_nav_36": "אודות",
+      "checkout_nav_37": "צור קשר",
+      "checkout_nav_38": "כל המוצרים",
+      "contact_link_18": "Zappy",
+      "contact_link_19": "[business_phone]",
+      "contact_link_20": "[business_email]",
+      "contact_link_21": "מדיניות פרטיות",
+      "contact_link_22": "נגישות",
+      "contact_link_23": "תנאי שימוש",
+      "contact_link_24": "מדיניות החזרות",
+      "contact_link_25": "Zappy",
+      "home_page_title": "מצא את הברגים המושלמים — אבוטבול ברגים",
+      "products_alt_25": "אבוטבול ברגים",
+      "products_btn_13": "הכל",
+      "products_btn_14": "מומלצים",
+      "products_btn_15": "חדשים",
+      "products_btn_16": "מבצעים",
+      "products_link_7": "מדיניות פרטיות",
+      "products_link_8": "נגישות",
+      "products_link_9": "תנאי שימוש",
+      "products_nav_17": "מוצרים",
+      "products_nav_18": "כל המוצרים",
+      "products_nav_19": "שירותים",
+      "products_nav_20": "אודות",
+      "products_nav_21": "צור קשר",
+      "products_nav_22": "כל המוצרים",
+      "products_span_5": "סה\"כ:",
+      "products_span_6": "₪0",
+      "services_alt_52": "אבוטבול ברגים",
+      "services_nav_44": "מוצרים",
+      "services_nav_45": "כל המוצרים",
+      "services_nav_46": "שירותים",
+      "services_nav_47": "אודות",
+      "services_nav_48": "צור קשר",
+      "services_nav_49": "כל המוצרים",
+      "about_page_title": "אודות חנות הברגים המובילה — אבוטבול ברגים",
+      "account_label_36": "שם",
+      "account_label_37": "טלפון",
+      "account_label_38": "שם הכתובת",
+      "account_label_39": "רחוב ומספר",
+      "account_label_40": "דירה, קומה, כניסה",
+      "account_label_41": "עיר",
+      "account_label_42": "מיקוד",
+      "account_label_43": "הגדר כברירת מחדל",
+      "account_title_59": "חיפוש",
+      "account_title_60": "התחברות",
+      "account_title_61": "עגלת קניות",
+      "account_title_62": "חיפוש",
+      "account_title_63": "חיפוש",
+      "checkout_link_20": "התחבר כאן",
+      "checkout_link_21": "מדיניות פרטיות",
+      "checkout_link_22": "נגישות",
+      "checkout_link_23": "תנאי שימוש",
+      "checkout_link_24": "מדיניות החזרות",
+      "checkout_link_25": "Zappy",
+      "checkout_link_26": "המשך לתשלום",
+      "checkout_span_10": "כבר יש לך חשבון?",
+      "checkout_span_11": "מחובר כ:",
+      "checkout_span_12": "₪0",
+      "checkout_span_13": "₪0",
+      "checkout_span_14": "₪0",
+      "checkout_span_15": "-₪0",
+      "checkout_span_16": "₪0",
+      "checkout_span_17": "אני מסכים/ה ל תנאי השימוש",
+      "checkout_span_18": "סה\"כ:",
+      "checkout_span_19": "₪0",
+      "contact_label_27": "שם מלא *",
+      "contact_label_28": "אימייל *",
+      "contact_label_29": "טלפון *",
+      "contact_label_30": "הודעה",
+      "contact_title_40": "התחברות",
+      "contact_title_41": "עגלת קניות",
+      "contact_title_42": "חיפוש",
+      "contact_title_43": "חיפוש",
+      "legal_terms_h1_1": "תנאי שימוש",
+      "legal_terms_h2_2": "1. הגדרות",
+      "legal_terms_h2_3": "2. תיאור השירותים",
+      "legal_terms_h2_4": "3. תנאי השימוש",
+      "legal_terms_h2_5": "4. חובות המשתמש",
+      "legal_terms_h2_6": "5. מדיניות תשלומים והחזרים",
+      "legal_terms_h2_7": "6. הגבלת אחריות",
+      "legal_terms_h2_8": "7. זכויות יוצרים וקניין רוחני",
+      "legal_terms_h2_9": "8. פרטיות",
+      "legal_terms_p_15": "[business_name] מספקת שירותים כלליים דרך האתר. השירותים כפופים לתנאים המפורטים במסמך זה \n            ועשויים להשתנות מעת לעת.",
+      "legal_terms_p_16": "השימוש באתר מותנה בעמידה בתנאים הבאים:",
+      "legal_terms_p_17": "במידה והשירותים כוללים תשלום:",
+      "legal_terms_p_18": "השירותים ניתנים \"כפי שהם\" ללא אחריות מכל סוג. החברה לא תהיה אחראית לנזקים עקיפים, \n            תוצאתיים או מיוחדים הנובעים משימוש באתר, למעט במקרים בהם החוק קובע אחרת.",
+      "legal_terms_p_19": "כל התכנים באתר, כולל טקסטים, תמונות, עיצוב וקוד, מוגנים בזכויות יוצרים השייכות ל[business_name]. \n            אסור לשכפל, להפיץ או לעשות שימוש מסחרי בתכנים ללא אישור בכתב.",
+      "legal_terms_p_20": "איסוף ושימוש במידע אישי כפופים למדיניות הפרטיות שלנו. השימוש באתר מהווה הסכמה \n            למדיניות הפרטיות כפי שמפורט בנפרד.",
+      "legal_terms_p_21": "החברה רשאית לשנות תנאי שימוש אלה בכל עת. שינויים מהותיים יפורסמו באתר עם הודעה מוקדמת \n            של 30 יום. המשך השימוש לאחר השינוי מהווה הסכמה לתנאים החדשים.",
+      "legal_terms_p_22": "החברה רשאית להפסיק או להגביל את השירות בכל עת, לרבות במקרה של הפרת תנאי השימוש. \n            במקרה של סיום השירות, יישמרו הוראות הסעיפים הרלוונטיים.",
+      "legal_terms_p_23": "תנאי שימוש אלה כפופים לחוקי מדינת ישראל. כל סכסוך יידון בבתי המשפט המוסמכים בישראל, \n            תוך מתן עדיפות לבוררות או גישור במידת האפשר.",
+      "legal_terms_p_24": "לשאלות או הבהרות בנוגע לתנאי השימוש:",
+      "login_page_title": "התחברות - אבוטבול ברגים",
+      "products_link_10": "מדיניות החזרות",
+      "products_link_11": "Zappy",
+      "products_link_12": "המשך לתשלום",
+      "services_link_37": "Zappy",
+      "services_link_38": "צור קשר",
+      "services_link_39": "מדיניות פרטיות",
+      "services_link_40": "נגישות",
+      "services_link_41": "תנאי שימוש",
+      "services_link_42": "מדיניות החזרות",
+      "services_link_43": "Zappy",
+      "checkout_label_32": "אני מסכים/ה ל תנאי השימוש",
+      "checkout_title_50": "חיפוש",
+      "checkout_title_51": "התחברות",
+      "checkout_title_52": "עגלת קניות",
+      "checkout_title_53": "חיפוש",
+      "checkout_title_54": "חיפוש",
+      "checkout_title_55": "Close",
+      "legal_terms_h2_10": "9. שינוי תנאי השימוש",
+      "legal_terms_h2_11": "10. סיום השירות",
+      "legal_terms_h2_12": "11. דין חל ויישוב סכסוכים",
+      "legal_terms_h2_13": "12. הוראות כלליות",
+      "legal_terms_h2_14": "13. פרטי יצירת קשר",
+      "legal_terms_li_28": "\"החברה\" - [business_name]",
+      "legal_terms_li_29": "\"המשתמש\" - כל מי שגולש או משתמש באתר",
+      "legal_terms_li_30": "\"השירותים\" - שירותים כלליים הניתנים דרך האתר",
+      "legal_terms_li_31": "השימוש באתר למטרות חוקיות בלבד",
+      "legal_terms_li_32": "אי-הפרעה לפעילות האתר או משתמשים אחרים",
+      "legal_terms_li_33": "אי-העלאת תוכן פוגעני, לא חוקי או מזיק",
+      "legal_terms_li_34": "כיבוד זכויות יוצרים וקניין רוחני",
+      "legal_terms_li_35": "אי-ביצוע פעולות שעלולות לפגוע באבטחת האתר",
+      "legal_terms_li_36": "מתן מידע נכון ומדויק בעת הרשמה או הזמנה",
+      "legal_terms_li_37": "שמירה על סודיות פרטי הגישה לחשבון",
+      "legal_terms_li_38": "הודעה מיידית על כל שימוש לא מורשה בחשבון",
+      "legal_terms_li_39": "עדכון מידע אישי במידת הצורך",
+      "legal_terms_li_40": "התשלומים מבוצעים דרך מערכות בטוחות ומוצפנות",
+      "legal_terms_li_41": "המחירים כוללים מע\"ם כנדרש בחוק",
+      "legal_terms_li_42": "זכות ביטול עסקה תעמוד בהתאם לחוק הגנת הצרכן",
+      "legal_terms_li_43": "החזרים יבוצעו תוך 14 ימי עסקים מאישור הביטול",
+      "legal_terms_li_44": "אם חלק מהתנאים יוכרז כבלתי תקף, יישארו שאר התנאים בתוקף",
+      "legal_terms_li_45": "אי-אכיפה של זכות לא תחשב כוויתור עליה",
+      "legal_terms_li_46": "תנאי השימוש מהווים את מלוא ההסכם בין הצדדים",
+      "legal_terms_li_47": "חברה: [business_name]",
+      "legal_terms_li_48": "אימייל: [business_email]",
+      "legal_terms_li_49": "טלפון: [business_phone]",
+      "legal_terms_li_50": "כתובת: [business_address]",
+      "order_success_p_4": "תודה על ההזמנה",
+      "order_success_p_5": "מספר הזמנה",
+      "order_success_p_6": "טוען פרטי הזמנה...",
+      "order_success_p_7": "אישור הזמנה נשלח לאימייל שלך",
+      "order_success_p_8": "ההזמנה שלך בטיפול. נעדכן אותך כשהמשלוח יצא לדרך.",
+      "order_success_p_9": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "product__slug_p_3": "טוען מוצרים...",
+      "product__slug_p_4": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "product__slug_p_5": "נוצר באמצעות Zappy",
+      "products_title_26": "חיפוש",
+      "products_title_27": "התחברות",
+      "products_title_28": "עגלת קניות",
+      "products_title_29": "חיפוש",
+      "products_title_30": "חיפוש",
+      "return_policy_p_7": "עדכון אחרון: 3.2.2026",
+      "return_policy_p_8": "אבוטבול ברגים מחויבת לשביעות רצון לקוחותיה. מדיניות זו מפרטת את זכויותיכם להחזרת מוצרים בהתאם לחוק הגנת הצרכן.",
+      "return_policy_p_9": "בהתאם לחוק הגנת הצרכן, עומדת לכם הזכות לבטל עסקה בתוך 14 ימים מיום קבלת המוצר.",
+      "services_title_53": "התחברות",
+      "services_title_54": "עגלת קניות",
+      "services_title_55": "חיפוש",
+      "services_title_56": "חיפוש",
+      "account_page_title": "החשבון שלי - אבוטבול ברגים",
+      "category__slug_p_2": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "category__slug_p_3": "נוצר באמצעות Zappy",
+      "contact_page_title": "צור קשר עם חנות הברגים — אבוטבול ברגים",
+      "legal_privacy_h1_1": "מדיניות פרטיות",
+      "legal_privacy_h2_2": "1. איסוף מידע",
+      "legal_privacy_h2_3": "2. שימוש במידע",
+      "legal_privacy_h2_4": "3. שיתוף מידע",
+      "legal_privacy_h2_5": "4. זכויות המשתמש",
+      "legal_privacy_h2_6": "5. עוגיות (Cookies)",
+      "legal_privacy_h2_7": "6. אבטחת מידע",
+      "legal_privacy_h2_8": "7. שינויים במדיניות",
+      "legal_privacy_h2_9": "8. יצירת קשר",
+      "legal_privacy_p_10": "[business_name] (\"החברה\", \"אנו\", \"שלנו\") מחויבת להגן על פרטיותכם. מדיניות פרטיות זו מסבירה כיצד אנו אוספים, \n            משתמשים ומגינים על המידע שלכם בעת השימוש באתר www.company.com (\"השירות\").",
+      "legal_privacy_p_11": "אנו עשויים לאסוף את סוגי המידע הבאים:",
+      "legal_privacy_p_12": "אנו משתמשים במידע שנאסף למטרות הבאות:",
+      "legal_privacy_p_13": "אנו לא נמכור, נחכיר או נשתף את המידע האישי שלכם עם צדדים שלישיים, למעט במקרים הבאים:",
+      "legal_privacy_p_14": "בהתאם לחוק הגנת הפרטיות התשמ\"א-1981, יש לכם הזכויות הבאות:",
+      "legal_privacy_p_15": "אתרנו משתמש בעוגיות לשיפור חוויית השימוש. ניתן לנהל את העוגיות דרך הגדרות הדפדפן שלכם. \n            השבתת עוגיות עלולה להשפיע על פונקציונליות האתר.",
+      "legal_privacy_p_16": "אנו נוקטים באמצעי אבטחה סבירים להגנה על המידע שלכם, כולל הצפנה, חומות אש ובקרת גישה מוגבלת. \n            עם זאת, אף שיטת העברה או אחסון אינה בטוחה ב-100%.",
+      "legal_privacy_p_17": "אנו עשויים לעדכן מדיניות פרטיות זו מעת לעת. שינויים מהותיים יפורסמו באתר עם הודעה מוקדמת של 30 יום.",
+      "legal_privacy_p_18": "לשאלות או בקשות בנוגע למדיניות פרטיות זו, ניתן לפנות אלינו:",
+      "legal_privacy_p_19": "רשם מאגרי המידע: לתלונות ניתן לפנות לרשם מאגרי המידע במשרד המשפטים",
+      "order_success_h1_1": "ההזמנה התקבלה!",
+      "order_success_h2_2": "פרטי ההזמנה",
+      "order_success_h2_3": "עגלת הקניות שלך",
+      "order_success_p_10": "נוצר באמצעות Zappy",
+      "product__slug_h2_1": "מוצרים דומים",
+      "product__slug_h2_2": "עגלת הקניות שלך",
+      "return_policy_h1_1": "מדיניות החזרת מוצרים",
+      "return_policy_h2_2": "1. זכות הביטול",
+      "return_policy_h2_3": "2. מוצרים שלא ניתן להחזיר",
+      "return_policy_h2_4": "3. מוצר פגום",
+      "return_policy_h2_5": "4. יצירת קשר",
+      "return_policy_h2_6": "עגלת הקניות שלך",
+      "return_policy_p_10": "במקרה של מוצר פגום או שונה מהמתואר, זכאים אתם להחזר מלא ללא דמי ביטול, כולל החזר דמי משלוח.",
+      "return_policy_p_11": "לביצוע החזרה או לשאלות:",
+      "return_policy_p_12": "אימייל: info@company.com",
+      "return_policy_p_13": "טלפון: 03-1234567",
+      "return_policy_p_14": "כתובת: כתובת החברה, ישראל",
+      "return_policy_p_15": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "return_policy_p_16": "נוצר באמצעות Zappy",
+      "cart_placeholder_21": "חיפוש מוצרים...",
+      "cart_placeholder_22": "חיפוש מוצרים...",
+      "category__slug_h2_1": "עגלת הקניות שלך",
+      "checkout_page_title": "תשלום - אבוטבול ברגים",
+      "home_placeholder_51": "חיפוש מוצרים...",
+      "home_placeholder_52": "חיפוש מוצרים...",
+      "legal_privacy_li_23": "מידע אישי: שם, כתובת אימייל, מספר טלפון וכתובת",
+      "legal_privacy_li_24": "מידע טכני: כתובת IP, סוג דפדפן, מערכת הפעלה ונתוני שימוש באתר",
+      "legal_privacy_li_25": "עוגיות: מידע הנשמר במחשבכם לשיפור חוויית השימוש",
+      "legal_privacy_li_26": "מתן השירותים המבוקשים",
+      "legal_privacy_li_27": "שיפור השירות וחוויית המשתמש",
+      "legal_privacy_li_28": "יצירת קשר עמכם בנוגע לשירותינו",
+      "legal_privacy_li_29": "עמידה בדרישות חוקיות",
+      "legal_privacy_li_30": "בהסכמתכם המפורשת",
+      "legal_privacy_li_31": "כאשר נדרש על פי חוק",
+      "legal_privacy_li_32": "להגנה על זכויותינו או בטחון משתמשינו",
+      "legal_privacy_li_33": "עם ספקי שירות המסייעים בהפעלת השירות (תחת הסכמי סודיות)",
+      "legal_privacy_li_34": "זכות עיון במידע האישי השמור עליכם",
+      "legal_privacy_li_35": "זכות לתיקון מידע שגוי או לא מדויק",
+      "legal_privacy_li_36": "זכות למחיקת מידע אישי בנסיבות מסוימות",
+      "legal_privacy_li_37": "זכות להתנגד לעיבוד מידע למטרות שיווק",
+      "legal_privacy_li_38": "זכות להגשת תלונה לרשם מאגרי המידע",
+      "legal_privacy_li_39": "חברה: [business_name]",
+      "legal_privacy_li_40": "אימייל: [business_email]",
+      "legal_privacy_li_41": "טלפון: [business_phone]",
+      "legal_privacy_li_42": "כתובת: [business_address]",
+      "legal_terms_link_25": "[business_email]",
+      "legal_terms_link_26": "[business_phone]",
+      "legal_terms_link_27": "← חזרה לאתר",
+      "products_page_title": "מוצרים - אבוטבול ברגים",
+      "return_policy_li_26": "לאזרחים ותיקים, עולים חדשים ואנשים עם מוגבלות - תקופת הביטול היא 4 חודשים",
+      "return_policy_li_27": "יש להחזיר את המוצר באריזתו המקורית",
+      "return_policy_li_28": "ההחזר הכספי יבוצע תוך 14 ימים מהודעת הביטול",
+      "return_policy_li_29": "מוצרי מזון פסידים",
+      "return_policy_li_30": "מוצרים שיוצרו במיוחד לפי הזמנה",
+      "return_policy_li_31": "תוכנות ותקליטורים שנפתחו",
+      "return_policy_li_32": "מוצרי היגיינה אישית שנפתחו",
+      "services_page_title": "שירותי חנות ברגים מקצועיים — אבוטבול ברגים",
+      "about_placeholder_37": "חיפוש מוצרים...",
+      "about_placeholder_38": "חיפוש מוצרים...",
+      "login_placeholder_23": "חיפוש מוצרים...",
+      "login_placeholder_24": "חיפוש מוצרים...",
+      "login_placeholder_25": "כתובת אימייל",
+      "login_placeholder_26": "קוד אימות",
+      "order_success_alt_28": "אבוטבול ברגים",
+      "order_success_nav_20": "מוצרים",
+      "order_success_nav_21": "כל המוצרים",
+      "order_success_nav_22": "שירותים",
+      "order_success_nav_23": "אודות",
+      "order_success_nav_24": "צור קשר",
+      "order_success_nav_25": "כל המוצרים",
+      "product__slug_alt_22": "אבוטבול ברגים",
+      "product__slug_link_8": "מדיניות פרטיות",
+      "product__slug_link_9": "נגישות",
+      "product__slug_nav_14": "מוצרים",
+      "product__slug_nav_15": "כל המוצרים",
+      "product__slug_nav_16": "שירותים",
+      "product__slug_nav_17": "אודות",
+      "product__slug_nav_18": "צור קשר",
+      "product__slug_nav_19": "כל המוצרים",
+      "product__slug_span_6": "סה\"כ:",
+      "product__slug_span_7": "₪0",
+      "return_policy_alt_41": "אבוטבול ברגים",
+      "return_policy_nav_33": "מוצרים",
+      "return_policy_nav_34": "כל המוצרים",
+      "return_policy_nav_35": "שירותים",
+      "return_policy_nav_36": "אודות",
+      "return_policy_nav_37": "צור קשר",
+      "return_policy_nav_38": "כל המוצרים",
+      "category__slug_alt_24": "אבוטבול ברגים",
+      "category__slug_btn_12": "הכל",
+      "category__slug_btn_13": "מומלצים",
+      "category__slug_btn_14": "חדשים",
+      "category__slug_btn_15": "מבצעים",
+      "category__slug_link_6": "מדיניות פרטיות",
+      "category__slug_link_7": "נגישות",
+      "category__slug_link_8": "תנאי שימוש",
+      "category__slug_link_9": "מדיניות החזרות",
+      "category__slug_nav_16": "מוצרים",
+      "category__slug_nav_17": "כל המוצרים",
+      "category__slug_nav_18": "שירותים",
+      "category__slug_nav_19": "אודות",
+      "category__slug_nav_20": "צור קשר",
+      "category__slug_nav_21": "כל המוצרים",
+      "category__slug_span_4": "סה\"כ:",
+      "category__slug_span_5": "₪0",
+      "home_meta_description": "חנות ברגים מובילה בישראל לקבלנים, בעלי חנויות ומנהלי אחזקה. מגוון ענק של ברגים ואומים לבנייה במחירים תחרותיים.",
+      "legal_privacy_link_20": "[business_email]",
+      "legal_privacy_link_21": "[business_phone]",
+      "legal_privacy_link_22": "← חזרה לאתר",
+      "order_success_link_13": "להמשך קניות",
+      "order_success_link_14": "מדיניות פרטיות",
+      "order_success_link_15": "נגישות",
+      "order_success_link_16": "תנאי שימוש",
+      "order_success_link_17": "מדיניות החזרות",
+      "order_success_link_18": "Zappy",
+      "order_success_link_19": "המשך לתשלום",
+      "order_success_span_11": "סה\"כ:",
+      "order_success_span_12": "₪0",
+      "product__slug_link_10": "תנאי שימוש",
+      "product__slug_link_11": "מדיניות החזרות",
+      "product__slug_link_12": "Zappy",
+      "product__slug_link_13": "המשך לתשלום",
+      "return_policy_link_19": "info@company.com",
+      "return_policy_link_20": "מדיניות פרטיות",
+      "return_policy_link_21": "נגישות",
+      "return_policy_link_22": "תנאי שימוש",
+      "return_policy_link_23": "מדיניות החזרות",
+      "return_policy_link_24": "Zappy",
+      "return_policy_link_25": "המשך לתשלום",
+      "return_policy_span_17": "סה\"כ:",
+      "return_policy_span_18": "₪0",
+      "about_meta_description": "הכירו את אבוטבול ברגים - חנות ברגים בישראל עם ניסיון של שנים באספקת חומרי חיבור לקבלנים. סיפור, ערכים ומחויבות לשירות מעולה.",
+      "account_placeholder_50": "חיפוש מוצרים...",
+      "account_placeholder_51": "חיפוש מוצרים...",
+      "account_placeholder_52": "שם",
+      "account_placeholder_53": "טלפון",
+      "account_placeholder_54": "רחוב ומספר",
+      "account_placeholder_55": "דירה, קומה, כניסה",
+      "account_placeholder_56": "עיר",
+      "account_placeholder_57": "מיקוד",
+      "category__slug_link_10": "Zappy",
+      "category__slug_link_11": "המשך לתשלום",
+      "contact_placeholder_37": "חיפוש מוצרים...",
+      "contact_placeholder_38": "חיפוש מוצרים...",
+      "legal_terms_page_title": "תנאי שימוש - [business_name]",
+      "order_success_title_29": "חיפוש",
+      "order_success_title_30": "התחברות",
+      "order_success_title_31": "עגלת קניות",
+      "order_success_title_32": "חיפוש",
+      "order_success_title_33": "חיפוש",
+      "product__slug_title_23": "חיפוש",
+      "product__slug_title_24": "התחברות",
+      "product__slug_title_25": "עגלת קניות",
+      "product__slug_title_26": "חיפוש",
+      "product__slug_title_27": "חיפוש",
+      "return_policy_title_42": "חיפוש",
+      "return_policy_title_43": "התחברות",
+      "return_policy_title_44": "עגלת קניות",
+      "return_policy_title_45": "חיפוש",
+      "return_policy_title_46": "חיפוש",
+      "category__slug_title_25": "חיפוש",
+      "category__slug_title_26": "התחברות",
+      "category__slug_title_27": "עגלת קניות",
+      "category__slug_title_28": "חיפוש",
+      "category__slug_title_29": "חיפוש",
+      "checkout_placeholder_39": "חיפוש מוצרים...",
+      "checkout_placeholder_40": "חיפוש מוצרים...",
+      "checkout_placeholder_41": "שם מלא",
+      "checkout_placeholder_42": "אימייל",
+      "checkout_placeholder_43": "טלפון",
+      "checkout_placeholder_44": "רחוב ומספר",
+      "checkout_placeholder_45": "דירה, קומה, כניסה",
+      "checkout_placeholder_46": "עיר",
+      "checkout_placeholder_47": "מיקוד",
+      "checkout_placeholder_48": "הזן קוד קופון",
+      "legal_accessibility_p_9": "[business_name] מחויבת להנגיש את השירותים לכלל הציבור. אנו פועלים ליישם את הנחיות התקן הישראלי \n            (ת\"י 5568) המבוסס על הנחיות WCAG 2.1 ברמת AA.",
+      "legal_return_policy_p_3": "This Return Policy explains how returns are handled at אבוטבול ברגים.",
+      "legal_return_policy_p_4": "Customers are entitled to a cooling-off period as required by local consumer protection laws.",
+      "legal_return_policy_p_5": "For returns, contact אבוטבול ברגים support with your order number.",
+      "legal_return_policy_p_6": "© 2025 אבוטבול ברגים. כל הזכויות שמורות.",
+      "legal_return_policy_p_7": "נוצר באמצעות Zappy",
+      "products_placeholder_23": "חיפוש מוצרים...",
+      "products_placeholder_24": "חיפוש מוצרים...",
+      "services_placeholder_50": "חיפוש מוצרים...",
+      "services_placeholder_51": "חיפוש מוצרים...",
+      "contact_meta_description": "צור קשר עם אבוטבול ברגים לקבלת ייעוץ מקצועי והצעת מחיר. חנות ברגים בישראל המספקת חומרי חיבור לקבלנים ובעלי מקצוע.",
+      "legal_accessibility_h1_1": "הצהרת נגישות",
+      "legal_accessibility_h2_2": "1. מדיניות הנגישות",
+      "legal_accessibility_h2_3": "2. הסדרי הנגישות באתר",
+      "legal_accessibility_h2_4": "3. טכנולוגיות מסייעות נתמכות",
+      "legal_accessibility_h2_5": "4. בדיקות נגישות",
+      "legal_accessibility_h2_6": "5. שיפורים מתמשכים",
+      "legal_accessibility_h2_7": "6. יצירת קשר ומשוב",
+      "legal_accessibility_h3_8": "תאימות לתקן WCAG 2.1",
+      "legal_accessibility_p_10": "אנו מאמינים בשוויון זכויות ובזכותו של כל אדם לקבל מידע ושירותים בצורה עצמאית ושוויונית. \n            אתר זה תוכנן ונבנה תוך מתן דגש מיוחד על נגישות לאנשים עם מוגבלויות.",
+      "legal_accessibility_p_11": "האתר תואם לרמת AA של תקן WCAG 2.1, הכולל:",
+      "legal_accessibility_p_12": "האתר נבדק באמצעות:",
+      "legal_accessibility_p_13": "אנו עובדים באופן מתמשך לשיפור נגישות האתר ומעדכנים אותו בהתאם להתפתחויות טכנולוגיות ולמשוב מהמשתמשים.",
+      "legal_accessibility_p_14": "אם נתקלתם בבעיית נגישות באתר או זקוקים לסיוע, אנא פנו אלינו:",
+      "legal_accessibility_p_15": "זמני מענה: נענה לפניות בנושא נגישות תוך 3 ימי עסקים ונפעל לפתרון תוך 10 ימי עסקים.",
+      "legal_accessibility_p_16": "תלונות: ניתן להגיש תלונה למשרד המשפטים - הנציבות לשוויון זכויות לאנשים עם מוגבלות",
+      "legal_privacy_page_title": "מדיניות פרטיות - [business_name]",
+      "legal_return_policy_h1_1": "Return Policy",
+      "legal_return_policy_h2_2": "עגלת הקניות שלך",
+      "order_success_page_title": "ההזמנה התקבלה! - אבוטבול ברגים",
+      "product__slug_page_title": "פרטי המוצר - אבוטבול ברגים",
+      "return_policy_page_title": "מדיניות החזרות - אבוטבול ברגים",
+      "category__slug_page_title": "מוצרים - אבוטבול ברגים",
+      "legal_accessibility_li_20": "תמיכה בניווט באמצעות מקלדת",
+      "legal_accessibility_li_21": "תמיכה בקוראי מסך",
+      "legal_accessibility_li_22": "ניגודיות צבעים מתאימה",
+      "legal_accessibility_li_23": "גדלי פונט גמישים וניתנים להגדלה",
+      "legal_accessibility_li_24": "תיאורי תמונות (Alt text) מפורטים",
+      "legal_accessibility_li_25": "כותרות מובנות היררכית",
+      "legal_accessibility_li_26": "קישורים תיאוריים וברורים",
+      "legal_accessibility_li_27": "תמיכה בזום עד 200% ללא אובדן תוכן",
+      "legal_accessibility_li_28": "נתפס (Perceivable): המידע מוצג בדרכים שמשתמשים יכולים לתפוס",
+      "legal_accessibility_li_29": "פעיל (Operable): רכיבי הממשק ניתנים להפעלה",
+      "legal_accessibility_li_30": "מובן (Understandable): המידע וממשק המשתמש מובנים",
+      "legal_accessibility_li_31": "חזק (Robust): התוכן יכול להיות מפוענח על ידי מגוון טכנולוגיות",
+      "legal_accessibility_li_32": "NVDA (Windows)",
+      "legal_accessibility_li_33": "JAWS (Windows)",
+      "legal_accessibility_li_34": "VoiceOver (Mac/iOS)",
+      "legal_accessibility_li_35": "TalkBack (Android)",
+      "legal_accessibility_li_36": "Dragon NaturallySpeaking",
+      "legal_accessibility_li_37": "Switch navigation",
+      "legal_accessibility_li_38": "כלים אוטומטיים לבדיקת נגישות",
+      "legal_accessibility_li_39": "בדיקות ידניות עם קוראי מסך",
+      "legal_accessibility_li_40": "ניווט באמצעות מקלדת בלבד",
+      "legal_accessibility_li_41": "בדיקת ניגודיות צבעים",
+      "legal_accessibility_li_42": "בדיקה עם משתמשים עם מוגבלויות",
+      "legal_accessibility_li_43": "חברה: [business_name]",
+      "legal_accessibility_li_44": "אימייל: [business_email]",
+      "legal_accessibility_li_45": "טלפון: [business_phone]",
+      "legal_return_policy_li_16": "default: 14 ימים. Items must be in original condition.",
+      "services_meta_description": "שירותי חנות ברגים בישראל: אספקה מהירה, ייעוץ מקצועי, מחירים סיטונאיים וחומרי חיבור לקבלנים. פתרונות מותאמים אישית לכל פרויקט בנייה.",
+      "legal_return_policy_alt_25": "אבוטבול ברגים",
+      "legal_return_policy_nav_17": "מוצרים",
+      "legal_return_policy_nav_18": "כל המוצרים",
+      "legal_return_policy_nav_19": "שירותים",
+      "legal_return_policy_nav_20": "אודות",
+      "legal_return_policy_nav_21": "צור קשר",
+      "legal_return_policy_nav_22": "כל המוצרים",
+      "legal_return_policy_span_8": "סה\"כ:",
+      "legal_return_policy_span_9": "₪0",
+      "legal_accessibility_link_17": "[business_email]",
+      "legal_accessibility_link_18": "[business_phone]",
+      "legal_accessibility_link_19": "← חזרה לאתר",
+      "legal_return_policy_link_10": "מדיניות פרטיות",
+      "legal_return_policy_link_11": "נגישות",
+      "legal_return_policy_link_12": "תנאי שימוש",
+      "legal_return_policy_link_13": "מדיניות החזרות",
+      "legal_return_policy_link_14": "Zappy",
+      "legal_return_policy_link_15": "המשך לתשלום",
+      "legal_return_policy_title_26": "התחברות",
+      "legal_return_policy_title_27": "עגלת קניות",
+      "legal_return_policy_title_28": "חיפוש",
+      "legal_return_policy_title_29": "חיפוש",
+      "order_success_placeholder_26": "חיפוש מוצרים...",
+      "order_success_placeholder_27": "חיפוש מוצרים...",
+      "product__slug_placeholder_20": "חיפוש מוצרים...",
+      "product__slug_placeholder_21": "חיפוש מוצרים...",
+      "return_policy_placeholder_39": "חיפוש מוצרים...",
+      "return_policy_placeholder_40": "חיפוש מוצרים...",
+      "category__slug_placeholder_22": "חיפוש מוצרים...",
+      "category__slug_placeholder_23": "חיפוש מוצרים...",
+      "legal_accessibility_page_title": "הצהרת נגישות - [business_name]",
+      "legal_return_policy_page_title": "מדיניות החזרות - אבוטבול ברגים",
+      "legal_return_policy_placeholder_23": "חיפוש מוצרים...",
+      "legal_return_policy_placeholder_24": "חיפוש מוצרים..."
+    }
+  },
+  "th": {
+    "translation": {
+      "cart_p_3": "© 2025 אבוטבול ברגים สงวนลิขสิทธิ์",
+      "cart_p_4": "สร้างโดย Zappy",
+      "cart_h1_1": "ตะกร้าสินค้าของคุณ",
+      "cart_h2_2": "ตะกร้าสินค้าของคุณ",
+      "home_h1_1": "ร้านสกรูชั้นนำในอิสราเอลสำหรับทุกความต้องการด้านการก่อสร้าง",
+      "home_h2_2": "สินค้าแนะนำ",
+      "home_h2_3": "ทำไมต้องเลือก אבוטבול ברגים?",
+      "home_h2_4": "สินค้าชั้นนำของเรา",
+      "home_h2_5": "บริการของเรา",
+      "home_h2_6": "เราเหมาะสำหรับใคร?",
+      "home_h2_7": "พร้อมที่จะเริ่มต้นแล้วหรือยัง?",
+      "home_h3_8": "สกรู น็อต และอุปกรณ์เชื่อมต่อหลากหลายสำหรับผู้รับเหมาและผู้เชี่ยวชาญ",
+      "home_h3_9": "สกรูสแตนเลส",
+      "home_p_18": "Happily created by Zappy",
+      "home_p_19": "אבוטבול ברגים เป็นร้านสกรูชั้นนำในอิสราเอลที่เชี่ยวชาญด้านการจัดหาอุปกรณ์เชื่อมต่อสำหรับผู้รับเหมา เจ้าของร้านวัสดุก่อสร้าง และผู้จัดการฝ่ายบำรุงรักษา เรานำเสนอสกรูและน็อตสำหรับงานก่อสร้างหลากหลายชนิด โดยเน้นคุณภาพสูง ราคาแข่งขัน และบริการมืออาชีพ ประสบการณ์ของเราในด้านวัสดุก่อสร้างและฮาร์ดแวร์ช่วยให้เราเข้าใจความต้องการเฉพาะของลูกค้าแต่ละรายและจัดหาโซลูชันที่ปรับแต่งเป็นรายบุคคล",
+      "home_p_20": "ไม่ว่าคุณจะเป็นผู้รับเหมาที่ดำเนินโครงการขนาดใหญ่ ผู้ที่ชอบทำเองที่กำลังมองหาวัสดุคุณภาพสำหรับการปรับปรุงบ้าน หรือเจ้าของร้านที่ต้องการซัพพลายเออร์ที่เชื่อถือได้ - אבוטבול ברגים คือที่อยู่ที่สมบูรณ์แบบสำหรับคุณ เรามุ่งมั่นในการจัดส่งที่รวดเร็ว คำปรึกษาจากผู้เชี่ยวชาญ และสินค้าคงคลังที่พร้อมใช้งานเสมอ",
+      "home_p_21": "สกรูสแตนเลสหลากหลายชนิดที่ทนต่อการกัดกร่อน เหมาะสำหรับใช้งานภายนอกและในสภาพแวดล้อมที่มีความชื้น",
+      "home_p_22": "สกรูพิเศษสำหรับงานคอนกรีต เหมาะสำหรับโครงการอุตสาหกรรมและงานก่อสร้างหนัก",
+      "home_p_23": "สกรูขั้นสูงสำหรับงานช่างไม้และไม้ ในขนาดและประเภทต่างๆ สำหรับทุกโครงการ",
+      "home_p_24": "เราเข้าใจว่าเวลาคือเงินในด้านการก่อสร้าง ดังนั้นเราจึงให้บริการจัดส่งที่รวดเร็วและเชื่อถือได้ทั่วประเทศ ไม่ว่าคุณจะต้องการคำสั่งซื้อด่วนสำหรับไซต์ก่อสร้างหรือการจัดหาปกติสำหรับร้านของคุณ เราพร้อมให้บริการเพื่อให้แน่ใจว่าคุณจะได้รับวัสดุตรงเวลา",
+      "home_p_25": "บริการของเราประกอบด้วยการจัดส่งรวดเร็ว ตัวเลือกการรับสินค้าด้วยตนเอง และคำปรึกษาทางโทรศัพท์ที่พร้อมให้บริการสำหรับทุกคำถาม เราทำงานร่วมกับบริษัทขนส่งชั้นนำเพื่อให้แน่ใจว่าสินค้าจะมาถึงคุณอย่างสมบูรณ์และรวดเร็ว",
+      "home_p_26": "ทีมงานที่มีประสบการณ์ของเราประกอบด้วยผู้เชี่ยวชาญในด้านวัสดุก่อสร้างและฮาร์ดแวร์ ด้วยความรู้ลึกซึ้งในสกรูและวัสดุทุกประเภท เราให้คำปรึกษาจากผู้เชี่ยวชาญฟรีแก่ลูกค้าทุกราย ไม่ว่าคุณจะเป็นผู้รับเหมาที่มีประสบการณ์หรือผู้ที่ชอบทำเองที่เริ่มต้นโครงการใหม่",
+      "home_p_27": "เรายินดีช่วยคุณเลือกสกรูและวัสดุที่เหมาะสมที่สุดสำหรับโครงการของคุณ แนะนำโซลูชันที่ประหยัดและมีประสิทธิภาพ และตอบคำถามทางเทคนิคทุกข้อ คำปรึกษาของเราอิงจากประสบการณ์หลายปีและความรู้เชิงลึกเกี่ยวกับตลาดอิสราเอล",
+      "home_p_28": "การจัดหาอุปกรณ์เชื่อมต่อสม่ำเสมอสำหรับผู้รับเหมาในโครงการทุกขนาด พร้อมราคาพิเศษสำหรับการสั่งซื้อจำนวนมาก",
+      "home_p_29": "สกรูและวัสดุหลากหลายสำหรับการปรับปรุงบ้าน พร้อมคำปรึกษาส่วนบุคคลและการสนับสนุนจากผู้เชี่ยวชาญ",
+      "home_p_30": "โซลูชันการจัดหาที่ยืดหยุ่นสำหรับเจ้าของร้านวัสดุก่อสร้าง พร้อมราคาขายส่งและบริการส่วนบุคคล",
+      "home_p_31": "การจัดหาต่อเนื่องสำหรับความต้องการบำรุงรักษาอาคารขนาดใหญ่ พร้อมความพร้อมใช้งานทันทีและการจัดส่งรวดเร็ว",
+      "home_p_32": "ติดต่อเราวันนี้เพื่อรับใบเสนอราคาหรือคำปรึกษาจากผู้เชี่ยวชาญฟรี",
+      "home_p_33": "© 2025 אבוטבול ברגים สงวนลิขสิทธิ์",
+      "home_p_34": "สร้างโดย Zappy",
+      "login_p_3": "ใส่ที่อยู่อีเมลของคุณ แล้วเราจะส่งรหัสเข้าสู่ระบบให้คุณ",
+      "login_p_4": "ใส่รหัสที่ส่งไปยังอีเมลของคุณ",
+      "login_p_5": "© 2025 אבוטבול ברגים สงวนลิขสิทธิ์",
+      "login_p_6": "สร้างด้วย Zappy",
+      "about_h1_1": "เรื่องราวของเรา - ร้านน็อตสกรูในอิสราเอลที่มีมรดกแห่งคุณภาพ",
+      "about_h2_2": "ค่านิยมที่นำทางเรา",
+      "about_h2_3": "ความมุ่งมั่นของเราต่อคุณ",
+      "about_h2_4": "ต้องการทำความรู้จักเราให้ดีขึ้นหรือไม่?",
+      "about_h3_5": "ประสบการณ์ ความเชี่ยวชาญ และความมุ่งมั่นในการบริการที่เป็นเลิศ",
+      "about_h3_6": "คุณภาพที่ไม่มีการประนีประนอม",
+      "about_h3_7": "ความน่าเชื่อถือและความโปร่งใส",
+      "about_h3_8": "บริการส่วนบุคคลและมืออาชีพ",
+      "about_h3_9": "นวัตกรรมและการพัฒนา",
+      "about_p_10": "Happily created by Zappy",
+      "about_p_11": "อบูตบูล ברגิม ก่อตั้งขึ้นจากความรักในด้านวัสดุก่อสร้างและฮาร์ดแวร์ และจากความปรารถนาที่จะให้บริการลูกค้าในระดับสูงสุด สิ่งที่เริ่มต้นเป็นร้านน็อตสกรูเล็กๆ ได้กลายเป็นหนึ่งในร้านน็อตสกรูชั้นนำในอิสราเอลตลอดหลายปีที่ผ่านมา โดยจัดหาวัสดุยึดต่อให้กับผู้รับเหมา เจ้าของร้านค้า และผู้จัดการฝ่ายบำรุงรักษาทั่วประเทศ",
+      "about_p_12": "ตลอดหลายปีที่ผ่านมา เราได้สร้างชื่อเสียงด้านความน่าเชื่อถือ ความเชี่ยวชาญ และการบริการที่เป็นเลิศ เราเชื่อว่าความสำเร็จทางธุรกิจไม่ได้วัดจากยอดขายเพียงอย่างเดียว แต่วัดจากความพึงพอใจของลูกค้าเป็นหลัก ดังนั้นเราจึงลงทุนเวลาและทรัพยากรมากมายในการฝึกอบรมทีมงาน การรักษาสินค้าคงคลังที่หลากหลายและครอบคลุม และการให้บริการส่วนบุคคลที่เหมาะสมกับลูกค้าแต่ละราย",
+      "about_p_13": "ประสบการณ์ที่เราสั่งสมมาตลอดหลายปีช่วยให้เราเข้าใจความต้องการเฉพาะของแต่ละกลุ่มในตลาด - ตั้งแต่ผู้รับเหมารายใหญ่ที่จัดการโครงการที่ซับซ้อน ผ่านเจ้าของร้านค้าเล็กๆ ที่มองหาซัพพลายเออร์ที่เชื่อถือได้ ไปจนถึงผู้ที่ชอบทำด้วยตนเองที่ต้องการคำปรึกษาและคำแนะนำ เราภูมิใจในความสามารถของเราในการให้โซลูชันที่ปรับแต่งเฉพาะสำหรับลูกค้าแต่ละราย",
+      "about_p_14": "เรามุ่งมั่นที่จะจัดหาเฉพาะผลิตภัณฑ์คุณภาพสูงจากผู้ผลิตชั้นนำเท่านั้น น็อต สกรู และแหวนรองทุกชิ้นที่เราขายผ่านการตรวจสอบคุณภาพอย่างเข้มงวดและเป็นไปตามมาตรฐานสากลสูงสุด เราเชื่อว่าคุณภาพไม่ใช่แค่คำพูด แต่เป็นความมุ่งมั่นระยะยาวต่อลูกค้าของเรา",
+      "about_p_15": "เราเชื่อในการสร้างความสัมพันธ์ระยะยาวกับลูกค้าของเรา ซึ่งอิงบนความไว้วางใจและความโปร่งใส เรามุ่งมั่นในการให้ราคาที่ยุติธรรมและโปร่งใส เวลาจัดส่งที่แม่นยำ และข้อมูลที่เชี่ยวชาญและเชื่อถือได้ เมื่อคุณทำงานกับเรา คุณสามารถมั่นใจได้ว่าจะได้รับสิ่งที่ได้รับการรับประกันไว้อย่างแน่นอน",
+      "about_p_16": "ลูกค้าทุกรายมีความสำคัญสำหรับเรา ไม่ว่าจะเป็นผู้รับเหมารายใหญ่ที่สั่งซื้อในปริมาณมาก หรือผู้ที่ชอบทำด้วยตนเองที่ซื้อน็อตไม่กี่ตัวสำหรับโครงการเล็กๆ เราให้บริการส่วนบุคคล คำปรึกษาจากผู้เชี่ยวชาญ และความใส่ใจในรายละเอียดเล็กๆ ที่สร้างความแตกต่าง ทีมงานของเราพร้อมตอบคำถามและช่วยคุณหาโซลูชันที่สมบูรณ์แบบเสมอ",
+      "about_p_17": "เราไม่พอใจกับสิ่งที่มีอยู่ เรามองหาวิธีใหม่ๆ ในการปรับปรุงบริการของเรา ขยายความหลากหลายของเรา และปรับตัวให้เข้ากับความต้องการที่เปลี่ยนแปลงของตลาดอยู่เสมอ เราติดตามเทคโนโลยีใหม่ล่าสุดในสาขานี้ นำเข้าผลิตภัณฑ์นวัตกรรม และลงทุนในการฝึกอบรมทีมงานอย่างต่อเนื่อง",
+      "about_p_18": "ในฐานะร้านน็อตสกรูชั้นนำในอิสราเอล เราเข้าใจความรับผิดชอบของเราต่อลูกค้า เรามุ่งมั่นที่จะให้คุณไม่เพียงแต่ผลิตภัณฑ์คุณภาพสูง แต่ยังรวมถึงบริการมืออาชีพ คำปรึกษาที่แม่นยำ และการจัดส่งที่รวดเร็วและเชื่อถือได้ เรามองเห็นทุกโครงการที่คุณดำเนินการเป็นโอกาสที่จะเป็นส่วนหนึ่งของความสำเร็จของคุณ",
+      "about_p_19": "ความมุ่งมั่นของเรายังรวมถึงความมุ่งมั่นในการปรับปรุงอย่างต่อเนื่อง เราฟังความคิดเห็นจากลูกค้า เรียนรู้จากข้อผิดพลาดของเรา และมองหาวิธีในการปรับปรุงบริการและผลิตภัณฑ์ของเราอยู่เสมอ เราเชื่อว่าวิธีเดียวที่จะประสบความสำเร็จในระยะยาวคือการก้าวไปข้างหน้าหนึ่งก้าวจากความคาดหวังของลูกค้าเสมอ",
+      "about_p_20": "ไม่ว่าคุณจะเป็นผู้รับเหมาที่มองหาซัพพลายเออร์ที่เชื่อถือได้สำหรับน็อตและสกรูสำหรับงานก่อสร้าง เจ้าของร้านค้าที่ต้องการสินค้าคงคลังที่หลากหลายและต่อเนื่อง หรือผู้จัดการฝ่ายบำรุงรักษาที่ต้องการการจัดส่งที่รวดเร็วและพร้อมใช้งาน - อบูตบูล ברגิม คือที่อยู่ที่เหมาะสมสำหรับคุณ เราขอเชิญคุณเข้าร่วมครอบครัวลูกค้าของเราและสัมผัสด้วยตนเองถึงความแตกต่างที่บริการมืออาชีพและความมุ่งมั่นที่แท้จริงสร้างขึ้น",
+      "about_p_21": "ติดต่อเราตอนนี้และค้นพบว่าเราสามารถช่วยคุณได้อย่างไร",
+      "about_p_22": "© 2025 อบูตบูล ברגิม สงวนลิขสิทธิ์",
+      "about_p_23": "สร้างโดย Zappy",
+      "home_h3_10": "สกรูคอนกรีต",
+      "home_h3_11": "สกรูไม้",
+      "home_h3_12": "จัดส่งรวดเร็วและเชื่อถือได้",
+      "home_h3_13": "คำปรึกษาจากผู้เชี่ยวชาญ",
+      "home_h3_14": "ผู้รับเหมาและผู้ก่อสร้าง",
+      "home_h3_15": "ผู้ที่ชอบทำเอง",
+      "home_h3_16": "เจ้าของร้านค้า",
+      "home_h3_17": "ผู้จัดการฝ่ายบำรุงรักษา",
+      "login_h1_1": "เข้าสู่ระบบลูกค้า",
+      "login_h2_2": "ตะกร้าสินค้าของคุณ",
+      "account_p_8": "กรุณาเข้าสู่ระบบเพื่อดูบัญชี",
+      "account_p_9": "ยินดีต้อนรับ,",
+      "cart_alt_23": "אבוטבול ברגים",
+      "cart_link_8": "ดำเนินการชำระเงิน",
+      "cart_link_9": "นโยบายความเป็นส่วนตัว",
+      "cart_nav_15": "สินค้า",
+      "cart_nav_16": "สินค้าทั้งหมด",
+      "cart_nav_17": "บริการ",
+      "cart_nav_18": "เกี่ยวกับเรา",
+      "cart_nav_19": "ติดต่อเรา",
+      "cart_nav_20": "สินค้าทั้งหมด",
+      "cart_span_5": "₪0",
+      "cart_span_6": "รวม:",
+      "cart_span_7": "₪0",
+      "contact_p_9": "Happily created by Zappy",
+      "home_alt_53": "אבוטבול ברגים",
+      "home_alt_54": "ร้านสกรูมืออาชีพพร้อมวัสดุก่อสร้างหลากหลาย",
+      "home_alt_55": "สกรูและน็อตสแตนเลสคุณภาพสูง",
+      "home_alt_56": "สกรูสำหรับคอนกรีตและงานก่อสร้างหนัก",
+      "home_alt_57": "สกรูสำหรับไม้และงานช่างไม้",
+      "home_alt_58": "รถบรรทุกส่งของพร้อมวัสดุก่อสร้าง",
+      "home_alt_59": "คำปรึกษามืออาชีพสำหรับผู้รับเหมาที่ร้านสกรู",
+      "home_nav_45": "สินค้า",
+      "home_nav_46": "สินค้าทั้งหมด",
+      "home_nav_47": "บริการ",
+      "home_nav_48": "เกี่ยวกับเรา",
+      "home_nav_49": "ติดต่อเรา",
+      "home_nav_50": "สินค้าทั้งหมด",
+      "about_alt_39": "อบูตบูล ברגิม",
+      "about_nav_31": "ผลิตภัณฑ์",
+      "about_nav_32": "ผลิตภัณฑ์ทั้งหมด",
+      "about_nav_33": "บริการ",
+      "about_nav_34": "เกี่ยวกับเรา",
+      "about_nav_35": "ติดต่อเรา",
+      "about_nav_36": "ผลิตภัณฑ์ทั้งหมด",
+      "account_h1_1": "ยังไม่ได้เข้าสู่ระบบ",
+      "account_h1_2": "บัญชีของฉัน",
+      "account_h2_3": "ข้อมูลส่วนตัว",
+      "account_h2_4": "ที่อยู่",
+      "account_h2_5": "คำสั่งซื้อของคุณ",
+      "account_h2_6": "ตะกร้าสินค้าของคุณ",
+      "account_h3_7": "เพิ่มที่อยู่",
+      "account_p_10": "ไม่มีที่อยู่ที่บันทึกไว้",
+      "account_p_11": "กำลังโหลดรายละเอียดคำสั่งซื้อ...",
+      "account_p_12": "ยังไม่มีคำสั่งซื้อ",
+      "account_p_13": "© 2025 אבוטבול ברגים. สงวนลิขสิทธิ์",
+      "account_p_14": "สร้างโดย Zappy",
+      "cart_link_10": "การเข้าถึง",
+      "cart_link_11": "เงื่อนไขการใช้งาน",
+      "cart_link_12": "นโยบายการคืนสินค้า",
+      "cart_link_13": "Zappy",
+      "cart_link_14": "ดำเนินการชำระเงิน",
+      "checkout_p_8": "© 2025 אבוטבול ברגים สงวนลิขสิทธิ์",
+      "checkout_p_9": "สร้างโดย Zappy",
+      "contact_h1_1": "ติดต่อกับร้านน็อตสกรูชั้นนำในอิสราเอล",
+      "contact_h2_2": "ส่งข้อความถึงเรา",
+      "contact_h2_3": "รายละเอียดการติดต่อ",
+      "contact_h3_4": "เรายินดีตอบคำถามและให้คำปรึกษาเชิงวิชาชีพ",
+      "contact_h3_5": "โทรศัพท์",
+      "contact_h3_6": "อีเมล",
+      "contact_h3_7": "ที่อยู่",
+      "contact_h3_8": "เวลาทำการ",
+      "contact_p_10": "[business_phone]",
+      "contact_p_11": "[business_email]",
+      "contact_p_12": "[business_address]",
+      "contact_p_13": "วันจันทร์-ศุกร์: 8:00 - 18:00",
+      "contact_p_14": "วันศุกร์: 8:00 - 14:00",
+      "contact_p_15": "วันเสาร์: ปิด",
+      "contact_p_16": "© 2025 אבוטבול ברגים สงวนลิขสิทธิ์",
+      "contact_p_17": "สร้างโดย Zappy",
+      "home_link_35": "Zappy",
+      "home_link_36": "รับใบเสนอราคา",
+      "home_link_37": "ดูสินค้าทั้งหมด →",
+      "home_link_38": "ดูสินค้าทั้งหมด",
+      "home_link_39": "ติดต่อตอนนี้",
+      "home_link_40": "นโยบายความเป็นส่วนตัว",
+      "home_link_41": "การเข้าถึง",
+      "home_link_42": "เงื่อนไขการใช้งาน",
+      "home_link_43": "นโยบายการคืนสินค้า",
+      "home_link_44": "Zappy",
+      "login_alt_27": "אבוטבול ברגים",
+      "login_btn_15": "ส่งรหัส",
+      "login_btn_16": "ยืนยัน",
+      "login_link_9": "นโยบายความเป็นส่วนตัว",
+      "login_nav_17": "สินค้า",
+      "login_nav_18": "สินค้าทั้งหมด",
+      "login_nav_19": "บริการ",
+      "login_nav_20": "เกี่ยวกับเรา",
+      "login_nav_21": "ติดต่อเรา",
+      "login_nav_22": "สินค้าทั้งหมด",
+      "login_span_7": "รวม:",
+      "login_span_8": "₪0",
+      "products_p_3": "© 2025 אבוטבול ברגים สงวนลิขสิทธิ์",
+      "products_p_4": "สร้างด้วย Zappy",
+      "about_link_24": "Zappy",
+      "about_link_25": "ติดต่อเรา",
+      "about_link_26": "นโยบายความเป็นส่วนตัว",
+      "about_link_27": "การเข้าถึง",
+      "about_link_28": "เงื่อนไขการใช้งาน",
+      "about_link_29": "นโยบายการคืนสินค้า",
+      "about_link_30": "Zappy",
+      "cart_title_24": "ค้นหา",
+      "cart_title_25": "เข้าสู่ระบบ",
+      "cart_title_26": "ตะกร้าสินค้า",
+      "cart_title_27": "ค้นหา",
+      "cart_title_28": "ค้นหา",
+      "checkout_h1_1": "ชำระเงิน",
+      "checkout_h2_2": "ข้อมูลลูกค้า",
+      "checkout_h2_3": "วิธีการจัดส่ง",
+      "checkout_h2_4": "ที่อยู่จัดส่ง",
+      "checkout_h2_5": "สรุปคำสั่งซื้อ",
+      "checkout_h2_6": "ชำระเงิน",
+      "checkout_h2_7": "ตะกร้าสินค้าของคุณ",
+      "home_title_60": "เข้าสู่ระบบ",
+      "home_title_61": "ตะกร้าสินค้า",
+      "home_title_62": "ค้นหา",
+      "home_title_63": "ค้นหา",
+      "login_link_10": "การเข้าถึง",
+      "login_link_11": "เงื่อนไขการใช้งาน",
+      "login_link_12": "นโยบายการคืนสินค้า",
+      "login_link_13": "Zappy",
+      "login_link_14": "ดำเนินการชำระเงิน",
+      "products_h1_1": "สินค้าของเรา",
+      "products_h2_2": "ตะกร้าสินค้าของคุณ",
+      "services_h1_1": "บริการร้านสกรูในอิสราเอลระดับสูงสุด",
+      "services_h2_2": "การจัดส่งที่รวดเร็วและเชื่อถือได้",
+      "services_h2_3": "คำปรึกษามืออาชีพและเทคนิค",
+      "services_h2_4": "ราคาแข่งขันและส่วนลดจำนวนมาก",
+      "services_h2_5": "สต็อกพร้อมและมีสินค้าอยู่เสมอ",
+      "services_h2_6": "โซลูชันที่ปรับแต่งเฉพาะบุคคล",
+      "services_h2_7": "ทำไมต้องเลือกบริการของเรา?",
+      "services_h2_8": "สนใจบริการของเรา?",
+      "services_h3_9": "จัดส่งรวดเร็ว คำปรึกษาจากผู้เชี่ยวชาญ และโซลูชันที่ปรับแต่งเฉพาะสำหรับลูกค้าทุกราย",
+      "services_p_10": "Happily created by Zappy",
+      "services_p_11": "אבוטבול ברגים ไม่เพียงแค่นำเสนอผลิตภัณฑ์คุณภาพสูง แต่ยังมีบริการมืออาชีพที่หลากหลายซึ่งปรับแต่งตามความต้องการเฉพาะของลูกค้าแต่ละราย ไม่ว่าคุณจะเป็นผู้รับเหมาที่จัดการโครงการขนาดใหญ่ เจ้าของร้านวัสดุก่อสร้าง หรือผู้จัดการบำรุงรักษาในอาคารขนาดใหญ่ - เราให้บริการที่เป็นมืออาชีพและเชื่อถือได้ตามที่คุณต้องการ",
+      "services_p_12": "ประสบการณ์ของเราในด้านวัสดุก่อสร้างและฮาร์ดแวร์ ร่วมกับความมุ่งมั่นในการให้บริการลูกค้าที่ยอดเยี่ยม ทำให้เราเป็นพันธมิตรที่เหมาะสมสำหรับทุกโครงการ เราเข้าใจว่าลูกค้าแต่ละรายมีความเป็นเอกลักษณ์ จึงเสนอโซลูชันที่ปรับแต่งเฉพาะที่เหมาะสมกับความต้องการของคุณอย่างแม่นยำ",
+      "services_p_13": "เราเข้าใจว่าในอุตสาหกรรมก่อสร้าง เวลาคือเงิน ความล่าช้าในการจัดหาวัสดุเชื่อมต่อให้กับผู้รับเหมาอาจทำให้โครงการทั้งหมดล่าช้าและก่อให้เกิดความเสียหายทางเศรษฐกิจอย่างมีนัยสำคัญ ดังนั้นเราจึงมุ่งมั่นให้บริการจัดส่งที่รวดเร็ว มีประสิทธิภาพ และเชื่อถือได้ ที่รับประกันว่าคุณจะได้รับผลิตภัณฑ์ในเวลาที่คุณต้องการ",
+      "services_p_14": "บริการของเรารวมถึงการจัดส่งรวดเร็วทั่วประเทศ โดยปกติภายใน 24-48 ชั่วโมงหลังจากสั่งซื้อ เราทำงานร่วมกับบริษัทขนส่งชั้นนำและมีประสบการณ์ที่รับประกันว่าผลิตภัณฑ์จะมาถึงคุณอย่างสมบูรณ์และตรงเวลา นอกจากนี้ เรายังเสนอตัวเลือกการรับสินค้าด้วยตนเองจากคลังสินค้าของเราสำหรับผู้ที่สนใจ",
+      "services_p_15": "สำหรับลูกค้าธุรกิจประจำ เราเสนอบริการจัดส่งต่อเนื่องและปรับแต่งเฉพาะ รวมถึงตัวเลือกการจัดส่งประจำตามความถี่ที่คุณกำหนด ซึ่งช่วยให้คุณวางแผนสต็อกได้อย่างมีประสิทธิภาพและหลีกเลี่ยงการขาดแคลนวัสดุสำคัญ",
+      "services_p_16": "ทีมงานที่มีประสบการณ์ของเราประกอบด้วยผู้เชี่ยวชาญในด้านวัสดุก่อสร้างและฮาร์ดแวร์ ด้วยความรู้เชิงลึกในสกรู น็อต และวัสดุเชื่อมต่อทุกประเภท เราเสนอบริการให้คำปรึกษาจากผู้เชี่ยวชาญฟรีสำหรับลูกค้าทุกราย ไม่ว่าคุณจะเป็นผู้รับเหมาที่มีประสบการณ์หลายปี หรือผู้ที่ชอบทำเองที่เริ่มต้นโครงการใหม่",
+      "services_p_17": "คำปรึกษาของเรารวมถึงการช่วยเลือกผลิตภัณฑ์ที่เหมาะสมที่สุดสำหรับโครงการของคุณ คำแนะนำเกี่ยวกับโซลูชันที่ประหยัดและมีประสิทธิภาพ และคำปรึกษาทางเทคนิคในเรื่องต่างๆ เช่น ความแข็งแรงของวัสดุ ความต้านทานการกัดกร่อน และวิธีการติดตั้งที่ถูกต้อง เรายังยินดีช่วยคุณคำนวณปริมาณวัสดุที่จำเป็นสำหรับโครงการของคุณ",
+      "services_p_18": "คำปรึกษาของเราอิงจากประสบการณ์หลายปีในสาขานี้ ความรู้เชิงลึกเกี่ยวกับตลาดไทย และการติดตามเทคโนโลยีและผลิตภัณฑ์ใหม่ล่าสุดในสาขา เราพร้อมให้คำปรึกษาทางโทรศัพท์ อีเมล หรือการพบปะส่วนตัวที่คลังสินค้าของเรา",
+      "services_p_19": "เราเชื่อว่าคุณภาพสูงไม่จำเป็นต้องมาพร้อมกับราคาแพง ดังนั้นเราจึงเสนอราคาที่แข่งขันได้สำหรับผลิตภัณฑ์ทั้งหมดของเรา โดยยังคงรักษาระดับคุณภาพสูงสุด เราทำงานโดยตรงกับผู้ผลิตชั้นนำและผู้นำเข้า ซึ่งช่วยให้เราเสนอราคาที่น่าสนใจเป็นพิเศษ",
+      "services_p_20": "สำหรับผู้รับเหมา เจ้าของร้าน และผู้จัดการบำรุงรักษาที่สั่งซื้อในปริมาณมาก เราเสนอราคาขายส่งพิเศษและส่วนลดปริมาณที่มีนัยสำคัญ ยิ่งปริมาณมากขึ้น ส่วนลดก็ยิ่งมากขึ้น ซึ่งช่วยให้คุณประหยัดเงินได้อย่างมีนัยสำคัญในโครงการขนาดใหญ่",
+      "services_p_21": "นอกจากนี้ เรายังเสนอโปรแกรมสมาชิกสำหรับลูกค้าประจำ พร้อมส่วนลดสะสมและสิทธิประโยชน์พิเศษ เรายังมุ่งมั่นเสนอราคาที่ยุติธรรมและโปร่งใส โดยไม่มีค่าใช้จ่ายที่ซ่อนเร้นหรือความประหลาดใจที่ไม่พึงประสงค์",
+      "services_p_22": "หนึ่งในข้อได้เปรียบที่ยิ่งใหญ่ของการทำงานกับ אבוטבול ברגים คือสต็อกที่กว้างขวางและพร้อมใช้ของเรา เราเก็บสต็อกจำนวนมากของผลิตภัณฑ์ยอดนิยมและที่ใช้กันทั่วไป เพื่อให้คุณสามารถหาสิ่งที่ต้องการได้เสมอ ซึ่งช่วยประหยัดเวลาอันมีค่าของคุณและช่วยให้คุณดำเนินโครงการต่อไปได้โดยไม่มีความล่าช้า",
+      "services_p_23": "คลังสินค้าของเราจัดระเบียบอย่างมีประสิทธิภาพและทันสมัย ด้วยระบบจัดการสต็อกขั้นสูงที่รับประกันว่าเราจะทราบอย่างแม่นยำว่ามีอะไรในสต็อกและต้องสั่งอะไร ซึ่งช่วยให้เราให้บริการที่รวดเร็วและแม่นยำ และหลีกเลี่ยงสถานการณ์ขาดแคลนผลิตภัณฑ์",
+      "services_p_24": "ในกรณีที่หายากที่ผลิตภัณฑ์บางอย่างไม่มีในสต็อก เรามุ่งมั่นสั่งให้เร็วที่สุดเท่าที่จะเป็นไปได้และแจ้งให้คุณทราบเวลาจัดส่งโดยประมาณ เรายังเสนอบริการสั่งจองล่วงหน้าสำหรับผลิตภัณฑ์พิเศษหรือในปริมาณที่มากเป็นพิเศษ",
+      "services_p_25": "เราเข้าใจว่าบางครั้งโครงการพิเศษต้องการโซลูชันพิเศษ ดังนั้นเราจึงเสนอบริการพัฒนาโซลูชันที่ปรับแต่งเฉพาะสำหรับลูกค้าของเรา ไม่ว่าจะเป็นสกรูในขนาดที่ไม่ใช่มาตรฐาน วัสดุพิเศษ หรือวัสดุเชื่อมต่อที่ปรับแต่งตามความต้องการเฉพาะ - เราอยู่ที่นี่เพื่อช่วยเหลือ",
+      "services_p_26": "ทีมงานของเราจะทำงานร่วมกับคุณอย่างใกล้ชิดเพื่อเข้าใจความต้องการเฉพาะของคุณและหาโซลูชันที่สมบูรณ์แบบ เราสามารถสั่งผลิตภัณฑ์พิเศษจากผู้ผลิต ผลิตวัสดุเชื่อมต่อตามสั่ง หรือให้คำปรึกษาด้านวิศวกรรมมืออาชีพสำหรับโครงการที่ซับซ้อน",
+      "services_p_27": "บริการนี้มุ่งเป้าโดยเฉพาะสำหรับผู้รับเหมารายใหญ่ บริษัทก่อสร้าง และวิศวกรที่เผชิญกับความท้าทายทางเทคนิคที่ซับซ้อน เราภูมิใจในความสามารถของเราในการหาโซลูชันที่สร้างสรรค์และมีประสิทธิภาพแม้ในสถานการณ์ที่ท้าทายที่สุด",
+      "services_p_28": "ประสบการณ์หลายปีในด้านวัสดุก่อสร้าง",
+      "services_p_29": "ทีมงานมืออาชีพและมีประสบการณ์พร้อมให้บริการคุณเสมอ",
+      "services_p_30": "ราคาแข่งขันและส่วนลดปริมาณ",
+      "services_p_31": "จัดส่งรวดเร็วทั่วประเทศ",
+      "services_p_32": "สต็อกกว้างขวางและพร้อมใช้เสมอ",
+      "services_p_33": "บริการส่วนบุคคลและปรับแต่งสำหรับลูกค้าทุกราย",
+      "services_p_34": "ติดต่อเราตอนนี้เพื่อรับคำปรึกษาจากผู้เชี่ยวชาญและใบเสนอราคาที่ปรับแต่งเฉพาะ",
+      "services_p_35": "© 2025 אבוטבול ברגים สงวนลิขสิทธิ์",
+      "services_p_36": "สร้างโดย Zappy",
+      "about_title_40": "เข้าสู่ระบบ",
+      "about_title_41": "ตะกร้าสินค้า",
+      "about_title_42": "ค้นหา",
+      "about_title_43": "ค้นหา",
+      "account_alt_58": "אבוטבול ברגים",
+      "account_btn_28": "ออกจากระบบ",
+      "account_btn_29": "แก้ไขโปรไฟล์",
+      "account_btn_30": "บันทึกการเปลี่ยนแปลง",
+      "account_btn_31": "ยกเลิก",
+      "account_btn_32": "เพิ่มที่อยู่",
+      "account_btn_33": "&times;",
+      "account_btn_34": "บันทึกการเปลี่ยนแปลง",
+      "account_btn_35": "ยกเลิก",
+      "account_nav_44": "สินค้า",
+      "account_nav_45": "สินค้าทั้งหมด",
+      "account_nav_46": "บริการ",
+      "account_nav_47": "เกี่ยวกับเรา",
+      "account_nav_48": "ติดต่อเรา",
+      "account_nav_49": "สินค้าทั้งหมด",
+      "contact_alt_39": "אבוטבול ברגים",
+      "contact_btn_26": "ส่งข้อความ",
+      "contact_nav_31": "สินค้า",
+      "contact_nav_32": "สินค้าทั้งหมด",
+      "contact_nav_33": "บริการ",
+      "contact_nav_34": "เกี่ยวกับเรา",
+      "contact_nav_35": "ติดต่อเรา",
+      "contact_nav_36": "สินค้าทั้งหมด",
+      "login_title_28": "ค้นหา",
+      "login_title_29": "เข้าสู่ระบบ",
+      "login_title_30": "ตะกร้าสินค้า",
+      "login_title_31": "ค้นหา",
+      "login_title_32": "ค้นหา",
+      "account_link_20": "เข้าสู่ระบบ",
+      "account_link_21": "ช้อปต่อ",
+      "account_link_22": "นโยบายความเป็นส่วนตัว",
+      "account_link_23": "การเข้าถึง",
+      "account_link_24": "เงื่อนไขการใช้งาน",
+      "account_link_25": "นโยบายการคืนสินค้า",
+      "account_link_26": "Zappy",
+      "account_link_27": "ดำเนินการชำระเงิน",
+      "account_span_15": "ชื่อ:",
+      "account_span_16": "โทรศัพท์:",
+      "account_span_17": "ตั้งเป็นค่าเริ่มต้น",
+      "account_span_18": "รวม:",
+      "account_span_19": "₪0",
+      "cart_page_title": "ตะกร้าสินค้า - אבוטבול ברגים",
+      "checkout_alt_49": "אבוטבול ברגים",
+      "checkout_btn_27": "ออกจากระบบ",
+      "checkout_btn_28": "ฉันมีรหัสคูปอง",
+      "checkout_btn_29": "ใช้",
+      "checkout_btn_30": "ลบ",
+      "checkout_btn_31": "สั่งซื้อ",
+      "checkout_nav_33": "สินค้า",
+      "checkout_nav_34": "สินค้าทั้งหมด",
+      "checkout_nav_35": "บริการ",
+      "checkout_nav_36": "เกี่ยวกับเรา",
+      "checkout_nav_37": "ติดต่อเรา",
+      "checkout_nav_38": "สินค้าทั้งหมด",
+      "contact_link_18": "Zappy",
+      "contact_link_19": "[business_phone]",
+      "contact_link_20": "[business_email]",
+      "contact_link_21": "นโยบายความเป็นส่วนตัว",
+      "contact_link_22": "การเข้าถึง",
+      "contact_link_23": "เงื่อนไขการใช้งาน",
+      "contact_link_24": "นโยบายการคืนสินค้า",
+      "contact_link_25": "Zappy",
+      "home_page_title": "ค้นหาสกรูที่สมบูรณ์แบบ — אבוטבול ברגים",
+      "products_alt_25": "אבוטבול ברגים",
+      "products_btn_13": "ทั้งหมด",
+      "products_btn_14": "แนะนำ",
+      "products_btn_15": "ใหม่",
+      "products_btn_16": "โปรโมชั่น",
+      "products_link_7": "นโยบายความเป็นส่วนตัว",
+      "products_link_8": "การเข้าถึง",
+      "products_link_9": "เงื่อนไขการใช้งาน",
+      "products_nav_17": "สินค้า",
+      "products_nav_18": "สินค้าทั้งหมด",
+      "products_nav_19": "บริการ",
+      "products_nav_20": "เกี่ยวกับเรา",
+      "products_nav_21": "ติดต่อเรา",
+      "products_nav_22": "สินค้าทั้งหมด",
+      "products_span_5": "รวม:",
+      "products_span_6": "₪0",
+      "services_alt_52": "אבוטבול ברגים",
+      "services_nav_44": "ผลิตภัณฑ์",
+      "services_nav_45": "ผลิตภัณฑ์ทั้งหมด",
+      "services_nav_46": "บริการ",
+      "services_nav_47": "เกี่ยวกับเรา",
+      "services_nav_48": "ติดต่อเรา",
+      "services_nav_49": "ผลิตภัณฑ์ทั้งหมด",
+      "about_page_title": "เกี่ยวกับร้านน็อตสกรูชั้นนำ — อบูตบูล ברגิม",
+      "account_label_36": "ชื่อ",
+      "account_label_37": "โทรศัพท์",
+      "account_label_38": "ชื่อที่อยู่",
+      "account_label_39": "ถนนและหมายเลข",
+      "account_label_40": "อพาร์ตเมนต์ ชั้น ทางเข้า",
+      "account_label_41": "เมือง",
+      "account_label_42": "รหัสไปรษณีย์",
+      "account_label_43": "ตั้งเป็นค่าเริ่มต้น",
+      "account_title_59": "ค้นหา",
+      "account_title_60": "เข้าสู่ระบบ",
+      "account_title_61": "ตะกร้าสินค้า",
+      "account_title_62": "ค้นหา",
+      "account_title_63": "ค้นหา",
+      "checkout_link_20": "เข้าสู่ระบบที่นี่",
+      "checkout_link_21": "นโยบายความเป็นส่วนตัว",
+      "checkout_link_22": "การเข้าถึง",
+      "checkout_link_23": "เงื่อนไขการใช้งาน",
+      "checkout_link_24": "นโยบายการคืนสินค้า",
+      "checkout_link_25": "Zappy",
+      "checkout_link_26": "ดำเนินการชำระเงิน",
+      "checkout_span_10": "มีบัญชีอยู่แล้ว?",
+      "checkout_span_11": "เข้าสู่ระบบในฐานะ:",
+      "checkout_span_12": "₪0",
+      "checkout_span_13": "₪0",
+      "checkout_span_14": "₪0",
+      "checkout_span_15": "-₪0",
+      "checkout_span_16": "₪0",
+      "checkout_span_17": "ฉันยอมรับเงื่อนไขการใช้งาน",
+      "checkout_span_18": "รวมทั้งสิ้น:",
+      "checkout_span_19": "₪0",
+      "contact_label_27": "ชื่อ-นามสกุล *",
+      "contact_label_28": "อีเมล *",
+      "contact_label_29": "โทรศัพท์ *",
+      "contact_label_30": "ข้อความ",
+      "contact_title_40": "เข้าสู่ระบบ",
+      "contact_title_41": "ตะกร้าสินค้า",
+      "contact_title_42": "ค้นหา",
+      "contact_title_43": "ค้นหา",
+      "legal_terms_h1_1": "เงื่อนไขการใช้งาน",
+      "legal_terms_h2_2": "1. คำจำกัดความ",
+      "legal_terms_h2_3": "2. คำอธิบายบริการ",
+      "legal_terms_h2_4": "3. เงื่อนไขการใช้งาน",
+      "legal_terms_h2_5": "4. หน้าที่ของผู้ใช้",
+      "legal_terms_h2_6": "5. นโยบายการชำระเงินและการคืนเงิน",
+      "legal_terms_h2_7": "6. ข้อจำกัดความรับผิดชอบ",
+      "legal_terms_h2_8": "7. ลิขสิทธิ์และทรัพย์สินทางปัญญา",
+      "legal_terms_h2_9": "8. ความเป็นส่วนตัว",
+      "legal_terms_p_15": "[business_name] ให้บริการทั่วไปผ่านเว็บไซต์ บริการเหล่านี้อยู่ภายใต้เงื่อนไขที่ระบุในเอกสารนี้และอาจมีการเปลี่ยนแปลงเป็นครั้งคราว",
+      "legal_terms_p_16": "การใช้เว็บไซต์ขึ้นอยู่กับการปฏิบัติตามเงื่อนไขต่อไปนี้:",
+      "legal_terms_p_17": "หากบริการรวมถึงการชำระเงิน:",
+      "legal_terms_p_18": "บริการให้ \"ตามสภาพที่เป็น\" โดยไม่มีการรับประกันใดๆ บริษัทจะไม่รับผิดชอบต่อความเสียหายทางอ้อม ความเสียหายที่เป็นผลสืบเนื่อง หรือความเสียหายพิเศษที่เกิดจากการใช้เว็บไซต์ ยกเว้นในกรณีที่กฎหมายกำหนดไว้เป็นอย่างอื่น",
+      "legal_terms_p_19": "เนื้อหาทั้งหมดในเว็บไซต์ รวมถึงข้อความ รูปภาพ การออกแบบ และโค้ด ได้รับการคุ้มครองด้วยลิขสิทธิ์ที่เป็นของ [business_name] ห้ามทำซ้ำ เผยแพร่ หรือใช้เนื้อหาเพื่อการค้าโดยไม่ได้รับอนุญาตเป็นลายลักษณ์อักษร",
+      "legal_terms_p_20": "การเก็บรวบรวมและใช้ข้อมูลส่วนบุคคลอยู่ภายใต้นโยบายความเป็นส่วนตัวของเรา การใช้เว็บไซต์ถือเป็นการยินยอมต่อนโยบายความเป็นส่วนตัวตามที่ระบุแยกต่างหาก",
+      "legal_terms_p_21": "บริษัทขอสงวนสิทธิ์ในการเปลี่ยนแปลงเงื่อนไขการใช้งานเหล่านี้ได้ตลอดเวลา การเปลี่ยนแปลงที่สำคัญจะประกาศในเว็บไซต์พร้อมแจ้งล่วงหน้า 30 วัน การใช้งานต่อไปหลังจากการเปลี่ยนแปลงถือเป็นการยินยอมต่อเงื่อนไขใหม่",
+      "legal_terms_p_22": "บริษัทขอสงวนสิทธิ์ในการหยุดหรือจำกัดการบริการได้ตลอดเวลา รวมถึงในกรณีที่มีการละเมิดเงื่อนไขการใช้งาน ในกรณีที่สิ้นสุดการบริการ ข้อกำหนดของมาตราที่เกี่ยวข้องจะยังคงมีผลบังคับใช้",
+      "legal_terms_p_23": "เงื่อนไขการใช้งานเหล่านี้อยู่ภายใต้กฎหมายของรัฐอิสราเอล ข้อพิพาทใดๆ จะพิจารณาในศาลที่มีอำนาจในอิสราเอล โดยให้ความสำคัญกับการอนุญาโตตุลาการหรือการไกล่เกลี่ยหากเป็นไปได้",
+      "legal_terms_p_24": "สำหรับคำถามหรือข้อชี้แจงเกี่ยวกับเงื่อนไขการใช้งาน:",
+      "login_page_title": "เข้าสู่ระบบ - אבוטבול ברגים",
+      "products_link_10": "นโยบายการคืนสินค้า",
+      "products_link_11": "Zappy",
+      "products_link_12": "ดำเนินการชำระเงิน",
+      "services_link_37": "Zappy",
+      "services_link_38": "ติดต่อเรา",
+      "services_link_39": "นโยบายความเป็นส่วนตัว",
+      "services_link_40": "การเข้าถึง",
+      "services_link_41": "เงื่อนไขการใช้งาน",
+      "services_link_42": "นโยบายการคืนสินค้า",
+      "services_link_43": "Zappy",
+      "checkout_label_32": "ฉันยอมรับเงื่อนไขการใช้งาน",
+      "checkout_title_50": "ค้นหา",
+      "checkout_title_51": "เข้าสู่ระบบ",
+      "checkout_title_52": "ตะกร้าสินค้า",
+      "checkout_title_53": "ค้นหา",
+      "checkout_title_54": "ค้นหา",
+      "checkout_title_55": "ปิด",
+      "legal_terms_h2_10": "9. การเปลี่ยนแปลงเงื่อนไขการใช้งาน",
+      "legal_terms_h2_11": "10. การสิ้นสุดการบริการ",
+      "legal_terms_h2_12": "11. กฎหมายที่ใช้บังคับและการระงับข้อพิพาท",
+      "legal_terms_h2_13": "12. ข้อกำหนดทั่วไป",
+      "legal_terms_h2_14": "13. รายละเอียดการติดต่อ",
+      "legal_terms_li_28": "\"บริษัท\" - [business_name]",
+      "legal_terms_li_29": "\"ผู้ใช้\" - ผู้ที่เข้าชมหรือใช้เว็บไซต์",
+      "legal_terms_li_30": "\"บริการ\" - บริการทั่วไปที่ให้ผ่านเว็บไซต์",
+      "legal_terms_li_31": "ใช้เว็บไซต์เพื่อวัตถุประสงค์ที่ถูกกฎหมายเท่านั้น",
+      "legal_terms_li_32": "ไม่รบกวนการดำเนินงานของเว็บไซต์หรือผู้ใช้รายอื่น",
+      "legal_terms_li_33": "ไม่อัปโหลดเนื้อหาที่ก้าวร้าว ผิดกฎหมาย หรือเป็นอันตราย",
+      "legal_terms_li_34": "เคารพลิขสิทธิ์และทรัพย์สินทางปัญญา",
+      "legal_terms_li_35": "ไม่ดำเนินการที่อาจส่งผลเสียต่อความปลอดภัยของเว็บไซต์",
+      "legal_terms_li_36": "ให้ข้อมูลที่ถูกต้องและแม่นยำเมื่อลงทะเบียนหรือสั่งซื้อ",
+      "legal_terms_li_37": "รักษาความลับของรายละเอียดการเข้าถึงบัญชี",
+      "legal_terms_li_38": "แจ้งทันทีเมื่อมีการใช้บัญชีโดยไม่ได้รับอนุญาต",
+      "legal_terms_li_39": "อัปเดตข้อมูลส่วนบุคคลตามความจำเป็น",
+      "legal_terms_li_40": "การชำระเงินดำเนินการผ่านระบบที่ปลอดภัยและเข้ารหัส",
+      "legal_terms_li_41": "ราคารวมภาษีมูลค่าเพิ่มตามที่กฎหมายกำหนด",
+      "legal_terms_li_42": "สิทธิ์ในการยกเลิกธุรกรรมจะเป็นไปตามกฎหมายคุ้มครองผู้บริโภค",
+      "legal_terms_li_43": "การคืนเงินจะดำเนินการภายใน 14 วันทำการนับจากการอนุมัติการยกเลิก",
+      "legal_terms_li_44": "หากส่วนใดของเงื่อนไขถูกประกาศว่าไม่ถูกต้อง เงื่อนไขส่วนอื่นจะยังคงมีผลบังคับใช้",
+      "legal_terms_li_45": "การไม่บังคับใช้สิทธิ์จะไม่ถือเป็นการสละสิทธิ์",
+      "legal_terms_li_46": "เงื่อนไขการใช้งานเป็นข้อตกลงที่สมบูรณ์ระหว่างคู่สัญญา",
+      "legal_terms_li_47": "บริษัท: [business_name]",
+      "legal_terms_li_48": "อีเมล: [business_email]",
+      "legal_terms_li_49": "โทรศัพท์: [business_phone]",
+      "legal_terms_li_50": "ที่อยู่: [business_address]",
+      "order_success_p_4": "ขอบคุณสำหรับคำสั่งซื้อ",
+      "order_success_p_5": "หมายเลขคำสั่งซื้อ",
+      "order_success_p_6": "กำลังโหลดรายละเอียดคำสั่งซื้อ...",
+      "order_success_p_7": "การยืนยันคำสั่งซื้อถูกส่งไปยังอีเมลของคุณแล้ว",
+      "order_success_p_8": "คำสั่งซื้อของคุณอยู่ระหว่างดำเนินการ เราจะแจ้งให้คุณทราบเมื่อการจัดส่งออกเดินทาง",
+      "order_success_p_9": "© 2025 אבוטבול ברגים สงวนลิขสิทธิ์",
+      "product__slug_p_3": "กำลังโหลดสินค้า...",
+      "product__slug_p_4": "© 2025 אבוטבול ברגים สงวนลิขสิทธิ์ทั้งหมด",
+      "product__slug_p_5": "สร้างโดย Zappy",
+      "products_title_26": "ค้นหา",
+      "products_title_27": "เข้าสู่ระบบ",
+      "products_title_28": "ตะกร้าสินค้า",
+      "products_title_29": "ค้นหา",
+      "products_title_30": "ค้นหา",
+      "return_policy_p_7": "อัปเดตล่าสุด: 3.2.2026",
+      "return_policy_p_8": "אבוטבול ברגים มุ่งมั่นในการสร้างความพึงพอใจให้กับลูกค้า นโยบายนี้ระบุสิทธิของคุณในการคืนสินค้าตามกฎหมายคุ้มครองผู้บริโภค",
+      "return_policy_p_9": "ตามกฎหมายคุ้มครองผู้บริโภค คุณมีสิทธิยกเลิกการซื้อภายใน 14 วันนับจากวันที่ได้รับสินค้า",
+      "services_title_53": "เข้าสู่ระบบ",
+      "services_title_54": "ตะกร้าสินค้า",
+      "services_title_55": "ค้นหา",
+      "services_title_56": "ค้นหา",
+      "account_page_title": "บัญชีของฉัน - אבוטבול ברגים",
+      "category__slug_p_2": "© 2025 אבוטבול ברגים สงวนลิขสิทธิ์",
+      "category__slug_p_3": "สร้างโดย Zappy",
+      "contact_page_title": "ติดต่อร้านน็อตโบลท์ — אבוטבול ברגים",
+      "legal_privacy_h1_1": "นโยบายความเป็นส่วนตัว",
+      "legal_privacy_h2_2": "1. การเก็บรวบรวมข้อมูล",
+      "legal_privacy_h2_3": "2. การใช้ข้อมูล",
+      "legal_privacy_h2_4": "3. การแบ่งปันข้อมูล",
+      "legal_privacy_h2_5": "4. สิทธิของผู้ใช้",
+      "legal_privacy_h2_6": "5. คุกกี้ (Cookies)",
+      "legal_privacy_h2_7": "6. ความปลอดภัยของข้อมูล",
+      "legal_privacy_h2_8": "7. การเปลี่ยนแปลงนโยบาย",
+      "legal_privacy_h2_9": "8. การติดต่อ",
+      "legal_privacy_p_10": "[business_name] (\"บริษัท\", \"เรา\", \"ของเรา\") มุ่งมั่นในการปกป้องความเป็นส่วนตัวของคุณ นโยบายความเป็นส่วนตัวนี้อธิบายวิธีที่เราเก็บรวบรวม ใช้ และปกป้องข้อมูลของคุณเมื่อใช้เว็บไซต์ www.company.com (\"บริการ\")",
+      "legal_privacy_p_11": "เราอาจเก็บรวบรวมข้อมูลประเภทต่อไปนี้:",
+      "legal_privacy_p_12": "เราใช้ข้อมูลที่เก็บรวบรวมเพื่อวัตถุประสงค์ต่อไปนี้:",
+      "legal_privacy_p_13": "เราจะไม่ขาย เช่า หรือแบ่งปันข้อมูลส่วนบุคคลของคุณกับบุคคลที่สาม ยกเว้นในกรณีต่อไปนี้:",
+      "legal_privacy_p_14": "ตามกฎหมายคุ้มครองความเป็นส่วนตัว พ.ศ. 2524 คุณมีสิทธิต่อไปนี้:",
+      "legal_privacy_p_15": "เว็บไซต์ของเราใช้คุกกี้เพื่อปรับปรุงประสบการณ์การใช้งาน คุณสามารถจัดการคุกกี้ผ่านการตั้งค่าเบราว์เซอร์ของคุณ การปิดใช้งานคุกกี้อาจส่งผลต่อการทำงานของเว็บไซต์",
+      "legal_privacy_p_16": "เราใช้มาตรการรักษาความปลอดภัยที่เหมาะสมเพื่อปกป้องข้อมูลของคุณ รวมถึงการเข้ารหัส ไฟร์วอลล์ และการควบคุมการเข้าถึงที่จำกัด อย่างไรก็ตาม ไม่มีวิธีการส่งหรือจัดเก็บใดที่ปลอดภัย 100%",
+      "legal_privacy_p_17": "เราอาจปรับปรุงนโยบายความเป็นส่วนตัวนี้เป็นครั้งคราว การเปลี่ยนแปลงที่สำคัญจะถูกประกาศบนเว็บไซต์พร้อมการแจ้งล่วงหน้า 30 วัน",
+      "legal_privacy_p_18": "สำหรับคำถามหรือคำขอเกี่ยวกับนโยบายความเป็นส่วนตัวนี้ สามารถติดต่อเราได้ที่:",
+      "legal_privacy_p_19": "ผู้ควบคุมฐานข้อมูล: สำหรับการร้องเรียนสามารถติดต่อผู้ควบคุมฐานข้อมูลที่กระทรวงยุติธรรม",
+      "order_success_h1_1": "ได้รับคำสั่งซื้อแล้ว!",
+      "order_success_h2_2": "รายละเอียดคำสั่งซื้อ",
+      "order_success_h2_3": "ตะกร้าสินค้าของคุณ",
+      "order_success_p_10": "สร้างโดย Zappy",
+      "product__slug_h2_1": "สินค้าที่คล้ายกัน",
+      "product__slug_h2_2": "ตะกร้าสินค้าของคุณ",
+      "return_policy_h1_1": "นโยบายการคืนสินค้า",
+      "return_policy_h2_2": "1. สิทธิในการยกเลิก",
+      "return_policy_h2_3": "2. สินค้าที่ไม่สามารถคืนได้",
+      "return_policy_h2_4": "3. สินค้าชำรุด",
+      "return_policy_h2_5": "4. การติดต่อ",
+      "return_policy_h2_6": "ตะกร้าสินค้าของคุณ",
+      "return_policy_p_10": "ในกรณีที่สินค้าชำรุดหรือแตกต่างจากที่อธิบายไว้ คุณมีสิทธิได้รับเงินคืนเต็มจำนวนโดยไม่มีค่าธรรมเนียมการยกเลิก รวมถึงค่าจัดส่ง",
+      "return_policy_p_11": "สำหรับการคืนสินค้าหรือข้อสงสัย:",
+      "return_policy_p_12": "อีเมล: info@company.com",
+      "return_policy_p_13": "โทรศัพท์: 03-1234567",
+      "return_policy_p_14": "ที่อยู่: כתובת החברה, ישראל",
+      "return_policy_p_15": "© 2025 אבוטבול ברגים สงวนลิขสิทธิ์",
+      "return_policy_p_16": "สร้างโดย Zappy",
+      "cart_placeholder_21": "ค้นหาสินค้า...",
+      "cart_placeholder_22": "ค้นหาสินค้า...",
+      "category__slug_h2_1": "ตะกร้าสินค้าของคุณ",
+      "checkout_page_title": "ชำระเงิน - אבוטבול ברגים",
+      "home_placeholder_51": "ค้นหาสินค้า...",
+      "home_placeholder_52": "ค้นหาสินค้า...",
+      "legal_privacy_li_23": "ข้อมูลส่วนบุคคล: ชื่อ ที่อยู่อีเมล หมายเลขโทรศัพท์ และที่อยู่",
+      "legal_privacy_li_24": "ข้อมูลทางเทคนิค: ที่อยู่ IP ประเภทเบราว์เซอร์ ระบบปฏิบัติการ และข้อมูลการใช้งานเว็บไซต์",
+      "legal_privacy_li_25": "คุกกี้: ข้อมูลที่เก็บไว้ในคอมพิวเตอร์ของคุณเพื่อปรับปรุงประสบการณ์การใช้งาน",
+      "legal_privacy_li_26": "การให้บริการตามที่ร้องขอ",
+      "legal_privacy_li_27": "การปรับปรุงบริการและประสบการณ์ผู้ใช้",
+      "legal_privacy_li_28": "การติดต่อคุณเกี่ยวกับบริการของเรา",
+      "legal_privacy_li_29": "การปฏิบัติตามข้อกำหนดทางกฎหมาย",
+      "legal_privacy_li_30": "ด้วยความยินยอมอย่างชัดแจ้งของคุณ",
+      "legal_privacy_li_31": "เมื่อกฎหมายกำหนด",
+      "legal_privacy_li_32": "เพื่อปกป้องสิทธิของเราหรือความปลอดภัยของผู้ใช้",
+      "legal_privacy_li_33": "กับผู้ให้บริการที่ช่วยในการดำเนินงานบริการ (ภายใต้ข้อตกลงการรักษาความลับ)",
+      "legal_privacy_li_34": "สิทธิในการเข้าถึงข้อมูลส่วนบุคคลที่เก็บไว้เกี่ยวกับคุณ",
+      "legal_privacy_li_35": "สิทธิในการแก้ไขข้อมูลที่ผิดหรือไม่ถูกต้อง",
+      "legal_privacy_li_36": "สิทธิในการลบข้อมูลส่วนบุคคลในสถานการณ์บางอย่าง",
+      "legal_privacy_li_37": "สิทธิในการคัดค้านการประมวลผลข้อมูลเพื่อวัตถุประสงค์ทางการตลาด",
+      "legal_privacy_li_38": "สิทธิในการยื่นร้องเรียนต่อผู้ควบคุมฐานข้อมูล",
+      "legal_privacy_li_39": "บริษัท: [business_name]",
+      "legal_privacy_li_40": "อีเมล: [business_email]",
+      "legal_privacy_li_41": "โทรศัพท์: [business_phone]",
+      "legal_privacy_li_42": "ที่อยู่: [business_address]",
+      "legal_terms_link_25": "[business_email]",
+      "legal_terms_link_26": "[business_phone]",
+      "legal_terms_link_27": "← กลับสู่เว็บไซต์",
+      "products_page_title": "สินค้า - אבוטבול ברגים",
+      "return_policy_li_26": "สำหรับผู้สูงอายุ ผู้อพยพใหม่ และผู้พิการ - ระยะเวลายกเลิกคือ 4 เดือน",
+      "return_policy_li_27": "ต้องคืนสินค้าในบรรจุภัณฑ์เดิม",
+      "return_policy_li_28": "การคืนเงินจะดำเนินการภายใน 14 วันหลังจากแจ้งยกเลิก",
+      "return_policy_li_29": "ผลิตภัณฑ์อาหารที่เสียแล้ว",
+      "return_policy_li_30": "สินค้าที่ผลิตตามสั่งเป็นพิเศษ",
+      "return_policy_li_31": "ซอฟต์แวร์และซีดีที่เปิดแล้ว",
+      "return_policy_li_32": "ผลิตภัณฑ์สุขอนามัยส่วนบุคคลที่เปิดแล้ว",
+      "services_page_title": "บริการร้านน็อตสกรูมืออาชีพ — אบูตบูล ברגิม",
+      "about_placeholder_37": "ค้นหาผลิตภัณฑ์...",
+      "about_placeholder_38": "ค้นหาผลิตภัณฑ์...",
+      "login_placeholder_23": "ค้นหาสินค้า...",
+      "login_placeholder_24": "ค้นหาสินค้า...",
+      "login_placeholder_25": "ที่อยู่อีเมล",
+      "login_placeholder_26": "รหัสยืนยัน",
+      "order_success_alt_28": "אבוטבול ברגים",
+      "order_success_nav_20": "สินค้า",
+      "order_success_nav_21": "สินค้าทั้งหมด",
+      "order_success_nav_22": "บริการ",
+      "order_success_nav_23": "เกี่ยวกับเรา",
+      "order_success_nav_24": "ติดต่อเรา",
+      "order_success_nav_25": "สินค้าทั้งหมด",
+      "product__slug_alt_22": "אבוטבול ברגים",
+      "product__slug_link_8": "นโยบายความเป็นส่วนตัว",
+      "product__slug_link_9": "การเข้าถึง",
+      "product__slug_nav_14": "สินค้า",
+      "product__slug_nav_15": "สินค้าทั้งหมด",
+      "product__slug_nav_16": "บริการ",
+      "product__slug_nav_17": "เกี่ยวกับเรา",
+      "product__slug_nav_18": "ติดต่อเรา",
+      "product__slug_nav_19": "สินค้าทั้งหมด",
+      "product__slug_span_6": "รวม:",
+      "product__slug_span_7": "₪0",
+      "return_policy_alt_41": "אבוטבול ברגים",
+      "return_policy_nav_33": "สินค้า",
+      "return_policy_nav_34": "สินค้าทั้งหมด",
+      "return_policy_nav_35": "บริการ",
+      "return_policy_nav_36": "เกี่ยวกับเรา",
+      "return_policy_nav_37": "ติดต่อเรา",
+      "return_policy_nav_38": "สินค้าทั้งหมด",
+      "category__slug_alt_24": "אבוטבול ברגים",
+      "category__slug_btn_12": "ทั้งหมด",
+      "category__slug_btn_13": "แนะนำ",
+      "category__slug_btn_14": "ใหม่",
+      "category__slug_btn_15": "โปรโมชั่น",
+      "category__slug_link_6": "นโยบายความเป็นส่วนตัว",
+      "category__slug_link_7": "การเข้าถึง",
+      "category__slug_link_8": "เงื่อนไขการใช้งาน",
+      "category__slug_link_9": "นโยบายการคืนสินค้า",
+      "category__slug_nav_16": "สินค้า",
+      "category__slug_nav_17": "สินค้าทั้งหมด",
+      "category__slug_nav_18": "บริการ",
+      "category__slug_nav_19": "เกี่ยวกับเรา",
+      "category__slug_nav_20": "ติดต่อเรา",
+      "category__slug_nav_21": "สินค้าทั้งหมด",
+      "category__slug_span_4": "รวม:",
+      "category__slug_span_5": "₪0",
+      "home_meta_description": "ร้านสกรูชั้นนำในอิสราเอลสำหรับผู้รับเหมา เจ้าของร้าน และผู้จัดการบำรุงรักษา สกรูและน็อตสำหรับงานก่อสร้างหลากหลายในราคาแข่งขัน",
+      "legal_privacy_link_20": "[business_email]",
+      "legal_privacy_link_21": "[business_phone]",
+      "legal_privacy_link_22": "← กลับสู่เว็บไซต์",
+      "order_success_link_13": "ช้อปต่อ",
+      "order_success_link_14": "นโยบายความเป็นส่วนตัว",
+      "order_success_link_15": "การเข้าถึง",
+      "order_success_link_16": "เงื่อนไขการใช้งาน",
+      "order_success_link_17": "นโยบายการคืนสินค้า",
+      "order_success_link_18": "Zappy",
+      "order_success_link_19": "ดำเนินการชำระเงิน",
+      "order_success_span_11": "รวม:",
+      "order_success_span_12": "₪0",
+      "product__slug_link_10": "เงื่อนไขการใช้งาน",
+      "product__slug_link_11": "นโยบายการคืนสินค้า",
+      "product__slug_link_12": "Zappy",
+      "product__slug_link_13": "ดำเนินการชำระเงิน",
+      "return_policy_link_19": "info@company.com",
+      "return_policy_link_20": "นโยบายความเป็นส่วนตัว",
+      "return_policy_link_21": "การเข้าถึง",
+      "return_policy_link_22": "เงื่อนไขการใช้งาน",
+      "return_policy_link_23": "นโยบายการคืนสินค้า",
+      "return_policy_link_24": "Zappy",
+      "return_policy_link_25": "ดำเนินการชำระเงิน",
+      "return_policy_span_17": "รวม:",
+      "return_policy_span_18": "₪0",
+      "about_meta_description": "ทำความรู้จักกับอบูตบูล ברگิม - ร้านน็อตสกรูในอิสราเอลที่มีประสบการณ์หลายปีในการจัดหาวัสดุยึดต่อให้กับผู้รับเหมา เรื่องราว ค่านิยม และความมุ่งมั่นในการบริการที่เป็นเลิศ",
+      "account_placeholder_50": "ค้นหาสินค้า...",
+      "account_placeholder_51": "ค้นหาสินค้า...",
+      "account_placeholder_52": "ชื่อ",
+      "account_placeholder_53": "โทรศัพท์",
+      "account_placeholder_54": "ถนนและหมายเลข",
+      "account_placeholder_55": "อพาร์ตเมนต์ ชั้น ทางเข้า",
+      "account_placeholder_56": "เมือง",
+      "account_placeholder_57": "รหัสไปรษณีย์",
+      "category__slug_link_10": "Zappy",
+      "category__slug_link_11": "ดำเนินการชำระเงิน",
+      "contact_placeholder_37": "ค้นหาสินค้า...",
+      "contact_placeholder_38": "ค้นหาสินค้า...",
+      "legal_terms_page_title": "เงื่อนไขการใช้งาน - [business_name]",
+      "order_success_title_29": "ค้นหา",
+      "order_success_title_30": "เข้าสู่ระบบ",
+      "order_success_title_31": "ตะกร้าสินค้า",
+      "order_success_title_32": "ค้นหา",
+      "order_success_title_33": "ค้นหา",
+      "product__slug_title_23": "ค้นหา",
+      "product__slug_title_24": "เข้าสู่ระบบ",
+      "product__slug_title_25": "ตะกร้าสินค้า",
+      "product__slug_title_26": "ค้นหา",
+      "product__slug_title_27": "ค้นหา",
+      "return_policy_title_42": "ค้นหา",
+      "return_policy_title_43": "เข้าสู่ระบบ",
+      "return_policy_title_44": "ตะกร้าสินค้า",
+      "return_policy_title_45": "ค้นหา",
+      "return_policy_title_46": "ค้นหา",
+      "category__slug_title_25": "ค้นหา",
+      "category__slug_title_26": "เข้าสู่ระบบ",
+      "category__slug_title_27": "ตะกร้าสินค้า",
+      "category__slug_title_28": "ค้นหา",
+      "category__slug_title_29": "ค้นหา",
+      "checkout_placeholder_39": "ค้นหาสินค้า...",
+      "checkout_placeholder_40": "ค้นหาสินค้า...",
+      "checkout_placeholder_41": "ชื่อ-นามสกุล",
+      "checkout_placeholder_42": "อีเมล",
+      "checkout_placeholder_43": "โทรศัพท์",
+      "checkout_placeholder_44": "ถนนและหมายเลข",
+      "checkout_placeholder_45": "ห้อง ชั้น ทางเข้า",
+      "checkout_placeholder_46": "เมือง",
+      "checkout_placeholder_47": "รหัสไปรษณีย์",
+      "checkout_placeholder_48": "ใส่รหัสคูปอง",
+      "legal_accessibility_p_9": "[business_name] มุ่งมั่นในการทำให้บริการเข้าถึงได้สำหรับประชาชนทั่วไป เราดำเนินการตามแนวทางมาตรฐานอิสราเอล (TS 5568) ที่อิงตามแนวทาง WCAG 2.1 ระดับ AA",
+      "legal_return_policy_p_3": "นโยบายการคืนสินค้านี้อธิบายวิธีการจัดการการคืนสินค้าที่ אבוטבול ברגים",
+      "legal_return_policy_p_4": "ลูกค้ามีสิทธิ์ในระยะเวลาพิจารณาตามที่กฎหมายคุ้มครองผู้บริโภคท้องถิ่นกำหนด",
+      "legal_return_policy_p_5": "สำหรับการคืนสินค้า ติดต่อฝ่ายสนับสนุน אבוטבול ברגים พร้อมหมายเลขคำสั่งซื้อของคุณ",
+      "legal_return_policy_p_6": "© 2025 אבוטבול ברגים สงวนลิขสิทธิ์ทั้งหมด",
+      "legal_return_policy_p_7": "สร้างโดย Zappy",
+      "products_placeholder_23": "ค้นหาสินค้า...",
+      "products_placeholder_24": "ค้นหาสินค้า...",
+      "services_placeholder_50": "ค้นหาผลิตภัณฑ์...",
+      "services_placeholder_51": "ค้นหาผลิตภัณฑ์...",
+      "contact_meta_description": "ติดต่อ אבוטבול ברגים เพื่อรับคำปรึกษาเชิงวิชาชีพและใบเสนอราคา ร้านน็อตโบลท์ในอิสราเอลที่จำหน่ายอุปกรณ์เชื่อมต่อสำหรับผู้รับเหมาและช่างผู้เชี่ยวชาญ",
+      "legal_accessibility_h1_1": "คำประกาศการเข้าถึง",
+      "legal_accessibility_h2_2": "1. นโยบายการเข้าถึง",
+      "legal_accessibility_h2_3": "2. การจัดการการเข้าถึงในเว็บไซต์",
+      "legal_accessibility_h2_4": "3. เทคโนโลยีช่วยเหลือที่รองรับ",
+      "legal_accessibility_h2_5": "4. การตรวจสอบการเข้าถึง",
+      "legal_accessibility_h2_6": "5. การปรับปรุงอย่างต่อเนื่อง",
+      "legal_accessibility_h2_7": "6. การติดต่อและข้อเสนอแนะ",
+      "legal_accessibility_h3_8": "ความสอดคล้องกับมาตรฐาน WCAG 2.1",
+      "legal_accessibility_p_10": "เราเชื่อในความเท่าเทียมและสิทธิของทุกคนในการรับข้อมูลและบริการอย่างอิสระและเท่าเทียมกัน เว็บไซต์นี้ได้รับการออกแบบและสร้างขึ้นโดยให้ความสำคัญเป็นพิเศษกับการเข้าถึงสำหรับผู้พิการ",
+      "legal_accessibility_p_11": "เว็บไซต์สอดคล้องกับระดับ AA ของมาตรฐาน WCAG 2.1 ซึ่งรวมถึง:",
+      "legal_accessibility_p_12": "เว็บไซต์ได้รับการตรวจสอบโดยใช้:",
+      "legal_accessibility_p_13": "เราทำงานอย่างต่อเนื่องเพื่อปรับปรุงการเข้าถึงเว็บไซต์และอัปเดตตามการพัฒนาทางเทคโนโลยีและข้อเสนอแนะจากผู้ใช้",
+      "legal_accessibility_p_14": "หากคุณพบปัญหาการเข้าถึงบนเว็บไซต์หรือต้องการความช่วยเหลือ กรุณาติดต่อเรา:",
+      "legal_accessibility_p_15": "เวลาตอบสนอง: เราจะตอบสนองต่อคำร้องขอเกี่ยวกับการเข้าถึงภายใน 3 วันทำการและดำเนินการแก้ไขภายใน 10 วันทำการ",
+      "legal_accessibility_p_16": "การร้องเรียน: สามารถยื่นร้องเรียนต่อกระทรวงยุติธรรม - คณะกรรมการความเท่าเทียมสำหรับผู้พิการ",
+      "legal_privacy_page_title": "นโยบายความเป็นส่วนตัว - [business_name]",
+      "legal_return_policy_h1_1": "นโยบายการคืนสินค้า",
+      "legal_return_policy_h2_2": "ตะกร้าสินค้าของคุณ",
+      "order_success_page_title": "ได้รับคำสั่งซื้อแล้ว! - אבוטבול ברגים",
+      "product__slug_page_title": "รายละเอียดสินค้า - אבוטבול ברגים",
+      "return_policy_page_title": "นโยบายการคืนสินค้า - אבוטבול ברגים",
+      "category__slug_page_title": "สินค้า - אבוטבול ברגים",
+      "legal_accessibility_li_20": "รองรับการนำทางด้วยแป้นพิมพ์",
+      "legal_accessibility_li_21": "รองรับโปรแกรมอ่านหน้าจอ",
+      "legal_accessibility_li_22": "ความคมชัดของสีที่เหมาะสม",
+      "legal_accessibility_li_23": "ขนาดตัวอักษรที่ยืดหยุ่นและสามารถขยายได้",
+      "legal_accessibility_li_24": "คำอธิบายรูปภาพ (Alt text) ที่ละเอียด",
+      "legal_accessibility_li_25": "หัวข้อที่มีโครงสร้างลำดับชั้น",
+      "legal_accessibility_li_26": "ลิงก์ที่มีคำอธิบายและชัดเจน",
+      "legal_accessibility_li_27": "รองรับการซูมได้ถึง 200% โดยไม่สูญเสียเนื้อหา",
+      "legal_accessibility_li_28": "รับรู้ได้ (Perceivable): ข้อมูลแสดงในรูปแบบที่ผู้ใช้สามารถรับรู้ได้",
+      "legal_accessibility_li_29": "ใช้งานได้ (Operable): ส่วนประกอบของอินเทอร์เฟซสามารถใช้งานได้",
+      "legal_accessibility_li_30": "เข้าใจได้ (Understandable): ข้อมูลและอินเทอร์เฟซผู้ใช้เข้าใจได้",
+      "legal_accessibility_li_31": "แข็งแกร่ง (Robust): เนื้อหาสามารถถอดรหัสได้โดยเทคโนโลยีที่หลากหลาย",
+      "legal_accessibility_li_32": "NVDA (Windows)",
+      "legal_accessibility_li_33": "JAWS (Windows)",
+      "legal_accessibility_li_34": "VoiceOver (Mac/iOS)",
+      "legal_accessibility_li_35": "TalkBack (Android)",
+      "legal_accessibility_li_36": "Dragon NaturallySpeaking",
+      "legal_accessibility_li_37": "Switch navigation",
+      "legal_accessibility_li_38": "เครื่องมือตรวจสอบการเข้าถึงอัตโนมัติ",
+      "legal_accessibility_li_39": "การทดสอบด้วยตนเองกับโปรแกรมอ่านหน้าจอ",
+      "legal_accessibility_li_40": "การนำทางด้วยแป้นพิมพ์เท่านั้น",
+      "legal_accessibility_li_41": "การตรวจสอบความคมชัดของสี",
+      "legal_accessibility_li_42": "การทดสอบกับผู้ใช้ที่มีความพิการ",
+      "legal_accessibility_li_43": "บริษัท: [business_name]",
+      "legal_accessibility_li_44": "อีเมล: [business_email]",
+      "legal_accessibility_li_45": "โทรศัพท์: [business_phone]",
+      "legal_return_policy_li_16": "ค่าเริ่มต้น: 14 วัน สินค้าต้องอยู่ในสภาพเดิม",
+      "services_meta_description": "บริการร้านน็อตสกรูในอิสราเอล: จัดส่งรวดเร็ว คำปรึกษาจากผู้เชี่ยวชาญ ราคาขายส่ง และวัสดุยึดต่อสำหรับผู้รับเหมา โซลูชันที่ปรับแต่งเฉพาะสำหรับทุกโครงการก่อสร้าง",
+      "legal_return_policy_alt_25": "אבוטבול ברגים",
+      "legal_return_policy_nav_17": "สินค้า",
+      "legal_return_policy_nav_18": "สินค้าทั้งหมด",
+      "legal_return_policy_nav_19": "บริการ",
+      "legal_return_policy_nav_20": "เกี่ยวกับเรา",
+      "legal_return_policy_nav_21": "ติดต่อเรา",
+      "legal_return_policy_nav_22": "สินค้าทั้งหมด",
+      "legal_return_policy_span_8": "รวม:",
+      "legal_return_policy_span_9": "₪0",
+      "legal_accessibility_link_17": "[business_email]",
+      "legal_accessibility_link_18": "[business_phone]",
+      "legal_accessibility_link_19": "← กลับสู่เว็บไซต์",
+      "legal_return_policy_link_10": "นโยบายความเป็นส่วนตัว",
+      "legal_return_policy_link_11": "การเข้าถึง",
+      "legal_return_policy_link_12": "เงื่อนไขการใช้งาน",
+      "legal_return_policy_link_13": "นโยบายการคืนสินค้า",
+      "legal_return_policy_link_14": "Zappy",
+      "legal_return_policy_link_15": "ดำเนินการชำระเงิน",
+      "legal_return_policy_title_26": "เข้าสู่ระบบ",
+      "legal_return_policy_title_27": "ตะกร้าสินค้า",
+      "legal_return_policy_title_28": "ค้นหา",
+      "legal_return_policy_title_29": "ค้นหา",
+      "order_success_placeholder_26": "ค้นหาสินค้า...",
+      "order_success_placeholder_27": "ค้นหาสินค้า...",
+      "product__slug_placeholder_20": "ค้นหาสินค้า...",
+      "product__slug_placeholder_21": "ค้นหาสินค้า...",
+      "return_policy_placeholder_39": "ค้นหาสินค้า...",
+      "return_policy_placeholder_40": "ค้นหาสินค้า...",
+      "category__slug_placeholder_22": "ค้นหาสินค้า...",
+      "category__slug_placeholder_23": "ค้นหาสินค้า...",
+      "legal_accessibility_page_title": "คำแถลงการเข้าถึง - [business_name]",
+      "legal_return_policy_page_title": "นโยบายการคืนสินค้า - אבוטבול ברגים",
+      "legal_return_policy_placeholder_23": "ค้นหาสินค้า...",
+      "legal_return_policy_placeholder_24": "ค้นหาสินค้า..."
+    }
+  }
+};
+  
+  // RTL languages
+  const rtlLanguages = ["he"];
+  
+  // Available languages
+  const availableLanguages = ["he","th"];
+  
+  // Language display info with SVG flag images for cross-platform compatibility
+  const languageInfo = {"he":{"name":"Hebrew","nativeName":"עברית","flag":"🇮🇱","flagIcon":"circle-flags:il","dir":"rtl","flagImg":"<img src=\"https://api.iconify.design/circle-flags/il.svg\" width=\"20\" height=\"20\" alt=\"\" style=\"display:inline-block;vertical-align:middle;border-radius:50%;\" />"},"th":{"name":"Thai","nativeName":"ไทย","flag":"🇹🇭","flagIcon":"circle-flags:th","dir":"ltr","flagImg":"<img src=\"https://api.iconify.design/circle-flags/th.svg\" width=\"20\" height=\"20\" alt=\"\" style=\"display:inline-block;vertical-align:middle;border-radius:50%;\" />"}};
+  
+  // Detect stored language preference - only use stored value, not browser language
+  // This ensures the site respects its original design (e.g., RTL Hebrew site stays RTL by default)
+  function detectLanguage() {
+    const stored = localStorage.getItem('zappy_lang');
+    if (stored && availableLanguages.includes(stored)) return stored;
+    
+    // Always default to the site's default language, not browser language
+    // This prevents breaking the original site layout on first visit
+    return 'he';
+  }
+  
+  // Callbacks for language change events (e.g., e-commerce content refresh)
+  const languageChangeCallbacks = [];
+  
+  // Simple i18n implementation (no external dependency)
+  const zappyI18n = {
+    language: detectLanguage(),
+    resources: resources,
+    t: function(key) {
+      const langResources = this.resources[this.language];
+      if (langResources && langResources.translation && langResources.translation[key]) {
+        return langResources.translation[key];
+      }
+      // Fallback to default language
+      const fallbackResources = this.resources['he'];
+      if (fallbackResources && fallbackResources.translation && fallbackResources.translation[key]) {
+        return fallbackResources.translation[key];
+      }
+      return key;
+    },
+    changeLanguage: function(lang) {
+      if (!availableLanguages.includes(lang)) return Promise.resolve();
+      var oldLang = this.language;
+      this.language = lang;
+      localStorage.setItem('zappy_lang', lang);
+      updateContent();
+      updateDirection();
+      // Re-detect icon color after direction change (background may differ)
+      fixLanguageSwitcherColor();
+      // Also re-check after a short delay to ensure styles are applied
+      setTimeout(fixLanguageSwitcherColor, 100);
+      
+      // Call all registered language change callbacks (e.g., e-commerce content refresh)
+      languageChangeCallbacks.forEach(function(callback) {
+        try {
+          callback(lang, oldLang);
+        } catch (e) {
+          console.error('[i18n] Language change callback error:', e);
+        }
+      });
+      
+      return Promise.resolve();
+    },
+    getCurrentLanguage: function() { return this.language; },
+    getAvailableLanguages: function() { return availableLanguages; },
+    // Register a callback to be called when language changes
+    onLanguageChange: function(callback) {
+      if (typeof callback === 'function') {
+        languageChangeCallbacks.push(callback);
+      }
+    }
+  };
+  
+  // Update all translatable content
+  function updateContent() {
+    // Newline character for detection
+    var newlineChar = String.fromCharCode(10);
+    // HTML tag pattern for detection (common formatting tags)
+    var htmlTagPattern = /<(font|b|i|u|strong|em|span|br|a|sub|sup|mark|del|ins|s|small|big)[^>]*>/i;
+    
+    // Update text content - use innerHTML when text contains line breaks or HTML tags
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      var translation = zappyI18n.t(key);
+      if (translation && translation !== key) {
+        // Check if translation contains newlines or HTML formatting tags
+        var hasNewlines = translation.indexOf(newlineChar) !== -1;
+        var hasHtmlTags = htmlTagPattern.test(translation);
+        
+        if (hasNewlines || hasHtmlTags) {
+          // Convert newlines to <br> and use innerHTML to preserve HTML formatting
+          el.innerHTML = translation.split(newlineChar).join('<br>');
+        } else {
+          // No HTML content, use textContent for safety
+          el.textContent = translation;
+        }
+      }
+    });
+    
+    // Update placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+      const key = el.getAttribute('data-i18n-placeholder');
+      const translation = zappyI18n.t(key);
+      if (translation && translation !== key) {
+        el.setAttribute('placeholder', translation);
+      }
+    });
+    
+    // Update alt attributes
+    document.querySelectorAll('[data-i18n-alt]').forEach(function(el) {
+      const key = el.getAttribute('data-i18n-alt');
+      const translation = zappyI18n.t(key);
+      if (translation && translation !== key) {
+        el.setAttribute('alt', translation);
+      }
+    });
+    
+    // Update title attributes
+    document.querySelectorAll('[data-i18n-title]').forEach(function(el) {
+      const key = el.getAttribute('data-i18n-title');
+      const translation = zappyI18n.t(key);
+      if (translation && translation !== key) {
+        el.setAttribute('title', translation);
+      }
+    });
+    
+    // Update meta description
+    document.querySelectorAll('[data-i18n-content]').forEach(function(el) {
+      const key = el.getAttribute('data-i18n-content');
+      const translation = zappyI18n.t(key);
+      if (translation && translation !== key) {
+        el.setAttribute('content', translation);
+      }
+    });
+    
+    // Update page title
+    const titleEl = document.querySelector('title[data-i18n]');
+    if (titleEl) {
+      const key = titleEl.getAttribute('data-i18n');
+      const translation = zappyI18n.t(key);
+      if (translation && translation !== key) {
+        document.title = translation;
+      }
+    }
+  }
+  
+  // Update document direction based on language
+  function updateDirection() {
+    const currentLang = zappyI18n.language;
+    const isRTL = rtlLanguages.includes(currentLang);
+    const html = document.documentElement;
+    const body = document.body;
+    const newDir = isRTL ? 'rtl' : 'ltr';
+    
+    // Update html element - only direction, NOT text-align (preserve centered elements)
+    html.setAttribute('lang', currentLang);
+    html.setAttribute('dir', newDir);
+    html.style.direction = newDir;
+    
+    // Update body element - only direction
+    if (body) {
+      body.setAttribute('dir', newDir);
+      body.style.direction = newDir;
+    }
+    
+    // Update major content containers - only direction, NOT text-align
+    // This preserves centered hero sections, titles, etc.
+    document.querySelectorAll('main, article, section, .content, .container, .wrapper').forEach(function(el) {
+      el.style.direction = newDir;
+      // Do NOT set text-align - preserve original alignment (center, left, right)
+    });
+    
+    // ONLY apply text-align to legal page content
+    document.querySelectorAll('.legal-content, .terms-content, .privacy-content').forEach(function(el) {
+      el.style.direction = newDir;
+      el.style.textAlign = isRTL ? 'right' : 'left';
+    });
+    
+    // Update catalog menu RTL class to match current direction
+    // This is critical for e-commerce sites with category navigation
+    document.querySelectorAll('.zappy-catalog-menu').forEach(function(el) {
+      if (isRTL) {
+        el.classList.add('rtl');
+        el.setAttribute('dir', 'rtl');
+      } else {
+        el.classList.remove('rtl');
+        el.removeAttribute('dir');
+      }
+    });
+    
+    // IMPORTANT: Do NOT set direction on navigation flex containers!
+    // V2 sites have layouts designed for a specific direction.
+    // Changing inline direction on flex containers reverses the item order, breaking layouts.
+    // Instead, we rely on the dir attribute on <html> for text direction,
+    // and let the original CSS handle navigation layout.
+    
+    // Remove dir ATTRIBUTE from nav elements - they should inherit from <html>
+    // V2 sites may have hardcoded dir="rtl" on nav elements which needs to be removed
+    document.querySelectorAll('header, nav, .navbar, .nav-container, .header-container, .nav-links, .menu, nav ul, header ul, #navMenu').forEach(function(el) {
+      // Remove dir attribute so element inherits from <html>
+      el.removeAttribute('dir');
+      // Remove all layout-affecting inline styles - let original CSS take over
+      el.style.removeProperty('direction');
+      el.style.removeProperty('flex-direction');
+      el.style.removeProperty('justify-content');
+      el.style.removeProperty('margin-left');
+      el.style.removeProperty('margin-right');
+    });
+    
+    // SPECIAL HANDLING for nav elements
+    document.querySelectorAll('.nav-menu, #navMenu, .nav-right-group').forEach(function(el) {
+      el.removeAttribute('dir');
+      el.style.removeProperty('direction');
+      el.style.removeProperty('flex-direction');
+      el.style.removeProperty('justify-content');
+      if (isRTL) {
+        el.style.removeProperty('margin-left');
+        el.style.removeProperty('margin-right');
+      } else {
+        // In LTR: override CSS margin-left:auto with 0 for nav-menu elements
+        el.style.setProperty('margin-left', '0', 'important');
+        el.style.removeProperty('margin-right');
+      }
+    });
+    
+    // CRITICAL FIX FOR V2 SITES: Move lang-switcher INSIDE nav-cta-container
+    // V2 sites use margin-left:auto on nav-cta-container to push it right.
+    // If lang-switcher is a sibling, it gets left behind. Moving it inside keeps them grouped.
+    document.querySelectorAll('.lang-switcher').forEach(function(el) {
+      var ctaContainer = el.parentElement ? el.parentElement.querySelector('.nav-cta-container') : null;
+      if (ctaContainer && el.parentElement === ctaContainer.parentElement) {
+        // Move lang-switcher as first child of CTA container
+        ctaContainer.insertBefore(el, ctaContainer.firstChild);
+      }
+      // Clear any margin overrides
+      el.style.removeProperty('margin-left');
+      el.style.removeProperty('margin-right');
+    });
+    
+    // CRITICAL FIX FOR E-COMMERCE SITES: Move lang-switcher inside nav-icons-left
+    // E-commerce sites have a nav-icons-left container with search box.
+    // For RTL: lang-switcher should appear to the RIGHT of search box
+    // For LTR: lang-switcher should appear to the LEFT of search box
+    document.querySelectorAll('.lang-switcher').forEach(function(el) {
+      var navIconsLeft = document.querySelector('.nav-icons-left');
+      var searchBox = document.querySelector('.nav-search-box');
+      
+      // Only move if not already inside nav-icons-left and the elements exist
+      if (navIconsLeft && searchBox && !el.closest('.nav-icons-left')) {
+        // Insert before search box - in RTL this visually appears to the RIGHT
+        navIconsLeft.insertBefore(el, searchBox);
+      }
+    });
+    
+    // Remove any previously set margins on nav links and logo
+    document.querySelectorAll('header > a, nav > a, .nav-menu > a, .nav-links > a, nav ul li, header ul li, .logo, .site-logo, .brand, .navbar-brand, .nav-brand').forEach(function(el) {
+      el.style.removeProperty('margin-left');
+      el.style.removeProperty('margin-right');
+    });
+    
+    // NOTE: Removed old code that set margin-left:auto on .lang-switcher
+    // This conflicted with V2 layouts. The margin handling is now done in the 
+    // special handling section above that sets margin-left:0 in LTR mode.
+    
+    // CTA buttons - remove any inline margin styles to let CSS handle positioning
+    document.querySelectorAll('header .btn, header .button, header .cta, nav .btn, nav .button, .navbar .btn, .nav-cta-container, .cta-container, .header-cta, .nav-cta').forEach(function(el) {
+      el.style.removeProperty('margin-left');
+      el.style.removeProperty('margin-right');
+    });
+    
+    // Globe icon SVG for language switcher button (minimal design, no chevron)
+    // Read the icon color from the data attribute (set by server based on navbar color detection)
+    var langSwitcher = document.querySelector('.lang-switcher');
+    var iconColor = langSwitcher ? langSwitcher.getAttribute('data-icon-color') : 'currentColor';
+    if (!iconColor) iconColor = 'currentColor';
+    
+    var globeIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="' + iconColor + '" style="flex-shrink:0;"><path d="M12.039,.002s0,0,0,0c-.013,0-.026-.002-.039-.002-.005,0-.009,0-.014,0-.002,0-.003,0-.005,0C5.373,.011,0,5.39,0,12s5.383,12,12,12,12-5.383,12-12S18.638,.023,12.039,.002Zm9.747,6.998h-4.814c-1.067-2.669-2.712-4.781-3.731-5.925,3.734,.421,6.901,2.719,8.546,5.925Zm-4.786,5c0,1.407-.292,2.753-.731,4H7.731c-.439-1.247-.731-2.593-.731-4s.292-2.754,.73-4h8.539c.439,1.247,.731,2.593,.731,4Zm-1.122,5c-1.229,2.838-3.116,4.99-3.878,5.788-.762-.798-2.649-2.95-3.878-5.788h7.755ZM8.121,7c1.229-2.841,3.117-4.992,3.879-5.789,.762,.798,2.649,2.95,3.878,5.789h-7.757ZM10.757,1.075c-1.025,1.15-2.668,3.264-3.73,5.925H2.214C3.859,3.795,7.024,1.498,10.757,1.075ZM1.764,8H6.668c-.403,1.247-.668,2.589-.668,4s.265,2.752,.669,4H1.764c-.487-1.242-.764-2.588-.764-4s.277-2.758,.764-4Zm.45,9H7.029c1.067,2.669,2.712,4.781,3.731,5.925-3.734-.421-6.901-2.719-8.546-5.925Zm11.026,5.925c1.019-1.144,2.664-3.257,3.731-5.925h4.814c-1.645,3.206-4.812,5.504-8.546,5.925Zm8.996-6.925h-4.905c.404-1.248,.669-2.589,.669-4s-.265-2.752-.669-4h4.905c.487,1.242,.764,2.588,.764,4s-.277,2.758-.764,4Z"/></svg>';
+    
+    // Update language switcher display - just the globe icon, no arrow
+    var currentLangEl = document.querySelector('.lang-switcher-current');
+    if (currentLangEl) {
+      currentLangEl.innerHTML = globeIconSvg;
+    }
+    
+    // Update dropdown options (show all except current)
+    document.querySelectorAll('.lang-switcher-dropdown').forEach(function(dropdown) {
+      dropdown.innerHTML = availableLanguages
+        .filter(function(lang) { return lang !== currentLang; })
+        .map(function(lang) {
+          const info = languageInfo[lang] || { flag: '🌐', flagImg: '🌐', nativeName: lang };
+          // Use flagImg (SVG) for cross-platform compatibility, fallback to emoji flag
+          return '<button class="lang-option" data-lang="' + lang + '" style="display:flex;align-items:center;gap:8px;width:100%;padding:10px 14px;background:none;border:none;text-align:left;cursor:pointer;font-size:14px;color:#333;">' + (info.flagImg || info.flag) + ' ' + info.nativeName + '</button>';
+        })
+        .join('');
+      
+      // Re-attach event listeners
+      dropdown.querySelectorAll('.lang-option').forEach(function(option) {
+        option.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const lang = this.getAttribute('data-lang');
+          zappyI18n.changeLanguage(lang);
+          dropdown.style.opacity = '0';
+          dropdown.style.visibility = 'hidden';
+          dropdown.style.transform = 'translateY(-8px)';
+        });
+      });
+    });
+    
+    // FIX: Update mobile button positions when language/direction changes
+    // CSS handles positioning based on html[dir] attribute.
+    // We just need to remove any inline left/right styles so CSS can take over.
+    if (window.innerWidth < 768) {
+      var mobileToggle = document.querySelector('.mobile-toggle');
+      var phoneBtn = document.querySelector('.phone-header-btn');
+      var navCtaContainer = document.querySelector('.nav-cta-container');
+      
+      // Remove inline left/right - CSS will position based on html[dir]
+      if (mobileToggle) {
+        mobileToggle.style.removeProperty('left');
+        mobileToggle.style.removeProperty('right');
+        console.log('[i18n] Cleared mobile toggle inline position - CSS will handle based on dir:', newDir);
+      }
+      
+      if (phoneBtn) {
+        phoneBtn.style.removeProperty('left');
+        phoneBtn.style.removeProperty('right');
+        console.log('[i18n] Cleared phone button inline position - CSS will handle based on dir:', newDir);
+      }
+      
+      if (navCtaContainer) {
+        navCtaContainer.style.removeProperty('left');
+        navCtaContainer.style.removeProperty('right');
+        console.log('[i18n] Cleared nav-cta-container inline position - CSS will handle based on dir:', newDir);
+      }
+    }
+    
+    // Update mobile language submenu in hamburger
+    updateMobileLangMenu();
+  }
+  
+  // Initialize language switcher dropdown
+  function initLanguageSwitcher() {
+    const switchers = document.querySelectorAll('.lang-switcher');
+    if (!switchers.length) return;
+    
+    switchers.forEach(function(switcher) {
+      const dropdown = switcher.querySelector('.lang-switcher-dropdown');
+      const current = switcher.querySelector('.lang-switcher-current');
+      
+      if (!current || !dropdown) return;
+      
+      // Ensure dropdown is hidden initially (inline style fallback)
+      dropdown.style.opacity = '0';
+      dropdown.style.visibility = 'hidden';
+      dropdown.style.transform = 'translateY(-8px)';
+      
+      // Toggle dropdown with inline styles
+      current.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = dropdown.style.opacity === '1';
+        if (isOpen) {
+          dropdown.style.opacity = '0';
+          dropdown.style.visibility = 'hidden';
+          dropdown.style.transform = 'translateY(-8px)';
+        } else {
+          dropdown.style.opacity = '1';
+          dropdown.style.visibility = 'visible';
+          dropdown.style.transform = 'translateY(0)';
+        }
+      });
+      
+      // Handle language selection
+      dropdown.querySelectorAll('.lang-option').forEach(function(option) {
+        option.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const lang = this.getAttribute('data-lang');
+          zappyI18n.changeLanguage(lang);
+          dropdown.style.opacity = '0';
+          dropdown.style.visibility = 'hidden';
+          dropdown.style.transform = 'translateY(-8px)';
+        });
+      });
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.lang-switcher-dropdown').forEach(function(dropdown) {
+        dropdown.style.opacity = '0';
+        dropdown.style.visibility = 'hidden';
+        dropdown.style.transform = 'translateY(-8px)';
+      });
+    });
+  }
+  
+  // ==============================================
+  // MOBILE LANGUAGE SUBMENU (inside hamburger menu)
+  // ==============================================
+  
+  // Create mobile language menu inside hamburger
+  function injectMobileLangCss() {
+    if (document.getElementById('mobile-lang-menu-css')) return;
+    var style = document.createElement('style');
+    style.id = 'mobile-lang-menu-css';
+    style.textContent = '@media (max-width: 768px) {' +
+      '.lang-switcher, .nav-cta-container .lang-switcher, .nav-container .lang-switcher,' +
+      '.navbar .lang-switcher, .navbar .nav-cta-container .lang-switcher,' +
+      '.nav-icons-left .lang-switcher, .nav-ecommerce-icons .lang-switcher { display: none !important; }' +
+      '.zappy-lang-switcher-container { display: none !important; }' +
+      '.mobile-lang-menu { list-style: none !important; width: 100%; border-top: 1px solid rgba(128,128,128,0.2); margin-top: 8px; padding-top: 8px; }' +
+      '.mobile-lang-toggle { display: flex; align-items: center; gap: 10px; width: 100%; padding: 12px 16px; background: none; border: none; cursor: pointer; color: inherit; font-size: 15px; font-family: inherit; }' +
+      '.mobile-lang-toggle span { flex: 1; }' +
+      'html[dir="rtl"] .mobile-lang-toggle span, html[lang="he"] .mobile-lang-toggle span, html[lang="ar"] .mobile-lang-toggle span { text-align: right; }' +
+      'html:not([dir="rtl"]) .mobile-lang-toggle span { text-align: left; }' +
+      '.mobile-lang-chevron { transition: transform 0.3s ease; flex-shrink: 0; }' +
+      '.mobile-lang-options { display: none; flex-direction: column; padding: 0 16px 8px 46px; }' +
+      'html[dir="rtl"] .mobile-lang-options, html[lang="he"] .mobile-lang-options, html[lang="ar"] .mobile-lang-options { padding: 0 46px 8px 16px; }' +
+      '.mobile-lang-options.open { display: flex; }' +
+      '.mobile-lang-option { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: none; border: none; cursor: pointer; color: inherit; font-size: 14px; font-family: inherit; border-radius: 6px; transition: background-color 0.2s; width: 100%; }' +
+      'html[dir="rtl"] .mobile-lang-option, html[lang="he"] .mobile-lang-option, html[lang="ar"] .mobile-lang-option { text-align: right; }' +
+      'html:not([dir="rtl"]) .mobile-lang-option { text-align: left; }' +
+      '.mobile-lang-option:hover { background: rgba(128,128,128,0.1); }' +
+      '.mobile-lang-option img { width: 20px; height: 20px; border-radius: 50%; display: inline-block; vertical-align: middle; }' +
+      '}';
+    document.head.appendChild(style);
+  }
+
+  function createMobileLangMenu() {
+    if (window.innerWidth > 768) return;
+    if (document.querySelector('.mobile-lang-menu')) return;
+    if (availableLanguages.length < 2) return;
+    
+    injectMobileLangCss();
+    
+    var navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu');
+    if (!navMenu) return;
+    
+    var currentLang = zappyI18n.language;
+    var currentInfo = languageInfo[currentLang] || { nativeName: currentLang, flagImg: '' };
+    
+    var langSwitcher = document.querySelector('.lang-switcher');
+    var iconColor = langSwitcher ? langSwitcher.getAttribute('data-icon-color') : 'currentColor';
+    if (!iconColor) iconColor = 'currentColor';
+    
+    var optionsHtml = availableLanguages
+      .filter(function(lang) { return lang !== currentLang; })
+      .map(function(lang) {
+        var info = languageInfo[lang] || { nativeName: lang, flagImg: '' };
+        return '<button class="mobile-lang-option" data-lang="' + lang + '">' +
+          (info.flagImg || info.flag || '') + ' ' + info.nativeName + '</button>';
+      })
+      .join('');
+    
+    var li = document.createElement('li');
+    li.className = 'mobile-lang-menu';
+    li.innerHTML =
+      '<button class="mobile-lang-toggle" type="button">' +
+        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="' + iconColor + '" style="flex-shrink:0;"><path d="M12.039,.002s0,0,0,0c-.013,0-.026-.002-.039-.002-.005,0-.009,0-.014,0-.002,0-.003,0-.005,0C5.373,.011,0,5.39,0,12s5.383,12,12,12,12-5.383,12-12S18.638,.023,12.039,.002Zm9.747,6.998h-4.814c-1.067-2.669-2.712-4.781-3.731-5.925,3.734,.421,6.901,2.719,8.546,5.925Zm-4.786,5c0,1.407-.292,2.753-.731,4H7.731c-.439-1.247-.731-2.593-.731-4s.292-2.754,.73-4h8.539c.439,1.247,.731,2.593,.731,4Zm-1.122,5c-1.229,2.838-3.116,4.99-3.878,5.788-.762-.798-2.649-2.95-3.878-5.788h7.755ZM8.121,7c1.229-2.841,3.117-4.992,3.879-5.789,.762,.798,2.649,2.95,3.878,5.789h-7.757ZM10.757,1.075c-1.025,1.15-2.668,3.264-3.73,5.925H2.214C3.859,3.795,7.024,1.498,10.757,1.075ZM1.764,8H6.668c-.403,1.247-.668,2.589-.668,4s.265,2.752,.669,4H1.764c-.487-1.242-.764-2.588-.764-4s.277-2.758,.764-4Zm.45,9H7.029c1.067,2.669,2.712,4.781,3.731,5.925-3.734-.421,6.901-2.719-8.546-5.925Zm11.026,5.925c1.019-1.144,2.664-3.257,3.731-5.925h4.814c-1.645,3.206-4.812,5.504-8.546,5.925Zm8.996-6.925h-4.905c.404-1.248,.669-2.589,.669-4s-.265-2.752-.669-4h4.905c.487,1.242,.764,2.588,.764,4s-.277,2.758-.764,4Z"/></svg>' +
+        '<span>' + currentInfo.nativeName + '</span>' +
+        '<svg class="mobile-lang-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"></polyline></svg>' +
+      '</button>' +
+      '<div class="mobile-lang-options">' + optionsHtml + '</div>';
+    
+    navMenu.appendChild(li);
+    
+    // Match nav link color for visual consistency
+    var firstNavLink = navMenu.querySelector('li:not(.mobile-lang-menu) > a');
+    if (firstNavLink) {
+      var navLinkColor = window.getComputedStyle(firstNavLink).color;
+      if (navLinkColor && navLinkColor !== 'rgba(0, 0, 0, 0)') {
+        li.style.color = navLinkColor;
+        // Update globe SVG fill to match nav link color
+        var globeSvg = li.querySelector('.mobile-lang-toggle > svg:first-child');
+        if (globeSvg) globeSvg.setAttribute('fill', navLinkColor);
+      }
+    }
+    
+    console.log('[i18n] Mobile language submenu created in hamburger menu');
+  }
+  
+  // Wire up mobile language submenu event handlers
+  function initMobileLangSwitcher() {
+    var toggle = document.querySelector('.mobile-lang-toggle');
+    var options = document.querySelector('.mobile-lang-options');
+    if (!toggle || !options) return;
+    
+    var newToggle = toggle.cloneNode(true);
+    toggle.parentNode.replaceChild(newToggle, toggle);
+    var optionsEl = newToggle.parentNode.querySelector('.mobile-lang-options');
+    
+    newToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var isOpen = optionsEl.classList.contains('open');
+      if (isOpen) {
+        optionsEl.classList.remove('open');
+        optionsEl.style.display = 'none';
+      } else {
+        optionsEl.classList.add('open');
+        optionsEl.style.display = 'flex';
+      }
+      var chevron = newToggle.querySelector('.mobile-lang-chevron');
+      if (chevron) chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+    });
+    
+    optionsEl.querySelectorAll('.mobile-lang-option').forEach(function(option) {
+      option.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var lang = this.getAttribute('data-lang');
+        zappyI18n.changeLanguage(lang);
+        optionsEl.classList.remove('open');
+        optionsEl.style.display = 'none';
+        var chevron = newToggle.querySelector('.mobile-lang-chevron');
+        if (chevron) chevron.style.transform = '';
+        var navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu');
+        if (navMenu) navMenu.classList.remove('active');
+        var hamburgerIcon = document.querySelector('.hamburger-icon');
+        var closeIcon = document.querySelector('.close-icon');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+  
+  // Update mobile language menu after language change
+  function updateMobileLangMenu() {
+    var menuItem = document.querySelector('.mobile-lang-menu');
+    if (!menuItem) {
+      createMobileLangMenu();
+      initMobileLangSwitcher();
+      return;
+    }
+    
+    var currentLang = zappyI18n.language;
+    var currentInfo = languageInfo[currentLang] || { nativeName: currentLang };
+    
+    var toggleSpan = menuItem.querySelector('.mobile-lang-toggle span');
+    if (toggleSpan) toggleSpan.textContent = currentInfo.nativeName;
+    
+    var optionsContainer = menuItem.querySelector('.mobile-lang-options');
+    if (!optionsContainer) return;
+    
+    optionsContainer.innerHTML = availableLanguages
+      .filter(function(lang) { return lang !== currentLang; })
+      .map(function(lang) {
+        var info = languageInfo[lang] || { nativeName: lang, flagImg: '' };
+        return '<button class="mobile-lang-option" data-lang="' + lang + '">' +
+          (info.flagImg || info.flag || '') + ' ' + info.nativeName + '</button>';
+      })
+      .join('');
+    
+    optionsContainer.querySelectorAll('.mobile-lang-option').forEach(function(option) {
+      option.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var lang = this.getAttribute('data-lang');
+        zappyI18n.changeLanguage(lang);
+        optionsContainer.classList.remove('open');
+        optionsContainer.style.display = 'none';
+        var chevron = menuItem.querySelector('.mobile-lang-chevron');
+        if (chevron) chevron.style.transform = '';
+        var navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu');
+        if (navMenu) navMenu.classList.remove('active');
+        var hamburgerIcon = document.querySelector('.hamburger-icon');
+        var closeIcon = document.querySelector('.close-icon');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+      });
+    });
+    
+    optionsContainer.classList.remove('open');
+    optionsContainer.style.display = 'none';
+  }
+  
+  // Fix mobile menu inline styles that may have been incorrectly persisted
+  // This is needed because inline styles override CSS media queries
+  function fixMobileMenuStyles() {
+    // Only run on mobile
+    if (window.innerWidth >= 768) return;
+    
+    // Remove inline flex-direction from nav menus so CSS can take over
+    document.querySelectorAll('.nav-menu, #navMenu, nav ul, header ul').forEach(function(el) {
+      if (el.style.flexDirection) {
+        el.style.removeProperty('flex-direction');
+      }
+    });
+  }
+  
+  // Fix mobile button positioning based on current page direction
+  // Clear any inline left/right styles so CSS can take over based on html[dir]
+  function fixMobileButtonPositioning() {
+    // Only run on mobile
+    if (window.innerWidth >= 768) return;
+    
+    var mobileToggle = document.querySelector('.mobile-toggle');
+    var phoneBtn = document.querySelector('.phone-header-btn');
+    var navCtaContainer = document.querySelector('.nav-cta-container');
+    
+    // Clear inline left/right - CSS will position based on html[dir]
+    if (mobileToggle) {
+      mobileToggle.style.removeProperty('left');
+      mobileToggle.style.removeProperty('right');
+    }
+    
+    if (phoneBtn) {
+      phoneBtn.style.removeProperty('left');
+      phoneBtn.style.removeProperty('right');
+    }
+    
+    if (navCtaContainer) {
+      navCtaContainer.style.removeProperty('left');
+      navCtaContainer.style.removeProperty('right');
+    }
+    
+    console.log('[i18n] Cleared inline button positions - CSS handles based on html[dir]:', document.documentElement.dir);
+  }
+  
+  // ============================================
+  // LANGUAGE SWITCHER ICON COLOR DETECTION
+  // Dynamically detect if navbar has light/dark background
+  // and set the globe icon color accordingly
+  // ============================================
+  function fixLanguageSwitcherColor() {
+    var switcher = document.querySelector('.lang-switcher-current');
+    var svg = switcher ? switcher.querySelector('svg') : null;
+    if (!switcher || !svg) return;
+    
+    // Find the navbar or header element
+    var navbar = document.querySelector('.navbar') || 
+                 document.querySelector('nav') || 
+                 document.querySelector('header');
+    if (!navbar) return;
+    
+    // Get the effective background color by walking up the DOM tree
+    function getEffectiveBackgroundColor(element) {
+      var el = element;
+      var maxDepth = 10; // Prevent infinite loops
+      
+      while (el && maxDepth > 0) {
+        var style = window.getComputedStyle(el);
+        var bg = style.backgroundColor;
+        
+        // Skip transparent backgrounds
+        if (bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)') {
+          return bg;
+        }
+        
+        // Check background-image for gradients
+        var bgImage = style.backgroundImage;
+        if (bgImage && bgImage !== 'none') {
+          // Extract first color from gradient
+          var gradientMatch = bgImage.match(/rgba?\([^)]+\)|#[a-fA-F0-9]{3,8}/);
+          if (gradientMatch) {
+            return gradientMatch[0];
+          }
+        }
+        
+        el = el.parentElement;
+        maxDepth--;
+      }
+      
+      // Default to white if no background found (assume light)
+      return 'rgb(255, 255, 255)';
+    }
+    
+    // Parse color string to RGB values
+    function parseColor(colorStr) {
+      if (!colorStr) return null;
+      
+      // Handle rgb/rgba
+      var rgbMatch = colorStr.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/);
+      if (rgbMatch) {
+        return {
+          r: parseInt(rgbMatch[1], 10),
+          g: parseInt(rgbMatch[2], 10),
+          b: parseInt(rgbMatch[3], 10)
+        };
+      }
+      
+      // Handle hex
+      var hexMatch = colorStr.match(/#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})/);
+      if (hexMatch) {
+        return {
+          r: parseInt(hexMatch[1], 16),
+          g: parseInt(hexMatch[2], 16),
+          b: parseInt(hexMatch[3], 16)
+        };
+      }
+      
+      // Handle 3-digit hex
+      var hex3Match = colorStr.match(/#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])$/);
+      if (hex3Match) {
+        return {
+          r: parseInt(hex3Match[1] + hex3Match[1], 16),
+          g: parseInt(hex3Match[2] + hex3Match[2], 16),
+          b: parseInt(hex3Match[3] + hex3Match[3], 16)
+        };
+      }
+      
+      return null;
+    }
+    
+    // Calculate relative luminance (WCAG formula)
+    function getLuminance(rgb) {
+      if (!rgb) return 0.5; // Default to middle
+      
+      var r = rgb.r / 255;
+      var g = rgb.g / 255;
+      var b = rgb.b / 255;
+      
+      // Apply gamma correction
+      r = r <= 0.03928 ? r / 12.92 : Math.pow((r + 0.055) / 1.055, 2.4);
+      g = g <= 0.03928 ? g / 12.92 : Math.pow((g + 0.055) / 1.055, 2.4);
+      b = b <= 0.03928 ? b / 12.92 : Math.pow((b + 0.055) / 1.055, 2.4);
+      
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    }
+    
+    // Get the effective background color
+    var bgColor = getEffectiveBackgroundColor(navbar);
+    var rgb = parseColor(bgColor);
+    var luminance = getLuminance(rgb);
+    
+    // Threshold: 0.5 is middle, lower = darker background
+    // Use 0.4 as threshold for better contrast
+    var isLightBackground = luminance > 0.4;
+    
+    // Set icon color based on background
+    // Light background = dark icon (#1a1a1a)
+    // Dark background = light icon (#F3FAFF)
+    var iconColor = isLightBackground ? '#1a1a1a' : '#F3FAFF';
+    
+    svg.style.fill = iconColor;
+    switcher.style.color = iconColor;
+    
+    console.log('[i18n] Language switcher icon color:', iconColor, 
+                '(bg luminance:', luminance.toFixed(2), 
+                ', isLight:', isLightBackground, ')');
+  }
+  
+  // Initialize on DOM ready
+  function init() {
+    updateContent();
+    updateDirection();
+    initLanguageSwitcher();
+    createMobileLangMenu();
+    initMobileLangSwitcher();
+    fixMobileMenuStyles();
+    fixMobileButtonPositioning();
+    fixLanguageSwitcherColor();
+    
+    // Also fix on resize (in case user rotates device)
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        // Desktop: remove mobile lang menu if it exists
+        var mobileLangEl = document.querySelector('.mobile-lang-menu');
+        if (mobileLangEl) mobileLangEl.remove();
+        var mobileCssEl = document.getElementById('mobile-lang-menu-css');
+        if (mobileCssEl) mobileCssEl.remove();
+      } else {
+        createMobileLangMenu();
+        initMobileLangSwitcher();
+      }
+      fixMobileMenuStyles();
+      fixMobileButtonPositioning();
+      fixLanguageSwitcherColor();
+    });
+    
+    // Re-check color after a delay to catch dynamically loaded backgrounds
+    setTimeout(fixLanguageSwitcherColor, 500);
+    setTimeout(fixLanguageSwitcherColor, 1500);
+  }
+  
+  // Expose to global scope
+  window.zappyI18n = zappyI18n;
+  
+  // Run initialization
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
 
     <script id="zappy-mobile-submenu-script">
     (function() {
@@ -570,6 +3403,76 @@
           observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
         });
       }, 500);
+    })();
+    </script>
+
+    <script id="zappy-mobile-lang-menu-script">
+    (function() {
+      function initMobileLangMenu() {
+        if (window.innerWidth > 768) {
+          var existingMenu = document.querySelector('.mobile-lang-menu');
+          if (existingMenu) existingMenu.remove();
+          return;
+        }
+        if (document.querySelector('.mobile-lang-menu')) return;
+        var switcher = document.querySelector('.lang-switcher');
+        if (!switcher) return;
+        var dropdown = switcher.querySelector('.lang-switcher-dropdown');
+        if (!dropdown) return;
+        var options = dropdown.querySelectorAll('.lang-option');
+        if (options.length === 0) return;
+        var navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu') || document.querySelector('nav ul');
+        if (!navMenu) return;
+        var currentLang = document.documentElement.lang || 'en';
+        var langConfigs = {
+          he: {name:'עברית',flag:'https://api.iconify.design/circle-flags/il.svg'},
+          en: {name:'English',flag:'https://api.iconify.design/circle-flags/us.svg'},
+          ar: {name:'العربية',flag:'https://api.iconify.design/circle-flags/sa.svg'},
+          fr: {name:'Français',flag:'https://api.iconify.design/circle-flags/fr.svg'},
+          es: {name:'Español',flag:'https://api.iconify.design/circle-flags/es.svg'},
+          de: {name:'Deutsch',flag:'https://api.iconify.design/circle-flags/de.svg'},
+          ru: {name:'Русский',flag:'https://api.iconify.design/circle-flags/ru.svg'},
+          zh: {name:'中文',flag:'https://api.iconify.design/circle-flags/cn.svg'},
+          ja: {name:'日本語',flag:'https://api.iconify.design/circle-flags/jp.svg'},
+          pt: {name:'Português',flag:'https://api.iconify.design/circle-flags/br.svg'},
+          it: {name:'Italiano',flag:'https://api.iconify.design/circle-flags/it.svg'},
+          ko: {name:'한국어',flag:'https://api.iconify.design/circle-flags/kr.svg'}
+        };
+        var container = document.createElement('div');
+        container.className = 'mobile-lang-menu';
+        var currentConfig = langConfigs[currentLang] || {name:currentLang,flag:''};
+        var toggleBtn = document.createElement('button');
+        toggleBtn.className = 'mobile-lang-toggle';
+        toggleBtn.type = 'button';
+        var currentFlagHtml = currentConfig.flag ? '<img src="' + currentConfig.flag + '" width="20" height="20" alt="" style="border-radius:50%;margin-right:8px;margin-left:8px;">' : '';
+        toggleBtn.innerHTML = currentFlagHtml + currentConfig.name;
+        container.appendChild(toggleBtn);
+        var optionsDiv = document.createElement('div');
+        optionsDiv.className = 'mobile-lang-options';
+        var currentLink = document.createElement('a');
+        currentLink.className = 'mobile-lang-option active';
+        currentLink.href = '#';
+        currentLink.innerHTML = currentFlagHtml + currentConfig.name;
+        optionsDiv.appendChild(currentLink);
+        options.forEach(function(opt) {
+          var link = document.createElement('a');
+          link.className = 'mobile-lang-option';
+          link.href = opt.getAttribute('href');
+          link.innerHTML = opt.innerHTML;
+          optionsDiv.appendChild(link);
+        });
+        container.appendChild(optionsDiv);
+        navMenu.appendChild(container);
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleBtn.classList.toggle('expanded');
+          optionsDiv.classList.toggle('expanded');
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileLangMenu); }
+      else { initMobileLangMenu(); }
+      window.addEventListener('resize', function() { clearTimeout(window._mlrt); window._mlrt = setTimeout(initMobileLangMenu, 250); });
     })();
     </script>
     <script src="/script.js"></script>

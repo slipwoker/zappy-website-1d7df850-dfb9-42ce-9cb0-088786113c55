@@ -71,7 +71,7 @@
 }
 
 
-* { margin: 0; padding: 0; box-sizing: border-box; } body { margin: 0; padding: 0; font-family: 'Rubik', 'Noto Sans Hebrew', Arial, sans-serif; line-height: 1.7; color: #1a1a1a; background: #ffffff; } img { max-width: 100%; height: auto; display: block; } :root { --primary-color: #1a1a1a; --secondary-color: #e63946; --accent-color: #f1faee; --text-color: #1a1a1a; --bg-white: #ffffff; --bg-light: #f8f9fa; --shadow: 0 4px 12px rgba(0,0,0,0.1); --nav-color: #1a1a1a; --nav-hover-color: #e63946; } .container { max-width: 1440px; margin: 0 auto; padding: 0 20px; width: 100%; } .navbar { background: #ffffff; padding: 20px 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow); } .nav-container { display: flex; justify-content: flex-end; align-items: center; gap: 2rem; position: relative; max-width: 1440px; width: 100%; padding-left: 60px; padding-right: 60px; } .nav-brand { margin-right: 0; margin-left: 0; flex-shrink: 0; display: flex; justify-content: center; } .logo-link { display: inline-flex; align-items: center; text-decoration: none; line-height: 0; } .logo-link:focus, .logo-link:active { outline: none !important; box-shadow: none !important; } .logo { min-height: 30px; height: auto; width: auto; max-width: 100px; max-height: 40px; object-fit: contain; display: block; background: transparent; transition: opacity 0.3s ease; } .logo:hover { .8; } .brand-title, .nav-brand h1, .nav-brand .brand-name, .nav-brand span:not(.mobile-toggle span) { display: none !important; } .nav-menu { display: flex; gap: 2rem; list-style: none; margin-right: 0; margin-left: auto; } .nav-menu a { color: var(--nav-color); text-decoration: none; font-weight: 500; transition: color 0.3s ease; } .nav-menu a:hover { color: var(--nav-hover-color); } .nav-cta-container { display: flex; align-items: center; margin-right: 1rem; } .nav-cta-item { list-style: none; } .nav-cta-btn { background: var(--primary-color); color: #ffffff !important; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; display: inline-block; border: 2px solid var(--primary-color); } .nav-cta-btn:hover { background: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(230,57,70,0.3); } .mobile-toggle, .phone-header-btn { display: none; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1001; flex-shrink: 0; } .mobile-toggle svg, .phone-header-btn svg { color: var(--nav-color); transition: color 0.3s ease; } .mobile-toggle:focus, .mobile-toggle:active, .phone-header-btn:focus, .phone-header-btn:active { outline: none; border: none; box-shadow: none; } .mobile-toggle:hover svg, .phone-header-btn:hover svg { color: var(--nav-hover-color); } .hero { position: relative; min-height: 600px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; } .hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; } .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2; } .hero-content { position: relative; z-index: 3; max-width: 800px; padding: 40px; color: #ffffff; } .hero h1 { font-size: 48px !important; font-weight: 700 !important; line-height: 1.2 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: #ffffff; } .hero h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: #ffffff; } .btn-hero { display: inline-block; background: var(--secondary-color); color: #ffffff; padding: 16px 40px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 18px; transition: all 0.3s ease; margin-top: 1rem; border: 2px solid var(--secondary-color); } .btn-hero:hover { background: #d62839; border-color: #d62839; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(230,57,70,0.4); } section { padding-top: 20px; padding-bottom: 20px; } .page-header { background: var(--bg-light); padding: 60px 20px; text-align: center; } .page-header h1 { font-size: 48px !important; font-weight: 700 !important; line-height: 1.2 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .page-header h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .intro-section { padding: 60px 20px; background: var(--bg-white); } .intro-section h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .intro-section p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; max-width: 800px; margin-left: auto; margin-right: auto; color: var(--text-color); } .products-preview { padding: 60px 20px; background: var(--bg-light); } .products-preview h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 2rem; margin-top: 2rem; } .product-card { background: var(--bg-white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; } .product-card:hover { transform: translateY(-8px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); } .product-card img { width: 100%; height: 250px; object-fit: cover; } .product-card h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; padding: 20px 20px 0; color: var(--text-color); } .product-card p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; padding: 0 20px 20px; color: var(--text-color); } .cta-center { text-align: center; margin-top: 3rem; } .btn-secondary { display: inline-block; background: var(--primary-color); color: #ffffff; padding: 14px 32px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid var(--primary-color); } .btn-secondary:hover { background: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(230,57,70,0.3); } .services-section { padding: 60px 20px; background: var(--bg-white); } .services-section h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .services-split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem; padding: 20px; } .services-split.reverse { direction: ltr; } .service-text h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .service-text p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .service-image img { width: 100%; height: auto; border-radius: 12px; box-shadow: var(--shadow); } .target-audience { padding: 60px 20px; background: var(--bg-light); } .target-audience h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 2rem; margin-top: 2rem; } .audience-card { background: var(--bg-white); padding: 30px; border-radius: 12px; text-align: center; box-shadow: var(--shadow); transition: transform 0.3s ease; } .audience-card:hover { transform: translateY(-8px); } .audience-icon { font-size: 48px; color: var(--secondary-color); margin-bottom: 1rem; } .audience-card h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .audience-card p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .cta-section { padding: 80px 20px; background: linear-gradient(135deg, var(--primary-color) 0%, #2a2a2a 100%); text-align: center; color: #FFFFFF; } .cta-section h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: #ffffff; } .cta-section p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: #ffffff; } .btn-primary { display: inline-block; background: var(--secondary-color); color: #ffffff; padding: 16px 40px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 18px; transition: all 0.3s ease; margin-top: 1rem; border: 2px solid var(--secondary-color); } .btn-primary:hover { background: #d62839; border-color: #d62839; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(230,57,70,0.4); } .products-main { padding: 60px 20px; background: var(--bg-white); } .intro-text { max-width: 800px; margin: 0 auto 3rem; text-align: center; } .intro-text p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .product-category { margin-bottom: 4rem; } .product-category h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .category-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2rem; padding: 20px; } .category-content.reverse { direction: ltr; } .category-image img { width: 100%; height: auto; border-radius: 12px; box-shadow: var(--shadow); } .category-text p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .services-intro { padding: 60px 20px; background: var(--bg-light); } .services-intro .intro-text { max-width: 800px; margin: 0 auto; text-align: center; } .service-detail { padding: 60px 20px; background: var(--bg-white); } .service-box { background: var(--bg-light); padding: 40px; border-radius: 12px; margin-bottom: 2rem; box-shadow: var(--shadow); } .service-icon { font-size: 48px; color: var(--secondary-color); margin-bottom: 1rem; text-align: center; } .service-box h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .service-box p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; max-width: 800px; margin-left: auto; margin-right: auto; color: var(--text-color); } .why-us { padding: 60px 20px; background: var(--bg-light); } .why-us h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 2rem; margin-top: 2rem; } .benefit-item { display: flex; align-items: center; gap: 1rem; background: var(--bg-white); padding: 20px; border-radius: 8px; box-shadow: var(--shadow); } .benefit-item i { font-size: 24px; color: var(--secondary-color); flex-shrink: 0; } .benefit-item p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 0 !important; color: var(--text-color); } .about-story { padding: 60px 20px; background: var(--bg-white); } .story-content { max-width: 800px; margin: 0 auto; } .story-content p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .values-section { padding: 60px 20px; background: var(--bg-light); } .values-section h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 2rem; margin-top: 2rem; } .value-card { background: var(--bg-white); padding: 30px; border-radius: 12px; box-shadow: var(--shadow); } .value-icon { font-size: 48px; color: var(--secondary-color); margin-bottom: 1rem; text-align: center; } .value-card h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .value-card p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .commitment-section { padding: 60px 20px; background: var(--bg-white); } .commitment-section h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .commitment-text { max-width: 800px; margin: 0 auto; } .commitment-text p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .contact-section { padding: 60px 20px; background: var(--bg-white); } .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; } .contact-form-container h2, .contact-info-container h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .contact-form { display: flex; flex-direction: column; gap: 1.5rem; } .form-group { display: flex; flex-direction: column; gap: 0.5rem; } .form-group label { font-weight: 600; color: var(--text-color); } .form-group input, .form-group textarea { padding: 12px; border: 2px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 16px; transition: border-color 0.3s ease; } .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-color); } .btn-submit { background: var(--primary-color); color: #ffffff; padding: 14px 32px; border: 2px solid var(--primary-color); border-radius: 6px; font-weight: 600; font-size: 16px; cursor: pointer; transition: all 0.3s ease; } .btn-submit:hover { background: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(230,57,70,0.3); } .contact-info { display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem; } .info-item { display: flex; align-items: flex-start; gap: 1rem; } .info-item i { font-size: 24px; color: var(--secondary-color); margin-top: 4px; flex-shrink: 0; } .info-item h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .info-item p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .info-item a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; } .info-item a:hover { color: var(--secondary-color); } .business-hours { margin-top: 2rem; padding: 20px; background: var(--bg-light); border-radius: 8px; } .business-hours h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .business-hours p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .whatsapp-float { display: none; } @media (max-width: 768px) { .whatsapp-float { display: flex; position: fixed; bottom: 20px; width: 50px; height: 50px; border-radius: 50%; align-items: center; justify-content: center; font-size: 24px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.3); background: #25d366; color: #FFFFFF; text-decoration: none; } html[lang="he"] .whatsapp-float, html[lang="ar"] .whatsapp-float, html[dir="rtl"] .whatsapp-float { right: 20px; left: auto; } html[lang="en"] .whatsapp-float, html[lang="es"] .whatsapp-float, html[lang="fr"] .whatsapp-float, html[dir="ltr"] .whatsapp-float { left: 20px; right: auto; } } @media (max-width: 768px) { .nav-container { padding-left: 60px; padding-right: 60px; } .mobile-toggle, .phone-header-btn { display: flex; align-items: center; justify-content: center; position: absolute; top: 50%; transform: translateY(-50%); } .nav-menu { display: none; position: fixed; top: 0; width: 50%; height: 75%; max-width: 50%; background: var(--bg-white); flex-direction: column; padding: 80px 20px 20px; gap: 1rem; box-shadow: var(--shadow); z-index: 999; overflow-y: auto; } .nav-menu.active { display: flex; } .nav-cta-container { display: none; } .nav-brand { margin: 0 auto; justify-content: center; } html[dir="rtl"] .nav-menu, html[lang="he"] .nav-menu, html[lang="ar"] .nav-menu { right: 0; left: auto; } html[dir="ltr"] .nav-menu, html[lang="en"] .nav-menu, html[lang="es"] .nav-menu, html[lang="fr"] .nav-menu { left: 0; right: auto; } html[dir="rtl"] .mobile-toggle, html[lang="he"] .mobile-toggle, html[lang="ar"] .mobile-toggle { right: 15px; left: auto; } html[dir="rtl"] .phone-header-btn, html[lang="he"] .phone-header-btn, html[lang="ar"] .phone-header-btn { left: 15px; right: auto; } html[dir="ltr"] .mobile-toggle, html[lang="en"] .mobile-toggle, html[lang="es"] .mobile-toggle, html[lang="fr"] .mobile-toggle { left: 15px; right: auto; } html[dir="ltr"] .phone-header-btn, html[lang="en"] .phone-header-btn, html[lang="es"] .phone-header-btn, html[lang="fr"] .phone-header-btn { right: 15px; left: auto; } .logo { min-height: 30px; max-width: 100px; max-height: 40px; } .hero { min-height: 400px; } .hero-content { padding: 30px 20px; } .hero h1 { font-size: 28px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } .hero h3 { font-size: 18px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } section { padding-top: 15px; padding-bottom: 15px; } .page-header { padding: 40px 20px; } .page-header h1 { font-size: 28px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } .page-header h3 { font-size: 18px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } .intro-section, .products-preview, .services-section, .target-audience, .cta-section, .products-main, .services-intro, .service-detail, .why-us, .about-story, .values-section, .commitment-section, .contact-section { padding: 40px 20px; } h1 { font-size: 28px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } h2 { font-size: 22px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } h3 { font-size: 18px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } p { font-size: 14px !important; } .products-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; } .services-split { grid-template-columns: 1fr; gap: 2rem; } .services-split.reverse { direction: rtl; } .audience-grid { grid-template-columns: 1fr; gap: 1.5rem; } .category-content { grid-template-columns: 1fr; gap: 2rem; } .category-content.reverse { direction: rtl; } .benefits-grid { grid-template-columns: 1fr; gap: 1.5rem; } .values-grid { grid-template-columns: 1fr; gap: 1.5rem; } .contact-grid { grid-template-columns: 1fr; gap: 2rem; } } @media (max-width: 1024px) { h1 { font-size: 36px !important; } h2 { font-size: 28px !important; } h3 { font-size: 20px !important; } p { font-size: 15px !important; } }
+* { margin: 0; padding: 0; box-sizing: border-box; } body { margin: 0; padding: 0; font-family: 'Rubik', 'Noto Sans Hebrew', Arial, sans-serif; line-height: 1.7; color: #1a1a1a; background: #ffffff; } img { max-width: 100%; height: auto; display: block; } :root { --primary-color: #1a1a1a; --secondary-color: #e63946; --accent-color: #f1faee; --text-color: #1a1a1a; --bg-white: #ffffff; --bg-light: #f8f9fa; --shadow: 0 4px 12px rgba(0,0,0,0.1); --nav-color: #1a1a1a; --nav-hover-color: #e63946; } .container { max-width: 1440px; margin: 0 auto; padding: 0 20px; width: 100%; } .navbar { background: #ffffff; padding: 20px 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow); } .nav-container { display: flex; justify-content: flex-end; align-items: center; gap: 2rem; position: relative; max-width: 1440px; width: 100%; padding-left: 60px; padding-right: 60px; } .nav-brand { margin-right: 0; margin-left: 0; flex-shrink: 0; display: flex; justify-content: center; } .logo-link { display: inline-flex; align-items: center; text-decoration: none; line-height: 0; } .logo-link:focus, .logo-link:active { outline: none !important; box-shadow: none !important; } .logo { min-height: 30px; height: auto; width: auto; max-width: 100px; max-height: 40px; object-fit: contain; display: block; background: transparent; transition: opacity 0.3s ease; } .logo:hover { .8; } .brand-title, .nav-brand h1, .nav-brand .brand-name, .nav-brand span:not(.mobile-toggle span) { display: none !important; } .nav-menu { display: flex; gap: 2rem; list-style: none; margin-right: 0; margin-left: auto; } .nav-menu a { color: var(--nav-color); text-decoration: none; font-weight: 500; transition: color 0.3s ease; } .nav-menu a:hover { color: var(--nav-hover-color); } .nav-cta-container { display: flex; align-items: center; margin-right: 1rem; } .nav-cta-item { list-style: none; } .nav-cta-btn { background: var(--primary-color); color: #ffffff !important; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; display: inline-block; border: 2px solid var(--primary-color); } .nav-cta-btn:hover { background: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(230,57,70,0.3); } .mobile-toggle, .phone-header-btn { display: none; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1001; flex-shrink: 0; } .mobile-toggle svg, .phone-header-btn svg { color: var(--nav-color); transition: color 0.3s ease; } .mobile-toggle:focus, .mobile-toggle:active, .phone-header-btn:focus, .phone-header-btn:active { outline: none; border: none; box-shadow: none; } .mobile-toggle:hover svg, .phone-header-btn:hover svg { color: var(--nav-hover-color); } .hero { position: relative; min-height: 600px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; } .hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; } .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2; } .hero-content { position: relative; z-index: 3; max-width: 800px; padding: 40px; color: #ffffff; } .hero h1 { font-size: 48px !important; font-weight: 700 !important; line-height: 1.2 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: #ffffff; } .hero h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: #ffffff; } .btn-hero { display: inline-block; background: var(--secondary-color); color: #ffffff; padding: 16px 40px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 18px; transition: all 0.3s ease; margin-top: 1rem; border: 2px solid var(--secondary-color); } .btn-hero:hover { background: #d62839; border-color: #d62839; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(230,57,70,0.4); } section { padding-top: 20px; padding-bottom: 20px; } .page-header { background: var(--bg-light); padding: 60px 20px; text-align: center; } .page-header h1 { font-size: 48px !important; font-weight: 700 !important; line-height: 1.2 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .page-header h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .intro-section { padding: 60px 20px; background: var(--bg-white); } .intro-section h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .intro-section p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; max-width: 800px; margin-left: auto; margin-right: auto; color: var(--text-color); } .products-preview { padding: 60px 20px; background: var(--bg-light); } .products-preview h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 2rem; margin-top: 2rem; } .product-card { background: var(--bg-white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; } .product-card:hover { transform: translateY(-8px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); } .product-card img { width: 100%; height: 250px; object-fit: cover; } .product-card h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; padding: 20px 20px 0; color: var(--text-color); } .product-card p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; padding: 0 20px 20px; color: var(--text-color); } .cta-center { text-align: center; margin-top: 3rem; } .btn-secondary { display: inline-block; background: var(--primary-color); color: #ffffff; padding: 14px 32px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid var(--primary-color); } .btn-secondary:hover { background: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(230,57,70,0.3); } .services-section { padding: 60px 20px; background: var(--bg-white); } .services-section h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .services-split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem; padding: 20px; }html[dir="ltr"] .services-split.reverse{direction: ltr;} .service-text h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .service-text p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .service-image img { width: 100%; height: auto; border-radius: 12px; box-shadow: var(--shadow); } .target-audience { padding: 60px 20px; background: var(--bg-light); } .target-audience h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 2rem; margin-top: 2rem; } .audience-card { background: var(--bg-white); padding: 30px; border-radius: 12px; text-align: center; box-shadow: var(--shadow); transition: transform 0.3s ease; } .audience-card:hover { transform: translateY(-8px); } .audience-icon { font-size: 48px; color: var(--secondary-color); margin-bottom: 1rem; } .audience-card h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .audience-card p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .cta-section { padding: 80px 20px; background: linear-gradient(135deg, var(--primary-color) 0%, #2a2a2a 100%); text-align: center; color: #FFFFFF; } .cta-section h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: #ffffff; } .cta-section p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: #ffffff; } .btn-primary { display: inline-block; background: var(--secondary-color); color: #ffffff; padding: 16px 40px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 18px; transition: all 0.3s ease; margin-top: 1rem; border: 2px solid var(--secondary-color); } .btn-primary:hover { background: #d62839; border-color: #d62839; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(230,57,70,0.4); } .products-main { padding: 60px 20px; background: var(--bg-white); } .intro-text { max-width: 800px; margin: 0 auto 3rem; text-align: center; } .intro-text p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .product-category { margin-bottom: 4rem; } .product-category h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .category-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2rem; padding: 20px; }html[dir="ltr"] .category-content.reverse{direction: ltr;} .category-image img { width: 100%; height: auto; border-radius: 12px; box-shadow: var(--shadow); } .category-text p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .services-intro { padding: 60px 20px; background: var(--bg-light); } .services-intro .intro-text { max-width: 800px; margin: 0 auto; text-align: center; } .service-detail { padding: 60px 20px; background: var(--bg-white); } .service-box { background: var(--bg-light); padding: 40px; border-radius: 12px; margin-bottom: 2rem; box-shadow: var(--shadow); } .service-icon { font-size: 48px; color: var(--secondary-color); margin-bottom: 1rem; text-align: center; } .service-box h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .service-box p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; max-width: 800px; margin-left: auto; margin-right: auto; color: var(--text-color); } .why-us { padding: 60px 20px; background: var(--bg-light); } .why-us h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 2rem; margin-top: 2rem; } .benefit-item { display: flex; align-items: center; gap: 1rem; background: var(--bg-white); padding: 20px; border-radius: 8px; box-shadow: var(--shadow); } .benefit-item i { font-size: 24px; color: var(--secondary-color); flex-shrink: 0; } .benefit-item p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 0 !important; color: var(--text-color); } .about-story { padding: 60px 20px; background: var(--bg-white); } .story-content { max-width: 800px; margin: 0 auto; } .story-content p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .values-section { padding: 60px 20px; background: var(--bg-light); } .values-section h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 2rem; margin-top: 2rem; } .value-card { background: var(--bg-white); padding: 30px; border-radius: 12px; box-shadow: var(--shadow); } .value-icon { font-size: 48px; color: var(--secondary-color); margin-bottom: 1rem; text-align: center; } .value-card h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .value-card p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .commitment-section { padding: 60px 20px; background: var(--bg-white); } .commitment-section h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; text-align: center; color: var(--text-color); } .commitment-text { max-width: 800px; margin: 0 auto; } .commitment-text p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .contact-section { padding: 60px 20px; background: var(--bg-white); } .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; } .contact-form-container h2, .contact-info-container h2 { font-size: 32px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .contact-form { display: flex; flex-direction: column; gap: 1.5rem; } .form-group { display: flex; flex-direction: column; gap: 0.5rem; } .form-group label { font-weight: 600; color: var(--text-color); } .form-group input, .form-group textarea { padding: 12px; border: 2px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 16px; transition: border-color 0.3s ease; } .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-color); } .btn-submit { background: var(--primary-color); color: #ffffff; padding: 14px 32px; border: 2px solid var(--primary-color); border-radius: 6px; font-weight: 600; font-size: 16px; cursor: pointer; transition: all 0.3s ease; } .btn-submit:hover { background: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(230,57,70,0.3); } .contact-info { display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem; } .info-item { display: flex; align-items: flex-start; gap: 1rem; } .info-item i { font-size: 24px; color: var(--secondary-color); margin-top: 4px; flex-shrink: 0; } .info-item h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .info-item p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .info-item a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; } .info-item a:hover { color: var(--secondary-color); } .business-hours { margin-top: 2rem; padding: 20px; background: var(--bg-light); border-radius: 8px; } .business-hours h3 { font-size: 22px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; color: var(--text-color); } .business-hours p { font-size: 16px !important; font-weight: 400 !important; line-height: 1.7 !important; margin-bottom: 1rem !important; color: var(--text-color); } .whatsapp-float { display: none; } @media (max-width: 768px) { .whatsapp-float { display: flex; position: fixed; bottom: 20px; width: 50px; height: 50px; border-radius: 50%; align-items: center; justify-content: center; font-size: 24px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.3); background: #25d366; color: #FFFFFF; text-decoration: none; } html[lang="he"] .whatsapp-float, html[lang="ar"] .whatsapp-float, .whatsapp-float{right: 20px;left: auto;} html[lang="en"] .whatsapp-float, html[lang="es"] .whatsapp-float, html[lang="fr"] .whatsapp-float, html[dir="ltr"] .whatsapp-float { left: 20px; right: auto; } } @media (max-width: 768px) { .nav-container { padding-left: 60px; padding-right: 60px; } .mobile-toggle, .phone-header-btn { display: flex; align-items: center; justify-content: center; position: absolute; top: 50%; transform: translateY(-50%); } .nav-menu { display: none; position: fixed; top: 0; width: 50%; height: 75%; max-width: 50%; background: var(--bg-white); flex-direction: column; padding: 80px 20px 20px; gap: 1rem; box-shadow: var(--shadow); z-index: 999; overflow-y: auto; } .nav-menu.active { display: flex; } .nav-cta-container { display: none; } .nav-brand { margin: 0 auto; justify-content: center; } .nav-menu, html[lang="he"] .nav-menu, html[lang="ar"] .nav-menu{right: 0;left: auto;} html[dir="ltr"] .nav-menu, html[lang="en"] .nav-menu, html[lang="es"] .nav-menu, html[lang="fr"] .nav-menu { left: 0; right: auto; } .mobile-toggle, html[lang="he"] .mobile-toggle, html[lang="ar"] .mobile-toggle{right: 15px;left: auto;} .phone-header-btn, html[lang="he"] .phone-header-btn, html[lang="ar"] .phone-header-btn{left: 15px;right: auto;} html[dir="ltr"] .mobile-toggle, html[lang="en"] .mobile-toggle, html[lang="es"] .mobile-toggle, html[lang="fr"] .mobile-toggle { left: 15px; right: auto; } html[dir="ltr"] .phone-header-btn, html[lang="en"] .phone-header-btn, html[lang="es"] .phone-header-btn, html[lang="fr"] .phone-header-btn { right: 15px; left: auto; } .logo { min-height: 30px; max-width: 100px; max-height: 40px; } .hero { min-height: 400px; } .hero-content { padding: 30px 20px; } .hero h1 { font-size: 28px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } .hero h3 { font-size: 18px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } section { padding-top: 15px; padding-bottom: 15px; } .page-header { padding: 40px 20px; } .page-header h1 { font-size: 28px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } .page-header h3 { font-size: 18px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } .intro-section, .products-preview, .services-section, .target-audience, .cta-section, .products-main, .services-intro, .service-detail, .why-us, .about-story, .values-section, .commitment-section, .contact-section { padding: 40px 20px; } h1 { font-size: 28px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } h2 { font-size: 22px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } h3 { font-size: 18px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; } p { font-size: 14px !important; } .products-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; } .services-split { grid-template-columns: 1fr; gap: 2rem; }html[dir="rtl"] .services-split.reverse{direction: rtl;} .audience-grid { grid-template-columns: 1fr; gap: 1.5rem; } .category-content { grid-template-columns: 1fr; gap: 2rem; }html[dir="rtl"] .category-content.reverse{direction: rtl;} .benefits-grid { grid-template-columns: 1fr; gap: 1.5rem; } .values-grid { grid-template-columns: 1fr; gap: 1.5rem; } .contact-grid { grid-template-columns: 1fr; gap: 2rem; } } @media (max-width: 1024px) { h1 { font-size: 36px !important; } h2 { font-size: 28px !important; } h3 { font-size: 20px !important; } p { font-size: 15px !important; } }
 /* CRITICAL: Ensure images are visible immediately (but don't interfere with accessibility toolbar) */
 img, picture, figure {
     opacity: 1 !important;
@@ -1334,6 +1334,506 @@ nav > .nav-ecommerce-icons, header .nav-ecommerce-icons { margin-right: auto; }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================
+   DIRECTION OVERRIDE STYLES
+   Only set direction property, NOT text-align
+   This preserves centered elements
+   ============================================ */
+
+/* Base direction for LTR */
+html[dir="ltr"], html[dir="ltr"] body {
+  direction: ltr !important;
+}
+
+html[dir="ltr"] main,
+html[dir="ltr"] article,
+html[dir="ltr"] section,
+html[dir="ltr"] .content,
+html[dir="ltr"] .container,
+html[dir="ltr"] .wrapper {
+  direction: ltr !important;
+}
+
+/* ONLY apply text-align to legal page content that needs LTR alignment */
+html[dir="ltr"] .legal-content,
+html[dir="ltr"] .terms-content,
+html[dir="ltr"] .privacy-content,
+html[dir="ltr"] .legal-content p,
+html[dir="ltr"] .terms-content p,
+html[dir="ltr"] .privacy-content p,
+html[dir="ltr"] .legal-content li,
+html[dir="ltr"] .terms-content li,
+html[dir="ltr"] .privacy-content li {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Base direction for RTL */
+html[dir="rtl"], html[dir="rtl"] body {
+  direction: rtl !important;
+}
+
+html[dir="rtl"] main,
+html[dir="rtl"] article,
+html[dir="rtl"] section,
+html[dir="rtl"] .content,
+html[dir="rtl"] .container,
+html[dir="rtl"] .wrapper {
+  direction: rtl !important;
+}
+
+/* ONLY apply text-align to legal page content that needs RTL alignment */
+.legal-content,
+html[dir="rtl"] .terms-content,
+html[dir="rtl"] .privacy-content,
+html[dir="rtl"] .legal-content p,
+html[dir="rtl"] .terms-content p,
+html[dir="rtl"] .privacy-content p,
+html[dir="rtl"] .legal-content li,
+html[dir="rtl"] .terms-content li,
+html[dir="rtl"] .privacy-content li{text-align: right !important;}html[dir="rtl"] .legal-content,
+html[dir="rtl"] .terms-content,
+html[dir="rtl"] .privacy-content,
+html[dir="rtl"] .legal-content p,
+html[dir="rtl"] .terms-content p,
+html[dir="rtl"] .privacy-content p,
+html[dir="rtl"] .legal-content li,
+html[dir="rtl"] .terms-content li,
+html[dir="rtl"] .privacy-content li{direction: rtl !important;}
+
+/* V1 site detected - skipping V2 nav fixes to preserve original layout */
+
+/* Language Switcher Container - Fixed Position */
+.zappy-lang-switcher-container {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* RTL: Move to left side */
+.zappy-lang-switcher-container{right: auto;left: 12px;}
+
+/* Language Switcher Styles */
+.lang-switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Language switcher positioning - minimal, only gap spacing */
+/* NOTE: Removed margin-left:auto rules that broke V2 layouts */
+/* V2 layouts handle positioning via flexbox, we just add small gap */
+header .lang-switcher,
+nav .lang-switcher,
+.navbar .lang-switcher {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.lang-switcher-current {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.lang-switcher-current:hover {
+  opacity: 0.7;
+}
+
+/* ===========================================
+   LANGUAGE DROPDOWN POSITIONING
+   CRITICAL: position: absolute !important overrides any
+   mobile responsive CSS that resets absolute positioning
+   to relative. The dropdown MUST be absolutely positioned
+   relative to its parent .lang-switcher.
+   
+   HIGH SPECIFICITY SELECTORS needed to override:
+   [style*="position: absolute"]:not(...) { position: relative !important }
+   That selector has specificity ~0,4,0 so we need 0,5,0+ to win
+   =========================================== */
+.lang-switcher-dropdown,
+.lang-switcher .lang-switcher-dropdown,
+div.lang-switcher-dropdown,
+.nav-cta-container .lang-switcher .lang-switcher-dropdown,
+.navbar .nav-cta-container .lang-switcher-dropdown {
+  position: absolute !important;
+  top: 100% !important;
+  /* Default LTR: align dropdown's left edge to switcher's left edge */
+  left: 0;
+  right: auto;
+  margin-top: 6px;
+  min-width: 150px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  overflow: hidden;
+  z-index: 1002 !important;
+}
+
+/* Ultra-high specificity override for problematic mobile responsive CSS */
+/* The problematic rule [style*="position: absolute"]:not():not():not() has specificity 0,4,0 */
+/* We need 0,5,0+ to win, so we add extra class/attribute selectors */
+.lang-switcher .lang-switcher-dropdown[style*="position: absolute"],
+.lang-switcher .lang-switcher-dropdown[style*="position:absolute"],
+.nav-cta-container .lang-switcher .lang-switcher-dropdown[style],
+.navbar .nav-cta-container .lang-switcher-dropdown[style],
+div.lang-switcher > div.lang-switcher-dropdown[style] {
+  position: absolute !important;
+  top: 100% !important;
+  /* Default LTR: align to left */
+  left: 0;
+  right: auto;
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.15s ease;
+}
+
+.lang-option{text-align: right;}
+
+/* RTL: align dropdown's right edge to switcher's right edge */
+.lang-switcher-dropdown,
+html[lang="he"] .lang-switcher-dropdown,
+html[lang="ar"] .lang-switcher-dropdown{right: 0;left: auto;}
+
+.lang-option:hover {
+  background: #f5f5f5;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .zappy-lang-switcher-container {
+    top: 8px;
+    right: 8px;
+  }
+  
+  .zappy-lang-switcher-container{right: auto;left: 8px;}
+  
+  .lang-switcher-current {
+    padding: 6px;
+  }
+  
+  .lang-option {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  
+  /* FIX: Prevent lang-switcher-dropdown from extending past viewport in RTL mobile */
+  /* The dropdown was causing horizontal overflow with left: 0 in RTL */
+  .lang-switcher-dropdown{left: auto !important;right: 0 !important;}
+}
+
+/* ===========================================
+   RTL MOBILE HORIZONTAL OVERFLOW FIX
+   Prevents left whitespace gap in RTL mobile
+   caused by elements extending past viewport
+   =========================================== */
+
+/* Prevent horizontal scroll on RTL pages */
+,
+html[dir="rtl"] body{overflow-x: hidden !important;max-width: 100vw !important;}
+
+/* Ensure carousel containers clip overflow to prevent horizontal scroll */
+.zappy-carousel-container,
+.zappy-carousel-wrapper,
+.benefits-section,
+.testimonials-section,
+[class*="carousel"] {
+  overflow-x: hidden !important;
+}
+
+/* Ensure lang-switcher parent clips its positioned children */
+.lang-switcher {
+  overflow: visible; /* Keep visible for dropdown to show */
+}
+
+/* ===========================================
+   MOBILE NAV BUTTON POSITIONING
+   CSS handles positioning based on html[dir] attribute.
+   This allows dynamic RTL/LTR switching without inline styles.
+   
+   LTR (default): hamburger LEFT (20px), phone RIGHT (20px)
+   RTL: hamburger RIGHT (20px), phone LEFT (20px) - mirrored
+   =========================================== */
+@media (max-width: 768px) {
+  /* Base positioning and visibility for mobile nav buttons */
+  /* CRITICAL: display: flex overrides any desktop display: none rules */
+  .mobile-toggle,
+  html:not([data-zappy-site-type="ecommerce"]) .phone-header-btn {
+    display: flex !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 1001 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+  }
+  
+  /* Phone button color - use accent color for visibility */
+  html:not([data-zappy-site-type="ecommerce"]) .phone-header-btn {
+    color: var(--accent, #f59e0b) !important;
+  }
+  
+  html:not([data-zappy-site-type="ecommerce"]) .phone-header-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+    fill: currentColor !important;
+  }
+  
+  /* LTR positioning (default) - hamburger LEFT, phone RIGHT */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle,
+  html[dir="ltr"] .mobile-toggle {
+    left: 20px !important;
+    right: auto !important;
+  }
+  
+  html:not([data-zappy-site-type="ecommerce"]):not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn,
+  html:not([data-zappy-site-type="ecommerce"])[dir="ltr"] .phone-header-btn {
+    right: 20px !important;
+    left: auto !important;
+  }
+  
+  /* LTR mobile menu slides from LEFT */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu,
+  html[dir="ltr"] .nav-menu {
+    left: 0 !important;
+    right: auto !important;
+  }
+  
+  /* ===========================================
+     MOBILE NAV MENU - VERTICAL LAYOUT FIX
+     CRITICAL: Override any desktop flex-direction: row rules
+     The mobile menu MUST stack vertically (column), not horizontally (row)
+     =========================================== */
+  html[dir="ltr"] .nav-menu,
+  html[dir="ltr"] .nav-menu.active,
+  html[dir="ltr"] #navMenu,
+  html[dir="ltr"] #navMenu.active,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu.active {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  /* RTL mobile menu - also vertical layout */
+  .nav-menu,
+  html[dir="rtl"] .nav-menu.active,
+  html[dir="rtl"] #navMenu,
+  html[dir="rtl"] #navMenu.active,
+  html[lang="he"] .nav-menu,
+  html[lang="he"] .nav-menu.active,
+  html[lang="ar"] .nav-menu,
+  html[lang="ar"] .nav-menu.active{flex-direction: column !important;align-items: stretch !important;}
+  
+  /* LTR mobile menu text alignment - left aligned */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu li,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu a,
+  html[dir="ltr"] .nav-menu li,
+  html[dir="ltr"] .nav-menu a {
+    text-align: left !important;
+  }
+  
+  /* ===========================================
+     LTR MOBILE NAV-CONTAINER LAYOUT FIX
+     V2 sites have nav-container with flex-direction: row-reverse
+     for RTL. For LTR, we need flex-direction: row and centered logo.
+     =========================================== */
+  html[dir="ltr"] .nav-container,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-container {
+    flex-direction: row !important;
+    justify-content: center !important;
+  }
+  
+  /* LTR: Center the logo/nav-brand in mobile navbar */
+  html[dir="ltr"] .nav-brand,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-brand {
+    order: 0 !important;
+    margin: 0 auto !important;
+  }
+  
+  /* RTL: Center the logo/nav-brand in mobile navbar */
+  .nav-brand,
+  html[lang="he"] .nav-brand,
+  html[lang="ar"] .nav-brand{order: 0 !important;margin: 0 auto !important;}
+  
+  /* RTL lang-switcher dropdown constraint */
+  .lang-switcher{position: relative;}
+  
+  .lang-switcher-dropdown{left: auto !important;right: 0 !important;max-width: calc(100vw - 20px);}
+  
+  /* ===========================================
+     RTL MOBILE NAV BUTTON POSITIONING
+     In RTL: hamburger RIGHT, phone LEFT (mirror of LTR)
+     =========================================== */
+  .mobile-toggle,
+  html[lang="he"] .mobile-toggle,
+  html[lang="ar"] .mobile-toggle{left: auto !important;right: 20px !important;}
+  
+  :not([data-zappy-site-type="ecommerce"]) .phone-header-btn,
+  html[lang="he"]:not([data-zappy-site-type="ecommerce"]) .phone-header-btn,
+  html[lang="ar"]:not([data-zappy-site-type="ecommerce"]) .phone-header-btn{left: 20px !important;right: auto !important;}
+
+  /* Explicitly hide phone button on e-commerce sites (cleaner than fighting with e-commerce CSS). */
+  html[data-zappy-site-type="ecommerce"] .phone-header-btn {
+    display: none !important;
+  }
+  
+  /* RTL mobile menu slides from RIGHT */
+  .nav-menu,
+  html[lang="he"] .nav-menu,
+  html[lang="ar"] .nav-menu{left: auto !important;right: 0 !important;}
+  
+  /* ===========================================
+     V2 MOBILE LANGUAGE SWITCHER FIX
+     V2 sites hide .nav-cta-container on mobile but we need
+     the language switcher to remain visible. Position it
+     between the phone button and the hamburger menu.
+     =========================================== */
+  .nav-cta-container {
+    display: flex !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    z-index: 1001 !important;
+  }
+  
+  /* Hide CTA button inside container on mobile */
+  .nav-cta-container .nav-cta-btn,
+  .nav-cta-container > a:not(.lang-option):not(.lang-switcher-current) {
+    display: none !important;
+  }
+  
+  /* Keep language switcher visible and compact */
+  .nav-cta-container .lang-switcher {
+    display: flex !important;
+    margin: 0 !important;
+    width: auto !important;
+    position: relative !important;
+  }
+  
+  /* ===========================================
+     MOBILE LANGUAGE DROPDOWN POSITIONING FIX
+     CRITICAL: Override the mobile responsive CSS that sets
+     [style*="position: absolute"]:not():not():not() { position: relative !important }
+     That rule has specificity 0,4,0 - we need 0,5,0+ to win.
+     The dropdown MUST use position: absolute to appear below the button.
+     =========================================== */
+  .navbar .nav-cta-container .lang-switcher .lang-switcher-dropdown,
+  .nav-cta-container .lang-switcher .lang-switcher-dropdown[style],
+  .lang-switcher .lang-switcher-dropdown[style*="position"],
+  div.lang-switcher > div.lang-switcher-dropdown[style],
+  [class*="lang-switcher"] .lang-switcher-dropdown[style] {
+    position: absolute !important;
+    top: 100% !important;
+    margin-top: 8px !important;
+    min-width: 140px !important;
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    z-index: 1002 !important;
+    /* Override any transform that might affect positioning */
+    transform: none !important;
+  }
+  
+  /* When dropdown is visible, ensure positioning is correct - high specificity */
+  .navbar .nav-cta-container .lang-switcher-dropdown[style*="visibility: visible"],
+  .navbar .nav-cta-container .lang-switcher-dropdown[style*="opacity: 1"],
+  .lang-switcher .lang-switcher-dropdown[style*="visibility: visible"],
+  .lang-switcher .lang-switcher-dropdown[style*="opacity: 1"] {
+    position: absolute !important;
+    top: 100% !important;
+  }
+  
+  /* LTR: dropdown aligns to left - high specificity to override [style*] rules */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .navbar .lang-switcher-dropdown,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .lang-switcher .lang-switcher-dropdown,
+  html[dir="ltr"] .navbar .lang-switcher-dropdown,
+  html[dir="ltr"] .lang-switcher .lang-switcher-dropdown {
+    left: 0 !important;
+    right: auto !important;
+  }
+  
+  /* RTL: dropdown aligns to right - high specificity to override [style*] rules */
+  .navbar .lang-switcher-dropdown,
+  html[dir="rtl"] .lang-switcher .lang-switcher-dropdown,
+  html[lang="he"] .navbar .lang-switcher-dropdown,
+  html[lang="he"] .lang-switcher .lang-switcher-dropdown,
+  html[lang="ar"] .navbar .lang-switcher-dropdown,
+  html[lang="ar"] .lang-switcher .lang-switcher-dropdown{right: 0 !important;left: auto !important;}
+  
+  /* LTR: position near hamburger (which is at left: 20px), to its right */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-cta-container,
+  html[dir="ltr"] .nav-cta-container {
+    left: 30px !important;
+    right: auto !important;
+  }
+  
+  /* RTL: position near hamburger (which is at right: 20px) */
+  /* nav-cta-container is inside nav-container, so we position it at the right edge */
+  /* of nav-container to get it closer to the hamburger */
+  .nav-cta-container,
+  html[lang="he"] .nav-cta-container,
+  html[lang="ar"] .nav-cta-container{right: 30px !important;left: auto !important;}
+  
+  /* Language switcher preserves its inline color/fill set during generation */
+}
+
+
+
 /* ==ZAPPY E-COMMERCE CSS== */
 /* E-commerce Enhancement Styles - Inherits site theme colors */
 .ecommerce-page {
@@ -1350,12 +1850,13 @@ nav > .nav-ecommerce-icons, header .nav-ecommerce-icons { margin-right: auto; }
 .product-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-color: var(--primary-color, var(--primary, #ff0083)); }
 .product-card img { width: 100%; height: 200px; object-fit: contain; background: #f9fafb; border-radius: 8px; flex-shrink: 0; }
 .product-card .product-card-link { display: flex; flex-direction: column; flex: 1; text-decoration: none; color: inherit; }
-.product-card h3 { margin: 12px 0 8px; font-size: 16px; color: var(--text-color, var(--text, #1f2937)); min-height: 2.4em; line-height: 1.2em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.product-card p { font-size: 14px; color: var(--text-secondary, #6b7280); min-height: 3.6em; line-height: 1.2em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin: 0 0 8px 0; flex-grow: 1; }
+.product-card h3 { margin: 12px 0 8px; font-size: 16px; color: var(--text-color, var(--text, #1f2937)); height: 2.4em; line-height: 1.2em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-shrink: 0; }
+.product-card p { font-size: 14px !important; color: var(--text-secondary, #6b7280); height: 3.6em; line-height: 1.2em !important; display: -webkit-box !important; -webkit-line-clamp: 3 !important; -webkit-box-orient: vertical !important; overflow: hidden !important; margin: 0 0 8px 0; flex-shrink: 0; padding: 0 !important; }
+.product-card .card-content { display: flex; flex-direction: column; flex: 1; }
 .product-card ul { font-size: 14px; color: var(--text-secondary, #6b7280); line-height: 1.4em; margin: 0 0 8px 0; padding-inline-start: 20px; list-style-position: outside; }
 .product-card li { font-size: 14px; color: var(--text-secondary, #6b7280); margin-bottom: 4px; }
 .product-card .price { font-weight: 700; color: var(--primary-color, var(--primary, #ff0083)); font-size: 18px; margin-top: auto; padding-top: 8px; }
-.product-card .price .original-price { font-size: 14px; color: var(--text-secondary, #6b7280); text-decoration: line-through; margin-inline-start: 8px; font-weight: 400; }
+.product-card .price .original-price { font-size: 14px; color: var(--text-secondary, #6b7280); text-decoration: line-through; margin-inline-start: 8px !important; font-weight: 400; display: inline-block; }
 .product-card .add-to-cart { width: 100%; margin-top: 12px; padding: 10px; background: var(--primary-color, var(--primary, #ff0083)); color: var(--text-light, #fff); border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: filter 0.2s; flex-shrink: 0; }
 .product-card .add-to-cart:hover { filter: brightness(0.9); }
 .product-card .no-image-placeholder { height: 200px; background: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 48px; flex-shrink: 0; }
@@ -1372,8 +1873,8 @@ nav > .nav-ecommerce-icons, header .nav-ecommerce-icons { margin-right: auto; }
 /* Standard layout - balanced cards with image, name, short description, price */
 .product-grid.layout-standard { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 24px; }
 .product-card.standard img, .product-card.standard .no-image-placeholder { height: 180px; }
-.product-card.standard h3 { min-height: 2.4em; -webkit-line-clamp: 2; }
-.product-card.standard p { min-height: 2.4em; -webkit-line-clamp: 2; }
+.product-card.standard h3 { height: 2.4em; -webkit-line-clamp: 2; }
+.product-card.standard p { height: 2.4em; -webkit-line-clamp: 2 !important; }
 .product-card.standard .add-to-cart { display: none; }
 
 /* Detailed layout - large cards with full description and add-to-cart */
@@ -1409,6 +1910,23 @@ nav > .nav-ecommerce-icons, header .nav-ecommerce-icons { margin-right: auto; }
 .order-totals > div { margin-bottom: 8px; display: flex; justify-content: space-between; }
 .order-totals .vat-row { font-size: 13px; color: #6b7280; }
 .order-totals .total { font-size: 20px; font-weight: 700; margin-top: 12px; color: var(--primary-color, var(--primary, #ff0083)); }
+.terms-checkbox-wrapper { margin: 16px 0; padding: 12px; background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 8px; }
+.terms-checkbox-label { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 14px; color: var(--text-color, var(--text, #374151)); }
+.terms-checkbox { width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary-color, var(--primary, #ff0083)); flex-shrink: 0; }
+.terms-link { color: var(--primary-color, var(--primary, #ff0083)); text-decoration: underline; font-weight: 500; }
+.save-address-wrapper { margin-top: 12px; }
+.save-address-label { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 14px; color: var(--text-color, var(--text, #6b7280)); }
+.save-address-checkbox { width: 16px; height: 16px; cursor: pointer; accent-color: var(--primary-color, var(--primary, #ff0083)); flex-shrink: 0; }
+.terms-link:hover { opacity: 0.8; }
+/* Inline validation styles */
+.input-wrapper { position: relative; margin-bottom: 4px; }
+.input-wrapper input { margin-bottom: 0; }
+.field-error { display: none; color: #dc2626; font-size: 12px; margin-top: 4px; margin-bottom: 8px; }
+.field-error.visible { display: block; }
+.checkout-step input.input-error, .terms-checkbox-wrapper.has-error { border-color: #dc2626 !important; box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.1) !important; }
+.terms-checkbox-wrapper.has-error { border: 1px solid #dc2626; }
+.terms-checkbox-wrapper .field-error { margin-top: 8px; margin-bottom: 0; }
+#shipping-methods + .field-error { margin-top: 8px; }
 .order-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border-color, #e5e7eb); font-size: 14px; color: var(--text-color, var(--text, #374151)); }
 .login-section { max-width: 400px; margin: 0 auto; text-align: center; }
 .login-form input, .otp-form input { width: 100%; padding: 12px; margin-bottom: 16px; border: 1px solid var(--border-color, #e5e7eb); border-radius: 8px; }
@@ -1554,6 +2072,8 @@ nav > .nav-ecommerce-icons, header .nav-ecommerce-icons { margin-right: auto; }
 .product-info .product-stock.out-of-stock { color: #dc2626; }
 .product-info .product-stock svg { width: 20px; height: 20px; }
 .product-info .product-description { line-height: 1.7; color: var(--text-color, #4b5563); }
+.product-info .product-description ul, .product-info .product-description ol { padding-inline-start: 1.5rem; margin-bottom: 1rem; }
+.product-info .product-description li { margin-bottom: 0.5rem; }
 /* Product Specifications */
 .product-specifications { margin: 24px 0; padding: 20px; background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 12px; }
 .product-specifications h3 { font-size: 1.1rem; font-weight: 600; margin: 0 0 16px 0; color: var(--text-color, var(--text, #1f2937)); }
@@ -2480,22 +3000,18 @@ nav.navbar > *:last-child,
 /* RTL layout - multiple selectors to ensure it works */
 /* Note: With direction:rtl already set, flex-direction:row naturally flows right-to-left */
 /* Using row-reverse would cause double-reversal, making items appear LTR */
-html[dir="rtl"] .zappy-catalog-menu .catalog-menu-container,
+.zappy-catalog-menu .catalog-menu-container,
 html[lang="he"] .zappy-catalog-menu .catalog-menu-container,
 html[lang="ar"] .zappy-catalog-menu .catalog-menu-container,
 body[dir="rtl"] .zappy-catalog-menu .catalog-menu-container,
 .zappy-catalog-menu[dir="rtl"] .catalog-menu-container,
-.zappy-catalog-menu.rtl .catalog-menu-container {
-  flex-direction: row !important;
-}
-html[dir="rtl"] .zappy-catalog-menu .catalog-menu-categories,
+.zappy-catalog-menu.rtl .catalog-menu-container{flex-direction: row !important;}
+.zappy-catalog-menu .catalog-menu-categories,
 html[lang="he"] .zappy-catalog-menu .catalog-menu-categories,
 html[lang="ar"] .zappy-catalog-menu .catalog-menu-categories,
 body[dir="rtl"] .zappy-catalog-menu .catalog-menu-categories,
 .zappy-catalog-menu[dir="rtl"] .catalog-menu-categories,
-.zappy-catalog-menu.rtl .catalog-menu-categories {
-  flex-direction: row !important;
-}
+.zappy-catalog-menu.rtl .catalog-menu-categories{flex-direction: row !important;}
 /* V2 E-COMMERCE THEME OVERRIDES: Now handled by ecommerceV2GenerationService.js */
 /* ==END ZAPPY E-COMMERCE CSS== */
 
@@ -2506,43 +3022,83 @@ body[dir="rtl"] .zappy-catalog-menu .catalog-menu-categories,
 @media (max-width: 768px) {
   /* RTL Mobile Toggle (hamburger) - positioned on RIGHT */
   /* Using multiple parent selectors for higher specificity */
-  html[dir="rtl"] .navbar .mobile-toggle,
+  .navbar .mobile-toggle,
   html[dir="rtl"] nav .mobile-toggle,
   html[dir="rtl"] header .mobile-toggle,
   html[dir="rtl"] .nav-container .mobile-toggle,
-  html[dir="rtl"] .mobile-toggle {
-    left: auto !important;
-    right: 15px !important;
-  }
+  html[dir="rtl"] .mobile-toggle{left: auto !important;right: 15px !important;}
   
   /* RTL Phone Button - positioned on LEFT */
-  html[dir="rtl"] .navbar .phone-header-btn,
+  .navbar .phone-header-btn,
   html[dir="rtl"] nav .phone-header-btn,
   html[dir="rtl"] header .phone-header-btn,
   html[dir="rtl"] .nav-container .phone-header-btn,
-  html[dir="rtl"] .phone-header-btn {
-    left: 15px !important;
-    right: auto !important;
-  }
+  html[dir="rtl"] .phone-header-btn{left: 15px !important;right: auto !important;}
   
   /* RTL Mobile Menu - slides from RIGHT */
-  html[dir="rtl"] .navbar .nav-menu,
+  .navbar .nav-menu,
   html[dir="rtl"] nav .nav-menu,
   html[dir="rtl"] header .nav-menu,
   html[dir="rtl"] .nav-container .nav-menu,
-  html[dir="rtl"] .nav-menu {
-    left: auto !important;
-    right: 0 !important;
-  }
+  html[dir="rtl"] .nav-menu{left: auto !important;right: 0 !important;}
   
   /* RTL Mobile Menu Links - text align right */
-  html[dir="rtl"] .nav-menu a,
-  html[dir="rtl"] .nav-menu li {
-    text-align: right !important;
-  }
+  .nav-menu a,
+  html[dir="rtl"] .nav-menu li{text-align: right !important;}
 }
 
 /* ========== END RTL MOBILE NAVBAR FIX ========== */
+
+
+/* ========== NAV CONTAINER MIN-HEIGHT FIX (nav-container-min-height-fix) ========== */
+/* On mobile, all nav children are position:absolute/fixed (out of flow), */
+/* so height:auto collapses to 0px. min-height ensures the navbar is visible. */
+
+/* DEFENSIVE: Ensure CTA container is visible on desktop */
+/* This guards against CSS minifiers (CleanCSS level 2) that may pull */
+/* the mobile display:none rule out of its @media query */
+@media (min-width: 769px) {
+  .nav-cta-container,
+  .nav-cta-container:not(:has(.lang-switcher)) {
+    display: flex !important;
+    align-items: center !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    min-height: 70px !important;
+    position: relative !important;
+  }
+  /* Reset nav-cta-container desktop styling (box-shadow/padding) on mobile */
+  .nav-cta-container {
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  /* Hide nav-cta-container when no lang-switcher (only CTA btn, which is hidden on mobile) */
+  .nav-cta-container:not(:has(.lang-switcher)) {
+    display: none !important;
+  }
+}
+
+/* ========== END NAV CONTAINER MIN-HEIGHT FIX ========== */
+
+
+/* ========== HERO IMAGE GRADIENT FIX (hero-image-gradient-fix) ========== */
+/* Prevent hero image fade gradient from bleeding over headline text below. */
+/* The .image-fade-gradient has bottom: -30px which extends below its parent; */
+/* on mobile stacked layout this overlaps the h1 text. */
+
+@media (max-width: 768px) {
+  .hero-image-column {
+    overflow: hidden !important;
+  }
+  .image-fade-gradient {
+    bottom: 0 !important;
+  }
+}
+
+/* ========== END HERO IMAGE GRADIENT FIX ========== */
 
 
 /* ========== GRID RESPONSIVE FIX (zappy-grid-mobile-fix) ========== */
@@ -2652,7 +3208,8 @@ body[dir="rtl"] .zappy-catalog-menu .catalog-menu-categories,
   
   /* ========== MAIN PADDING FIX ========== */
   /* Fix double-padding from old V2 mobile CSS that applied padding to both main and sections */
-  main {
+  /* Exclude ecommerce-page which needs its own horizontal padding for proper mobile layout */
+  main:not(.ecommerce-page) {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
@@ -2665,7 +3222,8 @@ body[dir="rtl"] .zappy-catalog-menu .catalog-menu-categories,
   
   /* Hero sections need extra padding-top to clear the sticky navbar */
   /* The navbar is ~70px tall, so hero needs at least 100px padding-top */
-  [class*="-hero-section"]:first-of-type,
+  /* IMPORTANT: Use section tag to avoid matching child elements like buttons that contain "-hero-section" in their BEM class */
+  section[class*="-hero-section"]:first-of-type,
   main > section:first-child {
     padding-top: 100px !important;
   }
@@ -2724,6 +3282,19 @@ body[dir="rtl"] .zappy-catalog-menu .catalog-menu-categories,
   }
 }
 
+/* ========== HERO SECTION WIDTH CONSTRAINT (ALL VIEWPORTS) ========== */
+/* Prevent hero sections from exceeding viewport width.                */
+/* Root cause: AI-generated CSS may use width:100vw or add horizontal  */
+/* padding to the section, causing it to overflow the viewport.        */
+/* NOTE: Do NOT add overflow:hidden here — it clips SVG bottom dividers */
+/* that need overflow:visible to extend into the next section.          */
+section[class*="hero" i],
+section[class*="Hero"],
+section[data-hero-type] {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 /* ========== SVG DIVIDER OVERLAY FIX ========== */
 /* Many AI sections place .section-divider absolutely at the bottom of a section,
    which can overlap/cut off the last row of content. The safest CSS-only fix
@@ -2763,13 +3334,20 @@ body[dir="rtl"] .zappy-catalog-menu .catalog-menu-categories,
 /* ========== HORIZONTAL-PAIR GRID MEDIA FIX ========== */
 /* Ensures media in horizontal-pair grids fills columns correctly */
 
-/* Media cells in horizontal-pair grids */
-.zappy-horizontal-grid[data-zappy-grid-kind="horizontal-pair"] [data-zappy-media-cell="true"] {
+/* Image/video media cells: stretch to fill the grid cell */
+.zappy-horizontal-grid[data-zappy-grid-kind="horizontal-pair"] [data-zappy-media-cell="true"]:not([data-element-type="icon"]) {
   position: relative !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: stretch !important;
   justify-content: stretch !important;
+  min-height: 0 !important;
+}
+
+/* Icon media cells: use flex for centering but allow alignment to be controlled by the editor */
+.zappy-horizontal-grid[data-zappy-grid-kind="horizontal-pair"] [data-zappy-media-cell="true"][data-element-type="icon"] {
+  position: relative !important;
+  display: flex !important;
   min-height: 0 !important;
 }
 
@@ -2787,17 +3365,29 @@ body[dir="rtl"] .zappy-catalog-menu .catalog-menu-categories,
   object-position: center !important;
 }
 
-/* Icons/SVG: fill cell behavior */
+/* Icons/SVG: respect their explicit pixel size from the editor */
+/* Do NOT force width/height: 100% - icons should use their inline size */
 .zappy-horizontal-grid[data-zappy-grid-kind="horizontal-pair"] [data-zappy-media-cell="true"] > svg,
 .zappy-horizontal-grid[data-zappy-grid-kind="horizontal-pair"] [data-zappy-media-cell="true"] > .iconify,
 .zappy-horizontal-grid[data-zappy-grid-kind="horizontal-pair"] [data-zappy-media-cell="true"] > .iconify svg {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: 100% !important;
-  max-height: 100% !important;
-  flex: 1 1 auto !important;
+  flex: 0 0 auto !important;
   min-height: 0 !important;
-  display: block !important;
+  display: inline-block !important;
+}
+
+/* Non-media grid items (buttons, text, etc.) should NOT stretch */
+.zappy-horizontal-grid[data-zappy-grid-kind="horizontal-pair"] > .zappy-inserted-element:not([data-zappy-media-cell]) {
+  align-self: start !important;
+  height: auto !important;
+  width: auto !important;
+  max-width: 100% !important;
+}
+
+/* Buttons inside non-media grid items should NOT stretch horizontally */
+.zappy-horizontal-grid[data-zappy-grid-kind="horizontal-pair"] > .zappy-inserted-element:not([data-zappy-media-cell]) .btn,
+.zappy-horizontal-grid[data-zappy-grid-kind="horizontal-pair"] > .zappy-inserted-element:not([data-zappy-media-cell]) [data-element-type="button"] {
+  width: auto !important;
+  flex: 0 0 auto !important;
 }
 
 /* ========== END HORIZONTAL-PAIR GRID MEDIA FIX ========== */
