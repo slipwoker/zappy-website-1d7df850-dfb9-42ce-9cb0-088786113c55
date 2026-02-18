@@ -2818,6 +2818,8 @@ html[dir="rtl"] body {
       if (ctaContainer && el.parentElement === ctaContainer.parentElement) {
         // Move lang-switcher as first child of CTA container
         ctaContainer.insertBefore(el, ctaContainer.firstChild);
+        // Ensure vertical alignment when lang-switcher and CTA button are siblings
+        ctaContainer.style.setProperty('align-items', 'center', 'important');
       }
       // Clear any margin overrides
       el.style.removeProperty('margin-left');

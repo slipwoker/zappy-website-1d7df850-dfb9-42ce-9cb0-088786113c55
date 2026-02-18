@@ -959,7 +959,7 @@ html[dir="rtl"] body {
 <section class="legal-page-content return-policy">
   <div class="container">
     <h1>מדיניות החזרת מוצרים</h1>
-    <p class="last-updated"><strong>עדכון אחרון:</strong> 4.2.2026</p>
+    <p class="last-updated"><strong>עדכון אחרון:</strong> 15.2.2026</p>
     
     <p>אבוטבול ברגים מחויבת לשביעות רצון לקוחותיה. מדיניות זו מפרטת את זכויותיכם להחזרת מוצרים בהתאם לחוק הגנת הצרכן.</p>
 
@@ -2840,6 +2840,8 @@ html[dir="rtl"] body {
       if (ctaContainer && el.parentElement === ctaContainer.parentElement) {
         // Move lang-switcher as first child of CTA container
         ctaContainer.insertBefore(el, ctaContainer.firstChild);
+        // Ensure vertical alignment when lang-switcher and CTA button are siblings
+        ctaContainer.style.setProperty('align-items', 'center', 'important');
       }
       // Clear any margin overrides
       el.style.removeProperty('margin-left');

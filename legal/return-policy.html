@@ -866,7 +866,7 @@ html[dir="rtl"] body {
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <script>window.ZAPPY_WEBSITE_ID = "1d7df850-dfb9-42ce-9cb0-088786113c55";window.ZAPPY_API_BASE = "https://qaapi.zappy5.com";</script>
+  <script>window.ZAPPY_WEBSITE_ID = "1d7df850-dfb9-42ce-9cb0-088786113c55";window.ZAPPY_API_BASE = "http://localhost:5001";</script>
   
     <div class="mobile-search-panel" id="mobile-search-panel">
       <div class="search-wrapper">
@@ -2726,6 +2726,8 @@ html[dir="rtl"] body {
       if (ctaContainer && el.parentElement === ctaContainer.parentElement) {
         // Move lang-switcher as first child of CTA container
         ctaContainer.insertBefore(el, ctaContainer.firstChild);
+        // Ensure vertical alignment when lang-switcher and CTA button are siblings
+        ctaContainer.style.setProperty('align-items', 'center', 'important');
       }
       // Clear any margin overrides
       el.style.removeProperty('margin-left');
