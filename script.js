@@ -1014,6 +1014,8 @@ async function loadRelatedProducts(currentProduct, t) {
 ;
 
 ;
+
+;
 /* ==ZAPPY E-COMMERCE JS START== */
 // E-commerce functionality
 (function() {
