@@ -1016,6 +1016,8 @@ async function loadRelatedProducts(currentProduct, t) {
 ;
 
 ;
+
+;
 /* ==ZAPPY E-COMMERCE JS START== */
 // E-commerce functionality
 (function() {
@@ -5522,12 +5524,56 @@ function handleSubNavbarVisibility() {
   }
 }
 
+// Transparent navbar scroll effect — frosted glass on scroll
+// Activates only when --nav-bg is 'transparent' (set by navbar customization)
+function initTransparentNavbarScrollEffect() {
+  var nb = document.querySelector('nav.navbar, .navbar:not(.zappy-catalog-menu)');
+  if (!nb) return;
+  var cs = getComputedStyle(nb);
+  var bgc = cs.backgroundColor;
+  // Check if navbar background is transparent (rgba(0,0,0,0) or 'transparent')
+  var isTransparent = bgc === 'transparent' || bgc === 'rgba(0, 0, 0, 0)';
+  if (!isTransparent) return;
+
+  var cm = document.querySelector('.zappy-catalog-menu');
+  // Determine frosted glass color from the page background
+  var bodyBg = getComputedStyle(document.body).backgroundColor || 'rgb(0,0,0)';
+  var m = bodyBg.match(/\d+/g);
+  var frostedBg = m && m.length >= 3 ? 'rgba(' + m[0] + ',' + m[1] + ',' + m[2] + ',0.85)' : 'rgba(0,0,0,0.85)';
+  var threshold = 60;
+
+  nb.style.transition = 'background 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease, box-shadow 0.3s ease';
+  if (cm) cm.style.transition = 'background 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease';
+
+  function onScroll() {
+    var y = window.scrollY || window.pageYOffset;
+    if (y > threshold) {
+      nb.style.background = frostedBg;
+      nb.style.backdropFilter = 'blur(12px)';
+      nb.style.webkitBackdropFilter = 'blur(12px)';
+      nb.style.boxShadow = '0 2px 16px rgba(0,0,0,0.12)';
+      if (cm) { cm.style.background = frostedBg; cm.style.backdropFilter = 'blur(12px)'; cm.style.webkitBackdropFilter = 'blur(12px)'; }
+    } else {
+      nb.style.background = 'transparent';
+      nb.style.backdropFilter = 'none';
+      nb.style.webkitBackdropFilter = 'none';
+      nb.style.boxShadow = 'none';
+      if (cm) { cm.style.background = 'transparent'; cm.style.backdropFilter = 'none'; cm.style.webkitBackdropFilter = 'none'; }
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
 // Initialize featured products, categories, and product/category page details on load
 document.addEventListener('DOMContentLoaded', function() {
   // Mobile menu is handled by the main navbar script - no separate e-commerce handler needed
   
   // Hide sub-navbars on product/checkout/order pages
   handleSubNavbarVisibility();
+
+  // Activate frosted glass scroll effect for transparent navbars
+  initTransparentNavbarScrollEffect();
 
   // Fetch store settings first (handles announcement bar, product layout, etc.)
   fetchAdditionalJsSettings();
