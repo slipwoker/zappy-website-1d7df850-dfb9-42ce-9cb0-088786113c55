@@ -888,7 +888,7 @@ html[dir="rtl"] body {
     // Preview pages are served by the Zappy server itself (localhost in dev), so use that base.
     // Deployed sites are static and must call the public Zappy API (never localhost).
     window.ZAPPY_API_BASE = (window.location.pathname.includes('/preview'))
-      ? "http://localhost:5001"
+      ? "https://qaapi.zappy5.com"
       : "https://qaapi.zappy5.com";
   </script>
   
@@ -976,7 +976,7 @@ html[dir="rtl"] body {
 <section class="legal-page-content return-policy">
   <div class="container">
     <h1>מדיניות החזרת מוצרים</h1>
-    <p class="last-updated"><strong>עדכון אחרון:</strong> 2.3.2026</p>
+    <p class="last-updated"><strong>עדכון אחרון:</strong> 4.3.2026</p>
     
     <p>אבוטבול ברגים מחויבת לשביעות רצון לקוחותיה. מדיניות זו מפרטת את זכויותיכם להחזרת מוצרים בהתאם לחוק הגנת הצרכן.</p>
 

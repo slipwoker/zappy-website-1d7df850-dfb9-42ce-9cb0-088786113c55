@@ -888,7 +888,7 @@ html[dir="rtl"] body {
     // Preview pages are served by the Zappy server itself (localhost in dev), so use that base.
     // Deployed sites are static and must call the public Zappy API (never localhost).
     window.ZAPPY_API_BASE = (window.location.pathname.includes('/preview'))
-      ? "http://localhost:5001"
+      ? "https://qaapi.zappy5.com"
       : "https://qaapi.zappy5.com";
   </script>
   
@@ -1002,18 +1002,18 @@ html[dir="rtl"] body {
                   </div>
                   <div class="checkout-form-fields">
                     <div class="input-wrapper">
-                      <label for="customer-name" class="checkout-field-label">שם מלא</label>
+                      <label for="customer-name" class="checkout-field-label">שם מלא *</label>
                       <input type="text" placeholder="שם מלא" id="customer-name" required>
                       <span class="field-error" id="customer-name-error"></span>
                     </div>
                     <div class="input-wrapper">
-                      <label for="customer-phone" class="checkout-field-label">טלפון</label>
+                      <label for="customer-phone" class="checkout-field-label">מספר טלפון *</label>
                       <input type="tel" placeholder="טלפון" id="customer-phone" required>
                       <span class="field-error" id="customer-phone-error"></span>
                     </div>
                     <div class="input-wrapper">
-                      <label for="customer-email" class="checkout-field-label">אימייל</label>
-                      <input type="email" placeholder="אימייל" id="customer-email" required>
+                      <label for="customer-email" class="checkout-field-label">אימייל *</label>
+                      <input type="email" placeholder="you@company.com" id="customer-email" required>
                       <span class="field-error" id="customer-email-error"></span>
                     </div>
                   </div>
@@ -1035,25 +1035,38 @@ html[dir="rtl"] body {
                 <div class="checkout-accordion-body">
                   <div id="shipping-methods">טוען שיטות משלוח...</div>
                   <span class="field-error" id="shipping-method-error"></span>
-                  <div id="shipping-address-section">
+                  <div id="shipping-address-section" style="display:none">
                     <div class="checkout-form-fields">
-                      <div class="input-wrapper">
-                        <label for="shipping-street" class="checkout-field-label">רחוב ומספר</label>
-                        <input type="text" placeholder="רחוב ומספר" id="shipping-street" required>
-                        <span class="field-error" id="shipping-street-error"></span>
+                      <input type="hidden" id="shipping-country" value="">
+                      <div class="input-wrapper input-full" id="state-wrapper" style="display:none">
+                        <label for="shipping-state" class="checkout-field-label" data-i18n="ecom_stateProvince">מדינה / מחוז *</label>
+                        <div class="checkout-select-wrapper">
+                          <select id="shipping-state" class="checkout-select"></select>
+                          <svg class="checkout-select-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                        <span class="field-error" id="shipping-state-error"></span>
                       </div>
-                      <div class="input-wrapper">
-                        <label for="shipping-apartment" class="checkout-field-label">דירה, קומה, כניסה</label>
-                        <input type="text" placeholder="דירה, קומה, כניסה" id="shipping-apartment">
+                      <div class="checkout-form-row">
+                        <div class="input-wrapper">
+                          <label for="shipping-city" class="checkout-field-label" data-i18n="ecom_city">עיר *</label>
+                          <input type="text" placeholder="עיר" id="shipping-city" required>
+                          <span class="field-error" id="shipping-city-error"></span>
+                        </div>
+                        <div class="input-wrapper">
+                          <label for="shipping-street" class="checkout-field-label" data-i18n="ecom_streetAndNumber">רחוב ומספר *</label>
+                          <input type="text" placeholder="רחוב ומספר" id="shipping-street" required>
+                          <span class="field-error" id="shipping-street-error"></span>
+                        </div>
                       </div>
-                      <div class="input-wrapper">
-                        <label for="shipping-city" class="checkout-field-label">עיר</label>
-                        <input type="text" placeholder="עיר" id="shipping-city" required>
-                        <span class="field-error" id="shipping-city-error"></span>
-                      </div>
-                      <div class="input-wrapper">
-                        <label for="shipping-zip" class="checkout-field-label">מיקוד</label>
-                        <input type="text" placeholder="מיקוד" id="shipping-zip">
+                      <div class="checkout-form-row">
+                        <div class="input-wrapper">
+                          <label for="shipping-apartment" class="checkout-field-label" data-i18n="ecom_apartmentExt">דירה, קומה, קוד בניין, הערות וכו'</label>
+                          <input type="text" placeholder="דירה, קומה, קוד בניין, הערות וכו'" id="shipping-apartment">
+                        </div>
+                        <div class="input-wrapper">
+                          <label for="shipping-zip" class="checkout-field-label" data-i18n="ecom_zipPostal">מיקוד</label>
+                          <input type="text" placeholder="מיקוד" id="shipping-zip">
+                        </div>
                       </div>
                       <div class="save-address-wrapper">
                         <label class="save-address-label">
