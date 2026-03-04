@@ -1020,6 +1020,8 @@ async function loadRelatedProducts(currentProduct, t) {
 ;
 
 ;
+
+;
 /* ==ZAPPY E-COMMERCE JS START== */
 // E-commerce functionality
 (function() {
@@ -7898,7 +7900,7 @@ async function loadRelatedProducts(currentProduct, t) {
 
       var wid = '1d7df850-dfb9-42ce-9cb0-088786113c55';
 
-      var apiBase = (window.ZAPPY_API_BASE || 'https://qaapi.zappy5.com').replace(/\/$/,'');
+      var apiBase = (window.ZAPPY_API_BASE || 'http://localhost:5001').replace(/\/$/,'');
       apiBase = apiBase + '/api/email/contact-form';
 
       fetch(apiBase, {
