@@ -814,7 +814,7 @@ html[dir="rtl"] body {
       .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
       /* Submenu item styling */
       .sub-menu li { list-style: none; margin: 0; padding: 0; }
-      .sub-menu a { display: block !important; padding: 10px 16px !important; color: #333 !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
+      .sub-menu a { display: block !important; padding: 10px 16px !important; color: var(--text-dark, #333) !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
       .sub-menu a:hover { background-color: #f5f5f5; }
       /* RTL (Hebrew/Arabic) dropdown positioning */
       [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
@@ -2860,17 +2860,22 @@ html[dir="rtl"] body {
     var newlineChar = String.fromCharCode(10);
     // HTML tag pattern for detection (common formatting tags)
     var htmlTagPattern = /<(font|b|i|u|strong|em|span|br|a|sub|sup|mark|del|ins|s|small|big)[^>]*>/i;
-    
+
     // Update text content - use innerHTML when text contains line breaks or HTML tags
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
       var key = el.getAttribute('data-i18n');
       var translation = zappyI18n.t(key);
       if (translation && translation !== key) {
+        // Skip parent elements whose children have their own data-i18n keys
+        // (e.g., <li data-i18n="key1"><a data-i18n="key2">text</a></li>)
+        // Setting textContent/innerHTML on the parent would destroy child elements.
+        if (el.querySelector('[data-i18n]')) return;
+
         var hasNewlines = translation.indexOf(newlineChar) !== -1;
         var hasHtmlTags = htmlTagPattern.test(translation);
         var hasEntities = /&[a-zA-Z]+;|&#\d+;|&#x[0-9a-fA-F]+;/.test(translation);
         var elementHasBr = /<br\s*\/?>/i.test(el.innerHTML);
-        
+
         if (hasNewlines || hasHtmlTags || hasEntities || elementHasBr) {
           el.innerHTML = translation.split(newlineChar).join('<br>');
         } else {
@@ -2878,7 +2883,7 @@ html[dir="rtl"] body {
         }
       }
     });
-    
+
     // Update placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
       const key = el.getAttribute('data-i18n-placeholder');
@@ -2958,6 +2963,57 @@ html[dir="rtl"] body {
       el.style.textAlign = isRTL ? 'right' : 'left';
     });
     
+    // Swap inline text-align on content elements when direction changes.
+    // RTL-primary sites have text-align:right baked into inline styles;
+    // these must become text-align:left when viewing in LTR, and vice versa.
+    var defaultIsRTL = rtlLanguages.includes('he');
+    var needsSwap = isRTL !== defaultIsRTL;
+    document.querySelectorAll('[style]').forEach(function(el) {
+      if (el.closest('header') || el.closest('nav') || el.closest('.navbar') || el.closest('.lang-switcher')) return;
+      if (el.closest('.legal-content') || el.closest('.terms-content') || el.closest('.privacy-content')) return;
+      var ta = el.style.textAlign;
+      if (!ta || ta === 'center' || ta === 'justify' || ta === 'start' || ta === 'end') return;
+      if (!el.hasAttribute('data-ta-orig')) {
+        el.setAttribute('data-ta-orig', ta);
+      }
+      var origTA = el.getAttribute('data-ta-orig');
+      if (needsSwap) {
+        el.style.textAlign = origTA === 'right' ? 'left' : 'right';
+      } else {
+        el.style.textAlign = origTA;
+      }
+    });
+
+    // Swap text-align in CSS stylesheet rules when direction changes.
+    // CSS rules with text-align:right (from RTL-primary generation) must become
+    // text-align:left when viewing in LTR, and vice versa.
+    if (!window.__zappyOrigTA) window.__zappyOrigTA = new WeakMap();
+    var origTAMap = window.__zappyOrigTA;
+    for (var si = 0; si < document.styleSheets.length; si++) {
+      try {
+        var sheetRules = document.styleSheets[si].cssRules;
+        for (var ri = 0; ri < sheetRules.length; ri++) {
+          var cssRule = sheetRules[ri];
+          if (!cssRule.style || !cssRule.selectorText) continue;
+          var rta = cssRule.style.textAlign;
+          if (!rta || rta === 'center' || rta === 'justify' || rta === 'start' || rta === 'end') continue;
+          if (cssRule.selectorText.indexOf('[dir=') !== -1) continue;
+          if (/direction\s*:/i.test(cssRule.cssText)) continue;
+          if (/^(html|body)\s*,?\s*(html|body)?\s*$/.test(cssRule.selectorText.trim())) continue;
+          if (/\.(lang-option|lang-switcher|mobile-lang)/.test(cssRule.selectorText)) continue;
+          if (!origTAMap.has(cssRule)) {
+            origTAMap.set(cssRule, rta);
+          }
+          var origRTA = origTAMap.get(cssRule);
+          if (needsSwap) {
+            cssRule.style.textAlign = origRTA === 'right' ? 'left' : 'right';
+          } else {
+            cssRule.style.textAlign = origRTA;
+          }
+        }
+      } catch(e) {}
+    }
+
     // Update catalog menu RTL class to match current direction
     // This is critical for e-commerce sites with category navigation
     document.querySelectorAll('.zappy-catalog-menu').forEach(function(el) {
@@ -3052,17 +3108,23 @@ html[dir="rtl"] body {
       el.style.removeProperty('margin-right');
     });
     
-    // Globe icon SVG for language switcher button (minimal design, no chevron)
-    // Read the icon color from the data attribute (set by server based on navbar color detection)
-    var langSwitcher = document.querySelector('.lang-switcher');
-    var iconColor = langSwitcher ? langSwitcher.getAttribute('data-icon-color') : 'currentColor';
-    if (!iconColor) iconColor = 'currentColor';
+    // Globe icon SVG - uses currentColor so it adopts whatever color is set on the button
+    var globeIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M12.039,.002s0,0,0,0c-.013,0-.026-.002-.039-.002-.005,0-.009,0-.014,0-.002,0-.003,0-.005,0C5.373,.011,0,5.39,0,12s5.383,12,12,12,12-5.383,12-12S18.638,.023,12.039,.002Zm9.747,6.998h-4.814c-1.067-2.669-2.712-4.781-3.731-5.925,3.734,.421,6.901,2.719,8.546,5.925Zm-4.786,5c0,1.407-.292,2.753-.731,4H7.731c-.439-1.247-.731-2.593-.731-4s.292-2.754,.73-4h8.539c.439,1.247,.731,2.593,.731,4Zm-1.122,5c-1.229,2.838-3.116,4.99-3.878,5.788-.762-.798-2.649-2.95-3.878-5.788h7.755ZM8.121,7c1.229-2.841,3.117-4.992,3.879-5.789,.762,.798,2.649,2.95,3.878,5.789h-7.757ZM10.757,1.075c-1.025,1.15-2.668,3.264-3.73,5.925H2.214C3.859,3.795,7.024,1.498,10.757,1.075ZM1.764,8H6.668c-.403,1.247-.668,2.589-.668,4s.265,2.752,.669,4H1.764c-.487-1.242-.764-2.588-.764-4s.277-2.758,.764-4Zm.45,9H7.029c1.067,2.669,2.712,4.781,3.731,5.925-3.734-.421-6.901-2.719-8.546-5.925Zm11.026,5.925c1.019-1.144,2.664-3.257,3.731-5.925h4.814c-1.645,3.206-4.812,5.504-8.546,5.925Zm8.996-6.925h-4.905c.404-1.248,.669-2.589,.669-4s-.265-2.752-.669-4h4.905c.487,1.242,.764,2.588,.764,4s-.277,2.758-.764,4Z"/></svg>';
     
-    var globeIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="' + iconColor + '" style="flex-shrink:0;"><path d="M12.039,.002s0,0,0,0c-.013,0-.026-.002-.039-.002-.005,0-.009,0-.014,0-.002,0-.003,0-.005,0C5.373,.011,0,5.39,0,12s5.383,12,12,12,12-5.383,12-12S18.638,.023,12.039,.002Zm9.747,6.998h-4.814c-1.067-2.669-2.712-4.781-3.731-5.925,3.734,.421,6.901,2.719,8.546,5.925Zm-4.786,5c0,1.407-.292,2.753-.731,4H7.731c-.439-1.247-.731-2.593-.731-4s.292-2.754,.73-4h8.539c.439,1.247,.731,2.593,.731,4Zm-1.122,5c-1.229,2.838-3.116,4.99-3.878,5.788-.762-.798-2.649-2.95-3.878-5.788h7.755ZM8.121,7c1.229-2.841,3.117-4.992,3.879-5.789,.762,.798,2.649,2.95,3.878,5.789h-7.757ZM10.757,1.075c-1.025,1.15-2.668,3.264-3.73,5.925H2.214C3.859,3.795,7.024,1.498,10.757,1.075ZM1.764,8H6.668c-.403,1.247-.668,2.589-.668,4s.265,2.752,.669,4H1.764c-.487-1.242-.764-2.588-.764-4s.277-2.758,.764-4Zm.45,9H7.029c1.067,2.669,2.712,4.781,3.731,5.925-3.734-.421-6.901-2.719-8.546-5.925Zm11.026,5.925c1.019-1.144,2.664-3.257,3.731-5.925h4.814c-1.645,3.206-4.812,5.504-8.546,5.925Zm8.996-6.925h-4.905c.404-1.248,.669-2.589,.669-4s-.265-2.752-.669-4h4.905c.487,1.242,.764,2.588,.764,4s-.277,2.758-.764,4Z"/></svg>';
-    
-    // Update language switcher display - just the globe icon, no arrow
+    // Match the button color to a sibling nav link so the globe contrasts with the nav bg
     var currentLangEl = document.querySelector('.lang-switcher-current');
     if (currentLangEl) {
+      var navContainer = currentLangEl.closest('nav') || currentLangEl.closest('header') || currentLangEl.closest('.navbar');
+      if (navContainer) {
+        var navLink = navContainer.querySelector('.nav-menu a, .nav-links a');
+        if (!navLink) navLink = navContainer.querySelector('a:not(.lang-option):not(.lang-switcher-current):not([class*="logo"])');
+        if (navLink) {
+          var linkColor = getComputedStyle(navLink).color;
+          if (linkColor && linkColor !== 'rgb(0, 0, 0)' && linkColor !== 'rgba(0, 0, 0, 0)') {
+            currentLangEl.style.color = linkColor;
+          }
+        }
+      }
       currentLangEl.innerHTML = globeIconSvg;
     }
     
